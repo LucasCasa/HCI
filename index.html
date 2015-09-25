@@ -1,106 +1,137 @@
 <!DOCTYPE html>
-<html>
-	<title>
-		Prueba
-	</title>
-	<head>
-	<style type="text/css">
-		div.navigation {
-			position: fixed;
-   			left: 0;
-    		top: 0;
-    		width: 100%;
-    		border: 3px solid #8AC007;
-    		border-radius: 0px 10px;
-    		background-color: #8AC007;
-		}
-		</style>
-	<style type="text/css">
-		.inline {
-			display: inline;
-			position: relative;
-		}
-		.categoria {
-			display: none;
-		    z-index: 1;
-		    position: absolute;
-		    left: 0;
-		    top:1em ;
-		    height: 100px;
-		    background-color: #FFF;
-		    color: black;
-			border: 3px solid #8AC007;
-    		border-radius: 0px 10px;
-		    padding: 0;
-		}
-	</style>
-		</head>
-	<body>
-		<div class="navigation">
-			<h1 class="inline">Muffin</h1>
-			<img class="inline"src="muffin.png" width="50" height="50"/>
-			<h4 class="inline" onmouseover="show()" onmouseout="hide()">Categorias
-				<div class="categoria" id="categoria">
-					<ul><li>Hombre</li><li>Mujer</li><li>Yo</li></ul>
-				</div></h4>
-			
-			<input class="inline" type="text"/>
-			</div>
-		</div>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			
-		
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mattis, nunc ut pretium dignissim, ante dui tristique lectus, ac bibendum odio libero eget ex. Proin fermentum at ex id dapibus. Mauris arcu neque, volutpat ultrices facilisis sed, vulputate et arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla sed sem sed diam hendrerit consectetur in a lorem. Phasellus at neque fringilla, varius dolor et, maximus neque. Suspendisse euismod mi justo, eu lobortis ipsum cursus nec.
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
 
-In et bibendum sem. Sed in mi nunc. Etiam fringilla cursus ex, vel finibus magna sodales sit amet. Proin ac nibh quam. Sed pellentesque nulla sed lacinia ornare. Cras non condimentum urna. Morbi est purus, aliquam a aliquet et, pretium vitae leo. Fusce et dictum purus, sit amet venenatis ligula. Nunc quis metus vel nunc aliquet fringilla eu a felis.
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-Curabitur porttitor non diam et dapibus. Suspendisse potenti. Nam sagittis interdum tellus, at scelerisque ligula consectetur sit amet. Donec faucibus euismod nulla, sed luctus ante semper luctus. Duis aliquet vestibulum nunc vel porta. Aenean vel cursus metus, sit amet fringilla ipsum. Nunc lacinia eros sed sapien rutrum, id lacinia sem aliquet. Ut ultricies ante mollis dolor congue convallis. Integer iaculis sit amet ligula at consectetur. Phasellus sed risus libero.
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Muffin</a>
+    </div>
 
-Aenean ornare vestibulum porttitor. Maecenas non ullamcorper justo, ut rhoncus massa. Duis varius maximus ipsum, in vulputate eros pulvinar vitae. Aliquam placerat ut eros ullamcorper feugiat. Vivamus dignissim eros id gravida aliquet. Fusce eu luctus erat, vel tristique arcu. Mauris quis nibh ac augue vestibulum dignissim quis ac ante. Suspendisse volutpat laoreet pretium. Vivamus eget nibh aliquam, lobortis odio a, consectetur metus.
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><img src="muffin.png" width='50px' heigth='50px'/></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Buscar">
+        </div>
+        <button type="submit" class="btn btn-default">Buscar</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ingresar <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <h1>Hello, world!</h1>
+    <div class='carouselwrapper' align='center'> <!-- Este codigo es mio y esta mal -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" witdth=>
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
 
-Nullam sit amet dui a ante cursus dictum. Nulla nisi tortor, mattis non massa id, mattis congue leo. Duis eget orci urna. Morbi eu ex vel diam placerat vehicula nec at arcu. Fusce ornare vel tellus sit amet tempor. Curabitur euismod venenatis eros id tristique. Etiam id mi ut libero vehicula eleifend. Aliquam eu efficitur augue. Pellentesque at imperdiet lacus, eu malesuada ligula. Integer condimentum est eu velit placerat rutrum. Maecenas a neque ultricies, tincidunt nibh id, condimentum lorem. Donec porttitor in neque vel faucibus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dapibus nulla ut enim vehicula, vel aliquam mauris suscipit.
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="muffin.png" alt="Un Muffin con Ropa">
+          <div class="carousel-caption">
+            <h3>Muffin</h3>
+            <p>MMM que rico</p>
+          </div>
+        </div>
 
-Aliquam odio sapien, luctus ut tristique eget, maximus at elit. Pellentesque eget metus mattis, efficitur nulla ut, gravida nunc. Vivamus rutrum blandit magna, non pulvinar nisi. Aliquam tincidunt nunc urna, sed rutrum nisi dignissim nec. Sed sed augue ullamcorper, molestie nunc quis, lobortis massa. Cras rutrum mi ac ornare mattis. Morbi at nisi vel ligula convallis iaculis. Curabitur congue sapien eget ex volutpat, sed bibendum est facilisis. Donec non nisi id elit commodo pretium quis vitae metus. Ut lacus orci, vehicula at eleifend at, elementum sed urna.
+        <div class="item">
+          <img src="muffin.png" alt="Un Muffin con Ropa">
+          <div class="carousel-caption">
+            <h3>Muffin</h3>
+            <p>MMM que rico</p>
+          </div>
+        </div>
 
-Proin dignissim tortor erat, at auctor nunc convallis tincidunt. Curabitur eu tempus mi, quis lobortis tortor. Etiam porttitor commodo urna, dapibus auctor erat dignissim ac. Ut non mattis risus. In sodales nisl commodo, efficitur urna ut, lobortis quam. Nulla non leo vel tortor commodo consectetur eget at turpis. Proin lacus erat, mollis ac interdum in, varius vel augue. Cras nec imperdiet ex, sed fringilla diam. Quisque pharetra bibendum lorem eget rhoncus. Cras dignissim erat sit amet nisl vulputate sollicitudin eu nec turpis. Sed scelerisque bibendum ultrices. Maecenas accumsan erat id augue rhoncus, a facilisis sem laoreet.
+        <div class="item">
+          <img src="muffin.png" alt="Un Muffin con Ropa">
+          <div class="carousel-caption">
+            <h3>Muffin</h3>
+            <p>MMM que rico</p>
+          </div>
+        </div>
 
-Vestibulum vulputate ipsum et purus suscipit commodo. Vivamus ullamcorper porta nulla. Aliquam sit amet neque pretium arcu volutpat tempus et sed mi. Proin ac enim commodo, iaculis mi in, faucibus enim. Etiam eget nibh interdum, consectetur felis eget, euismod justo. Quisque sed condimentum quam, eu varius lacus. Etiam vitae enim sit amet eros dapibus tristique in in nulla. Nunc blandit lectus ut eros sagittis feugiat. Suspendisse vel convallis nulla. Duis maximus ullamcorper sagittis. Phasellus vestibulum congue pretium.
+        <div class="item">
+          <img src="muffin.png" alt="Un Muffin con Ropa">
+          <div class="carousel-caption">
+            <h3>Muffin</h3>
+            <p>MMM que rico</p>
+          </div>
+        </div>
+      </div>
 
-Suspendisse potenti. Nam eu tincidunt quam. Morbi et nisi ultrices, sagittis augue ac, molestie diam. Morbi placerat, eros vel mollis porta, tortor est laoreet lacus, vitae consequat justo felis vel erat. Suspendisse rhoncus nisl eget magna consectetur molestie. Quisque hendrerit, arcu rhoncus tempus cursus, lectus libero hendrerit neque, in porttitor quam elit vitae est. Donec dapibus vel nisi a molestie. In aliquam tellus leo. In molestie at risus vitae dapibus. Praesent in nisi eu sem convallis convallis at eu quam.
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
 
-Integer sodales ipsum id sem sagittis ultricies. Vivamus iaculis, leo a aliquam consequat, eros augue lobortis lectus, ut faucibus lectus lorem at mi. Fusce ultricies erat ligula, a sagittis massa ullamcorper vitae. Curabitur consequat turpis ut purus tincidunt, lobortis luctus purus pellentesque. Vivamus cursus augue vitae pretium porta. Curabitur vel vehicula leo. Vivamus accumsan justo ut auctor fringilla.
-
-Proin tincidunt, lectus sed porttitor luctus, ligula elit congue massa, et scelerisque ligula arcu quis nisi. Praesent nec ipsum euismod, molestie orci ut, porttitor lorem. Pellentesque fermentum egestas dui, vitae facilisis ipsum ultrices at. Duis vehicula, est sit amet pellentesque ullamcorper, neque lectus consequat mi, et blandit nunc arcu ac elit. Suspendisse elit libero, ornare cursus efficitur eget, ultricies in risus. Nam non justo est. Vivamus ut nisl turpis. Vestibulum non ultricies lacus, eu cursus urna.
-
-Praesent interdum pellentesque feugiat. Phasellus sollicitudin lectus mauris, et ultrices lacus tincidunt non. Sed metus nisl, venenatis ac elit nec, dapibus convallis tortor. Sed pretium suscipit urna eget auctor. Quisque at lacinia tortor. Integer sit amet purus facilisis, aliquam neque ac, ultrices ligula. Sed dapibus fermentum nibh eget dapibus. Aenean tincidunt varius arcu non ultricies. Praesent ac ipsum risus. Maecenas vitae suscipit risus. Etiam nec massa mollis lacus aliquet ullamcorper eget sit amet arcu. Ut lacinia dolor enim, in rutrum arcu semper in.
-
-Duis sodales tristique consectetur. Morbi eu neque lacus. Vivamus quis lacus et nulla malesuada pretium. Vestibulum quis malesuada tortor. Praesent imperdiet tempor magna vel tempus. In massa leo, ultrices ut metus quis, dignissim pharetra tortor. Nam ultricies mattis efficitur. Fusce nec commodo justo.
-
-Donec sodales ornare nunc, cursus pretium elit maximus lobortis. Ut sit amet cursus dui. Mauris vitae nulla nec ipsum pulvinar tempus. Etiam quis sapien libero. Praesent quis dolor et urna pharetra pulvinar eu vel ex. Nunc auctor tincidunt mauris, et hendrerit diam mollis sit amet. In mollis sollicitudin lectus, et tincidunt tellus ultricies nec.
-
-Aenean faucibus eget orci vitae tempus. Fusce at diam sodales, pretium risus quis, faucibus felis. Donec placerat eros sit amet tortor maximus, ut efficitur ante tempor. Integer lorem risus, suscipit commodo sem at, faucibus luctus mi. Integer nec leo et diam tristique rhoncus. Maecenas eu pharetra lorem, sed sollicitudin quam. Integer at odio fringilla, sagittis erat at, fermentum nunc. Maecenas congue ante varius enim maximus condimentum.
-
-Proin semper risus euismod risus porta, id mollis tellus auctor. Vestibulum posuere lacus turpis, quis rutrum arcu faucibus ut. Aliquam et turpis sodales, eleifend lorem vitae, viverra purus. Phasellus blandit est erat, a lobortis libero cursus ut. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris sed suscipit massa, sed malesuada est. Phasellus magna neque, commodo a venenatis eu, tempus sit amet nisi. Integer sed tellus a elit facilisis cursus. Sed volutpat, velit id imperdiet dignissim, nisi mi efficitur urna, non lacinia metus magna malesuada massa. Nulla egestas, mi in laoreet euismod, magna leo condimentum tellus, ac tempus enim urna vel tellus. Aliquam vulputate lectus risus, ac sollicitudin sem luctus eget.
-
-Praesent dapibus euismod quam, ac suscipit nunc finibus nec. Vivamus vitae viverra odio, a finibus purus. Aliquam dapibus dui magna, at vehicula turpis porta sed. Vestibulum accumsan purus a nisi hendrerit posuere. Nunc in pulvinar ligula. Aliquam erat volutpat. Donec nec nisl efficitur, malesuada lacus vitae, fermentum lorem.
-
-Integer luctus tellus nec ultrices blandit. Nam ornare commodo nulla sed congue. Suspendisse tristique posuere turpis sed tincidunt. Nullam quis massa nunc. Quisque placerat risus at nunc maximus, in rhoncus metus hendrerit. Curabitur sed consequat sapien. Sed dignissim cursus ligula quis consequat. Fusce accumsan sagittis euismod. Duis non urna lectus.
-
-Mauris placerat eros lectus, sed dictum sapien volutpat non. Praesent eget leo quis nunc finibus vulputate eget nec dolor. Pellentesque congue enim quis ligula vestibulum faucibus. Aenean eget nisl egestas ante congue hendrerit. Praesent pharetra ante laoreet dolor cursus tempus. Cras molestie arcu pretium, dictum est ut, luctus metus. Aenean non ligula et enim blandit ultrices in vitae urna. Morbi egestas purus convallis lacus dignissim aliquam. Phasellus rhoncus dui eget nulla lacinia interdum. Nulla eget imperdiet nulla, non lobortis nunc.
-
-Nunc molestie facilisis tellus, eu ultricies ex. Aenean sed tincidunt justo. Nam blandit felis nisl, non venenatis ante feugiat fringilla. Maecenas luctus mauris id cursus mollis. Suspendisse nisl neque, egestas et cursus sit amet, pulvinar quis turpis. Pellentesque ullamcorper, ante a venenatis iaculis, nulla ligula pulvinar justo, id volutpat arcu velit et purus. Suspendisse eros nisi, porttitor a porta sit amet, rhoncus eu sapien. Etiam est leo, dignissim nec est id, congue tempor leo. Nullam lacinia imperdiet felis ac dignissim. Curabitur a fringilla neque. In ac turpis eget ex congue pellentesque. Phasellus ex dolor, tristique sit amet nulla a, mattis cursus mi. Curabitur interdum vitae enim at facilisis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque fermentum elementum tristique.</p>
-<script>
-function show(){
-  //aca deberia recibir el elemento 
-  document.getElementById('categoria').style.display= 'block' ;
-}
-function hide(){
-  //aca deberia recibir el elemento 
-  document.getElementById('categoria').style.display= 'none' ;
-}
-</script>
-	</body>
+    </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
