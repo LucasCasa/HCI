@@ -28,17 +28,15 @@
 h3{
     padding-left: 30px;
 }
-
-.button{
-    background: blue;
-    border-color: blue; 
+h4{
+    font-style: italic;
+    font-size: 50%;
 }
 .ing-button{
     float: right;
-    background-color: blue;
 }
 .reg-button{
-    float: center;
+    margin-top: 50px;
 }
 .form-group{
     padding-left: 40px;
