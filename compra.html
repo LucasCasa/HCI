@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/compra.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li role="presentation" class="active">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-shopping-cart"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-home"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-send"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-piggy-bank"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <form role="form">
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                        <h3>Step 1</h3>
+                        <p>This is step 1</p>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                    	<div class="col-sm-12">
+	                        <div class="col-sm-6">
+	         					<div class="col-padding">
+	            					<h3>Dirección de Envío</h3>
+	            					<div class="panel panel-default">
+	  									<div class="panel-body">Madero 889, Buenos Aires, Argentina</div>
+									</div>
+	       						</div>
+	       					</div>
+	       					<div class="col-sm-6">
+	      						<div class="col-padding">
+	      							<h3>Dirección de Facturación</h3>
+	      						</div>
+	      					</div>
+      					</div>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                        <h3>Step 3</h3>
+                        <p>This is step 3</p>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
+                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="complete">
+                        <h3>Complete</h3>
+                        <p>You have successfully completed all steps.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </section>
+   </div>
+</div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/compra.js"></script>
+</body>
+</html>
