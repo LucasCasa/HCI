@@ -40,10 +40,12 @@
 	display: inline-block;
 	width:25px;
 	height: 25px;
+	border-radius: 5px;
 }
 .color-red{
 	background-color: red;
 	display: inline-block;
 	width:25px;
 	height: 25px;
+    border-radius: 5px;
 }

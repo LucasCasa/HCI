@@ -1,0 +1,46 @@
+/* 
+ * css de la página de login y registro
+*/
+
+/*!
+ * Start Bootstrap - Shop Homepage HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+.grid-divider {
+    position: relative;
+       padding: 0;
+    }
+.grid-divider>[class*='col-'] {
+    position: static;
+}
+.grid-divider>[class*='col-']:nth-child(n+2):before {
+    content: "";
+    border-left: 1px solid #DDD;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+.col-padding {
+    padding: 0 15px;
+}
+h3{
+    padding-left: 30px;
+}
+
+.button{
+    background: blue;
+    border-color: blue; 
+}
+.ing-button{
+    float: right;
+    background-color: blue;
+}
+.reg-button{
+    float: center;
+}
+.form-group{
+    padding-left: 40px;
+    padding-right: 160px;
+}
