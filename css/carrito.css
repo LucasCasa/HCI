@@ -4,6 +4,8 @@
   z-index: 2;
   right:0;
   top:0;
+}
+.infoblock{
   display: inline-block;
   margin: 10px;
   padding: 8px 15px;

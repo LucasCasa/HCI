@@ -63,6 +63,7 @@
             </ul>
             <form class="navbar-form navbar-left" role="search">
               <div class="input-group">
+                <input type="text" class="form-control" name="x" placeholder="Buscar">
                 <div class="input-group-btn search-panel">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                       <span id="search_concept">Todo</span> <span class="caret"></span>
@@ -76,15 +77,17 @@
                       <li><a href="#all">Todo</a></li>
                     </ul>
                 </div>
-                <input type="hidden" name="search_param" value="all" id="search_param">         
-                <input type="text" class="form-control" name="x" placeholder="Search term...">
+                <input type="hidden" name="search_param" value="all" id="search_param">      
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
+              <li><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge" style="vertical-align:top;margin-top:5px">10</span> </li>
+               <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span></li>
               <li class="text-center"><a href="#" class="btn" role="button" data-toggle="modal" data-target="#login-modal">Ingresar</a></li>
+              <li> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -93,8 +96,7 @@
       <br>
       <br>
       <div class="row">
-        <div class='col-md-12'>
-          <div class='carouselwrapper col-md-12' align='center'><!-- Este codigo es mio y esta mal -->
+          <div class='carouselwrapper col-md-8 col-md-offset-2' align='center'><!-- Este codigo es mio y esta mal -->
             <div id="myCarousel" class="carousel slide" data-ride="carousel" witdth=>
               <!-- Indicators -->
               <ol class="carousel-indicators">
@@ -151,7 +153,6 @@
 
             </div>
           </div>
-        </div>
       </div>
       <div class="container">
         <h2 class="col-sm-12 page-header" style="margin-top:20">Destacados</h2>
@@ -375,6 +376,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="js/loginmodal.js"></script>
 </body>
 </html>

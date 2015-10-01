@@ -2,3 +2,13 @@
 body {
 	background-color: #ecf0f1;
 }
+
+nav .glyphicon-shopping-cart,
+nav .glyphicon-heart,
+nav .glyphicon-user
+ {
+	font-size: 40px;
+	padding-top: 10px;
+	color:white;
+
+}

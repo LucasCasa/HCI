@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Finalizar">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Finalizar Compra</title>
+
+  <!-- Bootstrap 
+    <link rel="stylesheet" type="text/css" href="css/loginmodal.css">
+    <link href="css/submenu.css" rel="stylesheet">
+  -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/general.css">
+  <link rel="stylesheet" type="text/css" href="css/carrito.css">
+  <link rel="stylesheet" type="text/css" href="css/finalizar.css">
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+ <div class="container">
+  <h1>Finalizar Compra</h1>
+  <h3>Metodo de Pago</h3>
+  <div>
+    <input type="radio" name="metodo">Efectivo</radio> 
+  </div>
+    <input type="radio" name="metodo">Tarjeta</radio>
+  <br>
+  <h3>Productos</h3>
+  <hr>
+  <div class="row">
+  <table class="table table-hover col-sm-6">
+    <thead>
+      <th class="col-sm-1">Foto</th>
+      <th class="col-sm-2">Descripcion</th>
+      <th class="col-sm-1">Talle</th>
+      <th class="col-sm-1">Color</th>
+      <th class="col-sm-1">Cantidad</th>
+      <th class="col-sm-1">Precio</th>
+      <th class="col-sm-4"> </th>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <img src="http://placehold.it/80x80"/>
+        </td>
+        <td>
+          <h4> Remera Linda </h4>
+        </td>
+          
+        <td>
+          <h4> M </h4>
+        </td>
+        <td>
+          <h4> Rose Gold </h4>
+        </td>
+        <td>
+          <h4> 5 </h4>
+        </td>
+        <td>
+          <h4> $49.99 </h4>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+</div>
+  <div class="container-fluid">
+     <div class="info infoblock col-md-3">
+          <h4>Direccion de Envio</h4>
+          <h5>Casa </h5>
+                  <h5>Andrea</h5>
+                  <h5>Av Corrientes 333 CABA. Buenos Aires, 1302 </h5>
+                  <h5>Argentina </h5>
+                  <h5>15-1234-5678</h5>
+          <button type="button" class="btn btn-warning">
+            Editar <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+          <hr class="divider">
+          <h4>Direccion de Facturacion</h4>
+          <h5>Trabajo</h5>
+          <h5>Andrea</h5>
+                    <h5>Av Rivadavia 2382 CABA. Buenos Aires, 1210 </h5>
+                    <h5>Argentina </h5>
+                    <h5>15-1234-5678</h5>
+          <button type="button" class="btn btn-warning">
+            Editar <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+    </div>
+  </div>
+
+
+    <div class="container-fluid">
+     <div class="resumen infoblock col-md-3">
+          <h3>Resumen de Compra</h3>
+          <br>
+          <br>
+          <h4>Subtotal</h4>
+          <hr class="divider">
+          <h4>Costo de envio </h4>
+          <hr class="divider">
+          <hr class="divider">
+          <br>
+          <h3>Total</h3>
+          <br>
+        </div>
+      </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+             <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js">
+  </script>
+  <script type="text/javascript" src="js/creditcard.js"></script>
+  <script src="js/carrito.js"></script>
+</body>
+</html>

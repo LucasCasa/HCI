@@ -1,0 +1,14 @@
+th,
+td {
+  text-align: center;
+}
+.btn-danger {
+  text-align: left;
+  float:left;
+}
+
+.resumen{
+  position:fixed;
+  right: 0;
+  bottom: 0;
+}

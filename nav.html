@@ -1,0 +1,68 @@
+<nav class="navbar navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Muffin</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><img src="muffin.png" width='50px' heigth='50px'/></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Hombres</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Remeras</a></li>
+                      <li><a href="#">Pantalones</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Mujeres</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Remeras</a></li>
+                      <li><a href="#">Pantalones</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Niños</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Accesorios</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                      <span id="search_concept">Todo</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#contains">Hombres</a></li>
+                      <li><a href="#its_equal">Mujeres</a></li>
+                      <li><a href="#greather_than">Hola Kevin</a></li>
+                      <li><a href="#less_than">Mili me evita, me "dijo" que tenia novio Y CREO QUE ES MENTIRA</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#all">Todo</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="search_param" value="all" id="search_param">         
+                <input type="text" class="form-control" name="x" placeholder="Search term...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="text-center"><a href="#" class="btn" role="button" data-toggle="modal" data-target="#login-modal">Ingresar</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>

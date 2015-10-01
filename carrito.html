@@ -23,32 +23,31 @@
     </head>
     <body >
       <div class="container-fluid">
-        <div class="info col-md-3">
-          <h5>Subtotal
-           <strong class="pull-right">$24.59</strong></h5>
-           <hr class="divider">
-           <h5>Estimated shipping 
-            <strong class="pull-right">$6.94</strong></h5>
-            <hr  class="divider">
-            <h3>Total
-              <strong class="pull-right">$31.53</strong></h3>
-              <hr  class="divider">
-              <button type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-              </button>
-              <button type="button" class="btn btn-success">
-                Checkout <span class="glyphicon glyphicon-play"></span>
-              </button>
-            </div>
-
+        <div class="info infoblock col-md-3">
+          <h5>Subtotal <strong class="pull-right">$24.59</strong></h5>
+          <hr class="divider">
+          <h5>Costo de envio estimado <strong class="pull-right">$6.94</strong></h5>
+          <hr  class="divider">
+          <h3>Total <strong class="pull-right">$31.53</strong></h3>
+          <hr class="divider">
+          <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Seguir comprando
+          </button>
+          <button type="button" class="btn btn-success">
+            Comprar <span class="glyphicon glyphicon-play"></span>
+          </button>
+          <p style="color:#888;padding: 10px"> *Para comprar es necesario iniciar sesion </p>
+        </div>
+      </div>
 
             <div class="container">
+              <h1 class="col-sm-offset-2">Mi Carrito</h1>
               <div class="row">
-                <div class="col-sm-12 col-md-8 col-md-offset-1" style="padding-top: 200px">
+                <div class="col-sm-12 col-md-8 col-sm-offset-1" style="padding-top: 50px">
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                      <th>Producto</th>
+                        <th>Producto</th>
                         <th class="text-center">Precio</th>
                         <th class="text-center">Total</th>
                         <th class="text-center">Cantidad</th>
@@ -66,7 +65,7 @@
                             Talle <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu" ng-controller="TalleController as Talle">
-                          <li ng-repeat="talle in Talle.talles"> <a href="#"> {{ talle}} </a></li>
+                            <li ng-repeat="talle in Talle.talles"> <a href="#"> {{ talle}} </a></li>
                           </ul>
                         </div>
                         <br class="pull-right">
@@ -74,10 +73,10 @@
                         <h4 class="col-sm-2">Color</h4>
                         <div class="btn-group col-sm-1" ng-controller="ColorController as Color">
                           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenu1">
-                          Color <span class="caret"></span>
+                            Color <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu" >
-                            <li ng-repeat="color in Color.colores" onclick="updateColor()"><a href="#">{{color}}</a></li>
+                            <li ng-repeat="color in Color.colores"><a href="#">{{color}}</a></li>
                           </ul>
                         </div>
 
@@ -101,74 +100,13 @@
                         </div>
                         <br>
                         <button type="button" class="btn btn-danger">
-                          <span class="glyphicon glyphicon-remove"></span> Remove
+                          <span class="glyphicon glyphicon-remove"></span> Eliminar
                         </button></td>
                       </tr>
 
                     </tbody>
                   </table>
                 </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><bra
-              </div>
             </div>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
