@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Carrito">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +21,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
     </head>
-    <body>
+    <body >
       <div class="container-fluid">
         <div class="info col-md-3">
           <h5>Subtotal
@@ -63,29 +63,21 @@
                          <!-- Single button -->
                          <div class="btn-group col-sm-1">
                           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Action <span class="caret"></span>
+                            Talle <span class="caret"></span>
                           </button>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                          <ul class="dropdown-menu" ng-controller="TalleController as Talle">
+                          <li ng-repeat="talle in Talle.talles"> <a href="#"> {{ talle}} </a></li>
                           </ul>
                         </div>
                         <br class="pull-right">
                         <br class="pull-right">
                         <h4 class="col-sm-2">Color</h4>
-                        <div class="btn-group col-sm-1">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Action <span class="caret"></span>
+                        <div class="btn-group col-sm-1" ng-controller="ColorController as Color">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenu1">
+                          Color <span class="caret"></span>
                           </button>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                          <ul class="dropdown-menu" >
+                            <li ng-repeat="color in Color.colores" onclick="updateColor()"><a href="#">{{color}}</a></li>
                           </ul>
                         </div>
 
@@ -182,4 +174,6 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
             <!-- Include all compiled plugins (below), or include individual files as needed -->
             <script src="js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+            <script src="js/carrito.js"></script>
           </body>
