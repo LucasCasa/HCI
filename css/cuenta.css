@@ -37,6 +37,26 @@
     
 }
 
+.category{
+    margin-top: 5px;
+}
+
+
+.btn{
+    background-color: transparent;
+    box-shadow: none;
+    border-color: 
+}
+
+.info{
+
+}
+
+.fmt-date{
+     width: 10px;
+}
+
+
 #form-col1{
     margin-top:0px;
     text-align:left;
@@ -49,4 +69,13 @@
     margin-bottom: 0px;
     text-align:left;
     text-indent: 100px;
+}
+
+.name-address{
+    text-align: left;
+    font-weight: bold;
+}
+.field-name{
+    min-height:32px;
+    vertical-align:middle; 
 }
