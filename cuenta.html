@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/cuenta.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
 <div class="container">
@@ -23,6 +24,7 @@
                   <p class="field-name">Nombre: </p>
                   <p class="field-name">Apellido: </p>
                   <p class="field-name">Email: </p>
+                  <p class="field-name">DNI:
                   <p class="field-name">Fecha de Nacimiento: </p>
                   <p class="field-name">Genero: </p>
                   </form>
@@ -30,23 +32,54 @@
                 <div id="form-col2">
                   <form id="form2">
                   <br><br>
-                   <p class="field-name">Maggie</p>
-                  <p class="field-name">Vega </p>
-                  <p class="field-name">mvega@gmail.com </p>
-                  <p class="field-name">30/07/1994 </p>
-                  <p class="field-name">Femenino </p>
+                   <p class="field-name info">Maggie</p>
+                  <p class="field-name info">Vega </p>
+                  <p class="field-name info">mvega@gmail.com </p>
+                  <p class="field-name info">38454928 </p>
+                  <p class="field-name info">30/07/1994 </p>
+                  <p class="field-name info">Femenino </p>
                   <br><br>
                   </form>
                 </div>
               </div>
-                <button id="modify" type="button" class="btn btn-default btn-info action-button">
+                <button id="modify" type="button" class="btn btn-primary action-button">
                   <span class="glyphicon glyphicon-edit"></span> Modificar
                 </button> 
       </div>
     </div>
     <div class="col-sm-6">
       <div class="col-padding">
+          <button id="add-direction" type="button" class="btn btn-default btn-info action-button">
+            <span class="glyphicon glyphicon-plus"></span> Agregar dirección de envío
+          </button> 
         <h3>Direcciones:</h3>
+        <div id="form-reg">
+
+                <div id="form-col1">
+                  <form id="form1">
+                  <br>
+                  <p class="field-name name-address">Casa </p>
+                  <p class="field-name info">Andrea</p>
+                  <p class="field-name info">Av Corrientes 333 CABA. Buenos Aires, 1302 </p>
+                  <p class="field-name info">Argentina </p>
+                  <p class="field-name info">15-1234-5678</p>
+                  </form>
+                  <button id="modify" type="button" class="btn btn-primary action-button">
+                    <span class="glyphicon glyphicon-edit"></span> Modificar
+                  </button> 
+                  <br><br>
+                  <form id="form1">
+                    <p class="field-name name-address">Trabajo </p>
+                    <p class="field-name info">Andrea</p>
+                    <p class="field-name info">Av Rivadavia 2382 CABA. Buenos Aires, 1210 </p>
+                    <p class="field-name info">Argentina </p>
+                    <p class="field-name info">15-1234-5678</p>
+                  </form>
+                  <button id="modify" type="button" class="btn btn-primary action-button">
+                    <span class="glyphicon glyphicon-edit"></span> Modificar
+                  </button> 
+                  </div>
+          </div>
       </div>
     </div>
     </div>
