@@ -10,208 +10,176 @@
   <!-- Bootstrap 
     <link rel="stylesheet" type="text/css" href="css/loginmodal.css">
     <link href="css/submenu.css" rel="stylesheet">
-    -->
+  -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  
-  
+  <link rel="stylesheet" type="text/css" href="css/general.css">
+  <link rel="stylesheet" type="text/css" href="css/carrito.css">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-      <style type="text/css">
-      .info{
-        position: fixed;
-        z-index: 2;
-        right:0;
-        top:0;
-    display: inline-block;
-    margin: 10px;
-    padding: 8px 15px;
-    background: #EEE;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    transition: all 0.3s ease-out;
-    box-shadow: 
-        inset 0 1px 0 rgba(255,255,255,0.5), 
-        0 2px 2px rgba(0,0,0,0.3), 
-        0 0 4px 1px rgba(0,0,0,0.2); 
-    /* Font styles */
-    text-decoration: none;
-    text-shadow: 0 1px rgba(255,255,255,0.7);
-}
-.divider {
-  height: 2px;
-  width:100%;
-  display:block; /* for use on default inline elements like span */
-  margin: 9px 0;
-  overflow: hidden;
-  background-color: #dddddd;
-}
-      </style>
     </head>
     <body>
-        <div class="container-fluid">
-<div class="info col-md-3">
-                    <h5>Subtotal
-                     <strong class="pull-right">$24.59</strong></h5>
-                     <hr class="divider">
-                        <h5>Estimated shipping 
-                        <strong class="pull-right">$6.94</strong></h5>
-                        <hr  class="divider">
-                        <h3>Total
-                        <strong class="pull-right">$31.53</strong></h3>
-                        <hr  class="divider">
-                        <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                        </button>
-                        <button type="button" class="btn btn-success">
-                            Checkout <span class="glyphicon glyphicon-play"></span>
-                        </button>
-</div>
+      <div class="container-fluid">
+        <div class="info col-md-3">
+          <h5>Subtotal
+           <strong class="pull-right">$24.59</strong></h5>
+           <hr class="divider">
+           <h5>Estimated shipping 
+            <strong class="pull-right">$6.94</strong></h5>
+            <hr  class="divider">
+            <h3>Total
+              <strong class="pull-right">$31.53</strong></h3>
+              <hr  class="divider">
+              <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+              </button>
+              <button type="button" class="btn btn-success">
+                Checkout <span class="glyphicon glyphicon-play"></span>
+              </button>
+            </div>
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 col-md-8 col-md-offset-1" style="padding-top: 200px">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th class="text-center">Price</th>
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12 col-md-8 col-md-offset-1" style="padding-top: 200px">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                      <th>Producto</th>
+                        <th class="text-center">Precio</th>
                         <th class="text-center">Total</th>
-                        <th class="text-center"> Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
+                        <th class="text-center">Cantidad</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
                         <td class="col-sm-8 col-md-6">
-                           <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a> </span>
-                                <h3>Remera linda</h3>
-                                <h4 class="pull-left">Talle</h4>
-                                <br class="pull-left"><!-- Single button -->
-<div class="btn-group pull-right">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
-<br class="pull-right">
-<br class="pull-right">
-                                <h4>Color</h4>
+                         <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a> </span>
+                         <h3>Remera linda</h3>
+                         <h4 class="col-sm-2">Talle</h4>
+                         <!-- Single button -->
+                         <div class="btn-group col-sm-1">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                          </ul>
+                        </div>
+                        <br class="pull-right">
+                        <br class="pull-right">
+                        <h4 class="col-sm-2">Color</h4>
+                        <div class="btn-group col-sm-1">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                          </ul>
+                        </div>
 
-                                
-                                <div class="btn-group pull-right">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
-
-                        </td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
-                        <td class="col-sm-1 col-md-2" style="text-align: center">
-                            <div class="input-group">
-          <span class="input-group-btn">
-              <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
-                <span class="glyphicon glyphicon-minus"></span>
-              </button>
-          </span>
-          <input type="text" name="quant[2]" class="form-control input-number" value="10" min="1" max="100"
-          style="text-align:center">
-          <span class="input-group-btn">
-              <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
-                  <span class="glyphicon glyphicon-plus" ></span>
-              </button>
-          </span>
-      </div>
-      <br>
+                      </td>
+                      <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
+                      <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+                      <td class="col-sm-1 col-md-2" style="text-align: center">
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
+                              <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                          </span>
+                          <input type="text" name="quant[2]" class="form-control input-number" value="10" min="1" max="100"
+                          style="text-align:center">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+                              <span class="glyphicon glyphicon-plus" ></span>
+                            </button>
+                          </span>
+                        </div>
+                        <br>
                         <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Remove
+                          <span class="glyphicon glyphicon-remove"></span> Remove
                         </button></td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-           <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br
-           <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br
-           <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br
-           <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><bra
-    </div>
-</div>
+                      </tr>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-</body>
+                    </tbody>
+                  </table>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><bra
+              </div>
+            </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="js/bootstrap.min.js"></script>
+          </body>
