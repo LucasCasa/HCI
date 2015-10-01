@@ -145,7 +145,19 @@
 .form-control {
   border-radius: 0px;
 }
-
+footer .container{
+    width: 100%;
+}
 .footer{
     text-align: center;
+    vertical-align: middle;
+    background-color: #34495e;
+    height: 40px;
+}
+.footer p{
+    vertical-align: middle;
+    font-size: 110%;
+}
+.footer p a{
+    color: white;
 }
