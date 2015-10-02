@@ -124,3 +124,99 @@ body {
 .pagination{
   margin: 0 auto;
 }
+
+h5{
+  margin : 2px auto;
+  padding-left: 5px;
+}
+
+.titulo{
+  font-size: 16px;
+}
+
+.box-color{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin: 3px 0 3px 0;
+}
+
+.box_92025, .box_82058 {
+    background-color: #000;
+}
+
+.ch-hide {
+    display: none;
+}
+.box_92028, .box_82061 {
+    background-color: #FFF;
+}
+
+.box_92027, .box_82060 {
+    background-color: #666;
+}
+
+.variation-filter dd {
+    display: inline-block;
+    margin: 0 -5px 3px 5px;
+    width: 40px;
+}
+
+.box_91993, .box_82026 {
+    background-color: #F00;
+}
+
+.box_91994, .box_82027 {
+    background-color: #F4CCCC;
+}
+
+.box_92013, .box_82046 {
+    background-color: #1717FF;
+}
+
+.box_92002, .box_82035 {
+    background-color: #FFF2CC;
+}
+
+.box_92021, .box_82054 {
+    background-color: #E828FF;
+}
+
+.box_92000, .box_82033 {
+    background-color: #B45F06;
+}
+
+.box_91998, .box_82031 {
+    background-color: #FCE5CD;
+}
+
+.box_92005, .box_82038 {
+    background-color: #0C9800;
+}
+
+.box_91997, .box_82030 {
+    background-color: #F90;
+}
+
+.box_92026, .box_82059 {
+    background-color: #CCC;
+}
+
+.box_92016, .box_82049 {
+    background-color: #0B5394;
+}
+
+.variation-filter dd a {
+    display: block;
+    height: 24px;
+    width: 24px;
+    background: #fff;
+    border: 1px solid #ededed;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    line-height: 24px;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 11px;
+}
