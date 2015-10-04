@@ -7,8 +7,14 @@ nav .glyphicon-shopping-cart,
 nav .glyphicon-heart,
 nav .glyphicon-user
  {
-	font-size: 40px;
-	padding-top: 10px;
+	font-size: 25px;
+
 	color:white;
+
+}
+
+.navbar-nav>li>a{
+	padding-top: 15px;
+	padding-bottom: 0px;
 
 }

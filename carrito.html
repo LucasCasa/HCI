@@ -21,7 +21,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
     </head>
-    <body >
+    <body>
+    <div ng-include="'nav.html'"></div>
+    <nav-bar></nav-bar>
       <div class="container-fluid">
         <div class="info infoblock col-md-3">
           <h5>Subtotal <strong class="pull-right">$24.59</strong></h5>
@@ -113,5 +115,8 @@
             <!-- Include all compiled plugins (below), or include individual files as needed -->
             <script src="js/bootstrap.min.js"></script>
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-            <script src="js/carrito.js"></script>
+            <script type="text/javascript" src="js/carrito.js"></script>
+            <link rel="stylesheet" href="js/prettyCheckable/prettyCheckable.css">
+
+            <script src="js/prettyCheckable/prettyCheckable.js"></script>
           </body>
