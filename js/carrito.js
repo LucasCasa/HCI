@@ -6,13 +6,6 @@ var app = angular.module('Carrito', []);
  		
  	}
  });
-
-	app.directive('navBar',function{
-	return{
-		restrict: 'E',
-		templateUrl : "nav.html"
-	};
-	}
  app.controller('ColorController',function($scope){
  	this.colores = colores;
  	this.setColor = function(talle){

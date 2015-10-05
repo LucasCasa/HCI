@@ -13,7 +13,8 @@
   -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/general.css">
-  <link rel="stylesheet" type="text/css" href="css/carrito.css">
+  <link rel="stylesheet" type="text/css" href="css/carrito.css"> 
+  <link rel="stylesheet" type="text/css" href="css/prod.css">
   <link rel="stylesheet" type="text/css" href="css/finalizar.css">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,13 +24,15 @@
   <![endif]-->
 </head>
 <body>
+    <div ng-include="'nav.html'"></div>
  <div class="container">
+	
   <h1>Finalizar Compra</h1>
   <h3>Metodo de Pago</h3>
   <div>
-    <input type="radio" name="metodo">Efectivo</radio> 
+    <input type="radio" class="option-input radio" name="metodo">Efectivo</radio> 
   </div>
-    <input type="radio" name="metodo">Tarjeta</radio>
+    <input type="radio" class="option-input radio" name="metodo">Tarjeta</radio>
   <br>
   <h3>Productos</h3>
   <hr>
@@ -79,7 +82,6 @@
 </div>
   <div class="container-fluid">
      <div class="info infoblock col-md-3">
-      <div class="col-md-6">
           <h4>Direccion de Envio</h4>
           <h5>Casa </h5>
                   <h5>Andrea</h5>
@@ -90,26 +92,12 @@
             Editar <span class="glyphicon glyphicon-pencil"></span>
           </button>
           </div>
-          <div class="col-sm-6">
-          <h4>Direccion de Facturacion</h4>
-          <h5>Trabajo</h5>
-          <h5>Andrea</h5>
-                    <h5>Av Rivadavia 2382 CABA. Buenos Aires, 1210 </h5>
-                    <h5>Argentina </h5>
-                    <h5>15-1234-5678</h5>
-          <button type="button" class="btn btn-warning">
-            Editar <span class="glyphicon glyphicon-pencil"></span>
-          </button>
-          </div>
-    </div>
   </div>
 
 
     <div class="container-fluid">
      <div class="resumen infoblock col-md-3">
           <h3>Resumen de Compra</h3>
-          <br>
-          <br>
           <h4>Subtotal</h4>
           <hr class="divider">
           <h4>Costo de envio </h4>
@@ -125,7 +113,7 @@
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js">
   </script>
-  <script type="text/javascript" src="js/creditcard.js"></script>
+  <script type="text/javascript" src="js/finalizar.js"></script>
   <script src="js/carrito.js"></script>
 </body>
 </html>

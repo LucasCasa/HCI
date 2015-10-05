@@ -14,6 +14,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/general.css">
   <link rel="stylesheet" type="text/css" href="css/carrito.css">
+  <link rel="stylesheet" type="text/css" href="css/prod.css">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,7 +24,6 @@
     </head>
     <body>
     <div ng-include="'nav.html'"></div>
-    <nav-bar></nav-bar>
       <div class="container-fluid">
         <div class="info infoblock col-md-3">
           <h5>Subtotal <strong class="pull-right">$24.59</strong></h5>
@@ -36,7 +36,7 @@
             <span class="glyphicon glyphicon-shopping-cart"></span> Seguir comprando
           </button>
           <button type="button" class="btn btn-success">
-            Comprar <span class="glyphicon glyphicon-play"></span>
+            Pagar<span class="glyphicon glyphicon-play"></span>
           </button>
           <p style="color:#888;padding: 10px"> *Para comprar es necesario iniciar sesion </p>
         </div>
@@ -49,6 +49,7 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
+				<th>Foto</th>
                         <th>Producto</th>
                         <th class="text-center">Precio</th>
                         <th class="text-center">Total</th>
@@ -57,9 +58,12 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="col-sm-8 col-md-6">
+                        <td class="col-sm-2">
                          <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a> </span>
-                         <h3>Remera linda</h3>
+				</td>
+				<td>
+                         <h3 style="margin-top:0">Remera linda</h3>
+				 <div class="row">
                          <h4 class="col-sm-2">Talle</h4>
                          <!-- Single button -->
                          <div class="btn-group col-sm-1">
@@ -70,10 +74,10 @@
                             <li ng-repeat="talle in Talle.talles"> <a href="#"> {{ talle}} </a></li>
                           </ul>
                         </div>
-                        <br class="pull-right">
-                        <br class="pull-right">
+				</div>
+				<div class="row">
                         <h4 class="col-sm-2">Color</h4>
-                        <div class="btn-group col-sm-1" ng-controller="ColorController as Color">
+                        <div class="btn-group col-sm-1 ng-controller="ColorController as Color">
                           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenu1">
                             Color <span class="caret"></span>
                           </button>
@@ -81,21 +85,21 @@
                             <li ng-repeat="color in Color.colores"><a href="#">{{color}}</a></li>
                           </ul>
                         </div>
-
+				</div>
                       </td>
                       <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
                       <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
                       <td class="col-sm-1 col-md-2" style="text-align: center">
                         <div class="input-group">
                           <span class="input-group-btn">
-                            <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
+                            <button style="padding:2px" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
                               <span class="glyphicon glyphicon-minus"></span>
                             </button>
                           </span>
                           <input type="text" name="quant[2]" class="form-control input-number" value="10" min="1" max="100"
                           style="text-align:center">
                           <span class="input-group-btn">
-                            <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+                            <button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
                               <span class="glyphicon glyphicon-plus" ></span>
                             </button>
                           </span>
