@@ -203,7 +203,7 @@
 									<button id="save-btn" type="button" class="btn btn-success apply" hidden>
 										<span class="glyphicon glyphicon-ok"></span> Guardar
 									</button>
-									<button id="cancel-btn" type="button" class="btn btn-danger apply" hidden >
+									<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal"hidden >
 										<span class="glyphicon glyphicon-remove"></span> Descartar
 									</button>		
 								</div>
@@ -242,7 +242,7 @@
 									<button id="save-btn" type="button" class="btn btn-success apply" hidden>
 										<span class="glyphicon glyphicon-ok"></span> Guardar
 									</button>
-									<button id="cancel-btn" type="button" class="btn btn-danger apply" hidden >
+									<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal"hidden >
 										<span class="glyphicon glyphicon-remove"></span> Descartar
 									</button>		
 								</div>
@@ -292,6 +292,25 @@
 											<h4 class="modal-title">Agregar dirección de envio</h4>
 										</div>
 										<div class="modal-body">
+											<div class="category">
+												<label >Nombre del Lugar
+													<input name="name" class="form-control" type="text" placehoder="Nombre Lugar" id="name" enabled>										
+												</label>
+											</div>
+											<div class="category">
+												<label>Nombre y Apellido
+													<input name="firstname" type="text" placeholder="Nombre" class="form-control" id="firstname" enabled>
+													<input name="lastname" type="text" placeholder="Apellido" class="form-control" id="lastname" enabled>	
+												</label>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button id="save-btn" type="button" class="btn btn-success apply" hidden>
+												<span class="glyphicon glyphicon-ok"></span> Guardar
+											</button>
+											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
+												<span class="glyphicon glyphicon-remove"></span> Descartar
+											</button>		
 										</div>
 									</div>
 								</div>
@@ -306,7 +325,7 @@
 										</div>
 										<div class="modal-body">
 											<div class="category">
-												<label >Nombre Lugar
+												<label >Nombre del Lugar
 													<input name="name" class="form-control" type="text" placehoder="Nombre Lugar" id="name" enabled>										
 												</label>
 											</div>
@@ -364,8 +383,7 @@
 														<option value="Tierra del Fuego">Tierra del Fuego</option>
 														<option value="Tucumán">Tucumán</option>
 													</select>
-												</label>
-											</div>
+ 											</div>
 											<div class="category">
 												<label >País
 													<select name="country">
@@ -630,7 +648,7 @@
 											<button id="save-btn" type="button" class="btn btn-success apply" hidden>
 												<span class="glyphicon glyphicon-ok"></span> Guardar
 											</button>
-											<button id="cancel-btn" type="button" class="btn btn-danger apply" hidden >
+											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
 												<span class="glyphicon glyphicon-remove"></span> Descartar
 											</button>		
 										</div>
