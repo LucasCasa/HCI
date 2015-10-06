@@ -270,3 +270,7 @@ h2{
     font-weight: bold;
     padding-left: 30px;
 }
+
+td button{
+  margin-left: 20%;
+}

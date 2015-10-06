@@ -25,6 +25,10 @@ $(document).ready(function () {
         prevTab($active);
 
     });
+
+    $("tr").on("click","button",function(){
+        $(this).closest("tr").remove();
+    });
 });
 
 function nextTab(elem) {
@@ -33,4 +37,5 @@ function nextTab(elem) {
 function prevTab(elem) {
     $(elem).prev().find('a[data-toggle="tab"]').click();
 }
+
 
