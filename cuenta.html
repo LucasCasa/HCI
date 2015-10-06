@@ -18,36 +18,47 @@
 		<div class="page-header">
 			<h3>Mi Cuenta</h3>
 		</div>
-		<div class="row grid-divider">
-			<div class="col-sm-6">
-				<div class="col-padding">
-					<h3>Informacion Personal:</h3>
-					<div id="form-reg">
-						<div id="form-col1">
-							<form id="form1">
-								<br><br>
-								<p class="field-name">Nombre: </p>
-								<p class="field-name">Apellido: </p>
-								<p class="field-name">Email: </p>
-								<p class="field-name">DNI:
-								<p class="field-name">Fecha de Nacimiento: </p>
-								<p class="field-name">Genero: </p>
-							</form>
+		<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+<!-- Nav tabs -->
+			<div class="card">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Información Personal</a></li>
+                    <li role="presentation"><a href="#direcciones" aria-controls="direcciones" role="tab" data-toggle="tab">Direcciones</a></li>
+                    <li role="presentation"><a href="#tarjetas" aria-controls="tarjetas" role="tab" data-toggle="tab">Tarjetas de Crédito</a></li>
+                    <li role="presentation"><a href="#historial" aria-controls="historial" role="tab" data-toggle="tab">Historial de Compra</a></li>
+                </ul>
+
+         <!-- Tab panes -->
+            	<div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="info">
+                        <div id="form-reg">
+							<div id="form-col1">
+								<form id="form1">
+									<br><br>
+									<p class="field-name">Nombre: </p>
+									<p class="field-name">Apellido: </p>
+									<p class="field-name">Email: </p>
+									<p class="field-name">DNI:
+									<p class="field-name">Fecha de Nacimiento: </p>
+									<p class="field-name">Genero: </p>
+								</form>
+							</div>
+							<div id="form-col2">
+								<form id="form2">
+									<br><br>
+									<p class="field-name info"></p>
+									<p class="field-name info"></p>
+									<p class="field-name info"></p>
+									<p class="field-name info"></p>
+									<p class="field-name info"></p>
+									<p class="field-name info"></p>
+									<br><br>
+								</form>
+							</div>
 						</div>
-						<div id="form-col2">
-							<form id="form2">
-								<br><br>
-								<p class="field-name info"></p>
-								<p class="field-name info"></p>
-								<p class="field-name info"></p>
-								<p class="field-name info"></p>
-								<p class="field-name info"></p>
-								<p class="field-name info"></p>
-								<br><br>
-							</form>
-						</div>
-					</div>
-					<button id="modify-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAccountModal">
+						<button id="modify-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAccountModal">
 						<span class="glyphicon glyphicon-edit"></span> Modificar
 					</button> 
 					<div class="modal fade" data-backdrop="static" id="modifyAccountModal">
@@ -253,12 +264,10 @@
 							</div><!-- /.modal-content -->
 						</div><!-- /.modal-dialog -->
 					</div><!-- /.modal -->
-				</div>
-				<!-- cierra primera columna -->
-			</div>
-			<div class="col-sm-6">
-				<div class="col-padding">
-					<h3>Direcciones:</h3>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="direcciones">
+                    	<div class="col-padding">
+							<h3>Direcciones:</h3>
 					<div id="form-reg">
 						<div id="form-col1">
 							<form id="form1">
@@ -661,7 +670,78 @@
 							</div>
 					</div>
 				</div>
-			</div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="tarjetas">
+                    	<button id="add-card" type="button" class="btn btn-info" data-toggle="modal" data-target="#addCardModal">
+							<span class="glyphicon glyphicon-edit"></span> Agregar tarjeta
+						</button> 
+                    	<div id="form-col1">
+							<form id="form1-card">
+								<br><br>
+								<p class="field-name">Marca</p>
+								<p class="field-name">Número </p>
+								<p class="field-name">Fecha de vencimiento </p>
+								<p class="field-name">Código de Seguridad </p>
+							</form>
+						</div>
+						<div class="modal fade" data-backdrop="static" id="addCardModal">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+											<h4 class="modal-title">Agregar tarjeta</h4>
+										</div>
+										<div class="modal-body">
+											<div class="category">
+												<label > Marca
+													<select class="fieldCard" id="cBrand"> 
+														<option value="none">Seleccionar...</option>
+														<option value="Amex">American Express</option>
+														<option value="Dinners">Dinners</option>
+														<option value="Master">MasterCard</option>
+														<option value="VISA">Visa</option>
+													</select>								
+												</label>
+											</div>												
+											<div class="category">
+												<label >Número
+													<input name="number" class="form-control" placeholder="ej 1234 4567 7890 1234" id="cardNumber"  enabled>
+												</label>
+											</div>									
+											<div class="category">
+												<label >Localidad
+													<input name="expirationDate" class="form-control" placeholder="ej: 01/01" id="expirationDate" enabled>
+												</label>
+											</div>						
+											<div class="category">
+												<label >
+													<input name="securityCode" class="form-control" placeholder="ej: 123" id="securityCode" enabled>
+												</label>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button id="add-card-btn" type="button" class="btn btn-success apply" hidden>
+												<span class="glyphicon glyphicon-ok"></span> Guardar
+											</button>
+											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
+												<span class="glyphicon glyphicon-remove"></span> Descartar
+											</button>		
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="historial">
+                    	
+                    </div>
+                </div> <!-- cierra tab content -->
+				</div> <!-- cierra card -->
+            </div> <!-- cierra col -->
+		</div> <!-- cierra row -->
+	</div> <!-- cierra container -->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
