@@ -8,8 +8,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/general.css">
 </head>
-<body>
+<body ng-app="login">
     <div class="container">
+        <form ng-controller="LoginController as LoginCtrl">
         <div class="page-header">
             <h3>Ingresar</h3>
         </div>
@@ -19,17 +20,19 @@
             <h3>Cuenta existente:</h3>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Nombre de Usuario">
+            <input type="text" ng-model="loginUser" class="form-control" placeholder="Nombre de Usuario">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Contraseña">
+            <input type="password" ng-model="loginPass" class="form-control" placeholder="Contraseña">
         </div>
-        <button type="submit" class="btn btn-primary ing-button">Ingresar</button>
+        <button type="submit" ng-click="login()" class="btn btn-primary ing-button">Ingresar</button>
+      </form>
     </div>
     <div class="col-sm-6">
       <div class="col-padding">
         <h3>Registrarse:</h3>
         <div class="container-fluid">
+          <form ng-controller="RegisterController as RegisterCtrl" name="register" novalidate>
             <section class="container">
                 <div class="container-page">                
                     <div class="col-md-6">
@@ -39,32 +42,32 @@
 
                         <div class="form-group col-lg-6">
                             <label>Nombre</label>
-                            <input type="text" name="" class="form-control" id="" value="">
+                            <input type="text" name="" class="form-control" id="name" value="" required>
                         </div>
 
                         <div class="form-group col-lg-6">
                             <label>Apellido</label>
-                            <input type="text" name="" class="form-control" id="" value="">
+                            <input type="text" name="" class="form-control" id="surname" value=""  required>
                         </div>
 
                         <div class="form-group col-lg-6">
                             <label>Correo Electrónico</label>
-                            <input type="text" name="" class="form-control" id="" value="">
+                            <input type="email" name="" class="form-control" id="email" value=""  required>
                         </div>
 
                         <div class="form-group col-lg-6">
                             <label>Repetir Correo Electrónico</label>
-                            <input type="text" name="" class="form-control" id="" value="">
+                            <input type="email" name="" class="form-control" id="emailRepeat" value=""  required>
                         </div>
 
                         <div class="form-group col-lg-6">
                             <label>Contraseña</label>
-                            <input type="password" name="" class="form-control" id="" value="">
+                            <input type="password" name="" class="form-control" id="pass" value=""  required>
                         </div>
 
                         <div class="form-group col-lg-6">
                             <label>Repetir Contraseña</label>
-                            <input type="password" name="" class="form-control" id="" value="">
+                            <input type="password" name="" class="form-control" id="passRepeat" value=""  required>
                         </div>
 
                         <div class="form-group col-lg-12">
@@ -182,8 +185,6 @@
 
                           </select>
                       </div>     
-
-                      <form >
                         <div class="form-group col-lg-12">
                             <label>Género</label>
                                 <div  >
@@ -196,7 +197,7 @@
                                 </div>
                         </div>
                         <br/>
-                        <input type="submit" class="btn btn-primary" value="Registrarse"></input>
+                        <input type="submit" ng-disable="register.$invalid" class="btn btn-primary" value="Registrarse" onlick="register()"></input>
                     </form>
 
 
@@ -208,5 +209,9 @@
 </div>
 </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>
