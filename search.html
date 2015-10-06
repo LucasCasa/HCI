@@ -1,27 +1,31 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="search">
   <head>
     <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
+
 
         <title>Muffin</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="./css/search.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/search.css">
+        <link rel="stylesheet" type="text/css" href="css/prod.css">
+        <link rel="stylesheet" type="text/css" href="css/general.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/search.js"></script>
 
   </head>
 
   <body>
 
+    <div ng-include="'nav.html'"></div>
 
     <div class="container-fluid">
       <div class="row">
@@ -190,7 +194,7 @@
 
           </dl>
 
-      
+
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -226,157 +230,26 @@
         </div>
 
 
-          <div class="col-sm-3">
-                       <div class="thumbnail">
-                           <img src="http://placehold.it/200x200" alt="">
-                           <div class="caption">
-                               <h4 class="pull-right">$24.99</h4>
-                               <h4><a href="#">First Product</a>
-                               </h4>
-                               <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                           </div>
-                           <div class="ratings">
-                               <p class="pull-right">
-                                   <span class="color-blue"></span>
-                                   <span class="color-red"></span>
-                               </p>
-                               <p>Colores disponibles</p>
-                           </div>
-                       </div>
-          </div>
+        <div class"row" style="padding-right:100px;padding-left:100px" ng-controller="DestacadosController as DestacadosCtrl">
 
-          <div class="col-sm-3">
-                       <div class="thumbnail">
-                           <img src="http://placehold.it/200x200" alt="">
-                           <div class="caption">
-                               <h4 class="pull-right">$24.99</h4>
-                               <h4><a href="#">First Product</a>
-                               </h4>
-                               <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                           </div>
-                           <div class="ratings">
-                               <p class="pull-right">
-                                   <span class="color-blue"></span>
-                                   <span class="color-red"></span>
-                               </p>
-                               <p>Colores disponibles</p>
-                           </div>
-                       </div>
-          </div>
+                      <div class="thumbnail col-sm-3" ng-repeat="prod in destacados">
+                          <img ng-attr-src="{{prod.imageUrl[0]}}" alt="">
+                          <div class="caption">
 
-          <div class="col-sm-3">
-                       <div class="thumbnail">
-                           <img src="http://placehold.it/200x200" alt="">
-                           <div class="caption">
-                               <h4 class="pull-right">$24.99</h4>
-                               <h4><a href="#">First Product</a>
-                               </h4>
-                               <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                           </div>
-                           <div class="ratings">
-                               <p class="pull-right">
-                                   <span class="color-blue"></span>
-                                   <span class="color-red"></span>
-                               </p>
-                               <p>Colores disponibles</p>
-                           </div>
-                       </div>
-          </div>
-
-          <div class="col-sm-3">
-                       <div class="thumbnail">
-                           <img src="http://placehold.it/200x200" alt="">
-                           <div class="caption">
-                               <h4 class="pull-right">$24.99</h4>
-                               <h4><a href="#">First Product</a>
-                               </h4>
-                               <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                           </div>
-                           <div class="ratings">
-                               <p class="pull-right">
-                                   <span class="color-blue"></span>
-                                   <span class="color-red"></span>
-                               </p>
-                               <p>Colores disponibles</p>
-                           </div>
-                       </div>
-          </div>
-
-          <div class="col-sm-3">
-                       <div class="thumbnail">
-                           <img src="http://placehold.it/200x200" alt="">
-                           <div class="caption">
-                               <h4 class="pull-right">$24.99</h4>
-                               <h4><a href="#">First Product</a>
-                               </h4>
-                               <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                           </div>
-                           <div class="ratings">
-                               <p class="pull-right">
-                                   <span class="color-blue"></span>
-                                   <span class="color-red"></span>
-                               </p>
-                               <p>Colores disponibles</p>
-                           </div>
-                       </div>
-          </div>
-
-          <div class="col-sm-3">
-                       <div class="thumbnail">
-                           <img src="http://placehold.it/200x200" alt="">
-                           <div class="caption">
-                               <h4 class="pull-right">$24.99</h4>
-                               <h4><a href="#">First Product</a>
-                               </h4>
-                               <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                           </div>
-                           <div class="ratings">
-                               <p class="pull-right">
-                                   <span class="color-blue"></span>
-                                   <span class="color-red"></span>
-                               </p>
-                               <p>Colores disponibles</p>
-                           </div>
-                       </div>
-          </div>
-
-          <div class="col-sm-3">
-                       <div class="thumbnail">
-                           <img src="http://placehold.it/200x200" alt="">
-                           <div class="caption">
-                               <h4 class="pull-right">$24.99</h4>
-                               <h4><a href="#">First Product</a>
-                               </h4>
-                               <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                           </div>
-                           <div class="ratings">
-                               <p class="pull-right">
-                                   <span class="color-blue"></span>
-                                   <span class="color-red"></span>
-                               </p>
-                               <p>Colores disponibles</p>
-                           </div>
-                       </div>
-          </div>
-
-          <div class="col-sm-3">
-                       <div class="thumbnail">
-                           <img src="http://placehold.it/200x200" alt="">
-                           <div class="caption">
-                               <h4 class="pull-right">$24.99</h4>
-                               <h4><a href="#">First Product</a>
-                               </h4>
-                               <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                           </div>
-                           <div class="ratings">
-                               <p class="pull-right">
-                                   <span class="color-blue"></span>
-                                   <span class="color-red"></span>
-                               </p>
-                               <p>Colores disponibles</p>
-                           </div>
-                       </div>
-          </div>
+                              <h4><a ng-attr-href="{{'producto.html?id=' + prod.id}}">{{prod.name}}</a>
+                              </h4>
+                              <h4 class="pull-right">{{prod.price | currency}}</h4>
+                              <p>Mirame soy un producto.</p>
+                          </div>
+                          <div class="ratings">
+                              <p class="pull-right">
+                                  <span class="color-blue"></span>
+                                  <span class="color-red"></span>
+                              </p>
+                              <p>Colores disponibles</p>
+                          </div>
+                      </div>
+                  </div>
 
           <div>
             <ul class="pagination">
@@ -398,12 +271,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
   </body>
 
   </html>

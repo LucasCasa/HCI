@@ -72,7 +72,7 @@ body {
  */
 
 .main {
-  padding: 20px;
+  padding:0px;
 }
 @media (min-width: 768px) {
   .main {
@@ -111,7 +111,8 @@ body {
 .cantidadDeOrdenamiento{
   width: 58px;
   margin-bottom: 10px;
-  padding-bottom: 20px;
+
+  padding:0px;
 
 }
 
@@ -123,6 +124,7 @@ body {
 
 .pagination{
   margin: 0 auto;
+  padding-left: 40%;
 }
 
 h5{
