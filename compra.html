@@ -67,23 +67,39 @@
 									        		<th>Envío</th>
 									        		<th>Facturación</th>
 									        		<th>Dirección</th>
+									        		<th>Eliminar Dirección</th>
 									      		</tr>
 									    	</thead>
 										    <tbody>
 										      	<tr>
-											        <td><input type="radio" id="envio1" name="envio" value="1" /> </td>
-											        <td><input type="radio" id="fact 1" name="fact" value="1" />  </td>
+											        <td><input type="radio" name="envio" value="1" /> </td>
+											        <td><input type="radio" name="fact" value="1" />  </td>
 											        <td><div class="panel-body">Madero 889, Puerto Madero, Buenos Aires, Argentina</div></td>
+											        <td>
+											        	<button type="button" class="btn btn-danger">
+											        		<span class="glyphicon glyphicon-remove"></span>
+											        	</button>
+											        </td>
 										      	</tr>
 										      	<tr>
-											        <td><input type="radio" id="envio2" name="envio" value="2" /></td>
-											        <td><input type="radio" id="fact2" name="fact" value="2" /></td>
+											        <td><input type="radio" name="envio" value="2" /></td>
+											        <td><input type="radio" name="fact" value="2" /></td>
 											        <td><div class="panel-body">25 de Mayo 457, Puerto Madero, Buenos Aires, Argentina</div></td>
+											     	<td>
+											        	<button type="button" class="btn btn-danger">
+											        		<span class="glyphicon glyphicon-remove"></span>
+											        	</button>
+											        </td>
 										      	</tr>
 										      	<tr>
-											        <td><input type="radio" id="envio3" name="envio" value="3" /></td>
-											        <td><input type="radio" id="fact3" name="fact" value="3" /></td>
+											        <td><input type="radio" name="envio" value="3" /></td>
+											        <td><input type="radio" name="fact" value="3" /></td>
 											        <td><div class="panel-body">Ruben Darío 816, Shan Ishidro, Buenos Aires, Argentina</div></td>
+											        <td>
+											        	<button type="button" class="btn btn-danger">
+											        		<span class="glyphicon glyphicon-remove"></span>
+											        	</button>
+											        </td>
 										      	</tr>
 										    </tbody>
 										</table>
@@ -425,7 +441,8 @@
 															</div>
 														</div>
 														<!-- footer -->
-														<div class="modal-footer">											<button id="save-btn" type="button" class="btn btn-success apply" h>
+														<div class="modal-footer">
+																	<button id="save-btn" type="button" class="btn btn-success apply">
 																		<span class="glyphicon glyphicon-ok"></span> Guardar
 																	</button>
 																	<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" >
@@ -474,6 +491,8 @@
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="jquery.min.js"></script>
+    <script src="application.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/compra.js"></script>

@@ -8,9 +8,9 @@
 	<link rel="stylesheet" type="text/css" href="css/general.css">
 	<link href="css/product.css" rel="stylesheet">
 </head>
-<body>
-	<div class="container-fluid">
-		<ol class="breadcrumb">
+<body ng-app="productoApp">
+	<div class="container-fluid" ng-controller="ProductController as ProductCtrl">
+		<ol class="breadcrumb"> <!-- aca hay que ir trayendo las categorias para armar el breadcrum -->
 		<li><a href="index.html">Página Principal</a></li>
 		<li><a href="#">Mujeres</a></li>
 		<li class="active">Remeras</li>
@@ -19,8 +19,8 @@
 			<div class="item-container">	
 				<div class="container">	
 					<div class="col-md-6">
-					<div class="product-title">Remera Linda</div>
-					<div class="product-price">$ 49.99</div>
+					<div class="product-title">{{producto.name}}</div>
+					<div class="product-price">{{producto.price | currency}}</div>
 					<div class="product col-md-6 service-image-right">
 							<center>
 								<img id="item-display" src="foto.png" alt=""></img>
@@ -29,13 +29,13 @@
 						<div class="constainer service1-items col-sm-2 col-md-2 pull-left">
 							<center>
 								<a id="item-1" class="service1-item">
-									<img src="foto.png" alt=""></img>
+									<img ng-attr-src="{{producto.imageUrl[0]}}" alt=""></img>
 								</a>
 								<a id="item-2" class="service1-item">
-									<img src="foto2.png" alt=""></img>
+									<img ng-attr-src="{{producto.imageUrl[1]}}" alt=""></img>
 								</a>
 								<a id="item-3" class="service1-item">
-									<img src="foto3.png" alt=""></img>
+									<img ng-attr-src="{{producto.imageUrl[2]}}" alt=""></img>
 								</a>
 							</center>
 						</div>
@@ -150,7 +150,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 	<script src="js/loginmodal.js"></script>
+	<script type="text/javascript" src="js/producto.js"></script>
 
 </body>
 </html>

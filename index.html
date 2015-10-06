@@ -20,81 +20,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
     </head>
-    <body>
-      <nav class="navbar navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">Muffin</a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><img src="muffin.png" width='50px' heigth='50px'/></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">Hombres</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Remeras</a></li>
-                      <li><a href="#">Pantalones</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">Mujeres</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Remeras</a></li>
-                      <li><a href="#">Pantalones</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Niños</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Accesorios</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-              <div class="input-group">
-                <input type="text" class="form-control" name="x" placeholder="Buscar">
-                <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                      <span id="search_concept">Todo</span> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Hombres</a></li>
-                      <li><a href="#">Mujeres</a></li>
-                      <li><a href="#">Niños</a></li>
-                      <li><a href="#">accesorios</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Todo</a></li>
-                    </ul>
-                </div>
-                <input type="hidden" name="search_param" value="all" id="search_param">      
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-            </div>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="carrito.html"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge" style="vertical-align:top;margin-top:0px">10</span></a></li>
-               <li><a href="cuenta.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
-              <li class="text-center"><a href="#" class="btn" role="button" data-toggle="modal" data-target="#login-modal">Ingresar</a></li>
-              <li> <a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-      <br>
-      <br>
-      <br>
+    <body ng-app="home">
+       <div ng-include="'nav.html'"></div>
       <div class="row">
           <div class='carouselwrapper col-md-8 col-md-offset-2' align='center'><!-- Este codigo es mio y esta mal -->
             <div id="myCarousel" class="carousel slide" data-ride="carousel" witdth=>
@@ -154,16 +81,17 @@
             </div>
           </div>
       </div>
-      <div class="container">
+      <div class="container-fluid" >
         <h2 class="col-sm-12 page-header" style="margin-top:20">Destacados</h2>
-          <div class"row" style="padding-right:100px;padding-left:100px">
-           <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/200x200" alt="">
+          <div class"row" style="padding-right:100px;padding-left:100px" ng-controller="DestacadosController as DestacadosCtrl">
+                       
+                        <div class="thumbnail col-sm-3" ng-repeat="prod in destacados">
+                            <img ng-attr-src="{{prod.imageUrl[0]}}" alt="">
                             <div class="caption">
-                                <h4 class="pull-right">$24.99</h4>
-                                <h4><a href="#">First Product</a>
+                                
+                                <h4><a ng-attr-href="{{'producto.html?id=' + prod.id}}">{{prod.name}}</a>
                                 </h4>
+                                <h4 class="pull-right">{{prod.price | currency}}</h4>
                                 <p>Mirame soy un producto.</p>
                             </div>
                             <div class="ratings">
@@ -175,97 +103,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/200x200" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$64.99</h4>
-                                <h4><a href="#">Second Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">12 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/200x200" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$74.99</h4>
-                                <h4><a href="#">Third Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">31 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/200x200" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$84.99</h4>
-                                <h4><a href="#">Fourth Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">6 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/200x200" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$94.99</h4>
-                                <h4><a href="#">Fifth Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">18 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-  </div>
-
+</div>
   <!-- BEGIN # MODAL LOGIN -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog">
@@ -378,5 +216,6 @@
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="js/loginmodal.js"></script>
+  <script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>

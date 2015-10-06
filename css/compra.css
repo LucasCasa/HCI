@@ -208,7 +208,7 @@ span.round-tab:hover {
 
 .funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
 .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
-  content: '\25CF';
+  content: '\2714';
   text-indent: .9em;
   color: #C2C2C2;
 }
@@ -220,7 +220,7 @@ span.round-tab:hover {
 
 .funkyradio input[type="radio"]:checked ~ label:before,
 .funkyradio input[type="checkbox"]:checked ~ label:before {
-  content: '\25CF';
+  content: '\2714';
   text-indent: .9em;
   color: #333;
   background-color: #ccc;
@@ -269,4 +269,8 @@ span.round-tab:hover {
 h2{
     font-weight: bold;
     padding-left: 30px;
+}
+
+td button{
+  margin-left: 20%;
 }
