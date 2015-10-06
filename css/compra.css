@@ -274,3 +274,8 @@ h2{
 td button{
   margin-left: 20%;
 }
+
+#error{
+  font-style: italic;
+  color: red;
+}

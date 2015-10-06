@@ -33,14 +33,34 @@ $(document).ready(function () {
 
     // Save new Address
     $("#newAdressModal").on("click","#save-btn",function(){
+        var thisModal = $(this).closest(".modal");
+        removeErrorMsg(thisModal); // Limpia los errores que ya había mostrado
         var name = $(".modal-body").find("#name").val();
         var dir = $(".modal-body").find("#address").val();
         var loc = $(".modal-body").find("#location").val();
-        var ciud =$(".modal-body").find("#city").val();
-        // validar todas las variables y el resto de los campos
+        var ciud = $(".modal-body").find("#city").val();
+        var emptyField = "<p id=\"error\">El campo no puede estar vacío</p>"; // El mensaje de error que se muestra
+        var valid = false;
+        // Valida que los campos no estén vacíos
+        if(!validateNotEmpty(name)){
+            $(".modal-body").find("#name").before(emptyField);
+        }else if(!validateNotEmpty(dir)){
+            $(".modal-body").find("#address").before(emptyField);
+        }else if(!validateNotEmpty(loc)){
+            $(".modal-body").find("#location").before(emptyField);
+        }else if(!validateNotEmpty(ciud)){
+            $(".modal-body").find("#city").before(emptyField);
+        }else{
+            valid = true;
+        }
+        if(!valid)
+            return;
+        // Crea la nueva fila
         var newRow = "<tr><td><input type=\"radio\" id=\"envio\" name=\"envio\" value=\"1\" /></td><td><input type=\"radio\" id=\"fact\" name=\"fact\" value=\"1\" />  </td><td><div class=\"panel-body\"> " + name + " - " + dir + ", " + loc + ", " + ciud + ". </div></td><td><button type=\"button\" class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-remove\"></span></button></td></tr>";
+        // Inserta la nueva fila
         $(this).closest(".tab-pane").find("tbody").append(newRow);
-        closeModal($(this).closest(".modal"));
+        // Cierra el modal
+        closeModal(thisModal);
     });
 
     $("#newAdressModal").on("click","#cancel-btn",function(){
@@ -51,6 +71,10 @@ $(document).ready(function () {
         mod.find(".modal-body").find("input").val(""); // Limpia los textbox
         mod.modal("toggle"); // cierra el modal
     }
+
+    function removeErrorMsg(mod){
+        mod.find(".modal-body").find("p").remove();
+    }
 });
 
 function nextTab(elem) {
@@ -60,9 +84,10 @@ function prevTab(elem) {
     $(elem).prev().find('a[data-toggle="tab"]').click();
 }
 
-function closeModal(modal) {
-    alert("funcion llamada");
-    modal("toggle");
+function validateNotEmpty(val){
+    if(val == "")
+        return false;
+    return true;
 }
 
 

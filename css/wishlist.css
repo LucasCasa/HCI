@@ -1,0 +1,28 @@
+.header {
+    border-bottom: 1px solid #ccc;
+}
+
+table .btn{
+	margin-left: 40%;
+	vertical-align: middle;
+}
+
+table thead th{
+	text-align: center;
+}
+
+.btn-rmv{
+	margin-top: 10px;
+}
+
+#price{
+	font-size: 150%;
+}
+
+#talle{
+	padding-left: 20%;
+}
+
+#color{
+	padding-left: 60%;
+}
