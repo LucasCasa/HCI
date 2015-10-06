@@ -12,6 +12,13 @@ var app = angular.module('Carrito', []);
  		$scope.colordd = talle;
  	}
  });
+ app.directive('navBar',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "nav.html"
+ 	};
+
+ });
 
  var talles = ['S','M','L','XL'];
  var colores = ['Amarillo','Verde','Azul','Rojo'];
