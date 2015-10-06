@@ -104,8 +104,8 @@
 }
 
 .service1-item > img {
-	max-height: 110px;
-	max-width: 110px;
+	width: 100%;
+	height: 100%;
 	opacity: 0.6;
 	transition: all .2s ease-in;
 	-o-transition: all .2s ease-in;
@@ -119,15 +119,16 @@
 }
 
 .service-image-left {
-	padding-right: 50px;
+
 }
 
 .service-image-right {
-	padding-left: 50px;
+	padding: 0;
 }
 
-.service-image-left > center > img,.service-image-right > center > img{
-	max-height: 155px;
+.service-image-left  > img,.service-image-right > img{
+	width: 100%;
+	height: 100%;
 }
 
 .user_name{
