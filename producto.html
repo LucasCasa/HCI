@@ -9,13 +9,15 @@
 	<link href="css/product.css" rel="stylesheet">
 </head>
 <body ng-app="productoApp">
+	<nav-bar></nav-bar>
 	<div class="container-fluid" ng-controller="ProductController as ProductCtrl">
 		<ol class="breadcrumb"> <!-- aca hay que ir trayendo las categorias para armar el breadcrum -->
 		<li><a href="index.html">Página Principal</a></li>
 		<li><a href="#">Mujeres</a></li>
 		<li class="active">Remeras</li>
 		</ol>
-		<div>	
+		<div>
+
 			<div class="item-container">	
 				<div class="container">	
 					<div class="product-title">{{producto.name}}</div>

@@ -18,3 +18,13 @@ nav .glyphicon-user
 	padding-bottom: 0px;
 
 }
+
+
+.headerDivider {
+     border-left:1px solid #38546d; 
+     border-right:1px solid #36424c;
+     margin-top: 5px; 
+     height:40px;
+}
+
+

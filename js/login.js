@@ -3,8 +3,14 @@ var app = angular.module('login',[]);
 
 app.controller('RegisterController',function($scope,$http,$log){
 
-
 });
+ app.directive('navBar',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "nav.html"
+ 	};
+
+ });
 app.controller("LoginController",function($scope,$http,$log){
 
 

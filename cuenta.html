@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Cuenta">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="css/cuenta.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/general.css">
+	<!-- <link href="css/cuenta.css" rel="stylesheet">-->
 
 </head>
-<body>
+<body ng-controller="CuentaController as CuentaCtrl">
+	<nav-bar></nav-bar>
 	<div class="container">
 		<ol class="breadcrumb">
   			<li><a href="index.html">Página Principal</a></li>
@@ -742,13 +743,14 @@
             </div> <!-- cierra col -->
 		</div> <!-- cierra row -->
 	</div> <!-- cierra container -->
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/loginmodal.js"></script>
-
-
-	</div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+		<script type="text/javascript" src="js/cuenta.js"></script>
 </body>
 </html>
