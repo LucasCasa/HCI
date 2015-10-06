@@ -274,10 +274,8 @@
 							<form id="form1">
 								<br>
 								<p class="field-name name-address">Casa </p>
-								<p class="field-name info">Andrea</p>
 								<p class="field-name info">Av Corrientes 333 CABA. Buenos Aires, 1302 </p>
 								<p class="field-name info">Argentina </p>
-								<p class="field-name info">15-1234-5678</p>
 							</form>
 							<button id="modify-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAddressModal">
 								<span class="glyphicon glyphicon-edit"></span> Modificar
@@ -285,10 +283,8 @@
 							<br><br>
 							<form id="form1">
 								<p class="field-name name-address">Trabajo </p>
-								<p class="field-name info">Andrea</p>
 								<p class="field-name info">Av Rivadavia 2382 CABA. Buenos Aires, 1210 </p>
 								<p class="field-name info">Argentina </p>
-								<p class="field-name info">15-1234-5678</p>
 							</form>
 							<button id="modify-3" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAddressModal">
 								<span class="glyphicon glyphicon-edit"></span> Modificar
@@ -679,10 +675,11 @@
                     	<div id="form-col1">
 							<form id="form1-card">
 								<br><br>
-								<p class="field-name">Marca</p>
-								<p class="field-name">Número </p>
-								<p class="field-name">Fecha de vencimiento </p>
-								<p class="field-name">Código de Seguridad </p>
+								<h4 class="field-name">Visa HSBC</h4>
+								<p class="field-name">Visa</p>
+								<p class="field-name">1121 **** **** 3333 </p>
+								<p class="field-name">8/01</p>
+								<p class="field-name">123 </p>
 							</form>
 						</div>
 						<div class="modal fade" data-backdrop="static" id="addCardModal">
@@ -693,7 +690,12 @@
 
 											<h4 class="modal-title">Agregar tarjeta</h4>
 										</div>
+
 										<div class="modal-body">
+											<div class="category">
+												<label>Nombre de Tarjeta
+													<input name="cardName" class="form-control" placeholder="Visa HSBC" id="cardNumber"  enabled>
+												</label>
 											<div class="category">
 												<label > Marca
 													<select class="fieldCard" id="cBrand"> 
@@ -736,7 +738,7 @@
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="historial">
-                    	
+                    	<p>En Construcción</p>
                     </div>
                 </div> <!-- cierra tab content -->
 				</div> <!-- cierra card -->
