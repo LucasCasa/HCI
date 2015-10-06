@@ -26,9 +26,31 @@ $(document).ready(function () {
 
     });
 
-    $("tr").on("click","button",function(){
+    // Delete Adress
+    $("tbody").on("click","button",function(){
         $(this).closest("tr").remove();
     });
+
+    // Save new Address
+    $("#newAdressModal").on("click","#save-btn",function(){
+        var name = $(".modal-body").find("#name").val();
+        var dir = $(".modal-body").find("#address").val();
+        var loc = $(".modal-body").find("#location").val();
+        var ciud =$(".modal-body").find("#city").val();
+        // validar todas las variables y el resto de los campos
+        var newRow = "<tr><td><input type=\"radio\" id=\"envio\" name=\"envio\" value=\"1\" /></td><td><input type=\"radio\" id=\"fact\" name=\"fact\" value=\"1\" />  </td><td><div class=\"panel-body\"> " + name + " - " + dir + ", " + loc + ", " + ciud + ". </div></td><td><button type=\"button\" class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-remove\"></span></button></td></tr>";
+        $(this).closest(".tab-pane").find("tbody").append(newRow);
+        closeModal($(this).closest(".modal"));
+    });
+
+    $("#newAdressModal").on("click","#cancel-btn",function(){
+        closeModal($(this).closest(".modal"));
+    });
+
+    function closeModal(mod){
+        mod.find(".modal-body").find("input").val(""); // Limpia los textbox
+        mod.modal("toggle"); // cierra el modal
+    }
 });
 
 function nextTab(elem) {
@@ -36,6 +58,11 @@ function nextTab(elem) {
 }
 function prevTab(elem) {
     $(elem).prev().find('a[data-toggle="tab"]').click();
+}
+
+function closeModal(modal) {
+    alert("funcion llamada");
+    modal("toggle");
 }
 
 
