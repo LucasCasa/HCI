@@ -1,8 +1,6 @@
-/*
- * Base structure
- */
-
-/* Move down content because we have a fixed navbar that is 50px tall */
+.linea{
+  border-bottom: 1px solid #000;
+}
 body {
   padding-top: 50px;
 }
@@ -21,13 +19,28 @@ body {
  * Top navigation
  * Hide default border to remove 1px line.
  */
+
+.filterApli{
+  background: #D3D3D3;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    margin: 4px 0 0;
+    padding: 3px 6px;
+    position: relative;
+    text-shadow: 0 1px 1px #fff;
+}
 .navbar-fixed-top {
   border: 0;
 }
 
-/*
- * Sidebar
- */
+.applied-fliter{
+  font-size: 12px;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
 
 /* Hide for mobile, show later */
 .sidebar {
@@ -58,6 +71,8 @@ body {
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
