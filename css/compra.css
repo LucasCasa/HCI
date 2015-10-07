@@ -276,6 +276,12 @@ td button{
 }
 
 #error{
+  font-weight: normal;
   font-style: italic;
   color: red;
+}
+
+
+input {
+  font-weight: normal;
 }

@@ -73,7 +73,7 @@ $(document).ready(function () {
     }
 
     function removeErrorMsg(mod){
-        mod.find(".modal-body").find("p").remove();
+        mod.find(".modal-body").find("#error").remove();
     }
 });
 
