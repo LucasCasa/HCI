@@ -27,7 +27,7 @@ $(document).ready(function () {
     });
 
     // Delete Adress
-    $("tbody").on("click","button",function(){
+    $("tbody").on("click",".btn-rmv",function(){
         $(this).closest("tr").remove();
     });
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
         if(!valid)
             return;
         // Crea la nueva fila
-        var newRow = "<tr><td><input type=\"radio\" id=\"envio\" name=\"envio\" value=\"1\" /></td><td><input type=\"radio\" id=\"fact\" name=\"fact\" value=\"1\" />  </td><td><div class=\"panel-body\"> " + name + " - " + dir + ", " + loc + ", " + ciud + ". </div></td><td><button type=\"button\" class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-remove\"></span></button></td></tr>";
+        var newRow = "<tr><td><input type=\"radio\" id=\"envio\" name=\"envio\" value=\"1\" /></td><td><input type=\"radio\" id=\"fact\" name=\"fact\" value=\"1\" />  </td><td><div class=\"panel-body\"> " + name + " - " + dir + ", " + loc + ", " + ciud + ". </div></td><td><button type=\"button\" class=\"btn btn-info\"><span class=\"glyphicon glyphicon-edit\"></span></button></td><td><button type=\"button\" class=\"btn btn-danger btn-rmv\"><span class=\"glyphicon glyphicon-remove\"></span></button></td></tr>";
         // Inserta la nueva fila
         $(this).closest(".tab-pane").find("tbody").append(newRow);
         // Cierra el modal
