@@ -126,7 +126,7 @@ body {
 .cantidadDeOrdenamiento{
   width: 58px;
   margin-bottom: 10px;
-
+  margin-right: 0px;
   padding:0px;
 
 }
@@ -136,6 +136,9 @@ body {
 
 }
 
+.letra{
+
+}
 
 .pagination{
   margin: 0 auto;
