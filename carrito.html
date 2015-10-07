@@ -22,15 +22,13 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
     </head>
-    <body>
+    <body ng-controller="CarritoController as CarritoCtrl">
       <nav-bar></nav-bar>
       <div class="container-fluid">
         <div class="info infoblock col-md-3">
-          <h5>Subtotal <strong class="pull-right">$24.59</strong></h5>
+          <h5 ng-repeat="producto in productos">{{producto.name}}<strong class="pull-right">{{producto.price | currency}}</strong></h5>
           <hr class="divider">
-          <h5>Costo de envio estimado <strong class="pull-right">$6.94</strong></h5>
-          <hr  class="divider">
-          <h3>Total <strong class="pull-right">$31.53</strong></h3>
+          <h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
           <hr class="divider">
           <a href="index.html"><button type="button" class="btn btn-default" >
             <span class="glyphicon glyphicon-shopping-cart"></span> Seguir comprando
@@ -57,12 +55,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr ng-repeat="producto in productos">
                         <td class="col-sm-2">
-                         <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a> </span>
+                         <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" ng-attr-src="{{producto.imageUrl[0]}}" style="width: 72px; height: 72px;"> </a> </span>
 				</td>
 				<td>
-                         <h3 style="margin-top:0">Remera linda</h3>
+                         <h3 style="margin-top:0">{{producto.name}}</h3>
 				 <div class="row">
                          <h4 class="col-sm-2">Talle</h4>
                          <!-- Single button -->
@@ -87,8 +85,8 @@
                         </div>
 				</div>
                       </td>
-                      <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                      <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+                      <td class="col-sm-1 col-md-1 text-center"><strong>{{producto.price | currency}}</strong></td>
+                      <td class="col-sm-1 col-md-1 text-center"><strong>{{producto.price | currency}}</strong></td>
                       <td class="col-sm-1 col-md-2" style="text-align: center">
                         <div class="input-group">
                           <span class="input-group-btn">
@@ -96,7 +94,7 @@
                               <span class="glyphicon glyphicon-minus"></span>
                             </button>
                           </span>
-                          <input type="text" name="quant[2]" class="form-control input-number" value="10" min="1" max="100"
+                          <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100"
                           style="text-align:center">
                           <span class="input-group-btn">
                             <button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
