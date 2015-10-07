@@ -70,6 +70,7 @@
 										<h4 class="modal-title">Modificar cuenta</h4>
 								</div>
 								<div class="modal-body">
+									<p id="reminder">(Todos los campos son obligatorios)</p>
 									<div class="category">
 										<label >Nombre
 											<input name="firstname" type="text" placeholder="Nombre" class="form-control" id="firstname" enabled>										
@@ -238,6 +239,7 @@
 									<h4 class="modal-title">Modificar contraseña</h4>
 								</div>
 								<div class="modal-body">
+									<p id="reminder">(Todos los campos son obligatorios)</p>
 									<div class="category">
 										<label >Contraseña Vieja
 											<input name="oldpass" type="password"  class="form-control" id="oldpass" enabled>
@@ -245,7 +247,7 @@
 									</div>
 									<div class="category">
 										<label>Nueva Contraseña
-											<input name="newpass" type="password" placeholder="Contraseña Nueva" class="form-control" id="newpass" enabled>	
+											<input name="newpass" type="password" class="form-control" id="newpass" enabled>	
 										</label>
 									</div>
 									<div class="category">
@@ -268,7 +270,6 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="direcciones">
                     	<div class="col-padding">
-							<h3>Direcciones:</h3>
 					<div id="form-reg">
 						<div id="form-col1">
 							<form id="form1">
@@ -296,6 +297,7 @@
 							<div class="modal fade" data-backdrop="static" id="addAddressModal">
 								<div class="modal-dialog">
 									<div class="modal-content">
+										<p id="reminder">(Todos los campos son obligatorios)</p>
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
@@ -334,9 +336,10 @@
 											<h4 class="modal-title">Modificar Direccion de Envio</h4>
 										</div>
 										<div class="modal-body">
+											<p id="reminder">(Todos los campos son obligatorios)</p>
 											<div class="category">
-												<label >Nombre del Lugar
-													<input name="name" class="form-control" type="text" placehoder="Nombre Lugar" id="name" enabled>										
+												<label >Identificador de Dirección
+													<input name="name" class="form-control" type="text" placehoder="ID" id="name" enabled>										
 												</label>
 											</div>
 											<div class="category">
@@ -368,7 +371,7 @@
 											<div class="category">
 												<label >Provincia
 													<select name="Province">
-														<option>  Provincia  </option>
+														<option>  - Provincia -  </option>
 														<option value="Buenos Aires">Buenos Aires</option>
 														<option value="Catamarca">Catamarca</option>
 														<option value="Chaco">Chaco</option>
@@ -397,7 +400,7 @@
 											<div class="category">
 												<label >País
 													<select name="country">
-														<option value="">Country...</option>
+														<option value=""> - País - </option>
 														<option value="Afganistan">Afghanistan</option>
 														<option value="Albania">Albania</option>
 														<option value="Algeria">Algeria</option>
@@ -669,9 +672,6 @@
 				</div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="tarjetas">
-                    	<button id="add-card" type="button" class="btn btn-info" data-toggle="modal" data-target="#addCardModal">
-							<span class="glyphicon glyphicon-edit"></span> Agregar tarjeta
-						</button> 
                     	<div id="form-col1">
 							<form id="form1-card">
 								<br><br>
@@ -682,6 +682,12 @@
 								<p class="field-name">123 </p>
 							</form>
 						</div>
+						<button id="add-card" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editCardModal">
+							<span class="glyphicon glyphicon-edit"></span> Modificar
+						</button> 
+						<button id="add-card" type="button" class="btn btn-info" data-toggle="modal" data-target="#addCardModal">
+							<span class="glyphicon glyphicon-edit"></span> Agregar tarjeta
+						</button> 
 						<div class="modal fade" data-backdrop="static" id="addCardModal">
 								<div class="modal-dialog">
 									<div class="modal-content">
@@ -692,14 +698,16 @@
 										</div>
 
 										<div class="modal-body">
+											<p id="reminder">(Todos los campos son obligatorios)</p>
 											<div class="category">
+
 												<label>Nombre de Tarjeta
 													<input name="cardName" class="form-control" placeholder="Visa HSBC" id="cardNumber"  enabled>
 												</label>
 											<div class="category">
 												<label > Marca
 													<select class="fieldCard" id="cBrand"> 
-														<option value="none">Seleccionar...</option>
+														<option value="none"> - Seleccionar - </option>
 														<option value="Amex">American Express</option>
 														<option value="Dinners">Dinners</option>
 														<option value="Master">MasterCard</option>
@@ -737,8 +745,9 @@
 
 
                     </div>
+                    </div>
                     <div role="tabpanel" class="tab-pane" id="historial">
-                    	<p>En Construcción</p>
+                    	En Construccíon
                     </div>
                 </div> <!-- cierra tab content -->
 				</div> <!-- cierra card -->

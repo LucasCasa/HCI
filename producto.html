@@ -13,8 +13,9 @@
 	<div class="container-fluid" ng-controller="ProductController as ProductCtrl">
 		<ol class="breadcrumb"> <!-- aca hay que ir trayendo las categorias para armar el breadcrum -->
 			<li><a href="index.html">Página Principal</a></li>
-			<li><a href="#">Mujeres</a></li>
-			<li class="active">Remeras</li>
+			<li><a href="search.html">Calzado</a></li>
+			<li><a href="search.html">Alpargatas</a></li>
+			<li class="active">{{producto.name}}</li>
 		</ol>
 		<div>
 			<div class="item-container">	
@@ -121,6 +122,7 @@
 					</div><br>
 				</div>
 			</div> 
+		</div>
 		<div class="container">
 			<div class="row">
 				<div class="page-header">
