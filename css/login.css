@@ -8,16 +8,19 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+.page-header {
+    border-bottom: 1px solid #ccc;
+}
 .grid-divider {
     position: relative;
-       padding: 0;
-    }
+    padding: 0;
+}
 .grid-divider>[class*='col-'] {
     position: static;
 }
 .grid-divider>[class*='col-']:nth-child(n+2):before {
     content: "";
-    border-left: 1px solid #DDD;
+    border-left: 1px solid #ccc;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -30,7 +33,8 @@ h3{
 }
 h4{
     font-style: italic;
-    font-size: 50%;
+    color: red;
+    font-size: 90%;
 }
 .ing-button{
     float: right;
@@ -38,7 +42,14 @@ h4{
 .reg-button{
     margin-top: 50px;
 }
-.form-group{
+.login-field{
     padding-left: 40px;
     padding-right: 160px;
+}
+#register-btn{
+    margin-left: 20%;
+    margin-top: 5%;
+}
+#closeReg{
+    float: right;
 }
