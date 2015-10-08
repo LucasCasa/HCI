@@ -22,16 +22,16 @@
    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body>
+<body ng-controller="FinalizarController as FinalizarCtrl">
     <div ng-include="'nav.html'"></div>
  <div class="container">
 	
   <h1>Finalizar Compra</h1>
   <h3>Metodo de Pago</h3>
   <div>
-    <input type="radio" class="option-input radio" name="metodo">Efectivo</radio> 
+    <span><input type="radio" class="option-input radio" name="metodo"></span><span>Efectivo</span></radio> 
   </div>
-    <input type="radio" class="option-input radio" name="metodo">Tarjeta</radio>
+    <input type="radio" class="option-input radio" name="metodo"><span>Tarjeta</span></radio>
   <br>
   <h3>Productos</h3>
   <hr>
@@ -48,12 +48,12 @@
     </thead>
 
     <tbody>
-      <tr>
+      <tr ng-repeat="producto in productos">
         <td>
-          <img src="http://placehold.it/80x80"/>
+          <img ng-attr-src="{{producto.imageUrl[0]}}" style="width: 72px; height: 72px;"/>
         </td>
         <td>
-          <h4> Remera Linda </h4>
+          <h4>{{producto.name}}</h4>
         </td>
           
         <td>
@@ -63,10 +63,10 @@
           <h4> Rose Gold </h4>
         </td>
         <td>
-          <h4> 5 </h4>
+          <h4> 1 </h4>
         </td>
         <td>
-          <h4> $49.99 </h4>
+          <h4>{{producto.price | currency}}</h4>
         </td>
         <td>
           <button type="button" class="btn btn-danger">
@@ -97,14 +97,15 @@
     <div class="container-fluid">
      <div class="resumen infoblock col-md-3">
           <h3>Resumen de Compra</h3>
-          <h4>Subtotal</h4>
+          <h4>Subtotal <strong class="pull-right">{{total - 20 | currency}}</strong></h4>
           <hr class="divider">
-          <h4>Costo de envio </h4>
+          <h4>Costo de envio <strong class="pull-right">$20.00</strong></h4>
           <hr class="divider">
           <hr class="divider">
           <br>
-          <h3>Total</h3>
+          <h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
           <br>
+          <button type="button" class="btn btn-success">Comprar</button>
         </div>
       </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
