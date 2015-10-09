@@ -1,6 +1,5 @@
 (function(){
-	var app = angular.module('home',[]);
-	
+	var app = angular.module('home',['navbar']);
 
 app.controller('DestacadosController',function($scope,$http,$log){	
 	$http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetProductsByCategoryId&id=1").then(function(res){
@@ -8,4 +7,5 @@ app.controller('DestacadosController',function($scope,$http,$log){
 	});
 });
 	
+
 })();

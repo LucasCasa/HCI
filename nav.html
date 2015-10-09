@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/nav.css">
-<nav class="navbar navbar-custom navbar-fixed-top">
+<nav ng-app="navbar" class="navbar navbar-custom navbar-fixed-top">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -13,29 +13,18 @@
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="NavController as NavCtrl">
+            <ul class="nav navbar-nav" >
               <li><img src="images/muffin.png" width='50px' heigth='50px'/></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li class="dropdown-submenu">
-                    <a tabindex="-1" href="search.html">Hombres</a>
+                  <li class="dropdown-submenu" ng-repeat="categoria in categorias">
+                    <a tabindex="-1" ng-attr-href="search.html?x=&cat={{categoria.name}}">{{categoria.name}}</a>
                     <ul class="dropdown-menu">
-                      <li><a href="search.html">Remeras</a></li>
-                      <li><a href="search.html">Pantalones</a></li>
+                      <li><a ng-attr-href="search.html?x=&cat={{categoria.name}}&s={{subcategoria}}" ng-repeat="subcategoria in subcategorias[categoria.id]">{{subcategoria}}</a></li>
                     </ul>
                   </li>
-                  <li class="dropdown-submenu">
-                    <a tabindex="-1" href="search.html">Mujeres</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="search.html">Remeras</a></li>
-                      <li><a href="search.html">Pantalones</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="search.html">Niños</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="search.html">Accesorios</a></li>
                 </ul>
               </li>
             </ul>
@@ -44,18 +33,20 @@
                 <input type="text" class="form-control" name="x" placeholder="Buscar">
                 <div class="input-group-btn search-panel">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                      <span id="search_concept">Todo</span> <span class="caret"></span>
+                      <span id="search_concept">{{seleccionada}}</span> <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#hombre">Hombres</a></li>
-                      <li><a href="#">Mujeres</a></li>
-                      <li><a href="#">Niños</a></li>
-                      <li><a href="#">accesorios</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Todo</a></li>
-                    </ul>
+                      <li class="dropdown-submenu" ng-repeat="categoria in categorias" >
+                        <a tabindex="-1" href="" ng-click="selectedItem(categoria.name)">{{categoria.name}}</a>
+                        <ul class="dropdown-menu">
+                          <li ng-repeat="subcategoria in subcategorias[categoria.id]" >
+                            <a href="" ng-click="selectedItem(categoria.name + ' - ' + subcategoria)">{{subcategoria}}</a>
+                          </li>
+                        </ul>
+                      </li>
+                </ul>
                 </div>
-                <input type="hidden" name="search_param" value="all" id="search_param" >      
+                <input type="hidden" class="cat" name="cat" value="all" id="search_param" >      
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
@@ -76,9 +67,4 @@
       </nav>
 	<br>
 	<br>
-  <script type="text/javascript">
-     $(".dropdown-menu").on('click', 'li a', function(){
-        $(this).parent().parent().siblings(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
-        $(this).parent().parent().siblings(".btn:first-child").val($(this).text());
-    });
-  </script>
+  <br>

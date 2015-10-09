@@ -15,11 +15,6 @@
         <link rel="stylesheet" type="text/css" href="css/search.css">
         <link rel="stylesheet" type="text/css" href="css/prod.css">
         <link rel="stylesheet" type="text/css" href="css/general.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/angular.min.js"></script>
-        <script type="text/javascript" src="js/search.js"></script>
 
   </head>
 
@@ -248,7 +243,7 @@
         </div>
 
 
-        <div class"row" style="padding-right:100px;padding-left:100px" ng-controller="DestacadosController as DestacadosCtrl">
+        <div class"row" style="padding-right:100px;padding-left:100px" ng-controller="BusquedaController as DestacadosCtrl">
 
                       <div class="thumbnail col-sm-3" ng-repeat="prod in destacados">
                           <img ng-attr-src="{{prod.imageUrl[0]}}" alt="">
@@ -290,6 +285,12 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/search.js"></script>
+        <script type="text/javascript" src="js/nav.js"></script>
 
   </body>
 
