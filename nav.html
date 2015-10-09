@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/nav.css">
+<link href="css/submenu.css" rel="stylesheet">
 <nav ng-app="navbar" class="navbar navbar-custom navbar-fixed-top">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -55,11 +56,11 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a href="carrito.html"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge" style="vertical-align:top;margin-top:0px">10</span></a></li>
               <li><div class="headerDivider"></div></li>
-              <li><a href="cuenta.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+              <li ng-show="isLoged()"><a href="cuenta.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
               <li><div class="headerDivider"></div></li>
-              <li class="text-center"><a href="login.html">Ingresar</a></li>
+              <li ng-hide="isLoged()" class="text-center"><a href="login.html">Ingresar</a></li>
               <li><div class="headerDivider"></div></li>
-              <li> <a href="wishlist.html"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a></li>
+              <li ng-show="isLoged()"> <a href="wishlist.html"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a></li>
               
             </ul>
           </div><!-- /.navbar-collapse -->

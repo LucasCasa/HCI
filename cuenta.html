@@ -49,12 +49,12 @@
 								<div id="form-col2">
 									<form id="form2">
 									<br><br>
-									 <p class="field-name info">Juan</p>
-									<p class="field-name info">Perez </p>
-									<p class="field-name info">juanperez@gmail.com </p>
-									<p class="field-name info">12345678 </p>
-									<p class="field-name info">01/01/2001 </p>
-									<p class="field-name info">Masculino </p>
+									 <p class="field-name info">{{user.firstName}}</p>
+									<p class="field-name info">{{user.lastName}}</p>
+									<p class="field-name info">{{user.email}}</p>
+									<p class="field-name info">{{user.identityCard}}</p>
+									<p class="field-name info">{{user.birthDate}}</p>
+									<p class="field-name info">{{user.gender}}</p>
 									<br><br>
 									</form>
 								</div>
@@ -1120,8 +1120,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
-		<script src="js/loginmodal.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 		<script type="text/javascript" src="js/cuenta.js"></script>
+		<script type="text/javascript" src="js/nav.js"></script>
 </body>
 </html>

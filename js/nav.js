@@ -1,13 +1,6 @@
 (function(){
 	var navapp = angular.module('navbar', []);
 
-	navapp.directive('navBar',function(){
-	return{
-		restrict: 'E',
-		templateUrl : '../nav.html'
-	};
-});
-
 	navapp.controller("NavController",function($scope,$http,$log){
 	$scope.categorias = [
 		{name:'Hombres',
@@ -56,9 +49,15 @@
     		value.val(cat + "&s=" + sub);
     	} else {
     		value.val(event);
-    }	
-
-  }
+    	}	
+	}
+    $scope.isLoged = function(){
+    	if(document.cookie.indexOf('user') == -1){
+    		return false;
+    	}else{
+    		return true;
+    	}
+    }
 	/* $(".dropdown-submenu").on('click', 'a', function(){
         $(this).closest(".search-panel").siblings(".cat").val($(this).text()+"&s=" + $(this).parent().text());
         $(this).parent().parent().siblings(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
