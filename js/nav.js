@@ -47,6 +47,17 @@
 	});
 	$scope.selectedItem = function(event) {
     	$scope.seleccionada = event;
+    	var value = angular.element( document.querySelector( '#search_param' ) );
+    	if(event.indexOf('-') != -1){
+    	var cat = event.substring(0,event.indexOf('-') - 1);
+    	var sub = event.substring(event.indexOf('-') + 2, event.length);
+    	$log.debug(cat);
+    	$log.debug(sub);
+    		value.val(cat + "&s=" + sub);
+    	} else {
+    		value.val(event);
+    }	
+
   }
 	/* $(".dropdown-submenu").on('click', 'a', function(){
         $(this).closest(".search-panel").siblings(".cat").val($(this).text()+"&s=" + $(this).parent().text());
