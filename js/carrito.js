@@ -1,5 +1,5 @@
 (function() {
-var app = angular.module('Carrito', []);
+var app = angular.module('Carrito', ['navbar']);
  app.controller('TalleController',function(){
  	this.talles = talles;
  	this.setTalle = function(talle){
