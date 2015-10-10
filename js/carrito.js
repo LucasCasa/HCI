@@ -30,11 +30,25 @@ var app = angular.module('Carrito', []);
 	});
 });
 
+ app.controller('AmountController',function($scope){
+ 	$scope.selected = 1;
+	this.add = function(value){
+		$scope.selected = parseInt($scope.selected) + value;
+		if($scope.selected < 1)
+			$scope.selected = 1;
+		$scope.$apply();
+	};
+ });
+
  var talles = ['S','M','L','XL'];
  var colores = ['Amarillo','Verde','Azul','Rojo'];
 })();
 
- $(".dropdown-menu").on('click', 'li a', function(){
-        $(this).parent().parent().siblings(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
-        $(this).parent().parent().siblings(".btn:first-child").val($(this).text());
-    });
+$(document).on('click', '.dropdown-menu li a', function(){
+    //$(this).parent().parent().siblings(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
+    $(this).closest(".btn-group").find("button").text($(this).text());
+});
+
+$(document).on('click', '.btn-rmv',function(){
+	$(this).closest("tr").remove();
+});
