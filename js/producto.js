@@ -15,6 +15,10 @@ app.controller('ProductController',function($scope,$http,$log){
 		$log.debug(res);
 		$log.debug(prodId);
 	});
+	this.selected = 0;
+	this.select = function(value){
+		this.selected = value;
+	};
 });
  app.controller('TalleController',function(){
  	this.talles = talles;

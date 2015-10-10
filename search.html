@@ -246,7 +246,7 @@
         <div class"row" style="padding-right:100px;padding-left:100px" ng-controller="BusquedaController as DestacadosCtrl">
 
                       <div class="thumbnail col-sm-3" ng-repeat="prod in destacados">
-                          <img ng-attr-src="{{prod.imageUrl[0]}}" alt="">
+                          <a ng-attr-href="{{'producto.html?id=' + prod.id}}"><img ng-attr-src="{{prod.imageUrl[0]}}" alt=""></a>
                           <div class="caption">
 
                               <h4><a ng-attr-href="{{'producto.html?id=' + prod.id}}">{{prod.name}}</a>
