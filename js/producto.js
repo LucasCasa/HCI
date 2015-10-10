@@ -65,7 +65,7 @@ var comments = [{
     author: "cupcake@nana.com",
   },{
   	stars:4,
-  	body: "Increible, pero me lo comi todo"
+  	body: "Increible, pero me lo comi todo",
   	author: "homero@simpson"
   }];
 
