@@ -299,40 +299,41 @@
 											<p id="reminder">(Todos los campos son obligatorios)</p>
 											<div class="category">
 												<label >Identificador de Dirección
-													<input name="name" class="form-control" type="text" placehoder="ej: Casa" id="name" enabled>										
+													<input name="name" class="form-control" type="text" placehoder="ej: Casa" id="name" ng-model="IdName" enabled>										
 												</label>
 											</div>
 											<div class="category">
 												<label>Nombre y Apellido
-													<input name="firstname" type="text" placeholder="Nombre" class="form-control" id="firstname" enabled>
-													<input name="lastname" type="text" placeholder="Apellido" class="form-control" id="lastname" enabled>	
+													<span><input name="firstname" type="text" placeholder="Nombre" class="form-control" id="firstname" ng-model="firstname"enabled></span>
+													<input name="lastname" type="text" placeholder="Apellido" class="form-control" id="lastname" ng-model="lastname" enabled>	
 												</label>
 											</div>													
 											<div class="category">
 												<label >Dirección
-													<input name="address" class="form-control" placeholder="Dirección" id="address"  enabled>
-													<input name="piso" class="form-control" placeholder="Piso" id="floor" enabled>
-													<input name="dpto" class="form-control" placeholder="Departamento" id="dpto" enabled>
+													<input name="address" class="form-control" placeholder="Dirección" id="address"  ng-model="address" enabled>
+													<input name="address" class="form-control" placeholder="Dirección" id="number"  ng-model="number" enabled>
+													<input name="piso" class="form-control" placeholder="Piso" id="floor" ng-model="floor" enabled>
+													<input name="dpto" class="form-control" placeholder="Departamento" ng-model="dpto" id="dpto" enabled>
 												</label>
 											</div>									
 											<div class="category">
 												<label >Localidad
-													<input name="location" class="form-control" placeholder="Localidad" id="location" enabled>
+													<input name="location" class="form-control" placeholder="Localidad" id="location" ng-model="location" enabled>
 												</label>
 											</div>						
 											<div class="category">
 												<label >Ciudad
-													<input name="city" class="form-control" placeholder="Ciudad" id="city" enabled>
+													<input name="city" class="form-control" placeholder="Ciudad" id="city" ng-model="city" enabled>
 												</label>
 											</div>
 											<div class="category">
 												<label >Código Postal
-													<input name="postalCode" class="form-control" placeholder="ej: 1640" id="postalCode" enabled>
+													<input name="postalCode" class="form-control" placeholder="ej: 1640" id="postalCode" ng-model="postalCode" enabled>
 												</label>
 											</div>
 											<div class="category">
 												<label >Provincia
-													<select name="Province">
+													<select name="Province" ng-model="province">
 														<option>  - Provincia -  </option>
 														<option value="Buenos Aires">Buenos Aires</option>
 														<option value="Catamarca">Catamarca</option>
@@ -615,12 +616,12 @@
 											</div>
 											<div class="category">
 												<label >Teléfono
-													<input name="telephone" class="form-control" placeholder="ej 1111-1111" id="telephone" enabled>
+													<input name="telephone" class="form-control" placeholder="ej 1111-1111" id="telephone" ng-model="telephone" enabled>
 												</label>
 											</div>
 										</div>
 										<div class="modal-footer">
-											<button id="save-account-btn" type="button" class="btn btn-success apply" hidden>
+											<button id="save-account-btn" type="button" class="btn btn-success apply" ng-click="saveAddress()" hidden>
 												<span class="glyphicon glyphicon-ok"></span> Guardar
 											</button>
 											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >

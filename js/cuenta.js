@@ -24,6 +24,14 @@ var app = angular.module('Cuenta', ['navbar']);
  	$scope.isAddress= function(){
  		return ($scope.direcciones == undefined || $scope.direcciones.length == 0);
  	}
+ 	$scope.saveAddress = function(){
+ 		var address ='{ "name":"'+ $scope.IdName+ '","street":"' +$scope.address+'","number":"'+ $scope.number+'","floor":"' +$scope.floor+'","gate":"' + $scope.dpto+'","province": "C" ,"zipCode":"'+ $scope.postalCode+'","phoneNumber":"'+ $scope.telephone+'"}';
+ 		$log.debug("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateAddress&username="+user+"&authentication_token="+token+"&address="+ address);
+ 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateAddress&username="+user+"&authentication_token="+token+"&address="+ address).then(function(res){
+ 			$log.debug(res);
+
+ 		});
+ 	}
  });
  app.filter('capitalize', function() {
     return function(input) {
