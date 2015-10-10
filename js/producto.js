@@ -63,6 +63,10 @@ var comments = [{
     stars: 1,
     body: "Viene con agujeros",
     author: "cupcake@nana.com",
+  },{
+  	stars:4,
+  	body: "Increible, pero me lo comi todo",
+  	author: "homero@simpson"
   }];
 
 })();
