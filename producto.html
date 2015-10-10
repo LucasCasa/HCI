@@ -123,14 +123,45 @@
 				</div>
 			</div> 
 		</div>
-		<div class="container" ng-controller="ReviewController as reviews">
-			<div class="row">
-				<div class="page-header">
-					{{reviews.variable}}
-					<h1><small class="pull-right">0 comentarios</small> Comentarios </h1>
-				</div> 
+		<div class="container reviews" ng-controller="ReviewController as revs">
+			<div class="row" class="page-header">
+				<h1><small class="pull-right">{{revs.reviews.length}} comentarios</small> Comentarios </h1>
 			</div>
+			<div class="review-group-item row" ng-repeat="review in revs.reviews">
+				<div ng-repeat="star in range(5) track by $index">
+					<span class="glyphicon" ng-class="{glyphicon-star : $index<review.stars, glyphicon-star-empty : $index>=review.stars}"/>
+				</div>
+				<br/>
+				<h4>"{{review.body}}"</h4> - por <strong>{{review.author}}</strong>
+				<br/>
+				<br/>
+			</div>
+			<br/>
+			<button type="button" class="btn btn-primary btn-lg" ng-hide="revs.commenting" ng-click="revs.toggleCommenting()">Comentar</button>
+			<form class="new-comment" ng-show="revs.commenting">
+				<div class="form-group">
+					<label class="col-md-2">Stars
+						<select class="form-control">
+							<option></option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-md-10">Comentario:
+						<br/>
+						<textarea class="form-control"></textarea>
+					</label>
+				</div>
+				<button type="submit" class="btn btn-default" ng-click="revs.toggleCommenting()">Enviar</button>
+			</form>
 		</div>
+		<br/>
+		<br/>
 	</div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

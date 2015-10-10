@@ -31,9 +31,26 @@ app.controller('ProductController',function($scope,$http,$log){
 
  var talles = ['S','M','L','XL'];
  var colores = ['Amarillo','Verde','Azul','Rojo'];
+
 app.controller('ReviewController',function($scope,$http,$log){
-	this.variable = 2;
-	$log.debug("hola");
+	this.commenting = false;
+	this.reviews = comments;
+	$scope.range = function(n) {
+        return new Array(n);
+    };
+    this.toggleCommenting = function(){
+    	this.commenting = !this.commenting;
+    };
 });
+
+var comments = [{
+    stars: 5,
+    body: "Mejor alpargata ever",
+    author: "mvega@itba.edu.ar",
+  }, {
+    stars: 1,
+    body: "Viene con agujeros",
+    author: "cupcake@nana.com",
+  }];
 
 })();

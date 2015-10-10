@@ -124,3 +124,20 @@
 .comments-list .media{
     border-bottom: 1px dotted #ccc;
 }
+
+/*********************************************
+				REVIEW
+*********************************************/
+
+.review-group-item{
+	border-bottom: 1px solid #ccc;
+}
+
+.reviews span{
+	display: inline-block;
+	float: left;
+}
+
+.reviews button{
+	float: right;
+}
