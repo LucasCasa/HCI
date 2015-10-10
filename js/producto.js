@@ -28,6 +28,14 @@ app.controller('ProductController',function($scope,$http,$log){
  		$scope.colordd = talle;
  	}
  });
+ app.controller('AmountController',function(){
+ 	this.selected = 1;
+ 	this.add = function(value){
+ 		this.selected = parseInt(this.selected) + value;
+ 		if(this.selected < 1)
+ 			this.selected = 1;
+ 	};
+ })
 
  var talles = ['S','M','L','XL'];
  var colores = ['Amarillo','Verde','Azul','Rojo'];
