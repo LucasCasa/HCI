@@ -87,17 +87,17 @@
                       </td>
                       
                         <td class="col-sm-1 col-md-1 text-center"><strong>{{producto.price | currency}}</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>{{producto.price*selected | currency}}</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>{{producto.price*selected[producto.id] | currency}}</strong></td>
                         <td class="col-sm-1 col-md-2" style="text-align: center">
                           <div class="input-group">
                             <span class="input-group-btn">
-                              <button style="padding:2px" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]" ng-click="amount.add(-1)">
+                              <button style="padding:2px" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]" ng-click="amount.add(-1,producto.id)">
                                 <span class="glyphicon glyphicon-minus"></span>
                               </button>
                             </span>
-                            <input type="text" name="quant[2]" class="form-control input-number" ng-model="selected" min="1" max="100" style="text-align:center">
+                            <input type="text" name="quant[2]" class="form-control input-number" ng-model="selected[producto.id]" min="1" max="100" style="text-align:center">
                             <span class="input-group-btn">
-                              <button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]" ng-click="amount.add(1)">
+                              <button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]" ng-click="amount.add(1,producto.id)">
                                 <span class="glyphicon glyphicon-plus" ></span>
                               </button>
                             </span>
