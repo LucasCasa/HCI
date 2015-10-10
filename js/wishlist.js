@@ -19,21 +19,15 @@ var app = angular.module('wishlist',[]);
  	}
  });
  app.directive('navBar',function(){
- 	return{
- 		restrict: 'E',
- 		templateUrl: "nav.html"
- 	};
-
+ 	return{restrict: 'E',templateUrl: "nav.html"};
  });
  var talles = ['S','M','L','XL'];
  var colores = ['Amarillo','Verde','Azul','Rojo'];
 })();
 
+
 $(document).ready(function(){
-	$("tbody").do("click",".btn-rmv",function(){
+	$("tbody").on("click",".btn-rmv",function(){
 		$(this).closest("tr").remove();
 	});
-
-
 });
-
