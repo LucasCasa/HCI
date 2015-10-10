@@ -49,12 +49,12 @@
 								<div id="form-col2">
 									<form id="form2">
 									<br><br>
-									 <p class="field-name info">{{user.firstName}}</p>
-									<p class="field-name info">{{user.lastName}}</p>
+									 <p class="field-name info">{{user.firstName | capitalize}}</p>
+									<p class="field-name info">{{user.lastName | capitalize}}</p>
 									<p class="field-name info">{{user.email}}</p>
 									<p class="field-name info">{{user.identityCard}}</p>
 									<p class="field-name info">{{user.birthDate}}</p>
-									<p class="field-name info">{{user.gender}}</p>
+									<p class="field-name info">{{(user.gender == 'F')?'Femenino':'Masculino'}}</p>
 									<br><br>
 									</form>
 								</div>
@@ -73,22 +73,22 @@
 									<p id="reminder">(Todos los campos son obligatorios)</p>
 									<div class="category">
 										<label >Nombre
-											<input name="firstname" type="text" placeholder="Nombre" class="form-control" id="firstname" enabled>										
+											<input name="firstname" type="text" placeholder="Nombre" class="form-control" id="firstname" ng-attr-value="{{user.firstName}}" enabled>										
 										</label>
 									</div>
 									<div class="category">
 										<label>Apellido
-											<input name="lastname" type="text" placeholder="Apellido" class="form-control" id="lastname" enabled>	
+											<input name="lastname" type="text" placeholder="Apellido" class="form-control" id="lastname" ng-attr-value="{{user.lastName}}" enabled>	
 										</label>
 									</div>													
 									<div class="category">
 										<label >Email
-											<input name="email" class="form-control" placeholder="john@email.com" id="email"  enabled>
+											<input name="email" class="form-control" placeholder="john@email.com" id="email"  ng-attr-value="{{user.email}}" enabled>
 										</label>
 									</div>
 									<div class="category">
 										<label >DNI
-											<input name="dni" class="form-control" placeholder="12.345.678" id="dni" enabled>
+											<input name="dni" class="form-control" placeholder="12.345.678" id="dni"  ng-attr-value="{{user.identityCard}}" enabled>
 										</label>
 									</div>
 									<div class="category">
@@ -271,23 +271,15 @@
                     <div role="tabpanel" class="tab-pane" id="direcciones">
                     	<div class="col-padding">
 					<div id="form-reg">
-						<div id="form-col1">
-							<form id="form1">
+						<h2 ng-show="isAddress()">No hay Direcciones</h2>					
+						<div ng-repeat="direccion in direcciones" id="form-col1">
+							<form ng-attr-id="{{'Direccion'+ direccion.id}}">
 								<br>
-								<p class="field-name name-address">Casa </p>
-								<p class="field-name info">Av Corrientes 333 CABA. Buenos Aires, 1302 </p>
+								<p class="field-name name-address">{{direccion.name}}</p>
+								<p class="field-name info">{{direccion.street +' ' + direccion.number}}</p>
 								<p class="field-name info">Argentina </p>
 							</form>
-							<button id="modify-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAddressModal">
-								<span class="glyphicon glyphicon-edit"></span> Modificar
-							</button> 
-							<br><br>
-							<form id="form1">
-								<p class="field-name name-address">Trabajo </p>
-								<p class="field-name info">Av Rivadavia 2382 CABA. Buenos Aires, 1210 </p>
-								<p class="field-name info">Argentina </p>
-							</form>
-							<button id="modify-3" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAddressModal">
+							<button ng-attr-id="{{modificar + direccion.id}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAddressModal">
 								<span class="glyphicon glyphicon-edit"></span> Modificar
 							</button> 
 						</div>
@@ -307,7 +299,7 @@
 											<p id="reminder">(Todos los campos son obligatorios)</p>
 											<div class="category">
 												<label >Identificador de Dirección
-													<input name="name" class="form-control" type="text" placehoder="ID" id="name" enabled>										
+													<input name="name" class="form-control" type="text" placehoder="ej: Casa" id="name" enabled>										
 												</label>
 											</div>
 											<div class="category">
@@ -319,6 +311,8 @@
 											<div class="category">
 												<label >Dirección
 													<input name="address" class="form-control" placeholder="Dirección" id="address"  enabled>
+													<input name="piso" class="form-control" placeholder="Piso" id="floor" enabled>
+													<input name="dpto" class="form-control" placeholder="Departamento" id="dpto" enabled>
 												</label>
 											</div>									
 											<div class="category">
@@ -366,7 +360,7 @@
 													</select>
  											</div>
 											<div class="category">
-												<label >País
+<!--												<label >País
 													<select name="country">
 														<option value=""> - País - </option>
 														<option value="Afganistan">Afghanistan</option>
@@ -616,8 +610,8 @@
 														<option value="Zaire">Zaire</option>
 														<option value="Zambia">Zambia</option>
 														<option value="Zimbabwe">Zimbabwe</option>
-													</select>
-												</label>
+													</select> 
+												</label> -->
 											</div>
 											<div class="category">
 												<label >Teléfono
