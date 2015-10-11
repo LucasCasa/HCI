@@ -1,5 +1,5 @@
 (function(){ 
-var app = angular.module('wishlist',[]);
+var app = angular.module('wishlist',['navbar']);
 
  app.controller('WishlistController',function($scope,$http,$log){	
 	$http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetProductsByCategoryId&id=2").then(function(res){
