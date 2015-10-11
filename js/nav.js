@@ -58,6 +58,15 @@
     		return true;
     	}
     }
+    $scope.userName = function(){
+    	if($scope.isLoged()){
+    		var cookie = document.cookie;
+    		return cookie.substring(cookie.indexOf('user') + 5,cookie.length);
+    	}else{
+    		return "";
+    	}
+    }
+
 	/* $(".dropdown-submenu").on('click', 'a', function(){
         $(this).closest(".search-panel").siblings(".cat").val($(this).text()+"&s=" + $(this).parent().text());
         $(this).parent().parent().siblings(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
@@ -69,6 +78,11 @@
         $(this).closest(".search-panel").child(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
         $(this).parent().parent().siblings(".btn:first-child").val($(this).text());
     });*/
+});
+ navapp.filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
 });
 })();
 

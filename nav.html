@@ -54,13 +54,13 @@
             </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="carrito.html"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge" style="vertical-align:top;margin-top:0px">10</span></a></li>
+              <li><a href="carrito.html" class="nav-icon"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge" style="vertical-align:top;margin-top:0px">10</span></a></li>
               <li><div class="headerDivider"></div></li>
-              <li ng-show="isLoged()"><a href="cuenta.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+              <li ng-show="isLoged()"><a href="cuenta.html" class="nav-icon"><span class="user-name">{{userName() | capitalize }}</span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
               <li><div class="headerDivider"></div></li>
-              <li ng-hide="isLoged()" class="text-center"><a href="login.html">Ingresar</a></li>
+              <li ng-hide="isLoged()" class="text-center"><a href="login.html" class="nav-icon">Ingresar</a></li>
               <li><div class="headerDivider"></div></li>
-              <li ng-show="isLoged()"> <a href="wishlist.html"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a></li>
+              <li ng-show="isLoged()"> <a href="wishlist.html"class="nav-icon"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a></li>
               
             </ul>
           </div><!-- /.navbar-collapse -->

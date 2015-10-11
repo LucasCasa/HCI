@@ -8,16 +8,21 @@ nav .glyphicon-heart,
 nav .glyphicon-user
  {
 	font-size: 30px;
-
+	margin-top:4px;
 	/*color:white;*/
 
 }
-
+nav .user-name{
+	font-size: 2em;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+/*
 .navbar-nav>li>a{
 	padding-top: 15px;
 	padding-bottom: 0px;
 
-}
+}*/
 
 
 .headerDivider {
