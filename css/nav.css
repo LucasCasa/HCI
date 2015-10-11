@@ -6,9 +6,17 @@
 
 /***********/
 li > a.nav-icon {
-  padding: 5px 10px;
-
+  display: table;
+  height:50px;
+  padding-top:0px;
+  padding-bottom: 0px;
 }
+/*.logout{
+  padding: 3px;
+  margin: 0px;
+  border-radius: 100%;
+  background-color: white;
+}*/
 .navbar-custom {
   background-color: #34495e;
   border-color: #283849;

@@ -66,6 +66,11 @@
     		return "";
     	}
     }
+    $scope.logout = function(){
+    	document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    	document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    	location.reload(true);
+    }
 
 	/* $(".dropdown-submenu").on('click', 'a', function(){
         $(this).closest(".search-panel").siblings(".cat").val($(this).text()+"&s=" + $(this).parent().text());
