@@ -1,45 +1,49 @@
 <div class="container-fluid">
-    <form ng-controller="RegisterController as RegisterCtrl" name="register" novalidate>
+    <form name="register" novalidate>
           <section class="container">
             <div class="container-page">                
               <div class="col-md-6">
                 <div>
                   <h4>(Todos los datos son obligatorios)</h4> 
                 </div>
+                <div class="form-group col-lg-6">
+                  <label>Nombre de usuario</label>
+                  <input type="text" name="" class="form-control" id="username" ng-model="register.username" value=""  required>
+                </div>
 
                 <div class="form-group col-lg-6">
                   <label>Nombre</label>
-                  <input type="text" name="" class="form-control" id="name" value="" required>
+                  <input type="text" name="" class="form-control" ng-model="register.firstname" id="name" value="" required>
                 </div>
 
                 <div class="form-group col-lg-6">
                   <label>Apellido</label>
-                  <input type="text" name="" class="form-control" id="surname" value=""  required>
+                  <input type="text" name="" class="form-control" ng-model="register.lastname" id="surname" value=""  required>
                 </div>
 
                 <div class="form-group col-lg-6">
                   <label>Correo Electrónico</label>
-                  <input type="email" name="" class="form-control" id="email" value=""  required>
-                </div>
-
-                <div class="form-group col-lg-6">
-                  <label>Repetir Correo Electrónico</label>
-                  <input type="email" name="" class="form-control" id="emailRepeat" value=""  required>
+                  <input type="email" name="" class="form-control" ng-model="register.email" id="email" value=""  required>
                 </div>
 
                 <div class="form-group col-lg-6">
                   <label>Contraseña</label>
-                  <input type="password" name="" class="form-control" id="pass" value=""  required>
+                  <input type="password" name="" class="form-control" ng-model="register.pass1" id="pass" value=""  required>
                 </div>
 
                 <div class="form-group col-lg-6">
                   <label>Repetir Contraseña</label>
-                  <input type="password" name="" class="form-control" id="passRepeat" value=""  required>
+                  <input type="password" name="" class="form-control" ng-model="register.pass2" id="passRepeat" value=""  required>
+                </div>
+
+                <div class="form-group col-lg-6">
+                  <label>Documento de Identidad</label>
+                  <input type="text" name="" class="form-control" ng-model="register.identityCard" id="dni" value=""  required>
                 </div>
 
                 <div class="form-group col-lg-12">
                   <label>Fecha de Nacimiento</label>
-                  <select name="DOBDay">
+                  <select name="DOBDay" ng-model="register.DOBDay">
                     <option>  Día  </option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -73,22 +77,22 @@
                     <option value="30">30</option>
                     <option value="31">31</option>
                   </select>
-                  <select name="DOBMonth">
+                  <select name="DOBMonth" ng-model="register.DOBMonth">
                     <option> Mes </option>
-                    <option value="Enero">Enero</option>
-                    <option value="Febrero">Febrero</option>
-                    <option value="Marzo">Marzo</option>
-                    <option value="Abril">Abril</option>
-                    <option value="Mayo">Mayo</option>
-                    <option value="Junio">Junio</option>
-                    <option value="Julio">Julio</option>
-                    <option value="Agosto">Agosto</option>
-                    <option value="Septiembre">Septiembre</option>
-                    <option value="Octubre">Octubre</option>
-                    <option value="Noviembre">Noviembre</option>
-                    <option value="Diciembre">Diciembre</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
                   </select>
-                  <select name="DOBYear">
+                  <select name="DOBYear" ng-model="register.DOBYear">
                     <option> Año </option>
                     <option value="2005">2005</option>
                     <option value="2004">2004</option>
@@ -156,15 +160,15 @@
                   <label>Género</label>
                   <div  >
                     <label >
-                      <input type="radio" id="q128" name="gender" value="1" /> Masculino   
+                      <input type="radio" id="q128" ng-model="register.gender" name="gender" value="M" /> Masculino   
                     </label> 
                     <label >
-                      <input type="radio" id="q129" name="gender" value="2" /> Femenino
+                      <input type="radio" id="q129" ng-model="register.gender" name="gender" value="F" /> Femenino
                     </label> 
                   </div>
                 </div>
                 <br/>
-                <input type="submit" ng-disable="register.$invalid" class="btn btn-primary" value="Registrarse" onlick="register()"></input>
+                <input type="submit" ng-disable="register.$invalid" class="btn btn-primary" value="Registrarse" ng-click="register.registerUser()"></input>
               </div>
             </div>
           </section>

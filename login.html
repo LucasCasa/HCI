@@ -34,11 +34,13 @@
     <div class="col-sm-6">
       <div class="col-padding" ng-controller="RegisterController as register">
         <h3>Registrarse:</h3>
-        <button type="button" class="btn btn-primary" id="register-btn" ng-hide="register.isRegistering" ng-click="register.toggleRegistering()">Registrarse Ahora</button>
-        <button type="button" class="btn btn-danger btn-sm" ng-show="register.isRegistering" id="closeReg" ng-click="register.toggleRegistering()">
+        <button type="button" class="btn btn-primary" id="register-btn" ng-hide="isRegistering" ng-click="isRegistering = true">Registrarse Ahora</button>
+        <button type="button" class="btn btn-danger btn-sm" ng-show="isRegistering" id="closeReg" ng-click="isRegistering = false">
           <span class="glyphicon glyphicon-remove"/>
         </button>
-        <div ng-include="register.getInclude()"></div>
+        <div ng-show="isRegistering" >
+          <div ng-include="'register.html'" ng-animate="'fade'"></div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,8 @@
 (function() {
 var app = angular.module('Cuenta', ['navbar']);
+	if(document.cookie.indexOf('user=') == -1){
+		location.href='index.html';
+	}
  app.directive('navBar',function(){
  	return{
  		restrict: 'E',
@@ -32,8 +35,17 @@ var app = angular.module('Cuenta', ['navbar']);
  		return ($scope.direcciones == undefined || $scope.direcciones.length == 0);
  	}
  	$scope.saveAddress = function(){
- 		var name = 'name:' + $scope.IdName;
- 		var address ='{ "name":"'+ $scope.IdName+ '","street":"' +$scope.address+'","number":"'+ $scope.number+'","floor":"' +$scope.floor+'","gate":"' + $scope.dpto+'","province": "C" ,"zipCode":"'+ $scope.postalCode+'","phoneNumber":"'+ $scope.telephone+'"}';
+ 		var name = '"name":"' + $scope.IdName + '"';
+ 		var street = ',"street":"' + $scope.street + '"';
+ 		var number = ',"number":"' + $scope.number + '"';
+ 		var floor = ($scope.floor === undefined)?"":',"floor":"' + $scope.floor + '"';
+ 		var gate = ($scope.gate === undefined)?"":',"gate":"' + $scope.dpto + '"';
+ 		var zipCode = ',"zipCode":"' + $scope.postalCode + '"';
+ 		var province = ',"province":"C"'//',"province":"' + $scope.getProvinceId($scope.province) + '"';
+ 		var city = ($scope.city === undefined)?"":',"city":"' + $scope.city + '"';
+ 		var phoneNumber = ',"phoneNumber":"' + $scope.telephone + '"';
+
+ 		var address ='{'+name+street+number+floor+gate+zipCode+province+city+phoneNumber+'}';
  		$log.debug("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateAddress&username="+user+"&authentication_token="+token+"&address="+ address);
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateAddress&username="+user+"&authentication_token="+token+"&address="+ address).then(function(res){
  			$log.debug(res);

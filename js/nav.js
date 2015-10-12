@@ -9,7 +9,7 @@
 		id:2},{name:'Niñas',
 		id:3},{name:'Bebes',
 		id:4}];	
-		$scope.seleccionada = 'Todo';
+		$scope.seleccionada = 'Todas las categorias';
 	$http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetAllCategories").then(function(res){
 		$scope.subcategorias = [[],[],[],[],[]];
 		for(i in res.data.categories){
@@ -69,7 +69,7 @@
     $scope.logout = function(){
     	document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     	document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-    	location.reload(true);
+    	location.href='index.html';
     }
 
 	/* $(".dropdown-submenu").on('click', 'a', function(){
