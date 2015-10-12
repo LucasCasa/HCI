@@ -4,7 +4,9 @@ var app = angular.module('login',['navbar']);
 	if(document.cookie.indexOf('user=') != -1){
 		location.href = 'index.html';
 	}	
-
+	this.last = this.DOBDay;
+	this.lastM = this.DOBMonth;
+	this.lastY = this.DOBYear;
 	app.factory('UserCache', ['$cacheFactory', function($cacheFactory) {
     	return $cacheFactory('super-cache');
   	}]);
@@ -19,6 +21,58 @@ app.controller('RegisterController',function($scope,$http,$log){
 
 		});
 	}
+
+
+	this.dayValidator = function(){
+		if(this.DOBDay.length == 1){
+			if(isPositiveInteger(this.DOBDay)){
+				if(this.DOBDay > 4){
+					this.DOBDay = '0' + this.DOBDay;
+					$('#month').focus();
+				}
+			}else{
+				this.DOBDay=last;
+			}
+		}else if( this.DOBDay.length >= 2){
+			if(isPositiveInteger(this.DOBDay) && this.DOBDay <= 31){
+				$('#month').focus();
+			}else{
+				this.DOBDay = last;
+			}
+
+		}
+		last = this.DOBDay;
+	}
+
+	this.monthValidator = function(){
+		if(this.DOBMonth.length == 1){
+			if(isPositiveInteger(this.DOBMonth)){
+				if(this.DOBMonth > 1){
+					this.DOBMonth = '0' + this.DOBMonth;
+					$('#year').focus();
+				}
+			}else{
+				this.DOBMonth=lastM;
+			}
+		}else if( this.DOBMonth.length >= 2){
+			if(isPositiveInteger(this.DOBMonth) && this.DOBMonth <= 12){
+				$('#year').focus();
+			}else{
+				this.DOBMonth = lastM;
+			}
+
+		}
+		lastM = this.DOBMonth;
+	}
+
+	this.yearValidator = function(){
+		if(this.DOBYear.length != 0 && (!isPositiveInteger(this.DOBYear) || this.DOBYear > 2000) ){
+			this.DOBYear = last;
+		}
+		last = this.DOBYear;
+	}
+
+
 });
 
 app.directive('navBar',function(){
@@ -52,3 +106,6 @@ app.controller("LoginController",function($scope,$http,$log){
 });
 
 })();
+	function isPositiveInteger(n) {
+    return 0 === n % (!isNaN(parseFloat(n)) && 0 <= ~~n);
+}
