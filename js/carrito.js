@@ -25,7 +25,7 @@ var app = angular.module('Carrito', ['navbar']);
 		$scope.productos = res.data.products;
 		$scope.total = 0;
 		res.data.products.forEach(function(entry){
-			$scope.total+= entry.price;
+			$scope.total += entry.price;
 			$scope.selected[entry.id] = 1;
 		})
 
@@ -51,5 +51,8 @@ $(document).on('click', '.dropdown-menu li a', function(){
 });
 
 $(document).on('click', '.btn-rmv',function(){
+	var row = $(this).closest("tr");            // find parent tr
+    var index = $("table").find(row).index() + 1;    // get index of tr
 	$(this).closest("tr").remove();
+	$(document).find(".infoblock h5:nth-child(" + index + ")").remove();
 });
