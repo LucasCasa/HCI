@@ -30,15 +30,21 @@ var app = angular.module('Carrito', ['navbar']);
 		})
 
 	});
-});
-
- app.controller('AmountController',function($scope,$log){
+	this.updateTotal= function(){
+		$scope.total = 0;
+		if($scope.productos !== undefined){
+		$scope.productos.forEach(function(entry){
+			$scope.total += entry.price * $scope.selected[entry.id];
+		});
+		}
+		};
 	this.add = function(value,id){
 		$scope.selected[id] = parseInt($scope.selected[id]) + value;
 		if($scope.selected[id] < 1)
 			$scope.selected[id] = 1;
-		$scope.$apply();
-	};
+		this.updateTotal();
+		};
+		
  });
 
  var talles = ['S','M','L','XL'];
@@ -49,10 +55,10 @@ $(document).on('click', '.dropdown-menu li a', function(){
     //$(this).parent().parent().siblings(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
     $(this).closest(".btn-group").find("button").text($(this).text());
 });
-
+/*
 $(document).on('click', '.btn-rmv',function(){
 	var row = $(this).closest("tr");            // find parent tr
     var index = $("table").find(row).index() + 1;    // get index of tr
 	$(this).closest("tr").remove();
 	$(document).find(".infoblock h5:nth-child(" + index + ")").remove();
-});
+});*/

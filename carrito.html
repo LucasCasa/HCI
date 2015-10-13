@@ -26,8 +26,8 @@
     <body ng-controller="CarritoController as CarritoCtrl">
       <nav-bar></nav-bar>
       <div class="container-fluid">
-        <div class="info infoblock col-md-3">
-          <h5 ng-repeat="producto in productos">{{producto.name}}<strong class="pull-right">{{producto.price | currency}}</strong></h5>
+        <div class="info infoblock col-md-4">
+          <h5 ng-repeat="producto in productos">{{producto.name}}<strong class="pull-right">{{producto.price *selected[producto.id] | currency}}</strong></h5>
           <hr class="divider">
           <h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
           <hr class="divider">
@@ -44,8 +44,8 @@
             <div class="container-fluid">
               <h1 class="col-sm-offset-2">Mi Carrito</h1>
               <div class="row">
-                <div class="col-sm-12 col-md-8 col-sm-offset-1" style="padding-top: 50px">
-                  <table class="table table-hover" ng-controller="AmountController as amount">
+                <div class="col-sm-12 col-md-8 col-sm-offset-0" style="padding-top: 50px">
+                  <table class="table table-hover">
                     <thead>
                       <tr>
 				                <th>Foto</th>
@@ -56,7 +56,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr ng-repeat="producto in productos">
+                      <tr ng-repeat="producto in productos track by $index">
                         <td class="col-sm-2">
                          <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" ng-attr-src="{{producto.imageUrl[0]}}" style="width: 72px; height: 72px;"> </a> </span>
 				</td>
@@ -92,19 +92,19 @@
                         <td class="col-sm-1 col-md-2" style="text-align: center">
                           <div class="input-group">
                             <span class="input-group-btn">
-                              <button style="padding:2px" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]" ng-click="amount.add(-1,producto.id)">
+                              <button style="padding:2px" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="" ng-click="CarritoCtrl.add(-1,producto.id)">
                                 <span class="glyphicon glyphicon-minus"></span>
                               </button>
                             </span>
-                            <input type="text" name="quant[2]" class="form-control input-number" ng-model="selected[producto.id]" min="1" max="100" style="text-align:center">
+                            <input type="text" name="" class="form-control input-number" ng-model="selected[producto.id]" min="1" max="100" ng-change="CarritoCtrl.updateTotal()" style="text-align:center">
                             <span class="input-group-btn">
-                              <button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]" ng-click="amount.add(1,producto.id)">
+                              <button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="" ng-click="CarritoCtrl.add(1,producto.id)">
                                 <span class="glyphicon glyphicon-plus" ></span>
                               </button>
                             </span>
                           </div>
                           <br>
-                          <button type="button" class="btn btn-danger btn-rmv">
+                          <button type="button" class="btn btn-danger btn-rmv" ng-click="productos.splice($index,1)">
                             <span class="glyphicon glyphicon-remove"></span> Eliminar
                           </button>
                         </td>
