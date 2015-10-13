@@ -15,7 +15,7 @@
   <nav-bar></nav-bar>
   <div>
     <div class="container">
-        <form ng-controller="LoginController as LoginCtrl" name="login">
+        <form ng-controller="LoginController as LoginCtrl" name="loginForm" novalidate>
           <div class="page-header">
               <h3>Ingresar</h3>
           </div>
@@ -23,12 +23,13 @@
           <div class="col-sm-6">
             <div class="col-padding">
               <h3>Cuenta existente:</h3>
+              <h4 ng-hide="LoginCtrl.validLogin"  class="cssFade">Usuario y/o contraseña invalida</h4>
             </div>
             <div class="form-group login-field">
-                <input type="text" ng-model="loginUser" class="form-control" placeholder="Nombre de Usuario">
+                <input type="text" ng-model="loginUser" class="form-control" placeholder="Nombre de Usuario"required>
             </div>
             <div class="form-group login-field">
-                <input type="password" ng-model="loginPass" class="form-control" placeholder="Contraseña">
+                <input type="password" ng-model="loginPass" class="form-control" placeholder="Contraseña" required>
             </div>
           <button type="submit" ng-click="LoginCtrl.login()" class="btn btn-primary ing-button">Ingresar</button>
         </form>
@@ -40,8 +41,8 @@
         <button type="button" class="btn btn-danger btn-sm" ng-show="isRegistering" id="closeReg" ng-click="isRegistering = false">
           <span class="glyphicon glyphicon-remove"/>
         </button>
-        <div ng-show="isRegistering" >
-          <div ng-include="'register.html'" ng-animate="'fade'"></div>
+        <div ng-show="isRegistering" class="cssFade">
+          <div ng-include="'register.html'"></div>
         </div>
       </div>
     </div>
@@ -50,6 +51,7 @@
   <br/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/nav.js"></script>
   <script src="js/login.js"></script>

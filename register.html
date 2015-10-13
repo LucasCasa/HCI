@@ -8,36 +8,36 @@
             </div>
             <div class="form-group col-lg-6">
                 <label>Nombre de usuario</label>
-                <input type="text" name="" class="form-control" id="username" ng-model="register.username" value=""  required>
+                <input type="text" name="username" class="form-control" id="username" ng-model="register.username" value=""  required>
             </div>
 
             <div class="form-group col-lg-6">
                 <label>Correo Electrónico</label>
-                <input type="email" name="" class="form-control" ng-model="register.email" id="email" value=""  required>
+                <input type="email" name="email" class="form-control" ng-model="register.email" id="email" value=""  required>
             </div>
 
             <div class="form-group col-lg-6">
                 <label>Nombre</label>
-                <input type="text" name="" class="form-control" ng-model="register.firstname" id="name" value="" required>
+                <input type="text" name="firstname" class="form-control" ng-model="register.firstname" id="name" value="" required>
             </div>
 
             <div class="form-group col-lg-6">
                 <label>Apellido</label>
-                <input type="text" name="" class="form-control" ng-model="register.lastname" id="surname" value=""  required>
+                <input type="text" name="lastname" class="form-control" ng-model="register.lastname" id="surname" value=""  required>
             </div>               
             <div class="form-group col-lg-6">
                 <label>Contraseña</label>
-                <input type="password" name="" class="form-control" ng-model="register.pass1" id="pass" value=""  required>
+                <input type="password" name="pass1" class="form-control" ng-model="register.pass1" id="pass" value=""  required>
             </div>
 
             <div class="form-group col-lg-6">
                 <label>Repetir Contraseña</label>
-                <input type="password" name="" class="form-control" ng-model="register.pass2" id="passRepeat" value=""  required>
+                <input type="password" name="pass2" class="form-control" ng-model="register.pass2" id="passRepeat" value=""  required>
             </div>
 
             <div class="form-group col-lg-6">
                 <label>Documento de Identidad</label>
-                <input type="number" name="" class="form-control" ng-model="register.identityCard" id="dni" value="" min="0" max="100000000" integer required>
+                <input type="number" name="dni" class="form-control" ng-model="register.identityCard" id="dni" value="" min="0" max="100000000" integer required>
             </div>
             <div class="form-group col-lg-6">
                 <div class="row">
@@ -46,9 +46,9 @@
                 <div class="row">
                     <div class="col-sm-3" style="padding-left:0;padding-right:0"><input type="text" name"day" class="form-control" id="day"  placeholder="DD"  ng-change="register.dayValidator()"   ng-model="register.DOBDay" required></div>
                     <div class="col-sm-1"><span style="font-size:1.4em;text-align:center">/</span></div>
-                    <div class="col-sm-3" style="padding-left:0;padding-right:0"><input type="text" name"day" class="form-control" id="month"  placeholder="MM" ng-change="register.monthValidator()" ng-model="register.DOBMonth" required></div>
+                    <div class="col-sm-3" style="padding-left:0;padding-right:0"><input type="text" name"month" class="form-control" id="month"  placeholder="MM" ng-change="register.monthValidator()" ng-model="register.DOBMonth" required></div>
                     <div class="col-sm-1"><span style="font-size:1.4em;text-align:center">/</span></div>
-                    <div class="col-sm-3"  style="padding-left:0;padding-right:0"><input type="text" name"day" class="form-control" id="year" placeholder="AAAA" ng-change="register.yearValidator()" ng-model="register.DOBYear" required></div>
+                    <div class="col-sm-3"  style="padding-left:0;padding-right:0"><input type="text" name"year" class="form-control" id="year" placeholder="AAAA" ng-change="register.yearValidator()" ng-model="register.DOBYear" required></div>
                 </div>
                 </div>
                 <div class="form-group col-sm-12">

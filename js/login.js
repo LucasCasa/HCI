@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('login',['navbar']);
+var app = angular.module('login',['navbar','ngAnimate']);
 
 	if(document.cookie.indexOf('user=') != -1){
 		location.href = 'index.html';
@@ -118,10 +118,12 @@ app.directive('register',function(){
  });
 app.controller("LoginController",function($scope,$http,$log){
 	$log.debug($scope);
+	this.validLogin = true;
+	var store = this;
 	this.login = function(){
 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=SignIn&username=" + $scope.loginUser + "&password=" + $scope.loginPass).then(function(res){
 			if(res.data.error !== undefined){
-				 alert("Usuario o contraseña incorrecta!");	
+				store.validLogin = false;
 			}else{
 				$log.debug("Estas logueado, tu token es: " + res.data.authenticationToken);
 				document.cookie="token=" +res.data.authenticationToken+"; path=/";

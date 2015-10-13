@@ -35,6 +35,7 @@ h4{
     font-style: italic;
     color: red;
     font-size: 90%;
+    padding-left: 30px;
 }
 .ing-button{
     float: right;
@@ -72,3 +73,16 @@ h4{
 .fade-show.fade-show-active {
     opacity:1;
 }
+.ng-hide-add, .ng-hide-remove {
+    /* ensure visibility during the transition */
+    display: block !important; /* yes, important */
+}
+
+.cssFade {
+    transition: 0.5s linear all;
+    opacity: 1;
+}
+.cssFade.ng-hide {
+    opacity: 0;
+}
+
