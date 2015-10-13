@@ -79,6 +79,8 @@ h4{
 }
 
 .cssFade {
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
     transition: 0.5s linear all;
     opacity: 1;
 }
