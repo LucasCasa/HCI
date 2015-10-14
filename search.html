@@ -18,7 +18,7 @@
         <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
   </head>
 
-  <body>
+  <body ng-controller="BusquedaController as DestacadosCtrl">
 
     <div ng-include="'nav.html'"></div>
 
@@ -209,24 +209,11 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <ol class="breadcrumb">
             <li><a href="index.html">Página Principal</a></li>
-            <li><a href="search.html">Calzado</a></li>
-            <li class="active">Alpargatas</li>
+            <li class="active">Busqueda</li>
           </ol>
 
-
+<!--
           <div class="barra">
-          <div class="col-sm-10">
-            <ul class="pagination">
-              <li><a href="#">&laquo;</a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li ><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&raquo;</a></li>
-            </ul>
-          </div>
-
           <div class="col-sm-1">
             <h4 class="letra">Cantidad:</h4>
           </div>
@@ -241,9 +228,22 @@
             </select>
           </div>
         </div>
+-->
 
+<div class="barra" >
+  <div class="bloque pagi"><pagination  total-items="totalItems" ng-model="currentPage" items-per-page=8 num-pages="noOfPages" current-page="currentPage" max-size="maxSize" ng-change="changePage(currentPage)"></pagination></div>
+  <div class="bloque cant">
+    <h5>Cantidad:</h5>
+    <select class="selector"ng-model="itemsPerPage" ng-change="changeItemsPerPage(itemsPerPage)" >
+      <option value=8 >8</option>
+      <option value=16>16</option>
+      <option value=24>24</option>
+      <option value=32>32</option>
+    </select>
+  </div>
+</div>
 
-        <div class"row" style="padding-right:100px;padding-left:100px" ng-controller="BusquedaController as DestacadosCtrl">
+        <div class"row" style="padding-right:100px;padding-left:100px" >
           <div >
             <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif" ng-show="loading" />
           </div>
@@ -266,17 +266,18 @@
                       </div>
                   </div>
 
-          <div>
-            <ul class="pagination">
-              <li><a href="#">&laquo;</a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li ><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&raquo;</a></li>
-            </ul>
-          </div>
+                  <div class="barra">
+                    <div class="bloque pagi"><pagination  total-items="totalItems" ng-model="currentPage" items-per-page=8 num-pages="noOfPages" current-page="currentPage" max-size="maxSize" ng-change="changePage(currentPage)"></pagination></div>
+                    <div class="bloque cant">
+                      <h5>Cantidad:</h5>
+                      <select class="selector"ng-model="itemsPerPage" ng-change="changeItemsPerPage(itemsPerPage)" >
+                        <option value=8 >8</option>
+                        <option value=16>16</option>
+                        <option value=24>24</option>
+                        <option value=32>32</option>
+                      </select>
+                    </div>
+                  </div>
 
           </div>
         </div>
@@ -288,9 +289,11 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script src="js/ui-bootstrap-tpls-0.14.2.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/angular.min.js"></script>
+
         <script type="text/javascript" src="js/search.js"></script>
         <script type="text/javascript" src="js/nav.js"></script>
 

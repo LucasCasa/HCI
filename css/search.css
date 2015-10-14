@@ -5,11 +5,28 @@ body {
   padding-top: 50px;
 }
 
+.paginacion{
+  width: 80px;
+  height: 30px;
+}
+.bloque{
+  display: inline-block;
+}
 
-/*
- * Global add-ons
- */
-
+.pagi{
+  width: 70%;
+}
+.barra{
+  padding-bottom: 20px;
+}
+.cant{
+  width: 20%;
+  position: absolute;
+    right: 0px;
+}
+.selector{
+  margin-left: 20px;
+}
 .sub-header {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
