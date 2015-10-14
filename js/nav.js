@@ -46,7 +46,9 @@
     	var sub = event.substring(event.indexOf('-') + 2, event.length);
     	$log.debug(cat);
     	$log.debug(sub);
-    		value.val(cat + "&s=" + sub);
+            var aux = encodeURI(cat + '&s=' + sub)
+    		value.val(aux);
+            $log.debug(decodeURI(aux));
     	} else {
     		value.val(event);
     	}	
