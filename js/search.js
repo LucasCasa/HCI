@@ -7,8 +7,13 @@ app.controller('BusquedaController',function($scope,$http,$log,$location){
 
 	var page=1;
 	var itemsPerPage = 8;
-	callAPI(page,itemsPerPage);
 
+
+	$scope.sacarFiltro = function(){
+		console.log("Saca!");
+
+	};
+callAPI(page,itemsPerPage);
 	$scope.changePage = function(pageNumb){
 		$scope.loading = true;
 		callAPI(pageNumb,itemsPerPage);
@@ -40,10 +45,10 @@ function checkGender( cat){
  }else if (cat.localeCompare("Mujeres")==0) {
 	 console.log(" Mujeres");
 	 filters += encodeURIComponent('[{"id":1,"value":"Femenino"}]');
- }else if (cat.localeCompare("Ninos")==0) {
+ }else if (cat.localeCompare("Niños")==0) {
 	 console.log("Ninos");
 	 filters += encodeURIComponent('[{"id":1,"value":"Masculino"},{"id":2,"value":"Infantil"}]');
- }else if (cat.localeCompare("Ninas")==0) {
+ }else if (cat.localeCompare("Niñas")==0) {
 	 console.log("Ninas");
 	 filters += encodeURIComponent('[{"id":1,"value":"Femenino"},{"id":2,"value":"Infantil"}]');
  }else if (cat.localeCompare("Bebes")==0) {
@@ -55,7 +60,20 @@ function checkGender( cat){
 
 function callAPI(page , itemsPerPage){
 
+	var checkFilters = function(filters){
+		for(var filter in filters){
+			console.log(filter.id);
+		}
+	}
+
+	var putFilter = function(name){
+		var li = document.createElement('li');
+		li.className = 'filterApli';
+		li.innerHTML = '<h2 class="applied-fliter">' + name +'<a href="" rel="nofollow"> <button ng-click="sacarFiltro()" type="button" class="close" aria-label="Close"><span aria-hidden="true"/>&times;</span></button></a></h2>';
+		document.getElementById('filtrados').appendChild(li);
+	}
 	var onSuccess = function(res){
+	$log.debug(res.data.products);
 	$scope.destacados = res.data.products;
 	$scope.loading = false;
 	$scope.totalItems = res.data.total;
@@ -63,8 +81,23 @@ function callAPI(page , itemsPerPage){
 	$scope.noOfPages = ($scope.totalItems)/8;
 	$scope.maxSize = 5;
 
-	console.log($scope.totalItems);
-	console.log($scope.currentPage);
+	$scope.filters = res.data.filters;
+	var i=0;
+	for(i;i<$scope.filters.length -1 ; i++){
+		console.log($scope.filters[i].id);
+	}
+
+	if(filt != ""){
+		putFilter(filt);
+		console.log("Entre");
+	}
+	if(categoria!= undefined){
+		putFilter(categoria);
+
+	}
+
+
+
 	}
 
 	var onErrorOcurred= function(res){
@@ -81,7 +114,9 @@ function callAPI(page , itemsPerPage){
 	url = urlArray[pos-1];
 	console.log(url);
 
-	var param = (url.split("?")[1]).split("&");
+	var param = (url.split("?")[1]);
+	param = decodeURIComponent(param);
+	param = param.split("&");
 	console.log(param);
 
 	var busqueda = param[0].split("=")[1];

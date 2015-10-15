@@ -23,12 +23,17 @@
     <div ng-include="'nav.html'"></div>
 
     <div class="container-fluid">
+      <div class="loading-block" ng-show="loading">
+        <div class="loading-image" >
+          <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
+        </div>
+      </div>
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <div class="linea">
           <h4>Filtrado por:</h4>
-          <ul class="nav nav-sidebar">
-            <li class="filterApli"><h2 class="applied-fliter"> Hombre
+          <ul class="nav nav-sidebar" id="filtrados">
+            <!--<li class="filterApli"><h2 class="applied-fliter"> Hombre
                 <a href="" rel="nofollow">
                   <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </a>
@@ -40,6 +45,7 @@
                 </a>
                  </h2>
             </li>
+          -->
           </ul>
         </div>
 
@@ -244,9 +250,7 @@
 </div>
 
         <div class"row" style="padding-right:100px;padding-left:100px" >
-          <div >
-            <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif" ng-show="loading" />
-          </div>
+
                       <div class="thumbnail col-sm-3" ng-repeat="prod in destacados">
                           <a ng-attr-href="{{'producto.html?id=' + prod.id}}"><img ng-attr-src="{{prod.imageUrl[0]}}" alt=""></a>
                           <div class="caption">
