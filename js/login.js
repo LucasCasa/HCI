@@ -85,37 +85,12 @@ app.controller('RegisterController',function($scope,$http,$log){
 		$('#username').parent().addClass('has-success');
 
 		if(this.email === undefined || this.email.indexOf('@') == -1 || this.email.indexOf('.') == -1 ||  this.email.lastIndexOf('.') - this.email.indexOf('@') < 2){
-<<<<<<< Updated upstream
-=======
-			$('#email').parent().addClass('has-error');
->>>>>>> Stashed changes
 			return false;
 		}
 		$('#email').parent().addClass('has-success');
 		if(this.firstname === undefined || this.firstname.length > 80 || this.lastname === undefined || this.lastname.length > 80){
-			$('#firstname').parent().addClass('has-error');
-			$('#lastname').parent().addClass('has-error');
 			return false;
 		}
-		$('#firstname').parent().addClass('has-success');
-		$('#lastname').parent().addClass('has-success');
-		if(this.pass1 === undefined){
-			$('#pass1').parent().addClass('has-error');
-			return false;
-		}
-		if(this.pass1.length < 8 || this.pass1.length > 15){
-			$('#pass1').parent().addClass('has-error');
-	 		$('#pass1').popover('show');
-	 		return false;
-	 	}
-	 	$('#pass1').popover('hide');
-	 	$('#pass1').parent().addClass('has-success');
-		if(this.pass1 !== this.pass2){
-			$('#pass2').parent().addClass('has-error');
-			$('#pass2').popover('show');
-			return false;
-		}
-<<<<<<< Updated upstream
 		$('#firstname').parent().addClass('has-success');
 		$('#lastname').parent().addClass('has-success');
 		if(this.pass1 === undefined){
@@ -146,28 +121,6 @@ app.controller('RegisterController',function($scope,$http,$log){
 			return false;
 		}
 		$('#DOBDay').parent().parent().parent().addClass('has-success');
-=======
-		$('#pass2').popover('hide');
-		$('#pass2').parent().addClass('has-success');
-		if(this.gender !== 'M' && this.gender !== 'F'){
-			$('#MRB').parent().parent().addClass('has-error');
-			return false;
-		}
-		if(!isPositiveInteger(this.identityCard) || this.identityCard.length > 10){
-			$('#year').parent().parent().parent().addClass('has-error');
-			return false;
-		}
-		if(this.DOBDay === undefined || this.DOBMonth === undefined || this.DOBYear === undefined){
-			$('#year').parent().parent().parent().addClass('has-error');
-			return false;
-		}
-		if(this.DOBYear !== undefined && this.DOBYear < 1900){
-			$('#year').parent().parent().parent().addClass('has-error');
-			$('#year').popover('show');
-			return false;
-		}
-		$('#year').parent().parent().parent().addClass('has-success');
->>>>>>> Stashed changes
 		return true;
 	}
 });
