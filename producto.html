@@ -18,12 +18,12 @@
 			<li><a href="index.html">Página Principal</a></li>
 			<li><a href="search.html">Calzado</a></li>
 			<li><a href="search.html">Alpargatas</a></li>
-			<li class="active">{{producto.name}}</li>
+			<li class="active" ng-cloak>{{producto.name}}</li>
 		</ol>
 		<div>
 			<div class="item-container">	
 				<div class="container">	
-					<div class="product-title">{{producto.name}}</div>
+					<div class="product-title" ng-cloak>{{producto.name}}</div>
 					<div class="col-md-6">
 						<div class="product col-md-6 service-image-right">
 							<img ng-attr-src="{{producto.imageUrl[ProductCtrl.selected]}}"></img>
@@ -41,7 +41,7 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<div class="product-price">{{producto.price | currency}}</div>
+						<div class="product-price" ng-cloak>{{producto.price | currency}}</div>
 						<br><br>
 						<div class="row">
 							<h4 class="col-sm-3">Talle</h4>
@@ -128,14 +128,14 @@
 		</div>
 		<div class="container reviews" ng-controller="ReviewController as revs">
 			<div class="row" class="page-header">
-				<h1><small class="pull-right">{{revs.reviews.length}} comentarios</small> Comentarios </h1>
+				<h1><small class="pull-right" ng-cloak>{{revs.reviews.length}} comentarios</small> Comentarios </h1>
 			</div>
 			<div class="review-group-item row" ng-repeat="review in revs.reviews">
 				<div ng-repeat="star in range(5) track by $index">
 					<span class="glyphicon" ng-class="{glyphicon-star : $index<review.stars, glyphicon-star-empty : $index>=review.stars}"/>
 				</div>
 				<br/>
-				<h4>"{{review.body}}"</h4> - por <strong>{{review.author}}</strong>
+				<h4 ng-cloak>"{{review.body}}"</h4> - por <strong ng-cloak>{{review.author}}</strong>
 				<br/>
 				<br/>
 			</div>

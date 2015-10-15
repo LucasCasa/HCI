@@ -53,6 +53,9 @@ var app = angular.module('Cuenta', ['navbar']);
  		});
  	}
  });
+app.directive("ModifieAccountController",function{
+	
+})
  app.filter('capitalize', function() {
     return function(input) {
       return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';

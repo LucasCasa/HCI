@@ -78,26 +78,51 @@ app.controller('RegisterController',function($scope,$http,$log){
 
 	this.isValid = function(){
 		if(this.username === undefined || this.username.length < 6 || this.username.length > 15){
+			$('#username').popover('show');
+			$('#username').parent().addClass('has-error');
 			return false;
 		}
-		if(this.pass1 !== this.pass2 || this.pass1 === undefined || this.pass1.length < 8 || this.pass1.length > 15){
+		$('#username').popover('hide');
+		$('#username').parent().removeClass('has-error');
+		$('#username').parent().addClass('has-success');
+
+		if(this.email === undefined || this.email.indexOf('@') == -1 || this.email.indexOf('.') == -1 ||  this.email.lastIndexOf('.') - this.email.indexOf('@') < 2){
 			return false;
 		}
+		$('#email').parent().addClass('has-success');
 		if(this.firstname === undefined || this.firstname.length > 80 || this.lastname === undefined || this.lastname.length > 80){
 			return false;
 		}
+		$('#firstname').parent().addClass('has-success');
+		$('#lastname').parent().addClass('has-success');
+		if(this.pass1 === undefined){
+			return false;
+		}
+		if(this.pass1.length < 8 || this.pass1.length > 15){
+	 		$('#pass1').popover('show');
+	 		return false;
+	 	}
+	 	$('#pass1').popover('hide');
+	 	$('#pass1').parent().addClass('has-success');
+		if(this.pass1 !== this.pass2){
+			$('#pass2').popover('show');
+			return false;
+		}
+		$('#pass2').popover('hide');
+		$('#pass2').parent().addClass('has-success');
 		if(this.gender !== 'M' && this.gender !== 'F'){
 			return false;
 		}
 		if(!isPositiveInteger(this.identityCard) || this.identityCard.length > 10){
 			return false;
 		}
-		if(this.email === undefined || this.email.indexOf('@') == -1 || this.email.indexOf('.') == -1 ||  this.email.lastIndexOf('.') - this.email.indexOf('@') < 2){
+		if(this.DOBDay === undefined || this.DOBMonth === undefined || this.DOBYear === undefined){
+			if(this.DOBYear !== undefined && this.DOBYear > 1900){
+				$('#DOBYear').popover('show');
+			}
 			return false;
 		}
-		if(this.DOBDay === undefined || this.DOBMonth === undefined || this.DOBYear === undefined || this.DOBYear < 1900){
-			return false;
-		}
+		$('#DOBDay').parent().parent().parent().addClass('has-success');
 		return true;
 	}
 });

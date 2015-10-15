@@ -8,7 +8,7 @@
             </div>
             <div class="form-group col-lg-6">
                 <label>Nombre de usuario</label>
-                <input type="text" name="username" class="form-control" id="username" ng-model="register.username" value=""  required>
+                <input type="text" name="username" class="form-control" id="username" ng-model="register.username" value="" data-toggle="popover" data-placement="top" data-content="El nombre debe tener entre 5 y 15 caracteres" required>
             </div>
 
             <div class="form-group col-lg-6">
@@ -18,21 +18,21 @@
 
             <div class="form-group col-lg-6">
                 <label>Nombre</label>
-                <input type="text" name="firstname" class="form-control" ng-model="register.firstname" id="name" value="" required>
+                <input type="text" name="firstname" class="form-control" ng-model="register.firstname" id="firstname" value="" required>
             </div>
 
             <div class="form-group col-lg-6">
                 <label>Apellido</label>
-                <input type="text" name="lastname" class="form-control" ng-model="register.lastname" id="surname" value=""  required>
+                <input type="text" name="lastname" class="form-control" ng-model="register.lastname" id="lastname" value=""  required>
             </div>               
             <div class="form-group col-lg-6">
                 <label>Contraseña</label>
-                <input type="password" name="pass1" class="form-control" ng-model="register.pass1" id="pass" value=""  required>
+                <input type="password" name="pass1" class="form-control" ng-model="register.pass1" id="pass1" value="" data-toggle="popover" data-placement="top" data-content="La contraseña debe tener entre 8 y 15 caracteres" required>
             </div>
 
             <div class="form-group col-lg-6">
                 <label>Repetir Contraseña</label>
-                <input type="password" name="pass2" class="form-control" ng-model="register.pass2" id="passRepeat" value=""  required>
+                <input type="password" name="pass2" class="form-control" ng-model="register.pass2" id="pass2" value="" data-toggle="popover" data-placement="top" data-content="Las contraseñas deben ser iguales" required>
             </div>
 
             <div class="form-group col-lg-6">
@@ -48,9 +48,9 @@
                     <div class="col-sm-1"><span style="font-size:1.4em;text-align:center">/</span></div>
                     <div class="col-sm-3" style="padding-left:0;padding-right:0"><input type="text" name"month" class="form-control" id="month"  placeholder="MM" ng-change="register.monthValidator()" ng-model="register.DOBMonth" required></div>
                     <div class="col-sm-1"><span style="font-size:1.4em;text-align:center">/</span></div>
-                    <div class="col-sm-3"  style="padding-left:0;padding-right:0"><input type="text" name"year" class="form-control" id="year" placeholder="AAAA" ng-change="register.yearValidator()" ng-model="register.DOBYear" required></div>
+                    <div class="col-sm-3"  style="padding-left:0;padding-right:0"><input type="text" name"year" class="form-control" id="year" placeholder="AAAA" ng-change="register.yearValidator()" ng-model="register.DOBYear" data-toggle="popover" data-placement="top" data-content="La fecha de nacimiento debe ser mayor a 1900" required></div>
                 </div>
-                </div>
+            </div>
                 <div class="form-group col-sm-12">
                   <label class="col-sm-2">Género: </label>
                     <label class="col-sm-3">
