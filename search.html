@@ -23,6 +23,11 @@
     <div ng-include="'nav.html'"></div>
 
     <div class="container-fluid">
+      <div class="loading-block" ng-show="loading">
+        <div class="loading-image" >
+          <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
+        </div>
+      </div>
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <div class="linea">
@@ -243,10 +248,8 @@
   </div>
 </div>
 
-        <div class"loading-block">
-          <div class="loading-image">
-            <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif" ng-show="loading" />
-          </div>
+        <div class"row" style="padding-right:100px;padding-left:100px" >
+
                       <div class="thumbnail col-sm-3" ng-repeat="prod in destacados">
                           <a ng-attr-href="{{'producto.html?id=' + prod.id}}"><img ng-attr-src="{{prod.imageUrl[0]}}" alt=""></a>
                           <div class="caption">

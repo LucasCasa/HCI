@@ -49,12 +49,11 @@ div .loading-block{
     margin-left: -50px;
     width: 150px;
     height: 150px;
-    border-radius: 20%;
-    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 100;
 }
-div .loading-imgage{
-	vertical-align: middle;
-	text-align: center;
-	width: 100px;
-    height: 100px;
+div .loading-image{
+	margin-left: 12px;
+	margin-top: 12px;
 }
