@@ -56,6 +56,7 @@ function checkGender( cat){
 function callAPI(page , itemsPerPage){
 
 	var onSuccess = function(res){
+	$log.debug(res.data.products);
 	$scope.destacados = res.data.products;
 	$scope.loading = false;
 	$scope.totalItems = res.data.total;

@@ -7,9 +7,7 @@ var app = angular.module('login',['navbar','ngAnimate']);
 	this.last = this.DOBDay;
 	this.lastM = this.DOBMonth;
 	this.lastY = this.DOBYear;
-	app.factory('UserCache', ['$cacheFactory', function($cacheFactory) {
-    	return $cacheFactory('super-cache');
-  	}]);
+
 app.controller('RegisterController',function($scope,$http,$log){
 	$scope.isRegistering = false;
 	this.registerUser = function(){
