@@ -60,14 +60,14 @@
 									</form>
 								</div>
 							</div>
-						<button id="modify-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAccountModal">
+						<button id="modify-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAccountModal" ng-click="CuentaCtrl.saveState(user)">
 						<span class="glyphicon glyphicon-edit"></span> Modificar información
 					</button> 
 					<div class="modal fade" data-backdrop="static" id="modifyAccountModal">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
 										<h4 class="modal-title">Modificar cuenta</h4>
 								</div>
 								<div class="modal-body">
@@ -110,10 +110,10 @@
                 <div class="form-group col-sm-12">
                   <label class="col-sm-2">Género: </label>
                     <label class="col-sm-3">
-                      <input type="radio" id="MRB" ng-checked='user.gender == "M"' ng-model="CuentaCtrl.gender" name="gender" value="M"/> Masculino   
+                      <input type="radio" id="MRB" ng-checked='user.gender == "M"' ng-model="user.gender" name="gender" value="M"/> Masculino   
                     </label> 
                     <label class="col-sm-3">
-                      <input type="radio" id="FRB" ng-checked='user.gender == "F"' ng-model="CuentaCtrl.gender" name="gender" value="F" /> Femenino
+                      <input type="radio" id="FRB" ng-checked='user.gender == "F"' ng-model="user.gender" name="gender" value="F" /> Femenino
                     </label> 
                 </div>
             </div>
@@ -122,10 +122,10 @@
 </form>
 								</div>
 								<div class="modal-footer">
-									<button id="save-address-btn" type="button" ng-disable="CuentaCtrl.!isValid()"class="btn btn-success apply" hidden>
+									<button id="save-address-btn" type="button" ng-disabled="!CuentaCtrl.isValid(user)"class="btn btn-success apply" ng-click="CuentaCtrl.updateAccount(user)" data-dismiss="modal" hidden>
 										<span class="glyphicon glyphicon-ok"></span> Guardar
 									</button>
-									<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal"hidden >
+									<button id="cancel-btn" type="button" ng-click="CuentaCtrl.descartar(user)"class="btn btn-danger apply" data-dismiss="modal" hidden >
 										<span class="glyphicon glyphicon-remove"></span> Descartar
 									</button>		
 								</div>
@@ -187,7 +187,7 @@
 							<button ng-attr-id="{{modificar + direccion.id}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAddressModal">
 								<span class="glyphicon glyphicon-edit"></span> Modificar
 							</button>
-							<button  type="button" class="btn btn-danger" >
+							<button  type="button" class="btn btn-danger" ng-click="CuentaCtrl.removeAddress(direccion.id)" >
                 				<span class="glyphicon glyphicon-remove"></span> Eliminar
              			 	</button>	 
 						</div>
