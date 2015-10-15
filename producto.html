@@ -74,7 +74,7 @@
 										<span class="glyphicon glyphicon-minus"></span>
 									</button>
 								</span>
-								<input type="text" name="quant[2]" class="form-control input-number" ng-model="amount.selected" min="1" max="100"
+								<input type="text" name="quant[2]" class="form-control input-number" ng-model="selectedAmount" min="1" max="100"
 								style="text-align:center">
 								<span class="input-group-btn">
 									<button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]" ng-click="amount.add(1)">
@@ -85,7 +85,7 @@
 						</div>
 						<br><br><br>
 						<div class="btn-group cart">
-							<button type="button" class="btn btn-info">
+							<button type="button" class="btn btn-info" id="btn-cart" ng-click="ProductCtrl.addToCart()" ng-disabled="cartBtn">
 								<span class="glyphicon glyphicon-shopping-cart"></span>
 								Agregar al carrito 
 							</button>

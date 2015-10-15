@@ -24,8 +24,7 @@
   <![endif]-->
 </head>
 <body ng-controller="FinalizarController as FinalizarCtrl">
-    <div ng-include="'nav.html'"></div>
- <div class="container">
+  <div class="container">
 	
   <h1>Finalizar Compra</h1>
   <h3>Metodo de Pago</h3>
@@ -98,7 +97,7 @@
     <div class="container-fluid">
      <div class="resumen infoblock col-md-3">
           <h3>Resumen de Compra</h3>
-          <h4>Subtotal <strong class="pull-right">{{total - 20 | currency}}</strong></h4>
+          <h4>Subtotal <strong class="pull-right">{{total - costoEnvio | currency}}</strong></h4>
           <hr class="divider">
           <h4>Costo de envio <strong class="pull-right">$20.00</strong></h4>
           <hr class="divider">

@@ -63,7 +63,7 @@
     $scope.userName = function(){
     	if($scope.isLoged()){
     		var cookie = document.cookie;
-    		return cookie.substring(cookie.indexOf('user') + 5,cookie.length);
+    		return ReadCookie("user");
     	}else{
     		return "";
     	}
@@ -72,6 +72,17 @@
     	document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     	document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     	location.href='index.html';
+    }
+    function ReadCookie(name)
+    {
+      name += '=';
+      var parts = document.cookie.split(/;\s*/);
+      for (var i = 0; i < parts.length; i++)
+      {
+        var part = parts[i];
+        if (part.indexOf(name) == 0)
+          return part.substring(name.length)
+      }
     }
 
 	/* $(".dropdown-submenu").on('click', 'a', function(){
@@ -91,6 +102,7 @@
       return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
     }
 });
+  
 })();
 
  

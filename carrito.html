@@ -27,7 +27,7 @@
       <nav-bar></nav-bar>
       <div class="container-fluid">
         <div class="info infoblock col-md-4">
-          <h5 ng-repeat="producto in productos">{{producto.name}}<strong class="pull-right">{{producto.price *selected[producto.id] | currency}}</strong></h5>
+          <h5 ng-repeat="producto in productos">{{producto.product.name}}<strong class="pull-right">{{producto.price *selected[producto.id] | currency}}</strong></h5>
           <hr class="divider">
           <h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
           <hr class="divider">
@@ -56,12 +56,15 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr ng-repeat="producto in productos track by $index">
+                      <tr>
+                        <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif" ng-show="loading" />
+                      </tr>
+                      <tr ng-repeat="producto in productos track by $index" ng-hide="loading">
                         <td class="col-sm-2">
-                         <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" ng-attr-src="{{producto.imageUrl[0]}}" style="width: 72px; height: 72px;"> </a> </span>
+                         <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" ng-attr-src="{{producto.product.imageUrl}}" style="width: 72px; height: 72px;"> </a> </span>
 				</td>
 				<td>
-                         <h3 style="margin-top:0">{{producto.name}}</h3>
+                         <h3 style="margin-top:0">{{producto.product.name}}</h3>
 				 <div class="row">
                          <h4 class="col-sm-2">Talle</h4>
                          <!-- Single button -->
@@ -104,7 +107,7 @@
                             </span>
                           </div>
                           <br>
-                          <button type="button" class="btn btn-danger btn-rmv" ng-click="productos.splice($index,1)">
+                          <button type="button" class="btn btn-danger btn-rmv" ng-click="CarritoCtrl.remove(producto.id,$index)">
                             <span class="glyphicon glyphicon-remove"></span> Eliminar
                           </button>
                         </td>
