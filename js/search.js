@@ -7,8 +7,13 @@ app.controller('BusquedaController',function($scope,$http,$log,$location){
 
 	var page=1;
 	var itemsPerPage = 8;
-	callAPI(page,itemsPerPage);
 
+
+	$scope.sacarFiltro = function(){
+		console.log("Saca!");
+
+	};
+callAPI(page,itemsPerPage);
 	$scope.changePage = function(pageNumb){
 		$scope.loading = true;
 		callAPI(pageNumb,itemsPerPage);
@@ -55,6 +60,18 @@ function checkGender( cat){
 
 function callAPI(page , itemsPerPage){
 
+	var checkFilters = function(filters){
+		for(var filter in filters){
+			console.log(filter.id);
+		}
+	}
+
+	var putFilter = function(name){
+		var li = document.createElement('li');
+		li.className = 'filterApli';
+		li.innerHTML = '<h2 class="applied-fliter">' + name +'<a href="" rel="nofollow"> <button ng-click="sacarFiltro()" type="button" class="close" aria-label="Close"><span aria-hidden="true"/>&times;</span></button></a></h2>';
+		document.getElementById('filtrados').appendChild(li);
+	}
 	var onSuccess = function(res){
 	$log.debug(res.data.products);
 	$scope.destacados = res.data.products;
@@ -64,8 +81,23 @@ function callAPI(page , itemsPerPage){
 	$scope.noOfPages = ($scope.totalItems)/8;
 	$scope.maxSize = 5;
 
-	console.log($scope.totalItems);
-	console.log($scope.currentPage);
+	$scope.filters = res.data.filters;
+	var i=0;
+	for(i;i<$scope.filters.length -1 ; i++){
+		console.log($scope.filters[i].id);
+	}
+
+	if(filt != ""){
+		putFilter(filt);
+		console.log("Entre");
+	}
+	if(categoria!= undefined){
+		putFilter(categoria);
+
+	}
+
+
+
 	}
 
 	var onErrorOcurred= function(res){
