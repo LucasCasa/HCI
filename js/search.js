@@ -40,10 +40,10 @@ function checkGender( cat){
  }else if (cat.localeCompare("Mujeres")==0) {
 	 console.log(" Mujeres");
 	 filters += encodeURIComponent('[{"id":1,"value":"Femenino"}]');
- }else if (cat.localeCompare("Ninos")==0) {
+ }else if (cat.localeCompare("Niños")==0) {
 	 console.log("Ninos");
 	 filters += encodeURIComponent('[{"id":1,"value":"Masculino"},{"id":2,"value":"Infantil"}]');
- }else if (cat.localeCompare("Ninas")==0) {
+ }else if (cat.localeCompare("Niñas")==0) {
 	 console.log("Ninas");
 	 filters += encodeURIComponent('[{"id":1,"value":"Femenino"},{"id":2,"value":"Infantil"}]');
  }else if (cat.localeCompare("Bebes")==0) {
@@ -82,7 +82,9 @@ function callAPI(page , itemsPerPage){
 	url = urlArray[pos-1];
 	console.log(url);
 
-	var param = (url.split("?")[1]).split("&");
+	var param = (url.split("?")[1]);
+	param = decodeURIComponent(param);
+	param = param.split("&");
 	console.log(param);
 
 	var busqueda = param[0].split("=")[1];
