@@ -86,7 +86,8 @@
 						<br><br><br>
 						<div class="btn-group cart">
 							<button type="button" class="btn btn-info" id="btn-cart" ng-click="ProductCtrl.addToCart()" ng-disabled="cartBtn">
-								<span class="glyphicon glyphicon-shopping-cart"></span>
+                        		<img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif" ng-show="loading" />
+								<span class="glyphicon glyphicon-shopping-cart" ng-show="!loading"></span>
 								Agregar al carrito 
 							</button>
 						</div>
@@ -99,7 +100,6 @@
 						<div class="container-fluid">		
 							<div class="col-md-12 product-info">
 								<ul id="myTab" class="nav nav-tabs nav_tabs">
-
 									<li class="active"><a href="#service-one" data-toggle="tab">Descripción</a></li>
 									<li><a href="#service-two" data-toggle="tab">Tabla de Tamaños</a></li>
 								</ul>

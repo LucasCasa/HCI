@@ -79,11 +79,9 @@
 
 .service1-item {
 	height: 107px;
-	width: 120px;
+	width: 130px;
 	display: block;
-	float: left;
 	position: relative;
-	padding-right: 20px;
 	border-right: 1px solid #DDD;
 	border-top: 1px solid #DDD;
 	border-bottom: 1px solid #DDD;
@@ -115,6 +113,7 @@
 .service-image-left  > img,.service-image-right > img{
 	width: 100%;
 	height: 100%;
+	max-width: 100%;
 }
 
 .user_name{
@@ -140,4 +139,13 @@
 
 .reviews button{
 	float: right;
+}
+
+/*********************************************
+				OTHER
+*********************************************/
+
+#mySpinner{
+	width: 10%;
+	height: auto; 
 }

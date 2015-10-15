@@ -43,6 +43,7 @@ app.controller('ProductController',function($scope,$http,$log){
 		$log.debug(res);
 		$log.debug(this.prodId);
 	});
+  $scope.loading = false;
   $scope.cartBtn = "";
   $scope.selectedAmount = 1;
 	this.selected = 1;
@@ -50,6 +51,7 @@ app.controller('ProductController',function($scope,$http,$log){
 		this.selected = value;
 	};
   this.addToCart = function(){
+    $scope.loading = true;
     if(ReadCookie("carritoOrderId")==null){
       $http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=CreateOrder&username=" + user + "&authentication_token=" + token).then(function(res){
         $log.debug(res);
@@ -60,15 +62,16 @@ app.controller('ProductController',function($scope,$http,$log){
     }else{
       this.addWithOrder();
     }
-    $scope.cartBtn = "disabled";
-    $(document).find("#btn-cart").html("<span class=\"glyphicon glyphicon-ok\"></span> Agregado");
   };
   this.addWithOrder = function(){
     var orderID = ReadCookie("carritoOrderId");
     $http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + this.prodId + '},"quantity":'+ $scope.selectedAmount +'}').then(function(res){
-      $log.debug(token);
-      $log.debug(orderID);
+      $log.debug('quantity: ' + $scope.selectedAmount);
+      $log.debug('token: ' + token);
+      $log.debug('orderID: ' + orderID);
       $log.debug(res);
+      $scope.cartBtn = "disabled";
+      $(document).find("#btn-cart").html("<span class=\"glyphicon glyphicon-ok\"></span> Agregado");
     });
   }
 });
