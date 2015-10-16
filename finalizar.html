@@ -1,84 +1,64 @@
   <div class="container" ng-app="Finalizar" ng-controller="FinalizarController as FinalizarCtrl">
-	
-  <h1>Finalizar Compra</h1>
-  <h3>Metodo de Pago</h3>
-  <div>
-    <span><input type="radio" class="option-input radio" name="metodo"></span><span>Efectivo</span></radio> 
-  </div>
-    <input type="radio" class="option-input radio" name="metodo"><span>Tarjeta</span></radio>
-  <br>
-  <h3>Productos</h3>
-  <hr>
-  <div class="row col-sm-9">
-  <table class="table table-hover">
-    <thead>
-      <th>Foto</th>
-      <th>Descripcion</th>
-      <th>Talle</th>
-      <th>Color</th>
-      <th>Cantidad</th>
-      <th>Precio</th>
-      <th> </th>
-    </thead>
-
-    <tbody>
-      <tr ng-repeat="producto in productos">
-        <td>
-          <img ng-attr-src="{{producto.product.imageUrl}}" style="width: 72px; height: 72px;"/>
-        </td>
-        <td>
-          <h4>{{producto.product.name}}</h4>
-        </td>
-          
-        <td>
-          <h4> M </h4>
-        </td>
-        <td>
-          <h4> Rose Gold </h4>
-        </td>
-        <td>
-          <h4> {{producto.quantity}} </h4>
-        </td>
-        <td>
-          <h4>{{producto.price | currency}}</h4>
-        </td>
-        <td>
-          <button type="button" class="btn btn-danger">
-            <span class="glyphicon glyphicon-remove"></span>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-
-  </table>
-</div>
-</div>
-  <div class="container-fluid">
-     <div class="info infoblock col-md-3">
-          <h4>Direccion de Envio</h4>
-          <h5>Casa </h5>
-                  <h5>Andrea</h5>
-                  <h5>Av Corrientes 333 CABA. Buenos Aires, 1302 </h5>
-                  <h5>Argentina </h5>
-                  <h5>15-1234-5678</h5>
-          <button type="button" class="btn btn-warning">
-            Editar <span class="glyphicon glyphicon-pencil"></span>
-          </button>
+    <div class="loading-block" ng-show="loading">
+          <div class="loading-image" >
+              <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
           </div>
-  </div>
-
-
-    <div class="container-fluid">
-     <div class="resumen infoblock col-md-3">
-          <h3>Resumen de Compra</h3>
-          <h4>Subtotal <strong class="pull-right">{{total - costoEnvio | currency}}</strong></h4>
-          <hr class="divider">
-          <h4>Costo de envio <strong class="pull-right">$20.00</strong></h4>
-          <hr class="divider">
-          <hr class="divider">
-          <br>
-          <h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
-          <br>
-          <button type="button" class="btn btn-success">Comprar</button>
         </div>
-      </div>
+    <h1>Finalizar Compra</h1>
+    <h3>Metodo de Pago</h3>
+    <div class="radio">
+      <label><input type="radio" name="optradio">Efectivo</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="optradio">Tarjeta</label>
+    </div>
+    <br>
+    <h3>Productos</h3>
+    <hr>
+    <div class="row col-sm-9">
+      <table class="table table-hover">
+        <thead>
+          <th>Foto</th>
+          <th>Descripcion</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th> </th>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="producto in productos">
+            <td>
+              <img ng-attr-src="{{producto.product.imageUrl}}" style="width: 72px; height: 72px;"/>
+            </td>
+            <td>
+              <h4>{{producto.product.name}}</h4>
+            </td>
+            <td>
+              <h4> {{producto.quantity}} </h4>
+            </td>
+            <td>
+              <h4>{{producto.price | currency}}</h4>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" ng-click="removeItem(producto.id)">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+    <div class="info infoblock col-md-4 side-bar" ng-hide="loading">
+  <div class="product-summary">
+    <h5 ng-repeat="producto in productos">{{producto.product.name}}<strong class="pull-right">{{producto.price | currency}}</strong></h5>
+  </div>
+  <hr class="divider">
+  <h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
+  <hr class="divider">
+  <button type="button" class="btn btn-warning next-step" ng-disabled="!isLoged() || emptyCart" ng-click="CompraCtrl.nextStep()">
+    Comprar <span class="glyphicon glyphicon-usd"></span>
+  </button>
+  <p style="color:#888;padding: 10px"> *Para comprar es necesario iniciar sesion </p>
+</div>
+</div>

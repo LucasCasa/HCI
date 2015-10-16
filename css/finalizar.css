@@ -2,6 +2,7 @@ th,
 td {
   text-align: center;
 }
+
 .btn-danger {
   text-align: left;
   float:left;
@@ -11,4 +12,8 @@ td {
   position:fixed;
   right: 0;
   bottom: 0;
+}
+.product-summary{
+   overflow: scroll;
+     height: 300px;
 }

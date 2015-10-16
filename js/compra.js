@@ -20,12 +20,14 @@
         }
     });
     
-    compraApp.controller('CompraController', function(){
+    compraApp.controller('CompraController', function($log,$scope){
         
     this.nextStep = function(){
         var $active = $('.wizard .nav-tabs li.active');
         $active.next().removeClass('disabled');
         nextTab($active);
+        //$log.debug(Finalizar);
+        $log.debug($scope);    
     };
     });
 
@@ -48,7 +50,7 @@ $(document).ready(function () {
     $(".next-step").click(function (e) {
 
         var $active = $('.wizard .nav-tabs li.active');
-        $active.next().removeClass('disabled');
+        $active.next().removeClass('disabled').trigger('classChange');
         nextTab($active);
 
     });

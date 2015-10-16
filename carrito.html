@@ -6,7 +6,9 @@
         	</div>
       	</div>
 			<div class="info infoblock col-md-4" ng-hide="emptyCart || loading">
-				<h5 ng-repeat="producto in productos">{{producto.product.name}}<strong class="pull-right">{{producto.price *selected[producto.id] | currency}}</strong></h5>
+				<div class="product-summary">
+					<h5 ng-repeat="producto in productos">{{producto.product.name}}<strong class="pull-right">{{producto.price *selected[producto.id] | currency}}</strong></h5>
+				</div>
 				<hr class="divider">
 				<h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
 				<hr class="divider">
