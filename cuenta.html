@@ -181,8 +181,8 @@
 							<form ng-attr-id="{{'Direccion'+ direccion.id}}">
 								<br>
 								<p class="field-name name-address">{{direccion.name}}</p>
-								<p class="field-name info">{{direccion.street +' ' + direccion.number}}</p>
-								<p class="field-name info">Argentina </p>
+								<p class="field-name info">{{direccion.street +' ' + direccion.number}}{{(direccion.floor === null)?"":' Piso '+ direccion.floor}}{{(direccion.gate === null)?"":" Departamento: " + direccion.gate}}</p>
+								<p class="field-name info">{{ (direccion.city===null)?"":direccion.city+', '}} {{dirId[direccion.id]}} {{', Argentina' }}</p>
 							</form>
 							<button ng-attr-id="{{modificar + direccion.id}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAddressModal">
 								<span class="glyphicon glyphicon-edit"></span> Modificar
@@ -219,7 +219,6 @@
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
 											<h4 class="modal-title">Modificar Direccion de Envio</h4>
 										</div>
 										<add-address></add-address>

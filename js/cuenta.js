@@ -7,7 +7,6 @@ var app = angular.module('Cuenta', ['navbar']);
 	this.last = this.DOBDay;
 	this.lastM = this.DOBMonth;
 	this.lastY = this.DOBYear;
-
  app.directive('navBar',function(){
  	return{
  		restrict: 'E',
@@ -23,10 +22,12 @@ var app = angular.module('Cuenta', ['navbar']);
 
  });
  app.controller("CuentaController",function($http,$log,$scope){
- 	var cookie = document.cookie;
- 	var user = cookie.substring(cookie.indexOf('user=')+5,cookie.length);
- 	var token = cookie.substring(cookie.indexOf('token=') + 6, cookie.indexOf('user=')-2);
+ 	this.texto = '{"states": [ { "stateId": "C", "name": "Ciudad Autonoma de Buenos Aires" }, { "stateId": "B", "name": "Buenos Aires" }, { "stateId": "K", "name": "Catamarca" }, { "stateId": "H", "name": "Chaco" }, { "stateId": "U", "name": "Chubut" }, { "stateId": "X", "name": "Cordoba" }, { "stateId": "W", "name": "Corrientes" },{ "stateId": "E", "name": "Entre Rios" },{ "stateId": "P", "name": "Formosa" },{ "stateId": "Y", "name": "Jujuy" },{ "stateId": "L", "name": "La Pampa" },{ "stateId": "F", "name": "La Rioja" },{ "stateId": "M", "name": "Mendoza" },{ "stateId": "N", "name": "Misiones" },{ "stateId": "Q", "name": "Neuquen" },{ "stateId": "R", "name": "Rio Negro" },{ "stateId": "A", "name": "Salta" },{ "stateId": "J", "name": "San Juan" },{ "stateId": "D", "name": "San Luis" },{ "stateId": "Z", "name": "Santa Cruz" },{ "stateId": "S", "name": "Santa Fe" },{ "stateId": "G", "name": "Santiago del Estero" },{ "stateId": "V", "name": "Tierra del Fuego" },{ "stateId": "T", "name": "Tucuman" }]}';	
+	this.states = JSON.parse(this.texto).states;
+ 	var user = readCookie("user");
+ 	var token = readCookie("token");
  	var focus = this;
+ 	$scope.dirId = {};
  	$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAccount&username="+user +"&authentication_token="+token).then(function(res){
  		$scope.user = res.data.account;
  		$scope.user.identityCard = parseInt($scope.user.identityCard);
@@ -40,21 +41,28 @@ var app = angular.module('Cuenta', ['navbar']);
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllAddresses&username="+ user +"&authentication_token="+token).then(function(res){
 	 		$scope.direcciones = res.data.addresses; // Fijarse que solo devuelve 8, ya que esta pensado para que haya muchas paginas de direcciones
  			$log.debug($scope.direcciones);
+ 			for(i in $scope.direcciones){
+ 				$scope.dirId[$scope.direcciones[i].id] = $scope.getProvinceById($scope.direcciones[i].province);
+ 			}
  		});
  	}
  	$scope.loadAddresses();
- 	$scope.isAddress= function(){
- 		return ($scope.direcciones == undefined || $scope.direcciones.length == 0);
- 	}
- 	$scope.saveAddress = function(){
+ 	$scope.getProvinceById = function(id){
+ 			for(i=0;i<focus.states.length;i++){
+	 			if(focus.states[i].stateId == id){
+ 					return focus.states[i].name;
+ 				}
+ 			}
+ 	};
+	$scope.saveAddress = function(){
  		var name = '"name":"' + $scope.IdName + '"';
  		var street = ',"street":"' + $scope.street + '"';
  		var number = ',"number":"' + $scope.number + '"';
  		var floor = ($scope.floor === undefined)?"":',"floor":"' + $scope.floor + '"';
  		var gate = ($scope.gate === undefined)?"":',"gate":"' + $scope.dpto + '"';
  		var zipCode = ',"zipCode":"' + $scope.postalCode + '"';
- 		var province = ',"province":"C"'//',"province":"' + $scope.getProvinceId($scope.province) + '"';
- 		var city = ($scope.city === undefined)?"":',"city":"' + $scope.city + '"';
+ 		var province = ',"province":"' + $scope.province + '"';
+ 		var city = ($scope.province === 'C')?"":',"city":"' + $scope.city + '"';
  		var phoneNumber = ',"phoneNumber":"' + $scope.telephone + '"';
 
  		var address ='{'+name+street+number+floor+gate+zipCode+province+city+phoneNumber+'}';
@@ -63,6 +71,9 @@ var app = angular.module('Cuenta', ['navbar']);
  			$log.debug(res);
 
  		});
+ 	}
+ 	$scope.isAddress= function(){
+ 		return ($scope.direcciones == undefined || $scope.direcciones.length == 0);
  	}
  	this.removeAddress = function(id){
  		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=DeleteAddress&username='+ readCookie("user") + '&authentication_token='+ readCookie("token") +'&id=' + id).then(function(res){
