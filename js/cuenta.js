@@ -14,6 +14,13 @@ var app = angular.module('Cuenta', ['navbar']);
  	};
 
  });
+   app.directive('addCreditcard',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "add-creditCard.html"
+ 	};
+
+ });
   app.directive('addAddress',function(){
  	return{
  		restrict: 'E',

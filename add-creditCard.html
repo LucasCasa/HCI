@@ -1,0 +1,34 @@
+<div class="modal-body">
+	<p id="reminder">(Todos los campos son obligatorios)</p>
+	<div class="category">
+		<label>Identificador de Tarjeta
+			<input name="cardName" class="form-control" placeholder="Visa HSBC" id="cardNumber" ng-model="idCard" enabled>
+		</label>
+	</div>
+	<div class="category">
+		<label > Marca
+			<select class="fieldCard" id="cBrand" ng-model="brand" class="form-control"> 
+				<option value="none"> - Seleccionar - </option>
+				<option value="Amex">American Express</option>
+				<option value="Dinners">Dinners</option>
+				<option value="Master">MasterCard</option>
+				<option value="VISA">Visa</option>
+			</select>								
+		</label>
+	</div>												
+	<div class="category">
+		<label >Número
+			<input name="number" class="form-control" placeholder="1234 4567 7890 1234" id="cardNumber"  ng-model="cardnNumber" enabled>
+		</label>
+	</div>									
+	<div class="category">
+		<label >Fecha de Vencimiento
+			<input name="expirationDate" class="form-control" placeholder="ej: 01/01" id="expirationDate" ng-model="expirationDate" enabled>
+		</label>
+	</div>						
+	<div class="category">
+		<label >Código de Seguridad
+			<input name="securityCode" class="form-control" placeholder="ej: 123" id="securityCode" ng-model="securityCode" enabled>
+		</label>
+	</div>
+</div>
