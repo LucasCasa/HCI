@@ -36,13 +36,13 @@ var app = angular.module('Cuenta', ['navbar']);
  		$log.debug(token);
  		$log.debug(res.data);
  	});
- 	loadAddresses();
  	$scope.loadAddresses = function(){
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllAddresses&username="+ user +"&authentication_token="+token).then(function(res){
 	 		$scope.direcciones = res.data.addresses; // Fijarse que solo devuelve 8, ya que esta pensado para que haya muchas paginas de direcciones
  			$log.debug($scope.direcciones);
  		});
  	}
+ 	$scope.loadAddresses();
  	$scope.isAddress= function(){
  		return ($scope.direcciones == undefined || $scope.direcciones.length == 0);
  	}
