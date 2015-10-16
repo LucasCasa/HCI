@@ -14,13 +14,6 @@ var app = angular.module('Carrito', ['navbar']);
  		$scope.colordd = talle;
  	}
  });
- app.directive('navBar',function(){
- 	return{
- 		restrict: 'E',
- 		templateUrl: "nav.html"
- 	};
-
- });
  
  app.controller('CarritoController',function($scope,$http,$log){
  	var cookie = document.cookie;

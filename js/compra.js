@@ -1,3 +1,22 @@
+(function(){
+    var compraApp = angular.module('Compra',['navbar','Carrito','Finalizar'])
+
+    compraApp.directive('navBar',function(){
+        return{
+            restrict: 'E',
+            templateUrl: "nav.html"
+        }
+    });
+    compraApp.directive('carrito',function(){
+        return{
+            restrict: 'E',
+            templateUrl: "carrito.html"
+        }
+    });
+
+
+})();
+
 $(document).ready(function () {
     //Initialize tooltips
     $('.nav-tabs > li a[title]').tooltip();

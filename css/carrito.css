@@ -3,7 +3,7 @@
   position: fixed;
   z-index: 2;
   right:0;
-  top:0;
+  bottom:0;
 }
 .infoblock{
   display: inline-block;
