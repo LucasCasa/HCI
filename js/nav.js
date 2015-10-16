@@ -10,7 +10,8 @@
 		id:3},{name:'Bebes',
 		id:4}];	
 		$scope.seleccionada = 'Todas las categorias';
-	$http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetAllCategories").then(function(res){
+        $scope.itemsOnCart = 0;
+	    $http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetAllCategories").then(function(res){
 		$scope.subcategorias = [[],[],[],[],[]];
 		for(i in res.data.categories){
 			if($.inArray('Adulto' , res.data.categories[i].attributes[0].values) != -1){
@@ -38,6 +39,18 @@
 			}
 		}
 	});
+    $scope.numberOfItemsInCart = function(){
+        if(ReadCookie("carritoOrderId") !== null){
+            $log.debug("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + ReadCookie("user") + "&authentication_token=" + ReadCookie("token") + "&id=" + ReadCookie("carritoOrderId"));
+            $http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + ReadCookie("user") + "&authentication_token=" + ReadCookie("token") + "&id=" + ReadCookie("carritoOrderId")).then(function(res){
+                $log.debug(res);
+                if(res.data.error === undefined){
+                    $scope.itemsOnCart = res.data.order.items.length;
+                }
+            });
+        }
+    }
+    $scope.numberOfItemsInCart();
 	$scope.selectedItem = function(event) {
     	$scope.seleccionada = event;
     	var value = angular.element( document.querySelector( '#search_param' ) );
