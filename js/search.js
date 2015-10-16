@@ -69,7 +69,8 @@ function callAPI(page , itemsPerPage){
 	var putFilter = function(name){
 		var li = document.createElement('li');
 		li.className = 'filterApli';
-		li.innerHTML = '<h2 class="applied-fliter">' + name +'<a href="" rel="nofollow"> <button ng-click="sacarFiltro()" type="button" class="close" aria-label="Close"><span aria-hidden="true"/>&times;</span></button></a></h2>';
+		li.id = name;
+		li.innerHTML = '<h2 class="applied-fliter" >'+ name +'<a href="" rel="nofollow"> <button onclick="sacarFiltro(\''+name+'\')" type="button" class="close" aria-label="Close"><span aria-hidden="true"/>&times;</span></button></a></h2>';
 		document.getElementById('filtrados').appendChild(li);
 	}
 	var onSuccess = function(res){
@@ -87,9 +88,9 @@ function callAPI(page , itemsPerPage){
 		console.log($scope.filters[i].id);
 	}
 
-	if(filt != ""){
+
+	if((filt != "") && (filt != "all")){
 		putFilter(filt);
-		console.log("Entre");
 	}
 	if(categoria!= undefined){
 		putFilter(categoria);
@@ -195,3 +196,69 @@ $http.get(newURL).then(onSuccess,onErrorOcurred);
 })
 
 })();
+
+function sacarFiltro(filtro){
+
+	console.log(filtro);
+
+
+var elem = document.getElementById(filtro);
+document.getElementById('filtrados').removeChild(elem);
+var categorias= ['Hombres','Mujeres','Niños','Niñas','Bebes'];
+var subcategorias = ['Calzado','Indumentaria','Accesorios'];
+
+
+//search.html?x=&cat=Hombres&s=Calzado
+var url = window.location.href;
+var urlArray = url.split("/");
+var pos = urlArray.length;
+
+url = urlArray[pos-1];
+console.log(url);
+
+var param = (url.split("?")[1]);
+param = decodeURIComponent(param);
+param = param.split("&");
+console.log(param);
+
+var busqueda = param[0].split("=")[1];
+var filt = param[1].split("=")[1];
+if(param.length>2){
+	var categoria = param[2].split("=")[1];
+}
+var i=0;
+var url = "search.html?x=&cat=";
+var flag = true;
+if(filt!=undefined){
+for(i ; i<categorias.length ; i++){
+	if(categorias[i].localeCompare(filtro)==0){
+		filt = "";
+	}
+}
+
+	url += filt;
+}
+
+if(categoria!=undefined){
+for(i=0 ; i<subcategorias.length ; i++){
+	if(subcategorias[i].localeCompare(filtro)==0){
+		categoria = "";
+			flag = false;
+	}
+}
+if(flag)
+	url += "&s="+categoria;
+}
+
+
+//if((filt==undefined) && (categoria == undefined)){
+//	url = search.html?x=&cat=all
+//}
+if(((filt == "") && (categoria == undefined)) || ((filt == "") && (categoria == ""))){
+	console.log("P{rimera}");
+	url = "search.html?x=&cat=all";
+}
+
+window.location.href= url;
+//window.location.href = "www.mysite.com/page2.php";
+}
