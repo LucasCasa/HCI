@@ -13,8 +13,6 @@
             templateUrl: "carrito.html"
         }
     });
-
-
 })();
 
 $(document).ready(function () {

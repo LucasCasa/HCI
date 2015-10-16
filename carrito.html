@@ -5,7 +5,7 @@
           		<img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
         	</div>
       	</div>
-			<div class="info infoblock col-md-4">
+			<div class="info infoblock col-md-4" ><!--ng-hide="emptyCart || loading"-->
 				<h5 ng-repeat="producto in productos">{{producto.product.name}}<strong class="pull-right">{{producto.price *selected[producto.id] | currency}}</strong></h5>
 				<hr class="divider">
 				<h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
@@ -13,9 +13,9 @@
 				<a href="index.html"><button type="button" class="btn btn-default" >
 					<span class="glyphicon glyphicon-shopping-cart"></span> Seguir comprando
 				</button></a>
-				<a href="finalizar.html"><button type="button" class="btn btn-success">
+				<button type="button" class="btn btn-success next-step" ng-disabled="!isLoged()">
 					Pagar<span class="glyphicon glyphicon-play"></span>
-				</button></a>
+				</button>
 				<p style="color:#888;padding: 10px"> *Para comprar es necesario iniciar sesion </p>
 			</div>
 		</div>
@@ -24,7 +24,8 @@
 			<h1 class="col-sm-offset-2">Mi Carrito</h1>
 			<div class="row">
 				<div class="col-sm-12 col-md-8 col-sm-offset-0" style="padding-top: 50px">
-					<table class="table table-hover">
+				<h1 ng-show="emptyCart" style="text-align:center"> No hay productos en el carrito</h1>
+					<table class="table table-hover" ng-hide="emptyCart">
 						<thead>
 							<tr>
 								<th>Foto</th>

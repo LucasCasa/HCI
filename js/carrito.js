@@ -23,16 +23,24 @@ var app = angular.module('Carrito', ['navbar']);
  	$scope.productos = [];
  	$scope.loading = true;
  	var orderID = ReadCookie("carritoOrderId");
-	$http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + user + "&authentication_token=" + token + "&id=" + orderID).then(function(res){
-		$log.debug(res);
-		$scope.productos = res.data.order.items;
-		$scope.total = 0;
-		$scope.productos.forEach(function(entry){
-			$scope.total += entry.price;
-			$scope.selected[entry.id] = entry.quantity;
-		})
+ 	if(orderID !== null){
+		$http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + user + "&authentication_token=" + token + "&id=" + orderID).then(function(res){
+			$log.debug(res);
+			$scope.productos = res.data.order.items;
+			if($scope.productos.length == 0){
+				$scope.emptyCart = true;
+			}
+			$scope.total = 0;
+			$scope.productos.forEach(function(entry){
+				$scope.total += entry.price;
+				$scope.selected[entry.id] = entry.quantity;
+			})
+			$scope.loading = false;
+		});
+	}else{
 		$scope.loading = false;
-	});
+		$scope.emptyCart = true; 
+	}
 	this.updateTotal= function(){
 		$scope.total = 0;
 		if($scope.productos !== undefined){
@@ -56,8 +64,17 @@ var app = angular.module('Carrito', ['navbar']);
 			$scope.productos.splice(index,1);
 			esto.updateTotal();
 		});
+		if($scope.productos.length == 0){
+			$scope.emptyCart = true;
+		}
 	};
-		
+	$scope.isLoged = function(){
+        if(document.cookie.indexOf('user') == -1){
+            return false;
+        }else{
+            return true;
+        }
+    }
  });
 
  var talles = ['S','M','L','XL'];
