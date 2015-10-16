@@ -42,31 +42,7 @@
 								</td>
 								<td>
 									<h3 style="margin-top:0">{{producto.product.name}}</h3>
-									<div class="row">
-										<h4 class="col-sm-2">Talle</h4>
-										<!-- Single button -->
-										<div class="btn-group col-sm-1">
-											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												Talle <span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu" ng-controller="TalleController as Talle">
-												<li ng-repeat="talle in Talle.talles"> <a href="#"> {{ talle}} </a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="row">
-										<h4 class="col-sm-2">Color</h4>
-										<div class="btn-group col-sm-1" ng-controller="ColorController as Color">
-											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenu1">
-												Color<span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu" >
-												<li ng-repeat="color in Color.colores"><a href="#">{{color}}</a></li>
-											</ul>
-										</div>
-									</div>
 								</td>
-
 								<td class="col-sm-1 col-md-1 text-center"><strong>{{producto.price | currency}}</strong></td>
 								<td class="col-sm-1 col-md-1 text-center"><strong>{{producto.price*selected[producto.id] | currency}}</strong></td>
 								<td class="col-sm-1 col-md-2" style="text-align: center">

@@ -73,20 +73,8 @@ app.controller('ProductController',function($scope,$http,$log){
       $scope.cartBtn = "disabled";
       $(document).find("#btn-cart").html("<span class=\"glyphicon glyphicon-ok\"></span> Agregado");
     });
-  }
+  };
 });
- app.controller('TalleController',function($scope){
- 	this.talles = talles;
- 	this.setTalle = function(talle){
- 		
- 	}
- });
- app.controller('ColorController',function($scope){
- 	this.colores = colores;
- 	this.setColor = function(talle){
- 		$scope.colordd = talle;
- 	}
- });
  app.controller('AmountController',function($scope){
  	this.add = function(value){
  		$scope.selectedAmount = parseInt($scope.selectedAmount) + value;
