@@ -191,7 +191,7 @@ var app = angular.module('Cuenta', ['navbar']);
 		$('#year').parent().parent().parent().addClass('has-success');
 		return true;
 	}
-
+	
 	this.updateAccount = function(user){
 		var account = '{"firstName":"'+user.firstName+'","lastName":"'+user.lastName+'","gender":"'+user.gender+'","identityCard":"'+user.identityCard+'","email":"'+user.email+'","birthDate":"'+this.DOB[0] +'-'+ this.DOB[1] +'-'+ this.DOB[2]+'"}';
 		$log.debug('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=UpdateAccount&username=' + readCookie("user") + '&authentication_token='+readCookie("token") +'&account='+ account);
