@@ -44,29 +44,6 @@
 						<div class="product-price" ng-cloak>{{producto.price | currency}}</div>
 						<br><br>
 						<div class="row">
-							<h4 class="col-sm-3">Talle</h4>
-							<!-- Single button -->
-							<div class="btn-group col-sm-1">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Talle <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" ng-controller="TalleController as Talle">
-									<li ng-repeat="talle in Talle.talles"> <a href="#"> {{ talle}} </a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<h4 class="col-sm-3">Color</h4>
-							<div class="btn-group col-sm-1" ng-controller="ColorController as Color">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenu1">
-									Color <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" >
-									<li ng-repeat="color in Color.colores"><a href="#">{{color}}</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
 							<h4 class="col-sm-3">Cantidad</h4>
 							<div class="input-group col-sm-2 " style="padding-left:10px" ng-controller="AmountController as amount">
 								<span class="input-group-btn">
