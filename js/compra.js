@@ -1,5 +1,5 @@
 (function(){
-    var compraApp = angular.module('Compra',['navbar','Carrito','Finalizar'])
+    var compraApp = angular.module('Compra',['navbar','Carrito','Finalizar','Envio'])
 
     compraApp.directive('navBar',function(){
         return{

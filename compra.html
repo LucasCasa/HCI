@@ -60,65 +60,21 @@
 								<carrito></carrito>
 							</div>
 							<!-- step 2 -->
-							<div class="tab-pane" role="tabpanel" id="step2">
-								<h2>Dirección de Envío y Facturación</h2> 
+							<div class="tab-pane" role="tabpanel" id="step2" ng-app="Envio" ng-controller="EnvioController as EnvioCtrl" >
+								<h2>Dirección de Envío</h2> 
 								<div class="row">
 									<div class="container">      
 									  	<table class="table">
 									    	<thead>
 									      		<tr>
 									        		<th>Envío</th>
-									        		<th>Facturación</th>
 									        		<th>Dirección</th>
-									        		<th>Modificar Dirección</th>
-									        		<th>Eliminar Dirección</th>
 									      		</tr>
 									    	</thead>
 										    <tbody>
-										      	<tr>
-											        <td><input type="radio" name="envio" value="1" /> </td>
-											        <td><input type="radio" name="fact" value="1" />  </td>
-											        <td><div class="panel-body">Madero 889, Puerto Madero, Buenos Aires, Argentina</div></td>
-											        <td>
-											        	<button type="button" class="btn btn-info">
-											        		<span class="glyphicon glyphicon-edit"></span>
-											        	</button>
-											        </td>
-											        <td>
-											        	<button type="button" class="btn btn-danger btn-rmv">
-											        		<span class="glyphicon glyphicon-remove"></span>
-											        	</button>
-											        </td>
-										      	</tr>
-										      	<tr>
-											        <td><input type="radio" name="envio" value="2" /></td>
-											        <td><input type="radio" name="fact" value="2" /></td>
-											        <td><div class="panel-body">25 de Mayo 457, Puerto Madero, Buenos Aires, Argentina</div></td>
-											     	<td>
-											        	<button type="button" class="btn btn-info">
-											        		<span class="glyphicon glyphicon-edit"></span>
-											        	</button>
-											        </td>
-											        <td>
-											        	<button type="button" class="btn btn-danger btn-rmv">
-											        		<span class="glyphicon glyphicon-remove"></span>
-											        	</button>
-											        </td>
-										      	</tr>
-										      	<tr>
-											        <td><input type="radio" name="envio" value="3" /></td>
-											        <td><input type="radio" name="fact" value="3" /></td>
-											        <td><div class="panel-body">Ruben Darío 816, Shan Ishidro, Buenos Aires, Argentina</div></td>
-											        <td>
-											        	<button type="button" class="btn btn-info">
-											        		<span class="glyphicon glyphicon-edit"></span>
-											        	</button>
-											        </td>
-											        <td>
-											        	<button type="button" class="btn btn-danger btn-rmv">
-											        		<span class="glyphicon glyphicon-remove"></span>
-											        	</button>
-											        </td>
+										      	<tr ng-repeat="direccion in direcciones">
+											        <td><input type="radio" name="envio" ng-model="$parent.selectedAddress" ng-change="aux(direccion.id)" ng-value="direccion.id"/> </td>
+											        <td><div class="panel-body"> {{direccion.name}} - {{direccion.street +' '+ direccion.number}} {{(direccion.floor !== null)?direccion.floor:""}} {{(direccion.gate===null)?"":direccion.gate}} - {{getProvinceById(direccion.province) +", "}} {{(direccion.city === null)?"":direccion.city + " ,"}} Argentina </div></td>
 										      	</tr>
 										    </tbody>
 										</table>
@@ -126,9 +82,6 @@
 								</div>
 								<div class="row">
 									<!-- Button trigger modal -->
-									<button type="button" class="btn btn-primary btn-lg btn-adress" data-toggle="modal" data-target="#newAdressModal">
-										<span class="glyphicon glyphicon-plus"></span>       Agregar nueva Dirección
-									</button>
 									<!-- Modal -->
 									<div class="modal fade" data-backdrop="static" id="newAdressModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 												<div class="modal-dialog modal-sm" role="document">
@@ -202,7 +155,7 @@
 								</div>
 								<ul class="list-inline pull-right">
 									<li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
-									<li><button type="button" class="btn btn-primary next-step">Continuar</button></li>
+									<li><button type="button" class="btn btn-primary next-step" ng-click="confirmAddresses()">Continuar</button></li>
 								</ul>
 							</div>
 							<!-- step 3 -->
@@ -243,5 +196,6 @@
 	<script type="text/javascript" src="js/nav.js"></script>
 	<script type="text/javascript" src="js/finalizar.js"></script>
 	<script type="text/javascript" src="js/compra.js"></script>
+	<script type="text/javascript" src="js/envio.js"></script>
 </body>
 </html>
