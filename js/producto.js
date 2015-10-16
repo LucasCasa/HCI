@@ -1,30 +1,5 @@
 (function(){
-var app = angular.module('productoApp',['navbar'])
-    /*.service('shared', function () {
-          var selectedTalle = undefined;
-          var selectedColor = undefined;
-          var selectedAmount  = 1;
-          return {
-              getSelectedTalle: function () {
-                  return selectedTalle;
-              },
-              setSelectedTalle: function(value) {
-                  selectedTalle = value;
-              },
-              getSelectedColor: function () {
-                  return selectedColor;
-              },
-              setSelectedColor: function(value) {
-                  selectedColor = value;
-              },
-              getSelectedAmount: function () {
-                  return selectedAmount;
-              },
-              setSelectedAmount: function(value) {
-                  selectedAmount = value;
-              },
-          };
-      })*/;
+var app = angular.module('productoApp',['navbar']);
 
 app.directive('navBar',function(){
  	return{
@@ -43,36 +18,60 @@ app.controller('ProductController',function($scope,$http,$log){
 		$log.debug(res);
 		$log.debug(this.prodId);
 	});
-  $scope.loading = false;
+  $scope.loadingCart = false;
+  $scope.loadingWl = false;
   $scope.cartBtn = "";
+  $scope.WlBtn = "";
   $scope.selectedAmount = 1;
 	this.selected = 1;
 	this.select = function(value){
 		this.selected = value;
 	};
+  this.addToWl = function(){
+    $scope.loadingWl = true;
+    if(ReadCookie("wishlistOrderID")==null){
+      $http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=CreateOrder&username=" + user + "&authentication_token=" + token).then(function(res){
+        $log.debug(res);
+        document.cookie="wishlistOrderID=" + res.data.order.id + "; path=/";
+        this.addWlWithOrder();
+      });
+    }else{
+      this.addWlWithOrder();
+    }
+  };
+  this.addWlWithOrder = function(){
+    var orderID = ReadCookie("wishlistOrderID");
+    $http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + this.prodId + '},"quantity":'+ 5 +'}').then(function(res){
+      $log.debug('quantity: ' + $scope.selectedAmount);
+      $log.debug('token: ' + token);
+      $log.debug('orderID: ' + orderID);
+      $log.debug(res);
+      $scope.WlBtn = "disabled";
+      $(document).find("#btn-wl").html("<span class=\"glyphicon glyphicon-ok\"></span> Agregado a la lista de Deseos");
+    });
+  };
   this.addToCart = function(){
-    $scope.loading = true;
+    $scope.loadingCart = true;
     if(ReadCookie("carritoOrderId")==null){
       $http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=CreateOrder&username=" + user + "&authentication_token=" + token).then(function(res){
         $log.debug(res);
         document.cookie="carritoOrderId=" + res.data.order.id + "; path=/";
-        this.addWithOrder();
+        this.addCartWithOrder();
         alert("crea uno nuevo");
       });
     }else{
-      this.addWithOrder();
+      this.addCartWithOrder();
     }
   };
-  this.addWithOrder = function(){
+  this.addCartWithOrder = function(){
     var orderID = ReadCookie("carritoOrderId");
-    $scope.$apply;
     $http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + this.prodId + '},"quantity":'+ 5 +'}').then(function(res){
       $log.debug('quantity: ' + $scope.selectedAmount);
       $log.debug('token: ' + token);
       $log.debug('orderID: ' + orderID);
       $log.debug(res);
       $scope.cartBtn = "disabled";
-      $(document).find("#btn-cart").html("<span class=\"glyphicon glyphicon-ok\"></span> Agregado");
+      $(document).find("#btn-cart").html("<span class=\"glyphicon glyphicon-ok\"></span> Agregado al carrito");
     });
   };
   this.add = function(value){
@@ -81,9 +80,6 @@ app.controller('ProductController',function($scope,$http,$log){
       $scope.selectedAmount = 1;
   };
 });
-
- var talles = ['S','M','L','XL'];
- var colores = ['Amarillo','Verde','Azul','Rojo'];
 
 app.controller('ReviewController',function($scope,$http,$log){
 	this.commenting = false;

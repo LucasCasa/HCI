@@ -16,7 +16,6 @@ var app = angular.module('Carrito', ['navbar']);
  });
  
  app.controller('CarritoController',function($scope,$http,$log){
- 	var cookie = document.cookie;
 	var user = ReadCookie("user");
 	var token = ReadCookie("token");
  	$scope.selected = {};
@@ -76,9 +75,6 @@ var app = angular.module('Carrito', ['navbar']);
         }
     }
  });
-
- var talles = ['S','M','L','XL'];
- var colores = ['Amarillo','Verde','Azul','Rojo'];
 })();
 
 $(document).on('click', '.dropdown-menu li a', function(){

@@ -1,28 +1,25 @@
 (function(){ 
 var app = angular.module('wishlist',['navbar']);
 
- app.controller('WishlistController',function($scope,$http,$log){	
-	$http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetProductsByCategoryId&id=2").then(function(res){
-		$scope.productos = res.data.products;
-	});
+ app.controller('WishlistController',function($scope,$http,$log){
+	var user = ReadCookie("user");
+	var token = ReadCookie("token");
+	var orderID = ReadCookie("wishlistOrderID");
+	$scope.loading = true;
+	$scope.emptyList = false;
+	if(orderID !== null){
+		$http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + user + "&authentication_token=" + token + "&id=" + orderID).then(function(res){
+			$scope.productos = res.data.order.items;
+			$scope.loading = false;
+		});
+	}else{
+		$scope.loading = false;
+		$scope.emptyList = true; 
+	}
 });
- app.controller('TalleController',function(){
- 	this.talles = talles;
- 	this.setTalle = function(talle){
- 		
- 	}
- });
- app.controller('ColorController',function($scope){
- 	this.colores = colores;
- 	this.setColor = function(talle){
- 		$scope.colordd = talle;
- 	}
- });
  app.directive('navBar',function(){
  	return{restrict: 'E',templateUrl: "nav.html"};
  });
- var talles = ['S','M','L','XL'];
- var colores = ['Amarillo','Verde','Azul','Rojo'];
 })();
 
 
@@ -31,3 +28,16 @@ $(document).ready(function(){
 		$(this).closest("tr").remove();
 	});
 });
+
+function ReadCookie(name)
+{
+  name += '=';
+  var parts = document.cookie.split(/;\s*/);
+  for (var i = 0; i < parts.length; i++)
+  {
+    var part = parts[i];
+    if (part.indexOf(name) == 0)
+      return part.substring(name.length)
+  }
+  return null;
+}

@@ -19,9 +19,15 @@
 			<h3>Lista de Deseos</h3>
 		</div>
 		<br/>
+		<div class="loading-block" ng-show="loading">
+        	<div class="loading-image" >
+          		<img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
+        	</div>
+      	</div>
 		<div class="row">
 			<div class="col-sm-12 col-md-11" style="padding-top: 50px">
-                  <table class="table table-hover">
+				  <h1 ng-show="emptyList" style="text-align:center"> No hay productos en la lista de Deseos</h1>
+                  <table class="table table-hover" ng-show="!emptyList">
                     <thead>
                       <tr>
 						<th>Foto</th>
@@ -32,39 +38,14 @@
                     </thead>
                     <tbody>
                     	<!-- row 1 -->
-                      	<tr ng-repeat="producto in productos">
+                      	<tr ng-repeat="item in productos">
 	                        <td class="col-sm-2">
-	                         <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" ng-attr-src="{{producto.imageUrl[0]}}" style="width: 72px; height: 72px;"> </a> </span>
+	                         <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" ng-attr-src="{{item.product.imageUrl}}" style="width: 72px; height: 72px;"> </a> </span>
 							</td>
 							<td align="center">
-	                        	<h3 style="margin-top:0">{{producto.name}}</h3>
-					 			<div class="row">
-						 			<div id="talle">
-			                         	<h4 class="col-sm-2">Talle</h4>
-			                         	<!-- Single button -->
-			                         	<div class="btn-group col-sm-2">
-			                          		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			                            		Talle <span class="caret"></span>
-			                          		</button>
-			                          		<ul class="dropdown-menu" ng-controller="TalleController as Talle">
-			                            		<li ng-repeat="talle in Talle.talles"> <a href="#"> {{ talle}} </a></li>
-			                          		</ul>
-			                        	</div>
-			                        </div>
-			                    	<div id="color">
-		                        		<h4 class="col-sm-3">Color</h4>
-		                    			<div class="btn-group col-sm-2" ng-controller="ColorController as Color">
-		                      				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenu1">
-		                        				Color <span class="caret"></span>
-		                      				</button>
-		                      				<ul class="dropdown-menu" >
-		                        				<li ng-repeat="color in Color.colores"><a href="#">{{color}}</a></li>
-		                      				</ul>
-		                    			</div>
-		                    		</div>
-								</div>
+	                        	<h3 style="margin-top:0">{{item.product.name}}</h3>
 	                     	</td>
-		                    <td class="col-sm-1 col-md-1 text-center"><p id="price">{{producto.price | currency}}</p></td>
+		                    <td class="col-sm-1 col-md-1 text-center"><p id="price">{{item.price | currency}}</p></td>
 	                      	<td class="col-sm-1 col-md-2" style="text-align: center">
 	                      		<button type="button" class="btn btn-info">
 		                         	<span class="glyphicon glyphicon-shopping-cart"></span> Agregar al carrito
