@@ -45,16 +45,16 @@
 						<br><br>
 						<div class="row">
 							<h4 class="col-sm-3">Cantidad</h4>
-							<div class="input-group col-sm-2 " style="padding-left:10px" ng-controller="AmountController as amount">
+							<div class="input-group col-sm-2 " style="padding-left:10px">
 								<span class="input-group-btn">
-									<button style="padding:2px" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]" ng-click="amount.add(-1)">
+									<button style="padding:2px" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]" ng-click="ProductCtrl.add(-1)">
 										<span class="glyphicon glyphicon-minus"></span>
 									</button>
 								</span>
 								<input type="text" name="quant[2]" class="form-control input-number" ng-model="selectedAmount" min="1" max="100"
 								style="text-align:center">
 								<span class="input-group-btn">
-									<button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]" ng-click="amount.add(1)">
+									<button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]" ng-click="ProductCtrl.add(1)">
 										<span class="glyphicon glyphicon-plus" ></span>
 									</button>
 								</span>

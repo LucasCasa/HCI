@@ -65,7 +65,8 @@ app.controller('ProductController',function($scope,$http,$log){
   };
   this.addWithOrder = function(){
     var orderID = ReadCookie("carritoOrderId");
-    $http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + this.prodId + '},"quantity":'+ $scope.selectedAmount +'}').then(function(res){
+    $scope.$apply;
+    $http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + this.prodId + '},"quantity":'+ 5 +'}').then(function(res){
       $log.debug('quantity: ' + $scope.selectedAmount);
       $log.debug('token: ' + token);
       $log.debug('orderID: ' + orderID);
@@ -74,14 +75,12 @@ app.controller('ProductController',function($scope,$http,$log){
       $(document).find("#btn-cart").html("<span class=\"glyphicon glyphicon-ok\"></span> Agregado");
     });
   };
+  this.add = function(value){
+    $scope.selectedAmount = parseInt($scope.selectedAmount) + value;
+    if($scope.selectedAmount < 1)
+      $scope.selectedAmount = 1;
+  };
 });
- app.controller('AmountController',function($scope){
- 	this.add = function(value){
- 		$scope.selectedAmount = parseInt($scope.selectedAmount) + value;
- 		if($scope.selectedAmount < 1)
- 			$scope.selectedAmount = 1;
- 	};
- })
 
  var talles = ['S','M','L','XL'];
  var colores = ['Amarillo','Verde','Azul','Rojo'];
