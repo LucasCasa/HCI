@@ -13,6 +13,22 @@
             templateUrl: "carrito.html"
         }
     });
+    compraApp.directive('finalizar',function(){
+        return{
+            restrict: 'E',
+            templateUrl: "finalizar.html"
+        }
+    });
+    
+    compraApp.controller('CompraController', function(){
+        
+    this.nextStep = function(){
+        var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+    };
+    });
+
 })();
 
 $(document).ready(function () {

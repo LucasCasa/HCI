@@ -5,7 +5,7 @@
           		<img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
         	</div>
       	</div>
-			<div class="info infoblock col-md-4" ><!--ng-hide="emptyCart || loading"-->
+			<div class="info infoblock col-md-4" ng-hide="emptyCart || loading">
 				<h5 ng-repeat="producto in productos">{{producto.product.name}}<strong class="pull-right">{{producto.price *selected[producto.id] | currency}}</strong></h5>
 				<hr class="divider">
 				<h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
@@ -13,7 +13,7 @@
 				<a href="index.html"><button type="button" class="btn btn-default" >
 					<span class="glyphicon glyphicon-shopping-cart"></span> Seguir comprando
 				</button></a>
-				<button type="button" class="btn btn-success next-step" ng-disabled="!isLoged()">
+				<button type="button" class="btn btn-success next-step" ng-disabled="!isLoged() || emptyCart" ng-click="CompraCtrl.nextStep()">
 					Pagar<span class="glyphicon glyphicon-play"></span>
 				</button>
 				<p style="color:#888;padding: 10px"> *Para comprar es necesario iniciar sesion </p>

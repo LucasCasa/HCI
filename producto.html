@@ -131,15 +131,15 @@
 				<h1><small class="pull-right" ng-cloak>{{revs.reviews.length}} comentarios</small> Comentarios </h1>
 			</div>
 			<div class="review-group-item row" ng-repeat="review in revs.reviews">
-				<div ng-repeat="star in range(5) track by $index">
-					<span class="glyphicon" ng-class="{glyphicon-star : $index<review.stars, glyphicon-star-empty : $index>=review.stars}"/>
+				<div>
+					<span class="glyphicon glyphicon-star" ng-repeat="star in range(review.stars) track by $index"/>
 				</div>
-				<br/>
+				<br>
 				<h4 ng-cloak>"{{review.body}}"</h4> - por <strong ng-cloak>{{review.author}}</strong>
-				<br/>
-				<br/>
+				<br>
+				<br>
 			</div>
-			<br/>
+			<br>
 			<button type="button" class="btn btn-primary btn-lg" ng-hide="revs.commenting" ng-click="revs.toggleCommenting()">Comentar</button>
 			<form class="new-comment" ng-show="revs.commenting">
 				<div class="form-group">
