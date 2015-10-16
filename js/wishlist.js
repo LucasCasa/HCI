@@ -28,18 +28,30 @@ var app = angular.module('wishlist',['navbar']);
 			$scope.emptyList = true;
 		}
 	};
+	this.addToCart = function(id,index){
+	    $scope.loadingCart = true;
+	    if(ReadCookie("carritoOrderId")==null){
+	      $http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=CreateOrder&username=" + user + "&authentication_token=" + token).then(function(res){
+	        $log.debug(res);
+	        document.cookie="carritoOrderId=" + res.data.order.id + "; path=/";
+	        this.addCartWithOrder(id,index);
+	      });
+	    }else{
+	      this.addCartWithOrder(id,index);
+	    }
+  	};
+  	this.addCartWithOrder = function(id,index){
+	    var orderID = ReadCookie("carritoOrderId");
+	    var esto = this;
+	    $http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + id + '},"quantity":'+ 1 +'}').then(function(res){
+	    	esto.remove(id,index);
+	    });
+  	};
 });
  app.directive('navBar',function(){
  	return{restrict: 'E',templateUrl: "nav.html"};
  });
 })();
-
-
-$(document).ready(function(){
-	$("tbody").on("click",".btn-rmv",function(){
-		$(this).closest("tr").remove();
-	});
-});
 
 function ReadCookie(name)
 {
