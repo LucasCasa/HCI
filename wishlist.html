@@ -27,7 +27,7 @@
 		<div class="row">
 			<div class="col-sm-12 col-md-11" style="padding-top: 50px">
 				  <h1 ng-show="emptyList" style="text-align:center"> No hay productos en la lista de Deseos</h1>
-                  <table class="table table-hover" ng-show="!emptyList">
+                  <table class="table table-hover" ng-show="!emptyList" ng-hide="loading">
                     <thead>
                       <tr>
 						<th>Foto</th>
@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                     	<!-- row 1 -->
-                      	<tr ng-repeat="item in productos">
+                      	<tr ng-repeat="item in productos track by $index">
 	                        <td class="col-sm-2">
 	                         <span> <a class="thumbnail pull-left" href="#"> <img class="media-object" ng-attr-src="{{item.product.imageUrl}}" style="width: 72px; height: 72px;"> </a> </span>
 							</td>
@@ -50,7 +50,7 @@
 	                      		<button type="button" class="btn btn-info">
 		                         	<span class="glyphicon glyphicon-shopping-cart"></span> Agregar al carrito
 		                        </button>
-		                        <button type="button" class="btn btn-danger btn-rmv">
+		                        <button type="button" class="btn btn-danger btn-rmv" ng-click="WishlistCtrl.remove(item.id,$index)">
 		                         	<span class="glyphicon glyphicon-remove"></span> Eliminar
 		                        </button>
 	                        </td>

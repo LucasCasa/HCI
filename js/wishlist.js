@@ -9,6 +9,7 @@ var app = angular.module('wishlist',['navbar']);
 	$scope.emptyList = false;
 	if(orderID !== null){
 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + user + "&authentication_token=" + token + "&id=" + orderID).then(function(res){
+			$log.debug(res);
 			$scope.productos = res.data.order.items;
 			$scope.loading = false;
 		});
@@ -16,6 +17,17 @@ var app = angular.module('wishlist',['navbar']);
 		$scope.loading = false;
 		$scope.emptyList = true; 
 	}
+	this.remove = function(id,index){
+		$scope.loading = true;
+		$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=RemoveItemFromOrder&username='+ user +'&authentication_token='+ token +'&id=' + id).then(function(res){
+			$log.debug(res);
+			$scope.loading = false;
+			$scope.productos.splice(index,1);
+		});
+		if($scope.productos.length == 0){
+			$scope.emptyList = true;
+		}
+	};
 });
  app.directive('navBar',function(){
  	return{restrict: 'E',templateUrl: "nav.html"};
