@@ -267,11 +267,11 @@ var app = angular.module('Cuenta', ['navbar']);
 
  	}
  	this.removeCard = function(id){
- 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=DeleteCreditCard&username='+ readCookie("user") + '&authentication_token='+ readCookie("token") +'&id=' + id).then(function(res){
+ 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=DeleteCreditCard&username='+ user + '&authentication_token='+ token +'&id=' + id).then(function(res){
  			$log.debug(res);
  			if(res.data.error === undefined){
  				for(i = 0; i< $scope.tarjetas.length;i++){
- 					if($scope.tarjetas[i].idCard === id){
+ 					if($scope.tarjetas[i].id === id){
  						$scope.tarjetas.splice(i,1);
  					}
  				}
