@@ -85,6 +85,7 @@
     	document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     	document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
         document.cookie = "carritoOrderId=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+        document.cookie = "wishlistOrderID=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     	location.href='index.html';
     }
     function ReadCookie(name)
