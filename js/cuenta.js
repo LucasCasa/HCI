@@ -291,11 +291,12 @@ var app = angular.module('Cuenta', ['navbar']);
  		});
  	}
  	$scope.loadCard = function(){
- 		$http.get("￼http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllCreditCards&username="+ user +"&authentication_token="+token).then(function(res){
+ 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllCreditCards&username="+ user +"&authentication_token="+token).then(function(res){
 	 		$scope.tarjetas = res.data.creditCards; // Fijarse que solo devuelve 8, ya que esta pensado para que haya muchas paginas de direcciones
  			$log.debug($scope.tarjetas);
  		});
  	}
+ 	$scope.loadCard();
  });
  app.filter('capitalize', function() {
     return function(input) {
