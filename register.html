@@ -40,7 +40,7 @@
                 <input type="number" name="dni" class="form-control" ng-model="register.identityCard" id="dni" value="" min="0" max="100000000" integer required>
             </div>
             <div class="form-group col-lg-6">
-                <div class="row">DOBYear
+                <div class="row">
                     <label>Fecha de Nacimiento</label>
                 </div>
                 <div class="row">
@@ -54,10 +54,10 @@
                 <div class="form-group col-sm-12">
                   <label class="col-sm-2">Género: </label>
                     <label class="col-sm-3">
-                      <input type="radio" id="MRB" ng-model="register.gender" name="gender" value="M" selected /> Masculino   
+                      <input type="radio" id="MRB" ng-model="register.gender"  name="gender" value="M" selected /> Masculino   
                     </label> 
                     <label class="col-sm-3">
-                      <input type="radio" id="FRB" ng-model="register.gender" name="gender" value="F" /> Femenino
+                      <input type="radio" id="FRB" ng-model="register.gender" name="gender"  value="F" /> Femenino
                     </label> 
                 </div>
                     <button type="submit" ng-disabled="!register.isValid()" class="btn btn-primary" value="Registrarse" ng-click="register.registerUser()">Registrarse</button>

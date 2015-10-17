@@ -322,6 +322,7 @@ var app = angular.module('Cuenta', ['navbar']);
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateCreditCard&username="+user+"&authentication_token="+token+"&credit_card="+ card).then(function(res){
  			$log.debug(res);
  			$scope.loadingSC = false;
+ 			$scope.loadCard();
  		});
  	}
  	this.updateCard = function(tarjeta){
@@ -335,6 +336,7 @@ var app = angular.module('Cuenta', ['navbar']);
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=UpdateCreditCard&username=' + user + '&authentication_token='+ token +'&credit_card='+ card).then(function(res){
 			$log.debug(res);
 			$scope.loadingUC = false;
+			$scope.loadCard();
 		});
 	}
  	$scope.loadCard = function(){

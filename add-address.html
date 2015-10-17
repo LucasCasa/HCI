@@ -1,20 +1,28 @@
 <div class="modal-body" >
+	<h4 class="required-warning"> Todos los campos con * son obligatorios</h4>
 	<div class="category">
-		<label >Identificador de Dirección
-			<input name="name" class="form-control" type="text" placehoder="ej: Casa" id="name" ng-model="IdName" enabled>										
+		<label >Identificador de Dirección*
+			<input name="name" class="form-control" type="text" placehoder="Casa" id="name" ng-model="IdName" enabled>										
 		</label>
 	</div>
+	<hr>
 	<div class="category">
 		<label >Dirección
-			<span><input name="address" class="form-control col-xs-6" placeholder="Dirección" id="street"  ng-model="street" enabled></span>
-			<span><input name="number" class="form-control col-xs-4 col-xs-offset-6" placeholder="Numero" id="number"  ng-model="number" enabled></span>
-			<input name="piso" class="form-control" placeholder="Piso" id="floor" ng-model="floor" enabled>
-			<input name="dpto" class="form-control" placeholder="Departamento" ng-model="dpto" id="dpto" enabled>
+		<div class="row">
+			<span class="col-sm-12">Calle*<input name="address" class="form-control" placeholder="Dirección" id="street" ng-model="street" enabled></span>
+			</div>
+			<div class="row">
+			<span class="col-sm-3">Numero*<input name="number" class="form-control" placeholder="Numero" id="number"  ng-model="number" enabled></span>
+			<span class="col-sm-3">Piso<input name="piso" class="form-control" placeholder="Piso" id="floor" ng-model="floor" enabled></span>
+			<span class="col-sm-3">Departamento<input name="dpto" class="form-control" placeholder="Departamento" ng-model="dpto" id="dpto" enabled></span>
+			</div>
 		</label>
+
 	</div>	
+	<hr>
 	<div class="category"> 
-		<label >Provincia</label> 
-		<select name="Province" ng-model="province">
+		<label >Provincia*</label> 
+		<select name="Province" class="form-control" ng-model="province">
 			<option ng-repeat="state in CuentaCtrl.states track by $index" ng-selected="state.stateId == $parent.province" ng-value="state.stateId">{{state.name}}</option>
 		</select>
 	</div>													
@@ -23,14 +31,15 @@
 			<input name="city" class="form-control" placeholder="Ciudad" id="city" ng-model="city" ng-disabled="province === 'C'">
 		</label>
 	</div>
+	<hr>
 	<div class="category">
-		<label >Código Postal
+		<label >Código Postal*
 			<input name="postalCode" class="form-control" placeholder="ej: 1640" id="postalCode" ng-model="postalCode" enabled>
 		</label>
 	</div>
-
+	<hr>
 	<div class="category">
-		<label >Teléfono
+		<label >Teléfono*
 			<input name="telephone" class="form-control" placeholder="ej 1111-1111" id="telephone" ng-model="telephone" enabled>
 		</label>
 	</div>

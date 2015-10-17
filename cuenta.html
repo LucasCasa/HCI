@@ -14,317 +14,319 @@
 	<nav-bar></nav-bar>
 	<div class="container">
 		<div class="loading-block" ng-show="loadingUC || loadingRC || loadingLC || loadingRA || loadingUA || loadingSA || loadingA || loadingU">
-     		<div class="loading-image" >
-          		<img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
-      		</div>
-    	</div>
+			<div class="loading-image" >
+				<img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
+			</div>
+		</div>
 		<div class="page-header">
 			<h3>Mi Cuenta</h3>
 		</div>
 		<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-<!-- Nav tabs -->
-			<div class="card">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Información Personal</a></li>
-                    <li role="presentation"><a href="#direcciones" aria-controls="direcciones" role="tab" data-toggle="tab">Direcciones</a></li>
-                    <li role="presentation"><a href="#tarjetas" aria-controls="tarjetas" role="tab" data-toggle="tab">Tarjetas de Crédito</a></li>
-                    <li role="presentation"><a href="#historial" aria-controls="historial" role="tab" data-toggle="tab">Historial de Compra</a></li>
-                </ul>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Nav tabs -->
+					<div class="card">
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Información Personal</a></li>
+							<li role="presentation"><a href="#direcciones" aria-controls="direcciones" role="tab" data-toggle="tab">Direcciones</a></li>
+							<li role="presentation"><a href="#tarjetas" aria-controls="tarjetas" role="tab" data-toggle="tab">Tarjetas de Crédito</a></li>
+							<li role="presentation"><a href="#historial" aria-controls="historial" role="tab" data-toggle="tab">Historial de Compra</a></li>
+						</ul>
 
-         <!-- Tab panes -->
-            	<div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="info">
-                        <div id="form-reg">
-								<div id="form-col1" class="col-sm-2">
-									<form id="form1">
-									<br><br>
-									<p class="field-name">Nombre: </p>
-									<p class="field-name">Apellido: </p>
-									<p class="field-name">Email: </p>
-									<p class="field-name">DNI:
-									<p class="field-name">Fecha de Nacimiento: </p>
-									<p class="field-name">Genero: </p>
-									</form>
-								</div>
-								<div id="form-col2">
-									<form id="form2" ng-cloak>
-									<br><br>
-									 <p class="field-name info">{{user.firstName | capitalize}}</p>
-									<p class="field-name info">{{user.lastName | capitalize}}</p>
-									<p class="field-name info">{{user.email}}</p>
-									<p class="field-name info">{{user.identityCard}}</p>
-									<p class="field-name info">{{CuentaCtrl.DOB[2] +' / ' + CuentaCtrl.DOB[1] + ' / ' + CuentaCtrl.DOB[0] }}</p>
-									<p class="field-name info">{{(user.gender == 'F')?'Femenino':'Masculino'}}</p>
-									<br><br>
-									</form>
-								</div>
-							</div>
-						<button id="modify-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAccountModal" ng-click="CuentaCtrl.saveState(user)">
-						<span class="glyphicon glyphicon-edit"></span> Modificar información
-					</button> 
-					<div class="modal fade" data-backdrop="static" id="modifyAccountModal">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title">Modificar cuenta</h4>
-								</div>
-								<div class="modal-body">
-									<form name="registro" novalidate>
-      <section class="container">
-        <div class="container-page">                
-          <div class="col-md-6">
-            <div>
-              <h4>(Todos los datos son obligatorios)</h4> 
-            </div>
-            <div class="form-group col-lg-6">
-                <label>Nombre</label>
-                <input type="text" name="firstname" class="form-control" ng-model="user.firstName" id="firstname" value="" required>
-            </div>
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="info">
+								<div id="form-reg">
+									<div id="form-col1" class="col-sm-2">
+										<form id="form1">
+											<br><br>
+											<p class="field-name">Nombre: </p>
+											<p class="field-name">Apellido: </p>
+											<p class="field-name">Email: </p>
+											<p class="field-name">DNI:
+												<p class="field-name">Fecha de Nacimiento: </p>
+												<p class="field-name">Genero: </p>
+											</form>
+										</div>
+										<div id="form-col2">
+											<form id="form2" ng-cloak>
+												<br><br>
+												<p class="field-name info">{{user.firstName | capitalize}}</p>
+												<p class="field-name info">{{user.lastName | capitalize}}</p>
+												<p class="field-name info">{{user.email}}</p>
+												<p class="field-name info">{{user.identityCard}}</p>
+												<p class="field-name info">{{CuentaCtrl.DOB[2] +' / ' + CuentaCtrl.DOB[1] + ' / ' + CuentaCtrl.DOB[0] }}</p>
+												<p class="field-name info">{{(user.gender == 'F')?'Femenino':'Masculino'}}</p>
+												<br><br>
+											</form>
+										</div>
+									</div>
+									<button id="modify-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAccountModal" ng-click="CuentaCtrl.saveState(user)">
+										<span class="glyphicon glyphicon-edit"></span> Modificar información
+									</button> 
+									<div class="modal fade" data-backdrop="static" id="modifyAccountModal">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title">Modificar cuenta</h4>
+												</div>
+												<div class="modal-body">
+													<form name="registro" novalidate>
+														<section class="container">
+															<div class="container-page">                
+																<div class="col-md-6">
+																	<div>
+																		<h4>(Todos los datos son obligatorios)</h4> 
+																	</div>
+																	<div class="form-group col-lg-6">
+																		<label>Nombre</label>
+																		<input type="text" name="firstname" class="form-control" ng-model="user.firstName" id="firstname" value="" required>
+																	</div>
 
-            <div class="form-group col-lg-6">
-                <label>Apellido</label>
-                <input type="text" name="lastname" class="form-control" ng-model="user.lastName" id="lastname" value=""  required>
-            </div> 
-            <div class="form-group col-lg-6">
-                <label>Correo Electrónico</label>
-                <input type="email" name="email" class="form-control" ng-model="user.email" id="email" value=""  required>
-            </div>              
-            <div class="form-group col-lg-6">
-                <label>Documento de Identidad</label>
-                <input type="number" name="dni" class="form-control" ng-model="user.identityCard" id="dni" value="" min="0" max="100000000" integer required>
-            </div>
-            <div class="form-group col-lg-6">
-                <div class="row">
-                    <label>Fecha de Nacimiento</label>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3" style="padding-left:0;padding-right:0"><input type="text" name"day" class="form-control" id="day"  placeholder="DD"  ng-change="CuentaCtrl.dayValidator()"   ng-model="CuentaCtrl.DOB[2]" required></div>
-                    <div class="col-sm-1"><span style="font-size:1.4em;text-align:center">/</span></div>
-                    <div class="col-sm-3" style="padding-left:0;padding-right:0"><input type="text" name"month" class="form-control" id="month"  placeholder="MM" ng-change="CuentaCtrl.monthValidator()" ng-model="CuentaCtrl.DOB[1]" required></div>
-                    <div class="col-sm-1"><span style="font-size:1.4em;text-align:center">/</span></div>
-                    <div class="col-sm-3"  style="padding-left:0;padding-right:0"><input type="text" name"year" class="form-control" id="year" placeholder="AAAA" ng-change="CuentaCtrl.yearValidator()" ng-model="CuentaCtrl.DOB[0]" data-toggle="popover" data-placement="top" data-content="La fecha de nacimiento debe ser mayor a 1900" required></div>
-                </div>
-            </div>
-                <div class="form-group col-sm-12">
-                  <label class="col-sm-2">Género: </label>
-                    <label class="col-sm-3">
-                      <input type="radio" id="MRB" ng-checked='user.gender == "M"' ng-model="user.gender" name="gender" value="M"/> Masculino   
-                    </label> 
-                    <label class="col-sm-3">
-                      <input type="radio" id="FRB" ng-checked='user.gender == "F"' ng-model="user.gender" name="gender" value="F" /> Femenino
-                    </label> 
-                </div>
-            </div>
-        </div>
-    </section>
-</form>
-								</div>
-								<div class="modal-footer">
-									<button id="save-address-btn" type="button" ng-disabled="!CuentaCtrl.isValid(user)"class="btn btn-success apply" ng-click="CuentaCtrl.updateAccount(user)" data-dismiss="modal" hidden>
-										<span class="glyphicon glyphicon-ok"></span> Guardar
+																	<div class="form-group col-lg-6">
+																		<label>Apellido</label>
+																		<input type="text" name="lastname" class="form-control" ng-model="user.lastName" id="lastname" value=""  required>
+																	</div> 
+																	<div class="form-group col-lg-6">
+																		<label>Correo Electrónico</label>
+																		<input type="email" name="email" class="form-control" ng-model="user.email" id="email" value=""  required>
+																	</div>              
+																	<div class="form-group col-lg-6">
+																		<label>Documento de Identidad</label>
+																		<input type="number" name="dni" class="form-control" ng-model="user.identityCard" id="dni" value="" min="0" max="100000000" integer required>
+																	</div>
+																	<div class="form-group col-lg-6">
+																		<div class="row">
+																			<label>Fecha de Nacimiento</label>
+																		</div>
+																		<div class="row">
+																			<div class="col-sm-3" style="padding-left:0;padding-right:0"><input type="text" name"day" class="form-control" id="day"  placeholder="DD"  ng-change="CuentaCtrl.dayValidator()"   ng-model="CuentaCtrl.DOB[2]" required></div>
+																			<div class="col-sm-1"><span style="font-size:1.4em;text-align:center">/</span></div>
+																			<div class="col-sm-3" style="padding-left:0;padding-right:0"><input type="text" name"month" class="form-control" id="month"  placeholder="MM" ng-change="CuentaCtrl.monthValidator()" ng-model="CuentaCtrl.DOB[1]" required></div>
+																			<div class="col-sm-1"><span style="font-size:1.4em;text-align:center">/</span></div>
+																			<div class="col-sm-3"  style="padding-left:0;padding-right:0"><input type="text" name"year" class="form-control" id="year" placeholder="AAAA" ng-change="CuentaCtrl.yearValidator()" ng-model="CuentaCtrl.DOB[0]" data-toggle="popover" data-placement="top" data-content="La fecha de nacimiento debe ser mayor a 1900" required></div>
+																		</div>
+																	</div>
+																	<div class="form-group col-sm-12">
+																		<label class="col-sm-2">Género: </label>
+																		<label class="col-sm-3">
+																			<input type="radio" id="MRB" ng-checked='user.gender == "M"' ng-model="user.gender" name="gender" value="M"/> Masculino   
+																		</label> 
+																		<label class="col-sm-3">
+																			<input type="radio" id="FRB" ng-checked='user.gender == "F"' ng-model="user.gender" name="gender" value="F" /> Femenino
+																		</label> 
+																	</div>
+																</div>
+															</div>
+														</section>
+													</form>
+												</div>
+												<div class="modal-footer">
+													<button id="save-address-btn" type="button" ng-disabled="!CuentaCtrl.isValid(user)"class="btn btn-success apply" ng-click="CuentaCtrl.updateAccount(user)" data-dismiss="modal" hidden>
+														<span class="glyphicon glyphicon-ok"></span> Guardar
+													</button>
+													<button id="cancel-btn" type="button" ng-click="CuentaCtrl.descartar(user)"class="btn btn-danger apply" data-dismiss="modal" hidden >
+														<span class="glyphicon glyphicon-remove"></span> Descartar
+													</button>		
+												</div>
+											</div><!-- /.modal-content -->
+										</div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
+									<button id="modify-pass" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyPassModal">
+										<span class="glyphicon glyphicon-edit"></span> Modificar contraseña
 									</button>
-									<button id="cancel-btn" type="button" ng-click="CuentaCtrl.descartar(user)"class="btn btn-danger apply" data-dismiss="modal" hidden >
-										<span class="glyphicon glyphicon-remove"></span> Descartar
-									</button>		
+									<div class="modal fade" data-backdrop="static" id="modifyPassModal">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+													</button>
+													<h4 class="modal-title">Modificar contraseña</h4>
+												</div>
+												<div class="modal-body">
+													<p id="reminder">(Todos los campos son obligatorios)</p>
+													<div class="category">
+														<label >Contraseña Vieja
+															<input name="oldpass" type="password"  class="form-control" id="oldpass" enabled>
+														</label>
+													</div>
+													<div class="category">
+														<label>Nueva Contraseña
+															<input name="newpass" type="password" class="form-control" id="newpass" enabled>	
+														</label>
+													</div>
+													<div class="category">
+														<label>Repetir Nueva Contraseña
+															<input name="repnewpass" type="password" class="form-control" id="repnewpass" enabled>	
+														</label>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button id="save-pass-btn" type="button" class="btn btn-success apply" hidden>
+														<span class="glyphicon glyphicon-ok"></span> Guardar
+													</button>
+													<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal"hidden >
+														<span class="glyphicon glyphicon-remove"></span> Descartar
+													</button>		
+												</div>
+											</div><!-- /.modal-content -->
+										</div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
 								</div>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->
-					<button id="modify-pass" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyPassModal">
-						<span class="glyphicon glyphicon-edit"></span> Modificar contraseña
-					</button>
-					<div class="modal fade" data-backdrop="static" id="modifyPassModal">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-									</button>
-									<h4 class="modal-title">Modificar contraseña</h4>
-								</div>
-								<div class="modal-body">
-									<p id="reminder">(Todos los campos son obligatorios)</p>
-									<div class="category">
-										<label >Contraseña Vieja
-											<input name="oldpass" type="password"  class="form-control" id="oldpass" enabled>
-										</label>
-									</div>
-									<div class="category">
-										<label>Nueva Contraseña
-											<input name="newpass" type="password" class="form-control" id="newpass" enabled>	
-										</label>
-									</div>
-									<div class="category">
-										<label>Repetir Nueva Contraseña
-											<input name="repnewpass" type="password" class="form-control" id="repnewpass" enabled>	
-										</label>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button id="save-pass-btn" type="button" class="btn btn-success apply" hidden>
-										<span class="glyphicon glyphicon-ok"></span> Guardar
-									</button>
-									<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal"hidden >
-										<span class="glyphicon glyphicon-remove"></span> Descartar
-									</button>		
-								</div>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="direcciones">
-                    	<div class="col-padding">
-					<div id="form-reg">
-						<h2 ng-show="isAddress()">No hay Direcciones</h2>					
-						<div ng-repeat="direccion in direcciones" class="well col-sm-6" id="form-col1">
-							<form ng-attr-id="{{'Direccion'+ direccion.id}}" ng-cloak>
-								<br>
-								<p class="field-name name-address">{{direccion.name}}</p>
-								<p class="field-name info">{{direccion.street +' ' + direccion.number}}{{(direccion.floor === null)?"":' Piso '+ direccion.floor}}{{(direccion.gate === null)?"":" Departamento: " + direccion.gate}}</p>
-								<p class="field-name info">{{ (direccion.city===null)?"":direccion.city+', '}} {{dirId[direccion.id]}} {{', Argentina' }}</p>
-							</form>
-							<button ng-attr-id="{{modificar + direccion.id}}" type="button" class="btn btn-primary" data-toggle="modal" ng-click="CuentaCtrl.editAddress(direccion.id)" data-target="#modifyAddressModal">
-								<span class="glyphicon glyphicon-edit"></span> Modificar
-							</button>
-							<button  type="button" class="btn btn-danger" ng-click="CuentaCtrl.removeAddress(direccion.id)" >
-                				<span class="glyphicon glyphicon-remove"></span> Eliminar
-             			 	</button>	 
-						</div>
-							<button id="add-direction" type="button" class="btn btn-info" data-toggle="modal" data-target="#addAddressModal">
-								<span class="glyphicon glyphicon-plus"></span> Agregar dirección de envío
-							</button> 
-							<div class="modal fade" data-backdrop="static" id="addAddressModal">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<div role="tabpanel" class="tab-pane" id="direcciones">
+									<div class="col-padding">
+										<div id="form-reg">
+											<h2 ng-show="isAddress()">No hay Direcciones</h2>
+											<div class="row" style="margin-top:20px;margin-bottom:20px;margin-left:40%;margin-right:50%">
+												<button id="add-direction" type="button" class="btn btn-info" data-toggle="modal" data-target="#addAddressModal">
+													<span class="glyphicon glyphicon-plus"></span> Agregar dirección de envío
+												</button> 
+											</div>
+											<div ng-repeat="direccion in direcciones" class="well col-sm-6" id="form-col1">
+												<form ng-attr-id="{{'Direccion'+ direccion.id}}" ng-cloak>
+													<br>
+													<p class="field-name name-address">{{direccion.name}}</p>
+													<p class="field-name info">{{direccion.street +' ' + direccion.number}}{{(direccion.floor === null)?"":' Piso '+ direccion.floor}}{{(direccion.gate === null)?"":" Departamento: " + direccion.gate}}</p>
+													<p class="field-name info">{{ (direccion.city===null)?"":direccion.city+', '}} {{dirId[direccion.id]}} {{', Argentina' }}</p>
+												</form>
+												<button ng-attr-id="{{modificar + direccion.id}}" type="button" class="btn btn-primary" data-toggle="modal" ng-click="CuentaCtrl.editAddress(direccion.id)" data-target="#modifyAddressModal">
+													<span class="glyphicon glyphicon-edit"></span> Modificar
+												</button>
+												<button  type="button" class="btn btn-danger" ng-click="CuentaCtrl.removeAddress(direccion.id)" >
+													<span class="glyphicon glyphicon-remove"></span> Eliminar
+												</button>	 
+											</div>
+											<div class="modal fade" data-backdrop="static" id="addAddressModal">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-											<h4 class="modal-title">Agregar dirección de envio</h4>
-										</div>
-										<add-address></add-address>
-										<div class="modal-footer">
-											<button id="save-account-btn" type="button" class="btn btn-success apply" ng-click="saveAddress()" ng-disabled="!CuentaCtrl.isValidAddress()" data-dismiss="modal" hidden>
-												<span class="glyphicon glyphicon-ok"></span> Guardar
-											</button>
-											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
-												<span class="glyphicon glyphicon-remove"></span> Descartar
-											</button>		
+															<h4 class="modal-title">Agregar dirección de envio</h4>
+														</div>
+														<add-address></add-address>
+														<div class="modal-footer">
+															<button id="save-account-btn" type="button" class="btn btn-success apply" ng-click="saveAddress()" ng-disabled="!CuentaCtrl.isValidAddress()" data-dismiss="modal" hidden>
+																<span class="glyphicon glyphicon-ok"></span> Guardar
+															</button>
+															<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
+																<span class="glyphicon glyphicon-remove"></span> Descartar
+															</button>		
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal fade" data-backdrop="static" id="modifyAddressModal">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+															<h4 class="modal-title">Modificar Direccion de Envio</h4>
+														</div>
+														<add-address></add-address>
+														<div class="modal-footer">
+															<button id="change-address-btn" type="button" class="btn btn-success apply"  ng-click="updateAddress()" ng-disabled="!CuentaCtrl.isValidAddress" data-dismiss="modal" hidden>
+																<span class="glyphicon glyphicon-ok"></span> Guardar
+															</button>
+															<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
+																<span class="glyphicon glyphicon-remove"></span> Descartar
+															</button>		
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="modal fade" data-backdrop="static" id="modifyAddressModal">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											<h4 class="modal-title">Modificar Direccion de Envio</h4>
+								<div role="tabpanel" class="tab-pane" id="tarjetas">
+									<h2 ng-show="isCard()">No hay Tarjetas</h2>		
+									<div class="row" style="margin-top:20px;margin-bottom:20px;margin-left:40%;margin-right:50%">
+										<button id="add-card" type="button" class="btn btn-info" data-toggle="modal" data-target="#addCardModal">
+											<span class="glyphicon glyphicon-plus"></span> Agregar tarjeta
+										</button> 
+									</div>			
+									<div ng-repeat="tarjeta in tarjetas" class="well well-sm col-md-4 col-sm-12" id="form-col1">
+										<div id="form-col1" class="col-md-6">
+											<form id="form1">
+												<p class="field-name">Número de Tarjeta: </p>
+												<p class="field-name">Fecha de Vencimiento: </p>
+												<!--<p class="field-name">Código de Seguridad: </p>-->
+											</form>
 										</div>
-										<add-address></add-address>
-										<div class="modal-footer">
-											<button id="change-address-btn" type="button" class="btn btn-success apply"  ng-click="updateAddress()" ng-disabled="!CuentaCtrl.isValidAddress" data-dismiss="modal" hidden>
-												<span class="glyphicon glyphicon-ok"></span> Guardar
-											</button>
-											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
-												<span class="glyphicon glyphicon-remove"></span> Descartar
-											</button>		
+										<form ng-attr-id="{{'Tarjeta'+ tarjeta.id}}" class="col-md-6" ng-cloak>
+											<p class="field-name">{{tarjeta.number.slice(0,4) + ' **** **** ' + tarjeta.number.slice(12)}}</p>
+											<p class="field-name">{{tarjeta.expirationDate | fecha }}</p>
+											<!-- Mostrar el codigo de seguridad esta muuuy mal <p class="field-name">{{tarjeta.securityCode}} </p> -->
+										</form>
+										<div class="row">
+											<div class="col-sm-8 col-sm-offset-2">
+												<button id="add-card" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editCardModal">
+													<span class="glyphicon glyphicon-edit"></span> Modificar
+												</button>
+												<button  type="button" class="btn btn-danger" ng-click="CuentaCtrl.removeCard(tarjeta.id)" >
+													<span class="glyphicon glyphicon-remove"></span> Eliminar
+												</button> 
+											</div>
+										</div>
+									</div>
+									<div class="modal fade" data-backdrop="static" id="addCardModal">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+													<h4 class="modal-title">Agregar tarjeta</h4>
+												</div>
+
+												<add-creditCard></add-creditCard>
+												<div class="modal-footer">
+													<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="saveCard()" data-dismiss="modal" hidden>
+														<span class="glyphicon glyphicon-ok"></span> Guardar
+													</button>
+													<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
+														<span class="glyphicon glyphicon-remove"></span> Descartar
+													</button>		
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal fade" data-backdrop="static" id="editCardModal">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title">Modificar Tarjeta</h4>
+												</div>
+												<add-creditCard></add-creditCard>
+												<div class="modal-footer">
+													<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="CuentaCtrl.updateCard(tarjeta)" data-dismiss="modal" hidden>
+														<span class="glyphicon glyphicon-ok"></span> Guardar
+													</button>
+													<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
+														<span class="glyphicon glyphicon-remove"></span> Descartar
+													</button>		
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-					</div>
-				</div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="tarjetas">
-                    	<h2 ng-show="isCard()">No hay Tarjetas</h2>					
-						<div ng-repeat="tarjeta in tarjetas" class="well well-sm col-md-4 col-sm-12" id="form-col1">
-							<div id="form-col1" class="col-md-6">
-									<form id="form1">
-									<p class="field-name">Número de Tarjeta: </p>
-									<p class="field-name">Fecha de Vencimiento: </p>
-									<!--<p class="field-name">Código de Seguridad: </p>-->
-									</form>
-							</div>
-							<form ng-attr-id="{{'Tarjeta'+ tarjeta.id}}" class="col-md-6" ng-cloak>
-								<p class="field-name">{{tarjeta.number.slice(0,4) + ' **** **** ' + tarjeta.number.slice(12)}}</p>
-								<p class="field-name">{{tarjeta.expirationDate | fecha }}</p>
-								<!-- Mostrar el codigo de seguridad esta muuuy mal <p class="field-name">{{tarjeta.securityCode}} </p> -->
-							</form>
-							<div class="row">
-							<div class="col-sm-8 col-sm-offset-2">
-								<button id="add-card" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editCardModal">
-									<span class="glyphicon glyphicon-edit"></span> Modificar
-								</button>
-								<button  type="button" class="btn btn-danger" ng-click="CuentaCtrl.removeCard(tarjeta.id)" >
-                					<span class="glyphicon glyphicon-remove"></span> Eliminar
-                				</button> 
-                				</div>
-                			</div>
-                		</div>
-                		<div class="row">
-						<button id="add-card" type="button" class="btn btn-info" data-toggle="modal" data-target="#addCardModal">
-							<span class="glyphicon glyphicon-plus"></span> Agregar tarjeta
-						</button> 
-						</div>
-						<div class="modal fade" data-backdrop="static" id="addCardModal">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-											<h4 class="modal-title">Agregar tarjeta</h4>
-										</div>
-
-										<add-creditCard></add-creditCard>
-										<div class="modal-footer">
-											<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="saveCard()" data-dismiss="modal" hidden>
-												<span class="glyphicon glyphicon-ok"></span> Guardar
-											</button>
-											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
-												<span class="glyphicon glyphicon-remove"></span> Descartar
-											</button>		
-										</div>
+								<div role="tabpanel" class="tab-pane" id="historial">
+									En Construccíon
 								</div>
-							</div>
-                    	</div>
-                    <div class="modal fade" data-backdrop="static" id="editCardModal">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title">Modificar Tarjeta</h4>
-								</div>
-								<add-creditCard></add-creditCard>
-										<div class="modal-footer">
-											<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="CuentaCtrl.updateCard(tarjeta)" data-dismiss="modal" hidden>
-												<span class="glyphicon glyphicon-ok"></span> Guardar
-											</button>
-											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
-												<span class="glyphicon glyphicon-remove"></span> Descartar
-											</button>		
-										</div>
-								</div>
-							</div>
-						</div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="historial">
-                    	En Construccíon
-                    </div>
-                </div> <!-- cierra tab content -->
-				</div> <!-- cierra card -->
-            </div> <!-- cierra col -->
-		</div> <!-- cierra row -->
-	</div> <!-- cierra container -->
+							</div> <!-- cierra tab content -->
+						</div> <!-- cierra card -->
+					</div> <!-- cierra col -->
+				</div> <!-- cierra row -->
+			</div> <!-- cierra container -->
 
-	</div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 		<script type="text/javascript" src="js/cuenta.js"></script>
 		<script type="text/javascript" src="js/nav.js"></script>
-</body>
-</html>
+	</body>
+	</html>

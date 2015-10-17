@@ -76,8 +76,10 @@ app.controller('RegisterController',function($scope,$http,$log){
 
 	this.isValid = function(){
 		if(this.username === undefined || this.username.length < 6 || this.username.length > 15){
-			$('#username').popover('show');
-			$('#username').parent().addClass('has-error');
+			if($('#username').hasClass('ng-dirty')){
+				$('#username').popover('show');
+				$('#username').parent().addClass('has-error');
+			}
 			return false;
 		}
 		$('#username').popover('hide');
@@ -85,9 +87,12 @@ app.controller('RegisterController',function($scope,$http,$log){
 		$('#username').parent().addClass('has-success');
 
 		if(this.email === undefined || this.email.indexOf('@') == -1 || this.email.indexOf('.') == -1 ||  this.email.lastIndexOf('.') - this.email.indexOf('@') < 2){
-			$('#email').parent().addClass('has-error');
+			if($('#email').hasClass('ng-dirty')){
+				$('#email').parent().addClass('has-error');
+			}
 			return false;
 		}
+		$('#email').parent().removeClass('has-error');
 		$('#email').parent().addClass('has-success');
 		if(this.firstname === undefined || this.firstname.length > 80 || this.lastname === undefined || this.lastname.length > 80){
 			$('#firstname').parent().addClass('has-error');
@@ -96,8 +101,12 @@ app.controller('RegisterController',function($scope,$http,$log){
 		}
 		$('#firstname').parent().addClass('has-success');
 		$('#lastname').parent().addClass('has-success');
+		$('#firstname').parent().removeClass('has-error');
+		$('#lastname').parent().removeClass('has-error');
 		if(this.pass1 === undefined){
-			$('#pass1').parent().addClass('has-error');
+			if($('#pass1').hasClass('ng-dirty')){
+				$('#pass1').parent().addClass('has-error');
+			}
 			return false;
 		}
 		if(this.pass1.length < 8 || this.pass1.length > 15){
@@ -107,21 +116,26 @@ app.controller('RegisterController',function($scope,$http,$log){
 	 	}
 	 	$('#pass1').popover('hide');
 	 	$('#pass1').parent().addClass('has-success');
+	 	$('#pass1').parent().removeClass('has-error');
 		if(this.pass1 !== this.pass2){
-			$('#pass2').parent().addClass('has-error');
-			$('#pass2').popover('show');
+			if($('#pass2').hasClass('ng-dirty')){
+				$('#pass2').parent().addClass('has-error');
+				$('#pass2').popover('show');
+			}
 			return false;
 		}
 		$('#pass2').popover('hide');
 		$('#pass2').parent().addClass('has-success');
-		if(this.gender !== 'M' && this.gender !== 'F'){
-			$('#MRB').parent().parent().addClass('has-error');
-			return false;
-		}
+		$('#pass1').parent().removeClass('has-error');
+		$('#pass2').parent().removeClass('has-error');
 		if(!isPositiveInteger(this.identityCard) || this.identityCard.length > 10){
-			$('#year').parent().parent().parent().addClass('has-error');
+			if($('#dni').hasClass('ng-dirty')){
+				$('#dni').parent().addClass('has-error');
+			}
 			return false;
 		}
+		$('#dni').parent().addClass('has-success');
+		$('#dni').parent().removeClass('has-error');
 		if(this.DOBDay === undefined || this.DOBMonth === undefined || this.DOBYear === undefined){
 			$('#year').parent().parent().parent().addClass('has-error');
 			return false;
@@ -132,6 +146,12 @@ app.controller('RegisterController',function($scope,$http,$log){
 			return false;
 		}
 		$('#year').parent().parent().parent().addClass('has-success');
+		$('#year').parent().parent().parent().removeClass('has-error');
+		if(this.gender !== 'M' && this.gender !== 'F'){
+			$('#MRB').parent().parent().addClass('has-error');
+			return false;
+		}
+
 		return true;
 	}
 });
