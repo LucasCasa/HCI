@@ -29,11 +29,12 @@ app.controller('ProductController',function($scope,$http,$log){
 	};
   this.addToWl = function(){
     $scope.loadingWl = true;
+    var esto = this;
     if(ReadCookie("wishlistOrderID")==null){
       $http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=CreateOrder&username=" + user + "&authentication_token=" + token).then(function(res){
         $log.debug(res);
         document.cookie="wishlistOrderID=" + res.data.order.id + "; path=/";
-        this.addWlWithOrder();
+        esto.addWlWithOrder();
       });
     }else{
       this.addWlWithOrder();
@@ -52,11 +53,12 @@ app.controller('ProductController',function($scope,$http,$log){
   };
   this.addToCart = function(){
     $scope.loadingCart = true;
+    var esto = this;
     if(ReadCookie("carritoOrderId")==null){
       $http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=CreateOrder&username=" + user + "&authentication_token=" + token).then(function(res){
         $log.debug(res);
         document.cookie="carritoOrderId=" + res.data.order.id + "; path=/";
-        this.addCartWithOrder();
+        esto.addCartWithOrder();
         alert("crea uno nuevo");
       });
     }else{
