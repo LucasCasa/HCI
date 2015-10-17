@@ -236,24 +236,23 @@
 					</div>
 				</div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="tarjetas">
-                    	<div id="form-col1">
-							<form id="form1-card">
-								<br><br>
-								<h4 class="field-name">Visa HSBC</h4>
-								<p class="field-name">Visa</p>
-								<p class="field-name">1121 **** **** 3333 </p>
-								<p class="field-name">8/01</p>
-								<p class="field-name">123 </p>
+                    <div role="tabpanel" class="tab-pane" id="tarjetas">				
+						<div ng-repeat="tarjeta in tarjetas" id="form-col1">
+							<h2 ng-show="isCard()">No hay Tarjetas</h2>	
+							<form ng-attr-id="{{'Tarjeta'+ tarjeta.id}}">
+								<h4 class="field-name">{{tarjeta.idCard}}</h4>
+								<p class="field-name">{{tarjeta.brand}}</p>
+								<p class="field-name">{{tarjeta.cardNumber}}</p>
+								<p class="field-name">{{tarjeta.expirationDate}}</p>
+								<p class="field-name">{{tarjeta.securityCode}} </p>
 							</form>
-						</div>
 						<button id="add-card" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editCardModal">
 							<span class="glyphicon glyphicon-edit"></span> Modificar
 						</button>
-						<button  type="button" class="btn btn-danger" >
+						<button  type="button" class="btn btn-danger" ng-click="CuentaCtrl.removeCreditCard(tarjeta.id)" >
                 			<span class="glyphicon glyphicon-remove"></span> Eliminar
                 		</button> 
-                		<br><br>
+                		</div>
 						<button id="add-card" type="button" class="btn btn-info" data-toggle="modal" data-target="#addCardModal">
 							<span class="glyphicon glyphicon-plus"></span> Agregar tarjeta
 						</button> 
@@ -268,7 +267,7 @@
 
 										<add-creditCard></add-creditCard>
 										<div class="modal-footer">
-											<button id="add-card-btn" type="button" class="btn btn-success apply" hidden>
+											<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="saveCard()" data-dismiss="modal" hidden>
 												<span class="glyphicon glyphicon-ok"></span> Guardar
 											</button>
 											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >

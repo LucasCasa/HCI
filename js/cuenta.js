@@ -35,6 +35,7 @@ var app = angular.module('Cuenta', ['navbar']);
  	var token = readCookie("token");
  	var focus = this;
  	$scope.dirId = {};
+ 	$scope.cardId = {};
  	$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAccount&username="+user +"&authentication_token="+token).then(function(res){
  		$scope.user = res.data.account;
  		$scope.user.identityCard = parseInt($scope.user.identityCard);
@@ -198,6 +199,30 @@ var app = angular.module('Cuenta', ['navbar']);
 		$('#year').parent().parent().parent().addClass('has-success');
 		return true;
 	}
+		this.addressIsValid = function(){
+		if($scope.IdName === undefined || $scope.IdName === ""){
+			return false;
+		}
+		if($scope.street === undefined || $scope.street === ""){
+			return false;
+		}
+		if($scope.number === undefined || !isPositiveInteger($scope.number)){
+			return false;
+		}
+		if($scope.province === undefined){
+			return false;
+		}
+		if($scope.province !== 'C' && ($scope.city === undefined || $scope.city === "")){
+			return false;
+		}
+		if($scope.postalCode === undefined || !isPositiveInteger($scope.postalCode)){
+			return false;
+		}
+		if($scope.telephone === undefined || $scope.telephone === ""){
+			return false;
+		}
+		return true;
+	}
 	
 	this.updateAccount = function(user){
 		var account = '{"firstName":"'+user.firstName+'","lastName":"'+user.lastName+'","gender":"'+user.gender+'","identityCard":"'+user.identityCard+'","email":"'+user.email+'","birthDate":"'+this.DOB[0] +'-'+ this.DOB[1] +'-'+ this.DOB[2]+'"}';
@@ -214,7 +239,7 @@ var app = angular.module('Cuenta', ['navbar']);
 		$scope.saved.identityCard = user.identityCard;
 		$scope.saved.gender = user.gender;
 		$scope.saved.birthDate = user.birthDate;
-	};
+	}
 	this.descartar = function(user){
 		user.firstName = $scope.saved.fistName ;
 		user.lastName = $scope.saved.lastName ;
@@ -223,6 +248,53 @@ var app = angular.module('Cuenta', ['navbar']);
 		user.gender = $scope.saved.gender;
 		user.birthDate = $scope.saved.birthDate;
 	}
+	 $scope.isCard= function(){
+ 		return ($scope.tarjetas == undefined || $scope.tarjetas.length == 0);
+ 	}
+	this.editCard = function(id){
+ 		for(i = 0; i< $scope.tarjetas.length;i++){
+ 			if($scope.tarjetas[i].id === id){
+ 				var selected = $scope.tarjetas[i];
+ 			}
+ 		}
+ 		this.name = selected.name;
+ 		this.idCard = selected.idCard;
+ 		this.cardNumber = selected.cardNumber;
+ 		this.expirationDate = selected.expirationDate;
+ 		this.securityCode = selected.securityCode;
+
+ 	}
+ 	this.removeCard = function(id){
+ 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=DeleteCreditCard&username='+ readCookie("user") + '&authentication_token='+ readCookie("token") +'&id=' + id).then(function(res){
+ 			$log.debug(res);
+ 			if(res.data.error === undefined){
+ 				for(i = 0; i< $scope.tarjetas.length;i++){
+ 					if($scope.tarjetas[i].idCard === id){
+ 						$scope.tarjetas.splice(i,1);
+ 					}
+ 				}
+ 			}
+ 		});
+ 	}
+ 	$scope.saveCard = function(){
+ 		var name = '"name":"' + $scope.tarjetas.length + '"';
+ 		var number = ',"number":"' + $scope.cardNumber + '"';
+ 		var expDate = ',"expirationDate":"' + $scope.expirationDate + '"';
+ 		var secCode = ',"securityCode":"' + $scope.securityCode + '"';
+ 		var card = '{'+name+number+expDate+secCode+'}';
+
+ 		$log.debug("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateCreditCard&username=" + user +"&authentication_token=" + token+ "&credit_card="+ card);
+ 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateCreditCard&username="+user+"&authentication_token="+token+"&credit_card="+ card).then(function(res){
+ 			$log.debug(res);
+
+ 		});
+ 	}
+ 	$scope.loadCard = function(){
+ 		$http.get("￼http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllCreditCards&username="+ user +"&authentication_token="+token).then(function(res){
+	 		$scope.tarjetas = res.data.creditCards; // Fijarse que solo devuelve 8, ya que esta pensado para que haya muchas paginas de direcciones
+ 			$log.debug($scope.tarjetas);
+ 		});
+ 	}
  });
  app.filter('capitalize', function() {
     return function(input) {
