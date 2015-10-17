@@ -16,7 +16,7 @@
       <div class="well col-sm-6">
         <label >Seleccionar tarjeta</label>
           <select name="tarjetas" class="form-control" ng-model="selectedCard">
-            <option ng-repeat="tarjeta in tarjetas track by $index" ng-value="tarjeta.id"><strong>{{getCardType(tarjeta.number)}}</strong> - {{" " + tarjeta.number | tarjeta}}</option>
+            <option ng-repeat="tarjeta in tarjetas track by $index" value="{{tarjeta.id}}"><strong>{{getCardType(tarjeta.number)}}</strong> - {{" " + tarjeta.number | tarjeta}}</option>
           </select>
       </div>   
     </div> 
@@ -73,9 +73,8 @@
   <hr class="divider">
   <h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
   <hr class="divider">
-  <button type="button" class="btn btn-warning next-step" ng-disabled="!isLoged() || emptyCart" ng-click="CompraCtrl.nextStep()">
+  <button type="button" class="btn btn-warning next-step" ng-click="FinalizarCtrl.comprar()">
     Comprar <span class="glyphicon glyphicon-usd"></span>
   </button>
-  <p style="color:#888;padding: 10px"> *Para comprar es necesario iniciar sesion </p>
 </div>
 </div>

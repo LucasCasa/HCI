@@ -44,6 +44,17 @@ app.controller('FinalizarController',function($scope,$http,$log){
 			});
 		});
 	}
+	this.comprar = function(){
+		var credit = ($scope.card)?',"creditCard":{"id": '+$scope.selectedCard +'}':"";
+		var order = '{"id":'+readCookie("carritoOrderId") + ',"address":{"id":'+ $scope.direccion.id + '}'+credit+'}';
+		$log.debug('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=ConfirmOrder&username='+readCookie("user")+'&authentication_token='+readCookie("token")+'&order=' + order);
+		$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=ConfirmOrder&username='+readCookie("user")+'&authentication_token='+readCookie("token")+'&order=' + order).then(function(res){
+			$log.debug("Comprado??");
+			$log.debug(res);
+
+		});
+
+	}
 	$scope.updateItems = function(){
 		$scope.loading = true;
 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username="+readCookie("user")+"&authentication_token="+readCookie("token")+"&id="+readCookie("carritoOrderId")).then(function(res){
