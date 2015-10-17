@@ -35,7 +35,6 @@ var app = angular.module('Cuenta', ['navbar']);
  	var token = readCookie("token");
  	var focus = this;
  	$scope.dirId = {};
- 	$scope.cardId = {};
  	$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAccount&username="+user +"&authentication_token="+token).then(function(res){
  		$scope.user = res.data.account;
  		$scope.user.identityCard = parseInt($scope.user.identityCard);
@@ -62,6 +61,7 @@ var app = angular.module('Cuenta', ['navbar']);
  				}
  			}
  	};
+
 	$scope.saveAddress = function(){
  		var name = '"name":"' + $scope.IdName + '"';
  		var street = ',"street":"' + $scope.street + '"';
@@ -199,7 +199,7 @@ var app = angular.module('Cuenta', ['navbar']);
 		$('#year').parent().parent().parent().addClass('has-success');
 		return true;
 	}
-		this.addressIsValid = function(){
+	this.addressIsValid = function(){
 		if($scope.IdName === undefined || $scope.IdName === ""){
 			return false;
 		}
@@ -248,7 +248,9 @@ var app = angular.module('Cuenta', ['navbar']);
 		user.gender = $scope.saved.gender;
 		user.birthDate = $scope.saved.birthDate;
 	}
-	 $scope.isCard= function(){
+
+	//Tarjetas
+	$scope.isCard= function(){
  		return ($scope.tarjetas == undefined || $scope.tarjetas.length == 0);
  	}
 	this.editCard = function(id){
@@ -277,13 +279,12 @@ var app = angular.module('Cuenta', ['navbar']);
  		});
  	}
  	$scope.saveCard = function(){
- 		var name = '"name":"' + $scope.tarjetas.length + '"';
- 		var number = ',"number":"' + $scope.cardNumber + '"';
+ 		var number = '"number":"' + $scope.cardNumber + '"';
  		var expDate = ',"expirationDate":"' + $scope.expirationDate + '"';
  		var secCode = ',"securityCode":"' + $scope.securityCode + '"';
- 		var card = '{'+name+number+expDate+secCode+'}';
+ 		var card = '{'+number+expDate+secCode+'}';
 
- 		$log.debug("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateCreditCard&username=" + user +"&authentication_token=" + token+ "&credit_card="+ card);
+ 		$log.debug("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateCreditCard&username=" +user+"&authentication_token="+token+"&credit_card=" + card);
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateCreditCard&username="+user+"&authentication_token="+token+"&credit_card="+ card).then(function(res){
  			$log.debug(res);
 

@@ -236,13 +236,11 @@
 					</div>
 				</div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="tarjetas">				
+                    <div role="tabpanel" class="tab-pane" id="tarjetas">
+                    	<h2 ng-show="isCard()">No hay Tarjetas</h2>					
 						<div ng-repeat="tarjeta in tarjetas" id="form-col1">
-							<h2 ng-show="isCard()">No hay Tarjetas</h2>	
 							<form ng-attr-id="{{'Tarjeta'+ tarjeta.id}}">
-								<h4 class="field-name">{{tarjeta.idCard}}</h4>
-								<p class="field-name">{{tarjeta.brand}}</p>
-								<p class="field-name">{{tarjeta.cardNumber}}</p>
+								<p class="field-name">{{tarjeta.number}}</p>
 								<p class="field-name">{{tarjeta.expirationDate}}</p>
 								<p class="field-name">{{tarjeta.securityCode}} </p>
 							</form>
@@ -276,9 +274,7 @@
 										</div>
 								</div>
 							</div>
-
-
-                    </div>
+                    	</div>
                     <div class="modal fade" data-backdrop="static" id="editCardModal">
 						<div class="modal-dialog">
 							<div class="modal-content">
