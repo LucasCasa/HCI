@@ -67,7 +67,7 @@ app.controller('ProductController',function($scope,$http,$log){
   };
   this.addCartWithOrder = function(){
     var orderID = ReadCookie("carritoOrderId");
-    $http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + this.prodId + '},"quantity":'+ 5 +'}').then(function(res){
+    $http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + this.prodId + '},"quantity":'+ $scope.selectedAmount +'}').then(function(res){
       $log.debug('quantity: ' + $scope.selectedAmount);
       $log.debug('token: ' + token);
       $log.debug('orderID: ' + orderID);

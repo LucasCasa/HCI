@@ -15,10 +15,9 @@
 				<a href="index.html"><button type="button" class="btn btn-default" >
 					<span class="glyphicon glyphicon-shopping-cart"></span> Seguir comprando
 				</button></a>
-				<button type="button" class="btn btn-success next-step" ng-disabled="!isLoged() || emptyCart" ng-click="CompraCtrl.nextStep()">
+				<button type="button" class="btn btn-success next-step" ng-disabled="emptyCart" ng-click="CarritoCtrl.updateAmounts();CompraCtrl.nextStep()">
 					Pagar<span class="glyphicon glyphicon-play"></span>
 				</button>
-				<p style="color:#888;padding: 10px"> *Para comprar es necesario iniciar sesion </p>
 			</div>
 		</div>
 
@@ -40,7 +39,7 @@
 						<tbody>
 							<tr ng-repeat="producto in productos track by $index" ng-hide="loading">
 								<td class="col-sm-2">
-									<span> <a class="thumbnail pull-left" href="#"> <img class="media-object" ng-attr-src="{{producto.product.imageUrl}}" style="width: 72px; height: 72px;"> </a> </span>
+									<span> <a class="thumbnail pull-left" ng-attr-href="{{'producto.html?id=' + producto.product.id}}"> <img class="media-object" ng-attr-src="{{producto.product.imageUrl}}" style="width: 72px; height: 72px;"> </a> </span>
 								</td>
 								<td>
 									<h3 style="margin-top:0">{{producto.product.name}}</h3>
@@ -50,13 +49,13 @@
 								<td class="col-sm-1 col-md-2" style="text-align: center">
 									<div class="input-group">
 										<span class="input-group-btn">
-											<button style="padding:2px" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="" ng-click="CarritoCtrl.add(-1,producto.id)">
+											<button style="padding:2px" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="" ng-click="CarritoCtrl.add(-1,producto.id,producto.product.id)">
 												<span class="glyphicon glyphicon-minus"></span>
 											</button>
 										</span>
-										<input type="text" name="" class="form-control input-number" ng-model="selected[producto.id]" min="1" max="100" ng-change="CarritoCtrl.updateTotal()" style="text-align:center">
+										<input type="text" name="" class="form-control input-number" ng-model="selected[producto.id]" min="1" max="100" ng-change="CarritoCtrl.change(producto.id,producto.product.id)" style="text-align:center">
 										<span class="input-group-btn">
-											<button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="" ng-click="CarritoCtrl.add(1,producto.id)">
+											<button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="" ng-click="CarritoCtrl.add(1,producto.id,producto.product.id)">
 												<span class="glyphicon glyphicon-plus" ></span>
 											</button>
 										</span>

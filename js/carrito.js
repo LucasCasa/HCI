@@ -1,20 +1,6 @@
 (function() {
 var app = angular.module('Carrito', ['navbar']);
 	
-
- app.controller('TalleController',function(){
- 	this.talles = talles;
- 	this.setTalle = function(talle){
- 		
- 	}
- });
- app.controller('ColorController',function($scope){
- 	this.colores = colores;
- 	this.setColor = function(talle){
- 		$scope.colordd = talle;
- 	}
- });
- 
  app.controller('CarritoController',function($scope,$http,$log){
 	var user = ReadCookie("user");
 	var token = ReadCookie("token");
@@ -22,6 +8,7 @@ var app = angular.module('Carrito', ['navbar']);
  	$scope.productos = [];
  	$scope.loading = true;
  	var orderID = ReadCookie("carritoOrderId");
+ 	var modifiedIds = [];
  	if(orderID !== null){
 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + user + "&authentication_token=" + token + "&id=" + orderID).then(function(res){
 			$log.debug(res);
@@ -31,6 +18,8 @@ var app = angular.module('Carrito', ['navbar']);
 			}
 			$scope.total = 0;
 			$scope.productos.forEach(function(entry){
+				$log.debug("entryid: " + entry.id);
+				$log.debug("entryqty: " + entry.quantity);
 				$scope.total += entry.price;
 				$scope.selected[entry.id] = entry.quantity;
 			})
@@ -40,6 +29,22 @@ var app = angular.module('Carrito', ['navbar']);
 		$scope.loading = false;
 		$scope.emptyCart = true; 
 	}
+	this.change = function(id,idInOrder){
+		this.updateTotal();
+		var ids = {product: id, order: idInOrder};
+		if(modifiedIds.indexOf(ids) == -1)
+			modifiedIds.push(ids);
+	}
+	this.updateAmounts = function(){
+		var esto = this;
+		modifiedIds.forEach(function(ids){
+			$scope.loading = true;
+			esto.remove(ids.order);
+			$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + ids.product + '},"quantity":'+ $scope.selected[ids.order] +'}').then(function(res){
+				$scope.loading = false;
+			});
+		})
+	};
 	this.updateTotal= function(){
 		$scope.total = 0;
 		if($scope.productos !== undefined){
@@ -48,7 +53,8 @@ var app = angular.module('Carrito', ['navbar']);
 			});
 		}
 	};
-	this.add = function(value,id){
+	this.add = function(value,id,idInOrder){
+		this.change(id,idInOrder);
 		$scope.selected[id] = parseInt($scope.selected[id]) + value;
 		if($scope.selected[id] < 1 || isNaN($scope.selected[id]))
 			$scope.selected[id] = 1;
@@ -60,13 +66,22 @@ var app = angular.module('Carrito', ['navbar']);
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=RemoveItemFromOrder&username='+ user +'&authentication_token='+ token +'&id=' + id).then(function(res){
 			$log.debug(res);
 			$scope.loading = false;
-			$scope.productos.splice(index,1);
+			if(!(index === undefined))
+				$scope.productos.splice(index,1);
 			esto.updateTotal();
 		});
 		if($scope.productos.length == 0){
 			$scope.emptyCart = true;
 		}
+		var idIndex = modifiedIds.indexOf(id);
+		if (idIndex > -1) {
+    		modifiedIds.splice(idIndex, 1);
+		}
+		$log.debug(modifiedIds);
 	};
+	$(window).unload(function(){
+		this.updateAmounts();
+	});
 	$scope.isLoged = function(){
         if(document.cookie.indexOf('user') == -1){
             return false;
@@ -76,11 +91,6 @@ var app = angular.module('Carrito', ['navbar']);
     }
  });
 })();
-
-$(document).on('click', '.dropdown-menu li a', function(){
-    //$(this).parent().parent().siblings(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
-    $(this).closest(".btn-group").find("button").text($(this).text());
-});
 
 function ReadCookie(name)
 {
@@ -94,10 +104,3 @@ function ReadCookie(name)
   }
   return null;
 }
-/*
-$(document).on('click', '.btn-rmv',function(){
-	var row = $(this).closest("tr");            // find parent tr
-    var index = $("table").find(row).index() + 1;    // get index of tr
-	$(this).closest("tr").remove();
-	$(document).find(".infoblock h5:nth-child(" + index + ")").remove();
-});*/
