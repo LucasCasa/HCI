@@ -8,6 +8,8 @@ app.filter('tarjeta',function(){
 });
 
 app.controller('FinalizarController',function($scope,$http,$log){
+	this.texto = '{"states": [ { "stateId": "C", "name": "Ciudad Autonoma de Buenos Aires" }, { "stateId": "B", "name": "Buenos Aires" }, { "stateId": "K", "name": "Catamarca" }, { "stateId": "H", "name": "Chaco" }, { "stateId": "U", "name": "Chubut" }, { "stateId": "X", "name": "Cordoba" }, { "stateId": "W", "name": "Corrientes" },{ "stateId": "E", "name": "Entre Rios" },{ "stateId": "P", "name": "Formosa" },{ "stateId": "Y", "name": "Jujuy" },{ "stateId": "L", "name": "La Pampa" },{ "stateId": "F", "name": "La Rioja" },{ "stateId": "M", "name": "Mendoza" },{ "stateId": "N", "name": "Misiones" },{ "stateId": "Q", "name": "Neuquen" },{ "stateId": "R", "name": "Rio Negro" },{ "stateId": "A", "name": "Salta" },{ "stateId": "J", "name": "San Juan" },{ "stateId": "D", "name": "San Luis" },{ "stateId": "Z", "name": "Santa Cruz" },{ "stateId": "S", "name": "Santa Fe" },{ "stateId": "G", "name": "Santiago del Estero" },{ "stateId": "V", "name": "Tierra del Fuego" },{ "stateId": "T", "name": "Tucuman" }]}';	
+	$scope.states = JSON.parse(this.texto).states;
 	$scope.costoEnvio = 20;
 	var fucus = this;
 	$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllCreditCards&username='+ readCookie("user") +'&authentication_token=' + readCookie("token") + '&page_size=999').then(function(res){
@@ -23,6 +25,24 @@ app.controller('FinalizarController',function($scope,$http,$log){
 		}else{
 			return "AmericanExpress"
 		}
+	}
+	$scope.getProvince = function(id){
+ 			for(i=0;i<$scope.states.length;i++){
+	 			if($scope.states[i].stateId == id){
+ 					return $scope.states[i].name;
+ 				}
+ 			}
+ 	};
+	$scope.GetOrderById = function(){
+		$loadingO = true;
+		$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username='+readCookie("user") +'&authentication_token='+readCookie("token")+'&id='+readCookie("carritoOrderId")).then(function(res){
+			$log.debug(res);
+			$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAddressById&username='+readCookie('user')+'&authentication_token='+readCookie("token") + '&id='+ res.data.order.address.id).then(function(res2){
+				$loadingO = false;
+				$log.debug(res2);
+				$scope.direccion = res2.data.address;
+			});
+		});
 	}
 	$scope.updateItems = function(){
 		$scope.loading = true;
@@ -59,6 +79,7 @@ app.controller('FinalizarController',function($scope,$http,$log){
 	}
 	$('#finaliz').on('click', function() {
 		$log.debug($scope);
+		$scope.GetOrderById();
     	$scope.updateItems();
  	});
 });
