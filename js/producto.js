@@ -79,6 +79,9 @@ app.controller('ProductController',function($scope,$http,$log){
     if($scope.selectedAmount < 1)
       $scope.selectedAmount = 1;
   };
+  this.isLoged = function(){
+    return user != null;
+  };
 });
 
 app.controller('ReviewController',function($scope,$http,$log){
