@@ -13,10 +13,11 @@
 <body ng-controller="CuentaController as CuentaCtrl">
 	<nav-bar></nav-bar>
 	<div class="container">
-		<ol class="breadcrumb">
-  			<li><a href="index.html">Página Principal</a></li>
-  			<li class="active">Mi Cuenta</li>
-		</ol>
+		<div class="loading-block" ng-show="loadingUC || loadingRC || loadingLC || loadingRA || loadingUA || loadingSA || loadingA || loadingU">
+     		<div class="loading-image" >
+          		<img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
+      		</div>
+    	</div>
 		<div class="page-header">
 			<h3>Mi Cuenta</h3>
 		</div>
@@ -177,14 +178,14 @@
                     	<div class="col-padding">
 					<div id="form-reg">
 						<h2 ng-show="isAddress()">No hay Direcciones</h2>					
-						<div ng-repeat="direccion in direcciones" id="form-col1">
+						<div ng-repeat="direccion in direcciones" class="well col-sm-6" id="form-col1">
 							<form ng-attr-id="{{'Direccion'+ direccion.id}}" ng-cloak>
 								<br>
 								<p class="field-name name-address">{{direccion.name}}</p>
 								<p class="field-name info">{{direccion.street +' ' + direccion.number}}{{(direccion.floor === null)?"":' Piso '+ direccion.floor}}{{(direccion.gate === null)?"":" Departamento: " + direccion.gate}}</p>
 								<p class="field-name info">{{ (direccion.city===null)?"":direccion.city+', '}} {{dirId[direccion.id]}} {{', Argentina' }}</p>
 							</form>
-							<button ng-attr-id="{{modificar + direccion.id}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAddressModal">
+							<button ng-attr-id="{{modificar + direccion.id}}" type="button" class="btn btn-primary" data-toggle="modal" ng-click="CuentaCtrl.editAddress(direccion.id)" data-target="#modifyAddressModal">
 								<span class="glyphicon glyphicon-edit"></span> Modificar
 							</button>
 							<button  type="button" class="btn btn-danger" ng-click="CuentaCtrl.removeAddress(direccion.id)" >
@@ -204,7 +205,7 @@
 										</div>
 										<add-address></add-address>
 										<div class="modal-footer">
-											<button id="save-account-btn" type="button" class="btn btn-success apply" ng-click="saveAddress()" hidden>
+											<button id="save-account-btn" type="button" class="btn btn-success apply" ng-click="saveAddress()" ng-disabled="!CuentaCtrl.isValidAddress()" data-dismiss="modal" hidden>
 												<span class="glyphicon glyphicon-ok"></span> Guardar
 											</button>
 											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
@@ -223,7 +224,7 @@
 										</div>
 										<add-address></add-address>
 										<div class="modal-footer">
-											<button id="change-address-btn" type="button" class="btn btn-success apply" hidden>
+											<button id="change-address-btn" type="button" class="btn btn-success apply"  ng-click="updateAddress()" ng-disabled="!CuentaCtrl.isValidAddress" data-dismiss="modal" hidden>
 												<span class="glyphicon glyphicon-ok"></span> Guardar
 											</button>
 											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
@@ -238,29 +239,35 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="tarjetas">
                     	<h2 ng-show="isCard()">No hay Tarjetas</h2>					
-						<div ng-repeat="tarjeta in tarjetas" id="form-col1">
-							<div id="form-col1" class="col-sm-2">
+						<div ng-repeat="tarjeta in tarjetas" class="well well-sm col-md-4 col-sm-12" id="form-col1">
+							<div id="form-col1" class="col-md-6">
 									<form id="form1">
 									<p class="field-name">Número de Tarjeta: </p>
 									<p class="field-name">Fecha de Vencimiento: </p>
-									<p class="field-name">Código de Seguridad: </p>
+									<!--<p class="field-name">Código de Seguridad: </p>-->
 									</form>
 							</div>
-							<form ng-attr-id="{{'Tarjeta'+ tarjeta.id}}" ng-cloak>
+							<form ng-attr-id="{{'Tarjeta'+ tarjeta.id}}" class="col-md-6" ng-cloak>
 								<p class="field-name">{{tarjeta.number.slice(0,4) + ' **** **** ' + tarjeta.number.slice(12)}}</p>
-								<p class="field-name">{{tarjeta.expirationDate}}</p>
-								<p class="field-name">{{tarjeta.securityCode}} </p>
+								<p class="field-name">{{tarjeta.expirationDate | fecha }}</p>
+								<!-- Mostrar el codigo de seguridad esta muuuy mal <p class="field-name">{{tarjeta.securityCode}} </p> -->
 							</form>
-						<button id="add-card" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editCardModal">
-							<span class="glyphicon glyphicon-edit"></span> Modificar
-						</button>
-						<button  type="button" class="btn btn-danger" ng-click="CuentaCtrl.removeCard(tarjeta.id)" >
-                			<span class="glyphicon glyphicon-remove"></span> Eliminar
-                		</button> 
+							<div class="row">
+							<div class="col-sm-8 col-sm-offset-2">
+								<button id="add-card" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editCardModal">
+									<span class="glyphicon glyphicon-edit"></span> Modificar
+								</button>
+								<button  type="button" class="btn btn-danger" ng-click="CuentaCtrl.removeCard(tarjeta.id)" >
+                					<span class="glyphicon glyphicon-remove"></span> Eliminar
+                				</button> 
+                				</div>
+                			</div>
                 		</div>
+                		<div class="row">
 						<button id="add-card" type="button" class="btn btn-info" data-toggle="modal" data-target="#addCardModal">
 							<span class="glyphicon glyphicon-plus"></span> Agregar tarjeta
 						</button> 
+						</div>
 						<div class="modal fade" data-backdrop="static" id="addCardModal">
 								<div class="modal-dialog">
 									<div class="modal-content">

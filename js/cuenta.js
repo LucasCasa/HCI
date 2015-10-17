@@ -28,6 +28,12 @@ var app = angular.module('Cuenta', ['navbar']);
  	};
 
  });
+ app.filter('fecha',function(){
+ 	return function(input){
+ 		return input.substr(0,2) + "/" + input.substr(2,2);
+ 	}
+ });
+
  app.controller("CuentaController",function($http,$log,$scope){
  	this.texto = '{"states": [ { "stateId": "C", "name": "Ciudad Autonoma de Buenos Aires" }, { "stateId": "B", "name": "Buenos Aires" }, { "stateId": "K", "name": "Catamarca" }, { "stateId": "H", "name": "Chaco" }, { "stateId": "U", "name": "Chubut" }, { "stateId": "X", "name": "Cordoba" }, { "stateId": "W", "name": "Corrientes" },{ "stateId": "E", "name": "Entre Rios" },{ "stateId": "P", "name": "Formosa" },{ "stateId": "Y", "name": "Jujuy" },{ "stateId": "L", "name": "La Pampa" },{ "stateId": "F", "name": "La Rioja" },{ "stateId": "M", "name": "Mendoza" },{ "stateId": "N", "name": "Misiones" },{ "stateId": "Q", "name": "Neuquen" },{ "stateId": "R", "name": "Rio Negro" },{ "stateId": "A", "name": "Salta" },{ "stateId": "J", "name": "San Juan" },{ "stateId": "D", "name": "San Luis" },{ "stateId": "Z", "name": "Santa Cruz" },{ "stateId": "S", "name": "Santa Fe" },{ "stateId": "G", "name": "Santiago del Estero" },{ "stateId": "V", "name": "Tierra del Fuego" },{ "stateId": "T", "name": "Tucuman" }]}';	
 	this.states = JSON.parse(this.texto).states;
@@ -35,6 +41,7 @@ var app = angular.module('Cuenta', ['navbar']);
  	var token = readCookie("token");
  	var focus = this;
  	$scope.dirId = {};
+ 	$scope.loadingU = true;
  	$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAccount&username="+user +"&authentication_token="+token).then(function(res){
  		$scope.user = res.data.account;
  		$scope.user.identityCard = parseInt($scope.user.identityCard);
@@ -43,14 +50,17 @@ var app = angular.module('Cuenta', ['navbar']);
  		$log.debug(user);
  		$log.debug(token);
  		$log.debug(res.data);
+ 		$scope.loadingU = false;
  	});
  	$scope.loadAddresses = function(){
- 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllAddresses&username="+ user +"&authentication_token="+token).then(function(res){
+ 		$scope.loadingA = true;
+ 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllAddresses&username="+ user +"&authentication_token="+token + "&page_size=9999").then(function(res){
 	 		$scope.direcciones = res.data.addresses; // Fijarse que solo devuelve 8, ya que esta pensado para que haya muchas paginas de direcciones
  			$log.debug($scope.direcciones);
  			for(i in $scope.direcciones){
  				$scope.dirId[$scope.direcciones[i].id] = $scope.getProvinceById($scope.direcciones[i].province);
  			}
+ 			$scope.loadingA = false;
  		});
  	}
  	$scope.loadAddresses();
@@ -63,29 +73,76 @@ var app = angular.module('Cuenta', ['navbar']);
  	};
 
 	$scope.saveAddress = function(){
+		$scope.loadingSA = true;
+ 		$log.debug("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateAddress&username="+user+"&authentication_token="+token+"&address="+ focus.createAddressString(undefined));
+ 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateAddress&username="+user+"&authentication_token="+token+"&address="+ focus.createAddressString(undefined)).then(function(res){
+ 			$log.debug(res);
+ 			$scope.loadingSA = false;
+ 		});
+ 	}
+ 	this.createAddressString = function(id){
+ 		var idstr = ""
+ 		if(id !== undefined){
+ 			var idstr = '"id":' + id + ',';
+ 		}
  		var name = '"name":"' + $scope.IdName + '"';
  		var street = ',"street":"' + $scope.street + '"';
  		var number = ',"number":"' + $scope.number + '"';
  		var floor = ($scope.floor === undefined)?"":',"floor":"' + $scope.floor + '"';
- 		var gate = ($scope.gate === undefined)?"":',"gate":"' + $scope.dpto + '"';
+ 		var gate = ($scope.dpto === undefined)?"":',"gate":"' + $scope.dpto + '"';
  		var zipCode = ',"zipCode":"' + $scope.postalCode + '"';
  		var province = ',"province":"' + $scope.province + '"';
  		var city = ($scope.province === 'C')?"":',"city":"' + $scope.city + '"';
  		var phoneNumber = ',"phoneNumber":"' + $scope.telephone + '"';
 
- 		var address ='{'+name+street+number+floor+gate+zipCode+province+city+phoneNumber+'}';
- 		$log.debug("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateAddress&username="+user+"&authentication_token="+token+"&address="+ address);
- 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateAddress&username="+user+"&authentication_token="+token+"&address="+ address).then(function(res){
- 			$log.debug(res);
+ 		return '{'+idstr+name+street+number+floor+gate+zipCode+province+city+phoneNumber+'}';
+
+ 	}
+ 	$scope.updateAddress = function(){
+ 		$scope.loadingUA = true;
+ 		$log.debug("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=UpdateAddress&username="+user+"&authentication_token="+token+"&address="+ focus.createAddressString($scope.addressId));
+ 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=UpdateAddress&username="+user+"&authentication_token="+token+"&address="+ focus.createAddressString($scope.addressId)).then(function(res){
+ 			if(res.data.error === undefined){
+ 				$scope.loadAddresses();
+ 			}
+ 			$scope.loadingUA  = false;
 
  		});
- 	}
+
+ 	}	
  	$scope.isAddress= function(){
  		return ($scope.direcciones == undefined || $scope.direcciones.length == 0);
  	}
+ 	this.isValidAddress = function(){
+		if($scope.IdName === undefined || $scope.IdName === ""){
+			return false;
+		}
+		if($scope.street === undefined || $scope.street === ""){
+			return false;
+		}
+		if($scope.number === undefined || !isPositiveInteger($scope.number)){
+			return false;
+		}
+		if($scope.province === undefined){
+			return false;
+		}
+		if($scope.province !== 'C' && ($scope.city === undefined || $scope.city === "")){
+			return false;
+		}
+		if($scope.postalCode === undefined || !isPositiveInteger($scope.postalCode)){
+			return false;
+		}
+		if($scope.telephone === undefined || $scope.telephone === ""){
+			return false;
+		}
+		return true;
+	}
+	
  	this.removeAddress = function(id){
+ 		$scope.loadingRA = true;
  		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=DeleteAddress&username='+ readCookie("user") + '&authentication_token='+ readCookie("token") +'&id=' + id).then(function(res){
  			$log.debug(res);
+ 			$scope.loadingRA = false;
  			if(res.data.error === undefined){
  				for(i = 0; i< $scope.direcciones.length;i++){
  					if($scope.direcciones[i].id === id){
@@ -96,19 +153,21 @@ var app = angular.module('Cuenta', ['navbar']);
  		});
  	}
  	this.editAddress = function(id){
- 		for(i = 0; i< $scope.direcciones.length;i++){
+ 		for(i in $scope.direcciones){
  			if($scope.direcciones[i].id === id){
  				var selected = $scope.direcciones[i];
  			}
  		}
- 		this.name = selected.name;
- 		this.number = selected.number;
- 		this.phoneNumber = selected.phoneNumber;
- 		this.province = selected.province;
- 		this.street = selected.street;
- 		this.zipCode = selected.zipCode;
- 		this.floor = selected.floor;
- 		this.gate = selected.gate;
+ 		$scope.addressId = id;
+ 		$scope.IdName = selected.name;
+ 		$scope.number = selected.number;
+ 		$scope.telephone = selected.phoneNumber;
+ 		$scope.province = selected.province;
+ 		$scope.city = selected.city;
+ 		$scope.street = selected.street;
+ 		$scope.postalCode = selected.zipCode;
+ 		$scope.floor = selected.floor;
+ 		$scope.dpto = selected.gate;
 
  	}
  	this.dayValidator = function(){
@@ -199,31 +258,6 @@ var app = angular.module('Cuenta', ['navbar']);
 		$('#year').parent().parent().parent().addClass('has-success');
 		return true;
 	}
-	this.addressIsValid = function(){
-		if($scope.IdName === undefined || $scope.IdName === ""){
-			return false;
-		}
-		if($scope.street === undefined || $scope.street === ""){
-			return false;
-		}
-		if($scope.number === undefined || !isPositiveInteger($scope.number)){
-			return false;
-		}
-		if($scope.province === undefined){
-			return false;
-		}
-		if($scope.province !== 'C' && ($scope.city === undefined || $scope.city === "")){
-			return false;
-		}
-		if($scope.postalCode === undefined || !isPositiveInteger($scope.postalCode)){
-			return false;
-		}
-		if($scope.telephone === undefined || $scope.telephone === ""){
-			return false;
-		}
-		return true;
-	}
-	
 	this.updateAccount = function(user){
 		var account = '{"firstName":"'+user.firstName+'","lastName":"'+user.lastName+'","gender":"'+user.gender+'","identityCard":"'+user.identityCard+'","email":"'+user.email+'","birthDate":"'+this.DOB[0] +'-'+ this.DOB[1] +'-'+ this.DOB[2]+'"}';
 		$log.debug('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=UpdateAccount&username=' + readCookie("user") + '&authentication_token='+readCookie("token") +'&account='+ account);
@@ -265,8 +299,10 @@ var app = angular.module('Cuenta', ['navbar']);
 
  	}
  	this.removeCard = function(id){
+ 		$scope.loadngRC = true;
  		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=DeleteCreditCard&username='+ user + '&authentication_token='+ token +'&id=' + id).then(function(res){
  			$log.debug(res);
+ 			$scope.loadngRC = false;
  			if(res.data.error === undefined){
  				for(i = 0; i< $scope.tarjetas.length;i++){
  					if($scope.tarjetas[i].id === id){
@@ -281,14 +317,15 @@ var app = angular.module('Cuenta', ['navbar']);
  		var expDate = ',"expirationDate":"' + $scope.expirationDate + '"';
  		var secCode = ',"securityCode":"' + $scope.securityCode + '"';
  		var card = '{'+number+expDate+secCode+'}';
-
+ 		$scope.loadingSC = true;
  		$log.debug("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateCreditCard&username=" +user+"&authentication_token="+token+"&credit_card=" + card);
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateCreditCard&username="+user+"&authentication_token="+token+"&credit_card="+ card).then(function(res){
  			$log.debug(res);
-
+ 			$scope.loadingSC = false;
  		});
  	}
  	this.updateCard = function(tarjeta){
+ 		$scope.loadingUC = true;
  		var idCard = '"id":' + tarjeta.id;
 		var number = ',"number":"' + tarjeta.cardNumber + '"';
  		var expDate = ',"expirationDate":"' + tarjeta.expirationDate + '"';
@@ -297,12 +334,15 @@ var app = angular.module('Cuenta', ['navbar']);
 		$log.debug('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=UpdateCreditCard&username=' + user + '&authentication_token='+ token +'&credit_card='+ card);
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=UpdateCreditCard&username=' + user + '&authentication_token='+ token +'&credit_card='+ card).then(function(res){
 			$log.debug(res);
+			$scope.loadingUC = false;
 		});
 	}
  	$scope.loadCard = function(){
- 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllCreditCards&username="+ user +"&authentication_token="+token).then(function(res){
+ 		$scope.loadingLC = true;
+ 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllCreditCards&username="+ user +"&authentication_token="+token+"&page_size=9999").then(function(res){
 	 		$scope.tarjetas = res.data.creditCards; // Fijarse que solo devuelve 8, ya que esta pensado para que haya muchas paginas de direcciones
  			$log.debug($scope.tarjetas);
+ 			$scope.loadingLC = false;
  		});
  	}
  	$scope.loadCard();
