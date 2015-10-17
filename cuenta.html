@@ -178,7 +178,7 @@
 					<div id="form-reg">
 						<h2 ng-show="isAddress()">No hay Direcciones</h2>					
 						<div ng-repeat="direccion in direcciones" id="form-col1">
-							<form ng-attr-id="{{'Direccion'+ direccion.id}}">
+							<form ng-attr-id="{{'Direccion'+ direccion.id}}" ng-cloak>
 								<br>
 								<p class="field-name name-address">{{direccion.name}}</p>
 								<p class="field-name info">{{direccion.street +' ' + direccion.number}}{{(direccion.floor === null)?"":' Piso '+ direccion.floor}}{{(direccion.gate === null)?"":" Departamento: " + direccion.gate}}</p>
@@ -239,8 +239,15 @@
                     <div role="tabpanel" class="tab-pane" id="tarjetas">
                     	<h2 ng-show="isCard()">No hay Tarjetas</h2>					
 						<div ng-repeat="tarjeta in tarjetas" id="form-col1">
-							<form ng-attr-id="{{'Tarjeta'+ tarjeta.id}}">
-								<p class="field-name">{{tarjeta.number}}</p>
+							<div id="form-col1" class="col-sm-2">
+									<form id="form1">
+									<p class="field-name">Número de Tarjeta: </p>
+									<p class="field-name">Fecha de Vencimiento: </p>
+									<p class="field-name">Código de Seguridad: </p>
+									</form>
+							</div>
+							<form ng-attr-id="{{'Tarjeta'+ tarjeta.id}}" ng-cloak>
+								<p class="field-name">{{tarjeta.number.slice(0,4) + ' **** **** ' + tarjeta.number.slice(12)}}</p>
 								<p class="field-name">{{tarjeta.expirationDate}}</p>
 								<p class="field-name">{{tarjeta.securityCode}} </p>
 							</form>
@@ -284,7 +291,7 @@
 								</div>
 								<add-creditCard></add-creditCard>
 										<div class="modal-footer">
-											<button id="add-card-btn" type="button" class="btn btn-success apply" hidden>
+											<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="CuentaCtrl.updateCard(tarjeta)" data-dismiss="modal" hidden>
 												<span class="glyphicon glyphicon-ok"></span> Guardar
 											</button>
 											<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >

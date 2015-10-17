@@ -259,8 +259,6 @@ var app = angular.module('Cuenta', ['navbar']);
  				var selected = $scope.tarjetas[i];
  			}
  		}
- 		this.name = selected.name;
- 		this.idCard = selected.idCard;
  		this.cardNumber = selected.cardNumber;
  		this.expirationDate = selected.expirationDate;
  		this.securityCode = selected.securityCode;
@@ -290,6 +288,17 @@ var app = angular.module('Cuenta', ['navbar']);
 
  		});
  	}
+ 	this.updateCard = function(tarjeta){
+ 		var idCard = '"id":' + tarjeta.id;
+		var number = ',"number":"' + tarjeta.cardNumber + '"';
+ 		var expDate = ',"expirationDate":"' + tarjeta.expirationDate + '"';
+ 		var secCode = ',"securityCode":"' + tarjeta.securityCode + '"';
+ 		var card = '{'+idCard+number+expDate+secCode+'}';
+		$log.debug('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=UpdateCreditCard&username=' + user + '&authentication_token='+ token +'&credit_card='+ card);
+		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=UpdateCreditCard&username=' + user + '&authentication_token='+ token +'&credit_card='+ card).then(function(res){
+			$log.debug(res);
+		});
+	}
  	$scope.loadCard = function(){
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllCreditCards&username="+ user +"&authentication_token="+token).then(function(res){
 	 		$scope.tarjetas = res.data.creditCards; // Fijarse que solo devuelve 8, ya que esta pensado para que haya muchas paginas de direcciones
