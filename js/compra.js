@@ -21,7 +21,9 @@
     });
     
     compraApp.controller('CompraController', function($log,$scope){
-        
+    if(document.cookie.indexOf('user') == -1){
+        location.href = 'index.html';
+    }
     this.nextStep = function(){
         var $active = $('.wizard .nav-tabs li.active');
         $active.next().removeClass('disabled');
