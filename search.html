@@ -258,7 +258,7 @@
                               <h4><a ng-attr-href="{{'producto.html?id=' + prod.id}}">{{prod.name}}</a>
                               </h4>
                               <h4 class="pull-right">{{prod.price | currency}}</h4>
-                              <p>Mirame soy un producto.</p>
+                              <p><strong>Marca: </strong>{{prod.attributes[0].values[0]}}</p> 
                           </div>
                           <div class="ratings">
                               <p class="pull-right">

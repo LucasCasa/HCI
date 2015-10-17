@@ -84,10 +84,11 @@ function callAPI(page , itemsPerPage){
 
 	$scope.filters = res.data.filters;
 	var i=0;
-	for(i;i<$scope.filters.length -1 ; i++){
-		console.log($scope.filters[i].id);
+	if($scope.filters !== undefined){
+		for(i;i<$scope.filters.length -1 ; i++){
+			console.log($scope.filters[i].id);
+		}
 	}
-
 
 	if((filt != "") && (filt != "all")){
 		putFilter(filt);

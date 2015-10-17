@@ -51,6 +51,9 @@ app.controller('FinalizarController',function($scope,$http,$log){
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=ConfirmOrder&username='+readCookie("user")+'&authentication_token='+readCookie("token")+'&order=' + order).then(function(res){
 			$log.debug("Comprado??");
 			$log.debug(res);
+			if(res.data.error === undefined){
+				document.cookie = "carritoOrderId=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+			}
 
 		});
 
