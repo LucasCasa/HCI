@@ -33,6 +33,13 @@ var app = angular.module('Cuenta', ['navbar']);
  	};
 
  });
+    app.directive('modifyPassword',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "modify-password.html"
+ 	};
+
+ });
  app.filter('fecha',function(){
  	return function(input){
  		return input.substr(0,2) + "/" + input.substr(2,2);
@@ -371,6 +378,20 @@ var app = angular.module('Cuenta', ['navbar']);
  		});
  	}
  	$scope.loadCard();
+
+ 	//Historial de compras
+ 	$scope.isOrder= function(){
+ 		return ($scope.compras == undefined || $scope.compras.length == 0);
+ 	}
+
+ 	$scope.loadOrder = function(){
+ 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetAllOrders&username="+ user +"&authentication_token="+token+"&page_size=9999").then(function(res){
+	 		$scope.compras = res.data.orders; 
+ 			$log.debug($scope.compras);
+ 		});
+ 	}
+ 	$scope.loadOrder();
+
  });
  app.filter('capitalize', function() {
     return function(input) {
