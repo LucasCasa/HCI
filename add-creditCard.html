@@ -1,28 +1,28 @@
 <div class="modal-body">
-	<p id="reminder">(Todos los campos son obligatorios)</p>
+	<h4 class="required-warning"> Todos los campos con * son obligatorios</h4>
 	<div class="category">
-		<label > Marca
-			<select class="fieldCard" id="cBrand" ng-model="brand" class="form-control"> 
+		<label > Marca*
+			<select class="fieldCard" id="cBrand" ng-model="cBrand" class="form-control"> 
 				<option value=""> - Seleccionar - </option>
 				<option value="Amex">American Express</option>
-				<option value="Dinners">Dinners</option>
+				<option value="Diners">Diners</option>
 				<option value="Master">MasterCard</option>
-				<option value="VISA">Visa</option>
+				<option value="Visa">Visa</option>
 			</select>								
 		</label>
 	</div>												
 	<div class="category">
-		<label >Número
+		<label >Número*
 			<input name="number" class="form-control" placeholder="ej: 1234456778901234" id="cardNumber"  ng-model="cardNumber" enabled>
 		</label>
 	</div>									
 	<div class="category">
-		<label >Fecha de Vencimiento
+		<label >Fecha de Vencimiento*
 			<input name="expirationDate" class="form-control" placeholder="ej: 0101" id="expirationDate" ng-model="expirationDate" enabled>
 		</label>
 	</div>						
 	<div class="category">
-		<label >Código de Seguridad
+		<label >Código de Seguridad*
 			<input name="securityCode" class="form-control" placeholder="ej: 123" id="securityCode" ng-model="securityCode" enabled>
 		</label>
 	</div>

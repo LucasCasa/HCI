@@ -14,7 +14,7 @@ var app = angular.module('Cuenta', ['navbar']);
  	};
 
  });
- app.filer('tarjeta',function(){
+ app.filter('tarjeta',function(){
  	return function(input){
  		return (input===undefined)?"":input.slice(0,4) + ' **** **** ' + input.slice(12)
  	}
@@ -344,6 +344,24 @@ var app = angular.module('Cuenta', ['navbar']);
 			$scope.loadCard();
 		});
 	}
+	this.isValidCard = function(){
+		if($scope.cBrand === "")
+		{
+			return false;
+		}
+		if($scope.cardNumber === undefined || $scope.cardNumber === "" || !isPositiveInteger($scope.cardNumber) || !isValidCardNumber($scope.cBrand,$scope.cardNumber)){
+			return false;
+		}
+		if($scope.expirationDate === undefined || $scope.expirationDate === "" ||  !isPositiveInteger($scope.expirationDate) || !isValidExpDate($scope.expirationDate)){
+			return false;
+		}
+		if($scope.securityCode === undefined || $scope.securityCode === "" ||!isPositiveInteger($scope.securityCode) || !isValidSecurityCode($scope.securityCode,$scope.cBrand)){
+			return false;
+		}
+
+		return true;
+	}
+	
  	$scope.loadCard = function(){
  		$scope.loadingLC = true;
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllCreditCards&username="+ user +"&authentication_token="+token+"&page_size=9999").then(function(res){
@@ -362,9 +380,43 @@ var app = angular.module('Cuenta', ['navbar']);
 
 })();
 
-	function isPositiveInteger(n) {
+function isPositiveInteger(n) {
     return 0 === n % (!isNaN(parseFloat(n)) && 0 <= ~~n);
 }
 function readCookie(name) {
     return (name = new RegExp('(?:^|;\\s*)' + ('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie)) && name[1];
+}
+
+
+function isValidSecurityCode(code,brand){
+	if(brand === "Amex" && code.length === 4){
+		return true;
+	}
+	if((brand === "Visa" || brand === "Master" || brand === "Diners") && code.length === 3){
+		return true;
+	}
+	return false;
+}
+
+function isValidExpDate(date){
+	if(date.length === 4 && parseInt(date.substr(0,2)) > 0 && parseInt(date.substr(0,2)) < 13){
+		return true;
+	}
+	return false;
+}
+
+function isValidCardNumber(brand,number){
+	if(brand === "Amex" && number.length === 15 && number.charAt(0) === '3' && (number.charAt(1) === '4' || number.charAt(1)=== '7')){
+		return true;
+	}
+	if(brand === "Diners" && number.length === 16 && number.charAt(0) === '3' && number.charAt(1) === '6'){
+		return true;
+	}
+	if(brand === "Visa" && (number.length === 16 || number.length === 13) && number.charAt(0) === '4'){
+		return true;
+	}
+	if(brand === "Master" && number.length === 16 && number.charAt(0) === '5' && (number.charAt(1) === '1' || number.charAt(1) === '2' || number.charAt(1) === '3')){
+		return true;
+	}
+	return false;
 }

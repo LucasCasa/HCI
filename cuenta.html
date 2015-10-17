@@ -226,7 +226,7 @@
 														</div>
 														<add-address></add-address>
 														<div class="modal-footer">
-															<button id="change-address-btn" type="button" class="btn btn-success apply"  ng-click="updateAddress()" ng-disabled="!CuentaCtrl.isValidAddress" data-dismiss="modal" hidden>
+															<button id="change-address-btn" type="button" class="btn btn-success apply"  ng-click="updateAddress()" ng-disabled="!CuentaCtrl.isValidAddress()" data-dismiss="modal" hidden>
 																<span class="glyphicon glyphicon-ok"></span> Guardar
 															</button>
 															<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
@@ -282,7 +282,7 @@
 
 												<add-creditCard></add-creditCard>
 												<div class="modal-footer">
-													<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="saveCard()" data-dismiss="modal" hidden>
+													<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="saveCard()" data-dismiss="modal" ng-disabled="!CuentaCtrl.isValidCard()" hidden>
 														<span class="glyphicon glyphicon-ok"></span> Guardar
 													</button>
 													<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
@@ -301,7 +301,7 @@
 												</div>
 												<add-creditCard></add-creditCard>
 												<div class="modal-footer">
-													<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="CuentaCtrl.updateCard(tarjeta)" data-dismiss="modal" hidden>
+													<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="CuentaCtrl.updateCard(tarjeta)" ng-disabled="!CuentaCtrl.isValidCard()" data-dismiss="modal" hidden>
 														<span class="glyphicon glyphicon-ok"></span> Guardar
 													</button>
 													<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
