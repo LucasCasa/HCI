@@ -27,9 +27,7 @@
     this.nextStep = function(){
         var $active = $('.wizard .nav-tabs li.active');
         $active.next().removeClass('disabled');
-        nextTab($active);
-        //$log.debug(Finalizar);
-        $log.debug($scope);    
+        nextTab($active); 
     };
     });
 

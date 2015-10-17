@@ -11,16 +11,13 @@ var app = angular.module('Carrito', ['navbar']);
  	var modifiedIds = [];
  	if(orderID !== null){
 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + user + "&authentication_token=" + token + "&id=" + orderID).then(function(res){
-			$log.debug(res);
 			$scope.productos = res.data.order.items;
 			if($scope.productos.length == 0){
 				$scope.emptyCart = true;
 			}
 			$scope.total = 0;
 			$scope.productos.forEach(function(entry){
-				$log.debug("entryid: " + entry.id);
-				$log.debug("entryqty: " + entry.quantity);
-				$scope.total += entry.price;
+				$scope.total += entry.price * entry.quantity;
 				$scope.selected[entry.id] = entry.quantity;
 			})
 			$scope.loading = false;
@@ -31,19 +28,27 @@ var app = angular.module('Carrito', ['navbar']);
 	}
 	this.change = function(id,idInOrder){
 		this.updateTotal();
-		var ids = {product: id, order: idInOrder};
-		if(modifiedIds.indexOf(ids) == -1)
+		var ids = {product:id, order:idInOrder};
+		var present = false;
+		modifiedIds.forEach(function(e){
+			if(e.order == idInOrder)
+				present = true;
+		})
+		if(!present)
 			modifiedIds.push(ids);
 	}
 	this.updateAmounts = function(){
 		var esto = this;
 		modifiedIds.forEach(function(ids){
 			$scope.loading = true;
-			esto.remove(ids.order);
-			$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + ids.product + '},"quantity":'+ $scope.selected[ids.order] +'}').then(function(res){
+			esto.remove(ids.product);
+			$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=AddItemToOrder&username=' + user + '&authentication_token=' + token + '&order_item={"order":{"id":' + orderID + '},"product":{"id": ' + ids.order + '},"quantity":'+ $scope.selected[ids.product] +'}').then(function(res){
+				$log.debug("item reagregado: ");
+				$log.debug(res);
 				$scope.loading = false;
 			});
 		})
+		modifiedIds = [];
 	};
 	this.updateTotal= function(){
 		$scope.total = 0;
@@ -64,8 +69,8 @@ var app = angular.module('Carrito', ['navbar']);
 		$scope.loading = true;
 		var esto = this;
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=RemoveItemFromOrder&username='+ user +'&authentication_token='+ token +'&id=' + id).then(function(res){
-			$log.debug(res);
 			$scope.loading = false;
+			$log.debug(res);
 			if(!(index === undefined))
 				$scope.productos.splice(index,1);
 			esto.updateTotal();
@@ -77,7 +82,6 @@ var app = angular.module('Carrito', ['navbar']);
 		if (idIndex > -1) {
     		modifiedIds.splice(idIndex, 1);
 		}
-		$log.debug(modifiedIds);
 	};
 	$(window).unload(function(){
 		this.updateAmounts();
