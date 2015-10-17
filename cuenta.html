@@ -255,7 +255,8 @@
 											</form>
 										</div>
 										<form ng-attr-id="{{'Tarjeta'+ tarjeta.id}}" class="col-md-6" ng-cloak>
-											<p class="field-name">{{tarjeta.number.slice(0,4) + ' **** **** ' + tarjeta.number.slice(12)}}</p>
+											<p></p>
+											<p class="field-name">{{ tarjeta.number | tarjeta}}</p>
 											<p class="field-name">{{tarjeta.expirationDate | fecha }}</p>
 											<!-- Mostrar el codigo de seguridad esta muuuy mal <p class="field-name">{{tarjeta.securityCode}} </p> -->
 										</form>

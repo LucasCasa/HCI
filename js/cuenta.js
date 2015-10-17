@@ -14,6 +14,11 @@ var app = angular.module('Cuenta', ['navbar']);
  	};
 
  });
+ app.filer('tarjeta',function(){
+ 	return function(input){
+ 		return (input===undefined)?"":input.slice(0,4) + ' **** **** ' + input.slice(12)
+ 	}
+ });
    app.directive('addCreditcard',function(){
  	return{
  		restrict: 'E',

@@ -7,12 +7,19 @@
     <h1>Finalizar Compra</h1>
     <h3>Metodo de Pago</h3>
     <div class="radio">
-      <label><input type="radio" name="optradio">Efectivo</label>
+      <label><input type="radio" ng-click="card = false" name="optradio">Efectivo</label>
     </div>
     <div class="radio">
-      <label><input type="radio" name="optradio">Tarjeta</label>
+      <label><input ng-click="card = true"type="radio" name="optradio">Tarjeta</label>
     </div>
-    <br>
+    <div class="row col-sm-12" ng-show="card"> 
+      <div class="well col-sm-6">
+        <label >Seleccionar tarjeta</label>
+          <select name="tarjetas" class="form-control" ng-model="selectedCard">
+            <option ng-repeat="tarjeta in tarjetas track by $index" ng-value="tarjeta.id"><strong>{{getCardType(tarjeta.number)}}</strong> - {{" " + tarjeta.number | tarjeta}}</option>
+          </select>
+      </div>   
+    </div> 
     <h3>Productos</h3>
     <hr>
     <div class="row col-sm-9">
