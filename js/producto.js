@@ -78,7 +78,7 @@ app.controller('ProductController',function($scope,$http,$log){
   };
   this.add = function(value){
     $scope.selectedAmount = parseInt($scope.selectedAmount) + value;
-    if($scope.selectedAmount < 1)
+    if($scope.selectedAmount < 1 || isNaN($scope.selectedAmount))
       $scope.selectedAmount = 1;
   };
   this.isLoged = function(){

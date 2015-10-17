@@ -50,7 +50,7 @@ var app = angular.module('Carrito', ['navbar']);
 	};
 	this.add = function(value,id){
 		$scope.selected[id] = parseInt($scope.selected[id]) + value;
-		if($scope.selected[id] < 1)
+		if($scope.selected[id] < 1 || isNaN($scope.selected[id]))
 			$scope.selected[id] = 1;
 		this.updateTotal();
 	};
