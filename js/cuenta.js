@@ -1,5 +1,5 @@
 (function() {
-var app = angular.module('Cuenta', ['navbar']);
+var app = angular.module('Cuenta', ['navbar','ngAnimate']);
 
 	if(document.cookie.indexOf('user=') == -1){
 		location.href='index.html';

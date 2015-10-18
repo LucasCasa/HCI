@@ -82,3 +82,9 @@ img[disabled]{
 .cssFade.ng-hide {
     opacity: 0;
 }
+
+.required-warning{
+	color:red;
+	font-style: italic;
+
+}
