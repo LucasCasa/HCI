@@ -249,34 +249,57 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate']);
 			return false;
 		}
 		if(user.email === undefined || user.email.indexOf('@') == -1 || user.email.indexOf('.') == -1 ||  user.email.lastIndexOf('.') - user.email.indexOf('@') < 2){
+			if($('#email').hasClass('ng-dirty')){
+				$('#email').parent().addClass('has-error');
+			}
 			return false;
 		}
 		
 		$('#email').parent().addClass('has-success');
-		if(user.firstName === undefined || user.firstName.length > 80 || user.lastName === undefined || user.lastName.length > 80){
+		$('#email').parent().removeClass('has-error');
+		if(user.firstName === undefined || user.firstName.length > 80 ){
+			if($('#firstname').hasClass('ng-dirty')){
+				$('#firstname').parent().addClass('has-error');
+			}
 			return false;
 		}
-		
 		$('#firstname').parent().addClass('has-success');
+		$('#firstname').parent().removeClass('has-error');
+		if(user.lastName === undefined || user.lastName.length > 80){
+
+			if($('#lastname').hasClass('ng-dirty')){
+				$('#lastname').parent().addClass('has-error');
+			}
+			return false;
+		}
+		$('#lastname').parent().removeClass('has-error');
 		$('#lastname').parent().addClass('has-success');
 		if(user.gender !== 'M' && user.gender !== 'F'){
 			return false;
 		}
 		
-		if(!isPositiveInteger(user.identityCard) || user.identityCard.length > 10){
+		if(!isPositiveInteger(user.identityCard) || Math.log(user.identityCard + 1) / Math.LN10 > 10){
+			if($('#dni').hasClass('ng-dirty')){
+				$('#dni').parent().addClass('has-error');
+			}
 			return false;
 		}
-		
+		$('#dni').parent().addClass('has-success');
+		$('#dni').parent().removeClass('has-error');
 		if(this.DOB[2] === undefined || this.DOB[1] === undefined || this.DOB[0] === undefined){
+
 			return false;
 		}
 		if(this.DOB[0] !== undefined && this.DOB[0] < 1900){
-			$('#year').popover('show');
+			if($('#year').hasClass('ng-dirty')){
+				$('#year').popover('show');
+				$('#year').parent().parent().parent().addClass('has-error');
+			}
 			return false;
 		}
-		
 		$('#year').popover('hide');
 		$('#year').parent().parent().parent().addClass('has-success');
+		$('#year').parent().parent().parent().removeClass('has-error');
 		return true;
 	}
 	this.updateAccount = function(user){
@@ -432,14 +455,19 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate']);
 
  	$scope.orderPrice = function(){
  		var precio = 0;
+ 		if($scope.order !== undefined){
  		for (var i = 0; i < $scope.order.items.length; i++) {
  			precio += ($scope.order.items[i].price*$scope.order.items[i].quantity);
  		};
+ 		}
  		return precio;
  	}
 
  	 $scope.orderQty = function(){
+ 	 	if($scope.order !== undefined){
  		return $scope.order.items.length;
+ 		}
+ 		return 0;
  	}
 
  	//Cambio de contraseña
@@ -502,6 +530,9 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate']);
 })();
 
 function isPositiveInteger(n) {
+	if(n === undefined){
+		return false;
+	}
    	for(i in n.length){
    		if(isNaN(n.substr(i,1).parseInt)){return false}
    	}
