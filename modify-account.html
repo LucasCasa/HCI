@@ -4,28 +4,28 @@
 			<div class="container-page">                
 				<div class="col-md-6">
 					<div>
-						<h4>(Todos los datos son obligatorios)</h4> 
+						<h4 class="required-warning"> Todos los campos con * son obligatorios</h4>
 					</div>
 					<div class="form-group col-lg-6">
-						<label>Nombre</label>
+						<label>Nombre*</label>
 						<input type="text" name="firstname" class="form-control" ng-model="user.firstName" id="firstname" value="" required>
 					</div>
 
 					<div class="form-group col-lg-6">
-						<label>Apellido</label>
+						<label>Apellido*</label>
 						<input type="text" name="lastname" class="form-control" ng-model="user.lastName" id="lastname" value=""  required>
 					</div> 
 					<div class="form-group col-lg-6">
-						<label>Correo Electrónico</label>
+						<label>Correo Electrónico*</label>
 						<input type="email" name="email" class="form-control" ng-model="user.email" id="email" value=""  required>
 					</div>              
 					<div class="form-group col-lg-6">
-						<label>Documento de Identidad</label>
+						<label>Documento de Identidad*</label>
 						<input type="number" name="dni" class="form-control" ng-model="user.identityCard" id="dni" value="" min="0" max="100000000" integer required>
 					</div>
 					<div class="form-group col-lg-6">
 						<div class="row">
-							<label>Fecha de Nacimiento</label>
+							<label>Fecha de Nacimiento*</label>
 						</div>
 						<div class="row">
 							<div class="col-sm-3" style="padding-left:0;padding-right:0"><input type="text" name"day" class="form-control" id="day"  placeholder="DD"  ng-change="CuentaCtrl.dayValidator()"   ng-model="CuentaCtrl.DOB[2]" required></div>
@@ -36,7 +36,7 @@
 						</div>
 					</div>
 					<div class="form-group col-sm-12">
-						<label class="col-sm-2">Género: </label>
+						<label class="col-sm-2">Género* </label>
 						<label class="col-sm-3">
 							<input type="radio" id="MRB" ng-checked='user.gender == "M"' ng-model="user.gender" name="gender" value="M"/> Masculino   
 						</label> 
