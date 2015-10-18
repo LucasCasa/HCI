@@ -8,6 +8,7 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="icon" type="image/png" href="images/muffin.png">
 	<link rel="stylesheet" type="text/css" href="css/general.css">
+	<!--<link rel="stylesheet" type="text/css" href="css/cuenta.css">-->
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 </head>
 <body ng-controller="CuentaController as CuentaCtrl">
@@ -180,6 +181,7 @@
 										</button> 
 									</div>			
 									<div ng-repeat="tarjeta in tarjetas" class="well well-sm col-md-4 col-sm-12" id="form-col1">
+									<p align="center" class="col-sm-12"><img ng-src="{{getCardImage(tarjeta.number)}}"></p>
 										<div id="form-col1" class="col-md-6">
 											<form id="form1">
 												<p class="field-name">Número de Tarjeta: </p>
@@ -188,7 +190,6 @@
 											</form>
 										</div>
 										<form ng-attr-id="{{'Tarjeta'+ tarjeta.id}}" class="col-md-6" ng-cloak>
-											<p></p>
 											<p class="field-name">{{ tarjeta.number | tarjeta}}</p>
 											<p class="field-name">{{tarjeta.expirationDate | fecha }}</p>
 											<!-- Mostrar el codigo de seguridad esta muuuy mal <p class="field-name">{{tarjeta.securityCode}} </p> -->
@@ -208,17 +209,17 @@
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<button type="button" class="close" ng-click="errorCard = false" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
 													<h4 class="modal-title">Agregar tarjeta</h4>
 												</div>
 
 												<add-creditCard></add-creditCard>
 												<div class="modal-footer">
-													<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="saveCard()" data-dismiss="modal" ng-disabled="!CuentaCtrl.isValidCard()" hidden>
+													<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="saveCard()" ng-disabled="!CuentaCtrl.isValidCard()" hidden>
 														<span class="glyphicon glyphicon-ok"></span> Guardar
 													</button>
-													<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
+													<button id="cancel-btn" type="button" class="btn btn-danger apply" ng-click="errorCard = false" data-dismiss="modal" hidden >
 														<span class="glyphicon glyphicon-remove"></span> Descartar
 													</button>		
 												</div>

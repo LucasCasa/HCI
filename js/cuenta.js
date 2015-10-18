@@ -343,7 +343,14 @@ var app = angular.module('Cuenta', ['navbar']);
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateCreditCard&username="+user+"&authentication_token="+token+"&credit_card="+ card).then(function(res){
  			$log.debug(res);
  			$scope.loadingSC = false;
- 			$scope.loadCard();
+ 			if(res.data.error === undefined){
+ 				$scope.errorCard = false;
+ 				$('#addCardModal').modal('toggle');
+ 				$scope.loadCard();
+
+ 			}else{
+ 				$scope.errorCard = true;
+ 			}	
  		});
  	}
  	this.updateCard = function(tarjeta){
@@ -361,23 +368,33 @@ var app = angular.module('Cuenta', ['navbar']);
 		});
 	}
 	this.isValidCard = function(){
-		if($scope.cBrand === "")
-		{
+		if($scope.cardNumber === undefined || $scope.cardNumber === ""){
+			$scope.selectedCard = "";
 			return false;
 		}
-		if($scope.cardNumber === undefined || $scope.cardNumber === "" || !isPositiveInteger($scope.cardNumber) || !isValidCardNumber($scope.cBrand,$scope.cardNumber)){
+		if(!isPositiveInteger($scope.cardNumber) || !isValidCardNumber($scope.cardNumber)){
 			return false;
 		}
 		if($scope.expirationDate === undefined || $scope.expirationDate === "" ||  !isPositiveInteger($scope.expirationDate) || !isValidExpDate($scope.expirationDate)){
 			return false;
 		}
-		if($scope.securityCode === undefined || $scope.securityCode === "" ||!isPositiveInteger($scope.securityCode) || !isValidSecurityCode($scope.securityCode,$scope.cBrand)){
+		if($scope.securityCode === undefined || $scope.securityCode === "" ||!isPositiveInteger($scope.securityCode) || !isValidSecurityCode($scope.securityCode,$scope.selectedCard)){
 			return false;
 		}
 
 		return true;
 	}
-	
+	$scope.getCardImage = function(number){
+		if(number.substr(0,1) == 4){
+			return "images/visa.png"
+		}else if(number.substr(0,1) == 5){
+			return "images/master.png"
+		}else if(number.substr(1,1) == 6){
+			return "images/diners.png"
+		}else{
+			return "images/amex.png"
+		}
+	}
  	$scope.loadCard = function(){
  		$scope.loadingLC = true;
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllCreditCards&username="+ user +"&authentication_token="+token+"&page_size=9999").then(function(res){
@@ -423,6 +440,34 @@ var app = angular.module('Cuenta', ['navbar']);
  		}
  		return true;
  	}
+ 	function isValidCardNumber(number){
+	if(number.charAt(0) === '3' && (number.charAt(1) === '4' || number.charAt(1)=== '7')){
+		$scope.selectedCard = "Amex";
+		if(number.length === 15){
+			return true;
+		}
+	}
+	if(number.charAt(1) === '6'){
+		$scope.selectedCard = "Diners";
+		if(number.length === 14 && number.charAt(0) === '3'){	
+		return true;
+		}
+	}
+	if(number.charAt(0) === '4'){
+		$scope.selectedCard = "Visa";
+		if((number.length === 16 || number.length === 13)){
+			return true;
+		}
+	}
+	if(number.charAt(0) === '5' && (number.charAt(1) === '1' || number.charAt(1) === '2' || number.charAt(1) === '3')){
+		$scope.selectedCard = "Master";
+		if(number.length === 16){
+			return true;
+		}
+	}
+	return false;
+}
+
  });
  app.filter('capitalize', function() {
     return function(input) {
@@ -433,7 +478,10 @@ var app = angular.module('Cuenta', ['navbar']);
 })();
 
 function isPositiveInteger(n) {
-    return 0 === n % (!isNaN(parseFloat(n)) && 0 <= ~~n);
+   	for(i in n.length){
+   		if(isNaN(n.substr(i,1).parseInt)){return false}
+   	}
+   return true;
 }
 function readCookie(name) {
     return (name = new RegExp('(?:^|;\\s*)' + ('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie)) && name[1];
@@ -457,18 +505,3 @@ function isValidExpDate(date){
 	return false;
 }
 
-function isValidCardNumber(brand,number){
-	if(brand === "Amex" && number.length === 15 && number.charAt(0) === '3' && (number.charAt(1) === '4' || number.charAt(1)=== '7')){
-		return true;
-	}
-	if(brand === "Diners" && number.length === 16 && number.charAt(0) === '3' && number.charAt(1) === '6'){
-		return true;
-	}
-	if(brand === "Visa" && (number.length === 16 || number.length === 13) && number.charAt(0) === '4'){
-		return true;
-	}
-	if(brand === "Master" && number.length === 16 && number.charAt(0) === '5' && (number.charAt(1) === '1' || number.charAt(1) === '2' || number.charAt(1) === '3')){
-		return true;
-	}
-	return false;
-}

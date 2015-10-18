@@ -1,15 +1,11 @@
 <div class="modal-body">
+	<h3 class="required-warning" ng-hide="!errorCard"  class="cssFade"> Esa tarjeta ya esta registrada </h3>
 	<h4 class="required-warning"> Todos los campos con * son obligatorios</h4>
 	<div class="category">
-		<label > Marca*
-			<select class="fieldCard" id="cBrand" ng-model="cBrand" class="form-control"> 
-				<option value=""> - Seleccionar - </option>
-				<option value="Amex">American Express</option>
-				<option value="Diners">Diners</option>
-				<option value="Master">MasterCard</option>
-				<option value="Visa">Visa</option>
-			</select>								
-		</label>
+		<img ng-disabled="selectedCard !== 'Visa' "  src="images/visa.png">
+		<img ng-disabled="selectedCard !== 'Master' " src="images/master.png">
+		<img ng-disabled="selectedCard !== 'Diners' " src="images/diners.png">
+		<img ng-disabled="selectedCard !== 'Amex' " src="images/amex.png">
 	</div>												
 	<div class="category">
 		<label >Número*

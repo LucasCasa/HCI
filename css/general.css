@@ -57,3 +57,28 @@ div .loading-image{
 	margin-left: 12px;
 	margin-top: 12px;
 }
+
+.img-disabled{
+    opacity: 0.5 !important;    
+}
+img:disabled{
+    opacity: 0.5 !important;       
+}
+img[disabled]{
+    opacity: 0.5 !important;       
+}
+
+.ng-hide-add, .ng-hide-remove {
+    /* ensure visibility during the transition */
+    display: block !important; /* yes, important */
+}
+
+.cssFade {
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+    opacity: 1;
+}
+.cssFade.ng-hide {
+    opacity: 0;
+}

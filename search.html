@@ -269,13 +269,12 @@
                           </div>
                       </div>
                   </div>
-
-                  <div class="barra">
+                  <div class="barra col-sm-12">
                     <div class="bloque pagi"><pagination  total-items="totalItems" ng-model="currentPage" items-per-page=8 num-pages="noOfPages" current-page="currentPage" max-size="maxSize" ng-change="changePage(currentPage)"></pagination></div>
                     <div class="bloque cant">
                       <h5>Cantidad:</h5>
-                      <select class="selector"ng-model="itemsPerPage" ng-change="changeItemsPerPage(itemsPerPage)" >
-                        <option value=8 >8</option>
+                      <select class="selector " ng-model="itemsPerPage" ng-change="changeItemsPerPage(itemsPerPage)" >
+                        <option selected value=8 >8</option>
                         <option value=16>16</option>
                         <option value=24>24</option>
                         <option value=32>32</option>
