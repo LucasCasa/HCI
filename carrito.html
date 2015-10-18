@@ -9,9 +9,9 @@
 				<div class="product-summary">
 					<h5 ng-repeat="producto in productos">{{producto.product.name}}<strong class="pull-right">{{producto.price *selected[producto.id] | currency}}</strong></h5>
 				</div>
-				<hr class="divider">
+				<hr class="divider"/>
 				<h3>Total <strong class="pull-right">{{total | currency}}</strong></h3>
-				<hr class="divider">
+				<hr class="divider"/>
 				<a href="index.html"><button type="button" class="btn btn-default" >
 					<span class="glyphicon glyphicon-shopping-cart"></span> Seguir comprando
 				</button></a>
@@ -53,7 +53,7 @@
 												<span class="glyphicon glyphicon-minus"></span>
 											</button>
 										</span>
-										<input type="text" name="" class="form-control input-number" ng-model="selected[producto.id]" min="1" max="100" ng-change="CarritoCtrl.change(producto.id,producto.product.id)" style="text-align:center">
+										<input type="text" name="" class="form-control input-number" ng-model="selected[producto.id]" min="1" max="100" ng-change="CarritoCtrl.write(producto.id,producto.product.id)" style="text-align:center">
 										<span class="input-group-btn">
 											<button style="padding:2px" type="button" class="btn btn-success btn-number" data-type="plus" data-field="" ng-click="CarritoCtrl.add(1,producto.id,producto.product.id)">
 												<span class="glyphicon glyphicon-plus" ></span>
@@ -61,7 +61,7 @@
 										</span>
 									</div>
 									<br>
-									<button type="button" class="btn btn-danger btn-rmv" ng-click="CarritoCtrl.remove(producto.id,$index)">
+									<button type="button" class="btn btn-danger btn-rmv" ng-click="CarritoCtrl.removeProduct(producto.id,$index)">
 										<span class="glyphicon glyphicon-remove"></span> Eliminar
 									</button>
 								</td>

@@ -1,5 +1,15 @@
 (function(){
 var app = angular.module('productoApp',['navbar']);
+app.directive('fallbackSrc', function () {
+    var fallbackSrc = {
+        link: function postLink(scope, iElement, iAttrs) {
+            iElement.bind('error', function() {
+                angular.element(this).attr("src", iAttrs.fallbackSrc);
+            });
+        }
+    }
+    return fallbackSrc;
+});
 
 app.directive('navBar',function(){
  	return{
@@ -12,11 +22,13 @@ app.controller('ProductController',function($scope,$http,$log){
   var cookie = document.cookie;
   var user = ReadCookie("user");
   var token = ReadCookie("token");
+  var esto = this;
 	this.prodId = parent.document.URL.substring(parent.document.URL.indexOf('?') + 4, parent.document.URL.length);
 	$http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetProductById&id=" + this.prodId).then(function(res){
 		$scope.producto = res.data.product;
 		$log.debug(res);
 		$log.debug(this.prodId);
+    $scope.cat = esto.getCat();
 	});
   $scope.loadingCart = false;
   $scope.loadingWl = false;
@@ -27,6 +39,39 @@ app.controller('ProductController',function($scope,$http,$log){
 	this.select = function(value){
 		this.selected = value;
 	};
+  this.getCat = function(){
+    var devuelveEdad = false;
+    var edad = "";
+    var genero = ""
+    $scope.producto.attributes.forEach(function(attr){
+      if(attr.id == 1){
+        genero = attr.values[0]
+        if(attr.values.length != 1)
+          devuelveEdad = true;
+      }else if(attr.id == 2){
+        edad = attr.values[0];
+      }
+    })
+    if(devuelveEdad){
+      return edad;
+    }
+    if(edad == "Adulto"){
+      if(genero == "Masculino"){
+        return "Hombre";
+      }else{
+        return "Mujer";
+      }
+    }else if(edad == "Infantil"){
+      if(genero == "Masculino"){
+        return "Niños";
+      }else{
+        return "Niñas";
+      }
+    }else if(edad == "Bebe"){
+      return "Bebe";
+    }
+    return "";
+  };
   this.addToWl = function(){
     $scope.loadingWl = true;
     var esto = this;
@@ -59,7 +104,6 @@ app.controller('ProductController',function($scope,$http,$log){
         $log.debug(res);
         document.cookie="carritoOrderId=" + res.data.order.id + "; path=/";
         esto.addCartWithOrder();
-        alert("crea uno nuevo");
       });
     }else{
       this.addCartWithOrder();
