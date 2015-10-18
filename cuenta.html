@@ -14,7 +14,7 @@
 <body ng-controller="CuentaController as CuentaCtrl">
 	<nav-bar></nav-bar>
 	<div class="container">
-		<div class="loading-block" ng-show="loadingUC || loadingRC || loadingLC || loadingRA || loadingUA || loadingSA || loadingA || loadingU || updatePW">
+		<div class="loading-block" ng-show="loadingUC || loadingAO || loadingO || loadingRC || loadingLC || loadingRA || loadingUA || loadingSA || loadingA || loadingU || updatePW">
 			<div class="loading-image" >
 				<img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
 			</div>
@@ -266,7 +266,7 @@
 											<p>{{compra.creditCard.number | tarjeta}}</p>
 											<br>
 										</form>
-										<button id="expand-order-btn" type="button" data-toggle="modal" data-target="#viewOrderModal" class="btn btn-default apply" hidden> Ver detalle de compra
+										<button id="expand-order-btn" type="button" data-toggle="modal" data-target="#viewOrderModal" class="btn btn-default apply" ng-click="loadOrder(compra.id)" hidden> Ver detalle de compra
 										</button>
 										<div class="modal fade"  id="viewOrderModal">
 										<div class="modal-dialog">
@@ -278,10 +278,12 @@
 												</div>
 												<div class="modal-body">
 													<div id="form-col1" class="col-md-6">
-													<form id="form2">
+													<form id="form2" ng-cloak>
 														<p class="field-name">Recibida el: </p>
 														<p class="field-name" >Procesada el : </p>
 														<p class="field-name">Fecha de entrega: </p>
+														<p class="field-name">Cantidad de artículos: </p>
+														<p class="field-name">Total: </p>
 														<hr>
 													</form>
 													</div>
@@ -289,6 +291,8 @@
 														<p>{{compra.receivedDate}}</p>
 														<p>{{compra.processedDate == null ? "El pedido todavía no fue procesado" : compra.processedDate}}</p>
 														<p>{{compra.shippedDate == null ? "El pedido todavía no fue entregado" : compra.shippedDate}}</p>
+														<p>{{orderPrice() | currency}}</p>
+														<p>{{orderQty()}}</p>
 														<hr>
 														<br>
 													</form>

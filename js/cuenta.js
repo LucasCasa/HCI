@@ -410,13 +410,41 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate']);
  		return ($scope.compras == undefined || $scope.compras.length == 0);
  	}
 
- 	$scope.loadOrder = function(){
+ 	$scope.loadAllOrders = function(){
+ 		$scope.loadingAO = true;
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetAllOrders&username="+ user +"&authentication_token="+token+"&page_size=9999").then(function(res){
 	 		$scope.compras = res.data.orders; 
  			$log.debug($scope.compras);
+ 			$scope.loadingAO = false;
  		});
  	}
- 	$scope.loadOrder();
+ 	$scope.loadAllOrders();
+
+ 	$scope.loadOrder = function(idOrder){
+ 		$scope.loadingO = true;
+ 		$log.debug('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username='+ user + '&authentication_token=' + token + '&new_password=' + idOrder);
+ 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username='+ user +'&authentication_token=' + token + '&id=' + idOrder).then(function(res){
+ 			$scope.order = res.data.order;
+ 			$log.debug($scope.order);
+ 			$scope.loadingO = false;
+ 		});
+ 	}
+
+ 	$scope.orderPrice = function(){
+ 		var precio = 0;
+ 		for (var i = 0; i < $scope.order.items.length; i++) {
+ 			precio += ($scope.order.items[i].price*$scope.order.items[i].quantity);
+ 		};
+ 		return precio;
+ 	}
+
+ 	 $scope.orderQty = function(){
+ 		var cantidad = 0;
+ 		for (var i = 0; i < $scope.order.items.length; i++) {
+ 			cantidad += $scope.order.items[i].quantity;
+ 		};
+ 		return cantidad;
+ 	}
 
  	//Cambio de contraseña
  	$scope.updatePass = function(){
@@ -435,7 +463,7 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate']);
  		if($scope.newpass === undefined || $scope.newpass === ""){
  			return false;
  		}
- 		if($scope.repnewpass === undefined || $scope.repnewpass === ""){
+ 		if($scope.repnewpass === undefined || $scope.repnewpass === "" || $scope.repnewpass != $scope.newpass){
  			return false;
  		}
  		return true;
