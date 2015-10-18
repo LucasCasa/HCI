@@ -439,11 +439,7 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate']);
  	}
 
  	 $scope.orderQty = function(){
- 		var cantidad = 0;
- 		for (var i = 0; i < $scope.order.items.length; i++) {
- 			cantidad += $scope.order.items[i].quantity;
- 		};
- 		return cantidad;
+ 		return $scope.order.items.length;
  	}
 
  	//Cambio de contraseña

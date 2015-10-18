@@ -257,7 +257,7 @@
 												<p class="field-name">Recibida el: </p>
 												<p class="field-name" >Dirección: </p>
 												<p class="field-name">{{compra.creditCard.number == null ? "Pagado en efectivo" : "Tarjeta:"}}</p>
-												<!--<p class="field-name">Código de Seguridad: </p>-->
+												<br>
 											</form>
 										</div>
 										<form ng-attr-id="{{'Orden'+ orden.id}}" ng-cloak>
@@ -285,6 +285,7 @@
 														<hr>
 														<p class="field-name">Total: </p>
 														<p class="field-name">Cantidad de artículos: </p>
+														<p> Productos comprados </p>
 														<hr>
 													</form>
 													</div>
@@ -296,9 +297,20 @@
 														<p>{{orderPrice() | currency}}</p>
 														<p>{{orderQty()}}</p>
 														<br>
+														<hr>
+														<div class= "col-md-6" ng-repeat="item in order.items">
+															<p>{{item.product.name}}</p>
+															<p>{{item.price | currency}}</p>
+															<p>{{item.quantity}}</p>
+														</div>
 													</form>
+													<br>
+													<br>
+													<br>
+													<div class= "col-md-6" ng-repeat="item in order.items">
+													</div>
 												</div>
-												<div class="modal-footer">
+												<div class="modal-footer">	
 												</div>
 											</div>
 										</div>
