@@ -13,7 +13,7 @@
 <body ng-controller="CuentaController as CuentaCtrl">
 	<nav-bar></nav-bar>
 	<div class="container">
-		<div class="loading-block" ng-show="loadingUC || loadingRC || loadingLC || loadingRA || loadingUA || loadingSA || loadingA || loadingU">
+		<div class="loading-block" ng-show="loadingUC || loadingRC || loadingLC || loadingRA || loadingUA || loadingSA || loadingA || loadingU || updatePW">
 			<div class="loading-image" >
 				<img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
 			</div>
@@ -146,7 +146,7 @@
 												</div>
 												<modify-password></modify-password>
 												<div class="modal-footer">
-													<button id="save-pass-btn" type="button" class="btn btn-success apply" hidden>
+													<button id="save-pass-btn" type="button" class="btn btn-success apply" ng-click="updatePass()" data-dismiss="modal" hidden>
 														<span class="glyphicon glyphicon-ok"></span> Guardar
 													</button>
 													<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal"hidden >
@@ -306,7 +306,7 @@
 												<!--<p class="field-name">Código de Seguridad: </p>-->
 											</form>
 										</div>
-										<form ng-attr-id="{{'Direccion'+ direccion.id}}" ng-cloak>
+										<form ng-attr-id="{{'Orden'+ orden.id}}" ng-cloak>
 											<p>{{compra.receivedDate}}</p>
 											<p>{{compra.address.name}}</p>
 											<p>{{compra.creditCard.number | tarjeta}}</p>
@@ -323,15 +323,23 @@
 													<h4 class="modal-title">Detalle de compra</h4>
 												</div>
 												<div class="modal-body">
-													
+													<div id="form-col1" class="col-md-6">
+													<form id="form2">
+														<p class="field-name">Recibida el: </p>
+														<p class="field-name" >Procesada el : </p>
+														<p class="field-name">Fecha de entrega: </p>
+														<hr>
+													</form>
+													</div>
+													<form ng-cloak>
+														<p>{{compra.receivedDate}}</p>
+														<p>{{compra.processedDate == null ? "El pedido todavía no fue procesado" : compra.processedDate}}</p>
+														<p>{{compra.shippedDate == null ? "El pedido todavía no fue entregado" : compra.shippedDate}}</p>
+														<hr>
+														<br>
+													</form>
 												</div>
 												<div class="modal-footer">
-													<button id="add-card-btn" type="button" class="btn btn-success apply" ng-click="saveCard()" data-dismiss="modal" ng-disabled="!CuentaCtrl.isValidCard()" hidden>
-														<span class="glyphicon glyphicon-ok"></span> Guardar
-													</button>
-													<button id="cancel-btn" type="button" class="btn btn-danger apply" data-dismiss="modal" hidden >
-														<span class="glyphicon glyphicon-remove"></span> Descartar
-													</button>		
 												</div>
 											</div>
 										</div>

@@ -64,6 +64,7 @@ var app = angular.module('Cuenta', ['navbar']);
  		$log.debug(res.data);
  		$scope.loadingU = false;
  	});
+ 	//Direcciones
  	$scope.loadAddresses = function(){
  		$scope.loadingA = true;
  		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=GetAllAddresses&username="+ user +"&authentication_token="+token + "&page_size=9999").then(function(res){
@@ -182,6 +183,7 @@ var app = angular.module('Cuenta', ['navbar']);
  		$scope.dpto = selected.gate;
 
  	}
+ 	//Información Personal
  	this.dayValidator = function(){
 		if(this.DOB[2] !== undefined){
 			if(this.DOB[2].length == 1){
@@ -391,6 +393,16 @@ var app = angular.module('Cuenta', ['navbar']);
  		});
  	}
  	$scope.loadOrder();
+
+ 	//Cambio de contraseña
+ 	$scope.updatePass = function(){
+ 		$scope.updatePW = true;
+ 		$log.debug('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=ChangePassword&username='+ user + '&password=' + $scope.oldpass + '&new_password=' + $scope.newpass);
+		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=ChangePassword&username='+ user + '&password=' + $scope.oldpass + '&new_password=' + $scope.newpass).then(function(res){
+			$log.debug(res);
+			$scope.updatePW = false;
+		});
+ 	}
 
  });
  app.filter('capitalize', function() {
