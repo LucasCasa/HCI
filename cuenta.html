@@ -298,12 +298,19 @@
 														<p>{{orderQty()}}</p>
 														<br>
 														<hr>
-														<div class= "col-md-6" ng-repeat="item in order.items">
-															<p>{{item.product.name}}</p>
-															<p>{{item.price | currency}}</p>
-															<p>{{item.quantity}}</p>
-														</div>
 													</form>
+														<table style="width:100%">
+  															<tr>
+    															<td>Producto</td>
+    															<td>Precio</td>		
+    															<td>Cantidad</td>
+  															</tr>
+															<tr ng-repeat="item in order.items">
+																<td>{{item.product.name}}</td>
+																<td>{{item.price | currency}}</td>
+																<td>{{item.quantity}}</td>
+															</tr>
+														</table>
 													<br>
 													<br>
 													<br>
