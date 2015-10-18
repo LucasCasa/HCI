@@ -252,6 +252,7 @@
 									<br>
 									<h2 ng-show="isOrder()">No has hecho ninguna compra</h2>
 									<div ng-repeat="compra in compras" ng-show="compra.status != 1" class="well well-sm col-md-4 col-sm-12" id="form-col1">
+									<div class="row">
 										<div id="form-col1" class="col-md-6">
 											<form id="form1">
 												<p class="field-name">Recibida el: </p>
@@ -266,8 +267,11 @@
 											<p>{{compra.creditCard.number | tarjeta}}</p>
 											<br>
 										</form>
+									</div>
+									<div class="text-center">
 										<button id="expand-order-btn" type="button" data-toggle="modal" data-target="#viewOrderModal" class="btn btn-default apply" ng-click="loadOrder(compra.id)" hidden> Ver detalle de compra
 										</button>
+									</div>
 										<div class="modal fade"  id="viewOrderModal">
 										<div class="modal-dialog">
 											<div class="modal-content">
