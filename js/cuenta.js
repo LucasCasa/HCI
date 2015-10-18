@@ -7,7 +7,7 @@ var app = angular.module('Cuenta', ['navbar']);
 	this.last = this.DOBDay;
 	this.lastM = this.DOBMonth;
 	this.lastY = this.DOBYear;
- app.directive('navBar',function(){
+ 	app.directive('navBar',function(){
  	return{
  		restrict: 'E',
  		templateUrl: "nav.html"
@@ -37,6 +37,13 @@ var app = angular.module('Cuenta', ['navbar']);
  	return{
  		restrict: 'E',
  		templateUrl: "modify-password.html"
+ 	};
+
+ });
+     app.directive('modifyAccount',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "modify-account.html"
  	};
 
  });
@@ -404,6 +411,18 @@ var app = angular.module('Cuenta', ['navbar']);
 		});
  	}
 
+ 	this.isValidPass = function(){
+ 		if($scope.oldpass === undefined || $scope.oldpass === ""){
+ 			return false;
+ 		}
+ 		if($scope.newpass === undefined || $scope.newpass === ""){
+ 			return false;
+ 		}
+ 		if($scope.repnewpass === undefined || $scope.repnewpass === ""){
+ 			return false;
+ 		}
+ 		return true;
+ 	}
  });
  app.filter('capitalize', function() {
     return function(input) {
