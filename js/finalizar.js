@@ -66,7 +66,7 @@ app.controller('FinalizarController',function($scope,$http,$log){
 			$scope.productos = res.data.order.items;
 			$scope.total += $scope.costoEnvio;
 			$scope.productos.forEach(function(entry){
-					$scope.total += entry.price;
+					$scope.total += entry.price * entry.quantity;
 			});
 			$scope.loading = false;
 		});
@@ -75,7 +75,7 @@ app.controller('FinalizarController',function($scope,$http,$log){
 		$scope.total = 0;
 		if($scope.productos !== undefined){
 			$scope.productos.forEach(function(entry){
-				$scope.total += entry.price;
+				$scope.total += entry.price * entry.quantity;
 			});
 			$scope.total+=$scope.costoEnvio;
 		}

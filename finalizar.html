@@ -38,7 +38,7 @@
           <th>Foto</th>
           <th>Descripcion</th>
           <th>Cantidad</th>
-          <th>Precio</th>
+          <th>Subtotal</th>
           <th> </th>
         </thead>
 
@@ -54,7 +54,7 @@
               <h4> {{producto.quantity}} </h4>
             </td>
             <td>
-              <h4>{{producto.price | currency}}</h4>
+              <h4>{{producto.price * producto.quantity | currency}}</h4>
             </td>
             <td>
               <button type="button" class="btn btn-danger" ng-click="removeItem(producto.id)">
@@ -68,7 +68,7 @@
     </div>
     <div class="info infoblock col-md-4 side-bar" ng-hide="loading">
   <div class="product-summary">
-    <h5 ng-repeat="producto in productos">{{producto.product.name}}<strong class="pull-right">{{producto.price | currency}}</strong></h5>
+    <h5 ng-repeat="producto in productos">{{producto.product.name}}<strong class="pull-right">{{producto.price * producto.quantity | currency}}</strong></h5>
   </div>
   <hr class="divider">
   <h5> Costo de envio <strong class="pull-right"> {{20 | currency}}</strong></h5>
@@ -89,7 +89,9 @@
           <h4 class="modal-title">Compra Realizada con exito</h4>
         </div>
         <div class="modal-footer">
-          <a href="index.html"><button type="button" class="btn btn-success" data-dismiss="modal">Volver a la pagina principal</button></a>
+        <div class="text-center">
+          <a href="index.html"><button type="button" class="btn btn-success" style="text-align:center;float:center">Volver a la pagina principal</button></a>
+        </div>
         </div>
       </div>
     </div>
