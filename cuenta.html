@@ -251,12 +251,12 @@
 									<br>
 									<br>
 									<h2 ng-show="isOrder()">No has hecho ninguna compra</h2>
-									<div ng-repeat="compra in compras" class="well well-sm col-md-4 col-sm-12" id="form-col1">
+									<div ng-repeat="compra in compras" ng-show="compra.status != 1" class="well well-sm col-md-4 col-sm-12" id="form-col1">
 										<div id="form-col1" class="col-md-6">
 											<form id="form1">
 												<p class="field-name">Recibida el: </p>
 												<p class="field-name" >Dirección: </p>
-												<p class="field-name">Tarjeta: </p>
+												<p class="field-name">{{compra.creditCard.number == null ? "Pagado en efectivo" : "Tarjeta:"}}</p>
 												<!--<p class="field-name">Código de Seguridad: </p>-->
 											</form>
 										</div>
@@ -282,8 +282,9 @@
 														<p class="field-name">Recibida el: </p>
 														<p class="field-name" >Procesada el : </p>
 														<p class="field-name">Fecha de entrega: </p>
-														<p class="field-name">Cantidad de artículos: </p>
+														<hr>
 														<p class="field-name">Total: </p>
+														<p class="field-name">Cantidad de artículos: </p>
 														<hr>
 													</form>
 													</div>
@@ -291,9 +292,9 @@
 														<p>{{compra.receivedDate}}</p>
 														<p>{{compra.processedDate == null ? "El pedido todavía no fue procesado" : compra.processedDate}}</p>
 														<p>{{compra.shippedDate == null ? "El pedido todavía no fue entregado" : compra.shippedDate}}</p>
+														<hr>
 														<p>{{orderPrice() | currency}}</p>
 														<p>{{orderQty()}}</p>
-														<hr>
 														<br>
 													</form>
 												</div>
