@@ -53,6 +53,7 @@ app.controller('FinalizarController',function($scope,$http,$log){
 			$log.debug(res);
 			if(res.data.error === undefined){
 				document.cookie = "carritoOrderId=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+				$('#successModal').modal('toggle');
 			}
 
 		});

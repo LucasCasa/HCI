@@ -74,7 +74,7 @@
 										    <tbody>
 										      	<tr ng-repeat="direccion in direcciones">
 											        <td><input type="radio" name="envio" ng-model="$parent.selectedAddress" ng-change="aux(direccion.id)" ng-value="direccion.id"/> </td>
-											        <td><div class="panel-body"> {{direccion.name}} - {{direccion.street +' '+ direccion.number}} {{(direccion.floor !== null)?direccion.floor:""}} {{(direccion.gate===null)?"":direccion.gate}} - {{getProvinceById(direccion.province) +", "}} {{(direccion.city === null)?"":direccion.city + " ,"}} Argentina </div></td>
+											        <td><div class="panel-body"> {{direccion.name}} - {{direccion.street +' '+ direccion.number}} {{(direccion.floor !== null)?direccion.floor:""}} {{(direccion.gate===null)?"":direccion.gate}} - {{(direccion.city === null)?"":direccion.city + " ,"}} {{getProvinceById(direccion.province) +", "}} Argentina </div></td>
 										      	</tr>
 										    </tbody>
 										</table>
@@ -82,7 +82,7 @@
 								</div>
 								<ul class="list-inline pull-right">
 									<li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
-									<li><button type="button" class="btn btn-primary next-step" ng-click="confirmAddresses()">Continuar</button></li>
+									<li><button type="button" class="btn btn-primary next-step" ng-disabled="selectedAddress === undefined" ng-click="confirmAddresses()">Continuar</button></li>
 								</ul>
 							</div>
 							<!-- step 3 -->
