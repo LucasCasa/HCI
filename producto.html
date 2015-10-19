@@ -13,6 +13,11 @@
 </head>
 <body ng-app="productoApp">
 	<nav-bar></nav-bar>
+	<div class="loading-block" ng-show="loading">
+      <div class="loading-image" >
+        <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
+      </div>
+    </div>
 	<div class="container-fluid" ng-controller="ProductController as ProductCtrl">
 		<ol class="breadcrumb"> <!-- aca hay que ir trayendo las categorias para armar el breadcrum -->
 			<li><a href="index.html">Página Principal</a></li>

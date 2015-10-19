@@ -15,8 +15,10 @@ app.controller('RegisterController',function($scope,$http,$log){
 		this.birthDate = this.DOBYear + "-"+ this.DOBMonth + "-" + this.DOBDay;
 		this.user = '{"username":"'+this.username+'","password":"'+this.pass1+'","firstName":"'+this.firstname+'","lastName":"'+this.lastname+'","gender":"'+this.gender+'","identityCard":"'+this.identityCard+'","email":"'+this.email+'","birthDate":"'+this.birthDate+'"}';
 		$log.debug(this.user);
+		$scope.loadingR = true;
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateAccount&account='+this.user).then(function(res){
 			$log.debug(res);
+			$scope.loadingR = false;
 			if(res.data.error !== undefined){
 				if(res.data.error.code == 200){
 					$scope.userAlreadyExists = true;
@@ -201,9 +203,12 @@ app.directive('register',function(){
 app.controller("LoginController",function($scope,$http,$log){
 	$log.debug($scope);
 	this.validLogin = true;
+
 	var store = this;
 	this.login = function(){
+		$scope.loadingL = true;
 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=SignIn&username=" + $scope.loginUser + "&password=" + $scope.loginPass).then(function(res){
+			$scope.loadingL = false;
 			if(res.data.error !== undefined){
 				store.validLogin = false;
 			}else{

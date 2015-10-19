@@ -23,12 +23,18 @@ app.controller('ProductController',function($scope,$http,$log){
   var user = ReadCookie("user");
   var token = ReadCookie("token");
   var esto = this;
+  $scope.loading = true;
 	this.prodId = parent.document.URL.substring(parent.document.URL.indexOf('?') + 4, parent.document.URL.length);
 	$http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetProductById&id=" + this.prodId).then(function(res){
-		$scope.producto = res.data.product;
-		$log.debug(res);
-		$log.debug(this.prodId);
-    $scope.cat = esto.getCat();
+    $scope.loading = false;
+    $log.debug(res);
+    if(res.data.error !== undefined){
+      alert("Hubo un error procesando la solicitud");
+    }else{
+		  $scope.producto = res.data.product;
+      $scope.cat = esto.getCat();  
+    }
+    
 	});
   $scope.loadingCart = false;
   $scope.loadingWl = false;
