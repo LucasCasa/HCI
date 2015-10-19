@@ -9,7 +9,7 @@
 		id:2},{name:'Niñas',
 		id:3},{name:'Bebes',
 		id:4}];	
-		$scope.seleccionada = 'Todas las categorias';
+		$scope.seleccionada = 'Todas las categorías';
         $scope.itemsOnCart = 0;
 	    $http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetAllCategories").then(function(res){
 		$scope.subcategorias = [[],[],[],[],[]];
