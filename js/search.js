@@ -56,7 +56,41 @@ callAPI(page,itemsPerPage);
 			itemsPerPage = num;
 			callAPI(page,itemsPerPage);
 		}
+function urlParser(){
+	var result = ["","","","","",""];
+	var url = window.location.href;
+	var urlArray = url.split("/");
+	var pos = urlArray.length;
 
+	url = urlArray[pos-1];
+
+	var param = (url.split("?")[1]);
+	param = decodeURIComponent(param);
+	param = param.split("&");
+	for(var i=0 ; i<param.length;i++){
+		var inside = param[i].split("=");
+		if(inside[0]=="x"){
+			result[0] = inside[1];
+		}
+		if(inside[0]=="cat"){
+			result[1] = inside[1];
+		}
+		if(inside[0]=="s"){
+			result[2] = inside[1];
+		}
+		if(inside[0]=="ss"){
+			result[3] = inside[1];
+		}
+		if(inside[0]=="f"){
+			result[4] = inside[1];
+		}
+		if(inside[0]=="c"){
+			result[5]= inside[1];
+		}
+	}
+	return result;
+	//console.log(param);
+}
 
 function selectFilter(filt){
 	var colores = ['Natural', 'Gris', 'Negro', 'Rojo', 'Celeste', 'Marron' , 'Verde','Carey','Dorado' ,'Fucsia', 'Azul', 'Blanco',
@@ -79,40 +113,110 @@ function selectFilter(filt){
 			id =9;
 		}
 		var url = '{"id":'+id+',"value":"'+filt+'"}';
-		return url;
+		return encodeURIComponent(url);
 }
 
-function checkGender( cat, isFiltered , filter){
+function formURL( parametros){
+	var byCategory = "GetProductsByCategoryId&id=";
+  var allCategories = "GetAllProducts";
+  var byName = "GetProductsByName&name=";
+	var busqueda =parametros[0];
+	var filt = parametros[1];
+	var categoria = parametros[2];
+	var ss = parametros[3];
+	var filtro = parametros[4];
+	var color = parametros[5];
+  var newURL = "";
+
+	if(busqueda == ""){
+		//console.log("no hay busqueda");
+		//SearchByCategory
+		if(categoria == ""){
+			newURL += allCategories;
+		}else{
+			newURL += byCategory;
+			if(categoria.localeCompare("Calzado")==0){
+				newURL += "1";
+			}else if (categoria.localeCompare("Indumentaria")==0) {
+				newURL += "2";
+			}else if (categoria.localeCompare("Accesorios")==0) {
+				newURL += "3";
+			}
+		}
+	//	newURL +=checkGender(filt,hayFiltro,filtro);
+
+	}else {
+		//GetProductsByName
+		newURL += byName;
+		newURL += busqueda;
+		if(page!=1){
+			newURL+= "&page=" + page;
+		}
+		if(itemsPerPage!= 8){
+			newURL+= "&page_size="+itemsPerPage;
+		}
+		if(filt.localeCompare("all")!=0){
+
+		newURL +=GetAllProducts;
+	}
+
+
+	}
+	if(page!=1){
+		newURL+= "&page=" + page;
+	}
+	if(itemsPerPage!= 8){
+		newURL+= "&page_size="+itemsPerPage;
+	}
+
+
+
+
+
+
+
+
+
 	var filters = "&filters="
+
+
 	var flag = false;
- if(cat.localeCompare("Hombres")==0){
-	 console.log("Hombres");
+ if(filt.localeCompare("Hombres")==0){
 	 flag=true;
 	 filters += encodeURIComponent('[{"id":1,"value":"Masculino"},{"id":2 ,"value":"Adulto"}');
- }else if (cat.localeCompare("Mujeres")==0) {
+ }else if (filt.localeCompare("Mujeres")==0) {
 	 console.log(" Mujeres");
 	 flag=true;
 	 filters += encodeURIComponent('[{"id":1,"value":"Femenino"},{"id":2 ,"value":"Adulto"}');
- }else if (cat.localeCompare("Niños")==0) {
+ }else if (filt.localeCompare("Niños")==0) {
 	 console.log("Ninos");
 	 flag=true;
 	 filters += encodeURIComponent('[{"id":1,"value":"Masculino"},{"id":2,"value":"Infantil"}');
- }else if (cat.localeCompare("Niñas")==0) {
+ }else if (filt.localeCompare("Niñas")==0) {
 	 console.log("Ninas");
 	 flag=true;
 	 filters += encodeURIComponent('[{"id":1,"value":"Femenino"},{"id":2,"value":"Infantil"}');
- }else if (cat.localeCompare("Bebes")==0) {
+ }else if (filt.localeCompare("Bebes")==0) {
 	 console.log("Bebes");
 	 flag=true;
 	 filters += encodeURIComponent('[{"id":2,"value":"Bebe"}');
  }
 
- if(isFiltered){
-	 filters += ","+selectFilter(filter) + "]";
- }else if(flag){
-	 filters += "]";
+if(filtro != ""){
+	filters += ","+selectFilter(filtro);
+}
+
+if(color!= ""){
+	filters+= ","+selectFilter(color);
+}
+
+filters += ']';
+
+ if(flag){
+ return newURL + filters;}
+ else{
+	 return newURL;
  }
- return filters;
 }
 
 function callAPI(page , itemsPerPage){
@@ -158,23 +262,23 @@ function callAPI(page , itemsPerPage){
 			}
 		}
 
+
 		for(i=0;i<$scope.filtrosaPoner.length;i++){
-			console.log($scope.filtrosaPoner[i]);
+
 			var dd = document.createElement('dd');
 			var url = window.location.href;
-			console.log(url);
+
 			var urlArray = url.split("/");
 			var pos = urlArray.length;
 			url = urlArray[pos-1];
+			url2 = url;
 			console.log(url);
 
 			var param = (url.split("?")[1]);
 			var param = param.split("&");
 			var busqueda = param[0].split("=")[1];
 			var filt = param[1].split("=")[1];
-			//file:///Users/dero/Sites/search.html?x=&cat=all&f=
-			//file:///Users/dero/Sites/search.html?x=&cat=Hombres&f=
-			//file:///Users/dero/Sites/search.html?x=&cat=Hombres&s=Calzado&f=
+
 			var categoria;
 			var filtro;
 			var hayFiltro = false;
@@ -204,12 +308,20 @@ function callAPI(page , itemsPerPage){
 
 		for(i=0;i<$scope.colores.length;i++){
 			var dd = document.createElement('dd');
-			dd.innerHTML = '<h5> <a href="">' +$scope.colores[i] + '</a> </h5>'
+			url2+= "&c="+$scope.colores[i];
+			dd.innerHTML = '<h5> <a href="'+url2 +'">' +$scope.colores[i] + '</a> </h5>'
 			document.getElementById('colores').appendChild(dd);
 		}
 
 
 	}
+	var parametros = urlParser();
+	var busqueda =parametros[0];
+	var filt = parametros[1];
+	var categoria = parametros[2];
+	var ss = parametros[3];
+	var filtro = parametros[4];
+	var color = parametros[5];
 
 	var num = 1;
 	if((filt != "") && (filt != "all")){
@@ -229,7 +341,7 @@ function callAPI(page , itemsPerPage){
 			document.getElementById('categorias').appendChild(dd);
 		}
 	}
-	if(categoria!= undefined){
+	if(categoria!= ""){
 		putFilter(categoria);
 
 	}else{
@@ -246,8 +358,11 @@ function callAPI(page , itemsPerPage){
 			document.getElementById('subcategorias').appendChild(dd);
 		}
 	}
-	if(hayFiltro){
+	if(filtro!=""){
 		putFilter(filtro);
+	}
+	if(color!=""){
+		putFilter(color);
 	}
 
 
@@ -259,90 +374,18 @@ function callAPI(page , itemsPerPage){
 		console.log("Error");
 	}
 
-
-	var url = window.location.href;
-	console.log(url);
-	var urlArray = url.split("/");
-	var pos = urlArray.length;
-
-	url = urlArray[pos-1];
-	console.log(url);
-
-	var param = (url.split("?")[1]);
-	param = decodeURIComponent(param);
-	param = param.split("&");
-	console.log(param);
-
-	var busqueda = param[0].split("=")[1];
-	var filt = param[1].split("=")[1];
-	//file:///Users/dero/Sites/search.html?x=&cat=all&f=
-	//file:///Users/dero/Sites/search.html?x=&cat=Hombres&f=
-	//file:///Users/dero/Sites/search.html?x=&cat=Hombres&s=Calzado&f=
-	var categoria;
-	var filtro;
-	var hayFiltro = false;
-	if(param.length==3){
-		var ver = param[2].split("=")[0];
-		if(ver.localeCompare("s")==0){
-			categoria = param[2].split("=")[1];
-	}else{
-		filtro = decodeURIComponent(param[2].split("=")[1]);
-		hayFiltro = true;
-	}
-	}
-
-	if(param.length==4){
-		categoria = param[2].split("=")[1];
-		filtro = decodeURIComponent(param[3].split("=")[1]);
-		hayFiltro = true;
-	}
-
+	var parametros = urlParser();
+	var busqueda =parametros[0];
+	var filt = parametros[1];
+	var categoria = parametros[2];
+	var ss = parametros[3];
+	var filtro = parametros[4];
+	var color = parametros[5];
 
  var newURL = "http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=";
- var byCategory = "GetProductsByCategoryId&id=";
- var allCategories = "GetAllProducts";
- var byName = "GetProductsByName&name=";
-
-	if(busqueda == ""){
-		//console.log("no hay busqueda");
-		//SearchByCategory
-		if(categoria == undefined){
-			newURL += allCategories;
-		}else{
-			newURL += byCategory;
-			if(categoria.localeCompare("Calzado")==0){
-				newURL += "1";
-			}else if (categoria.localeCompare("Indumentaria")==0) {
-				newURL += "2";
-			}else if (categoria.localeCompare("Accesorios")==0) {
-				newURL += "3";
-			}
-		}
-		if(page!=1){
-			newURL+= "&page=" + page;
-		}
-		if(itemsPerPage!= 8){
-			newURL+= "&page_size="+itemsPerPage;
-		}
-		newURL +=checkGender(filt,hayFiltro,filtro);
-	}else {
-		//GetProductsByName
-		newURL += byName;
-		newURL += busqueda;
-		if(page!=1){
-			newURL+= "&page=" + page;
-		}
-		if(itemsPerPage!= 8){
-			newURL+= "&page_size="+itemsPerPage;
-		}
-		if(filt.localeCompare("all")!=0){
-
-		newURL +=checkGender(filt,hayFiltro,filtro);
-	}
-
-	}
 
 
+newURL += formURL(parametros);
 
 $http.get(newURL).then(onSuccess,onErrorOcurred);
 
@@ -350,23 +393,48 @@ $http.get(newURL).then(onSuccess,onErrorOcurred);
 }
 
 
- //var baseUrl  = "http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetProductsByCategoryId&id=1";
- //var filter = '[{"id":1,"value":"Masculino"}]';
-
-//  console.log(encodeURIComponent(filter));
-//	console.log(filter);
- //console.log(decodeURIComponent('%5B%7B"id"%3A2%2C"value"%3A"Adulto"%7D%2C%7B"id"%3A1%2C"value"%3A"Femenino"%7D%5D'));
- //baseUrl += "&filters=" + encodeURIComponent(filter);
-//console.log(baseUrl);
-//var newURL = "http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetAllProducts&filters=%5B%7B%22id%22%3A1%2C%22value%22%3A%22Masculino%22%7D%5D"
-	//$http.get(newURL).then(onSuccess,onErrorOcurred);
-//	$http.get(baseUrl).then(onSuccess,onErrorOcurred);
-//	$http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetProductsByName&name="+nombre).then(onSuccess,onErrorOcurred);
 
 
 })
 
 })();
+
+
+function urlParser(){
+	var result = ["","","","","",""];
+	var url = window.location.href;
+	var urlArray = url.split("/");
+	var pos = urlArray.length;
+
+	url = urlArray[pos-1];
+
+	var param = (url.split("?")[1]);
+	param = decodeURIComponent(param);
+	param = param.split("&");
+	for(var i=0 ; i<param.length;i++){
+		var inside = param[i].split("=");
+		if(inside[0]=="x"){
+			result[0] = inside[1];
+		}
+		if(inside[0]=="cat"){
+			result[1] = inside[1];
+		}
+		if(inside[0]=="s"){
+			result[2] = inside[1];
+		}
+		if(inside[0]=="ss"){
+			result[3] = inside[1];
+		}
+		if(inside[0]=="f"){
+			result[4] = inside[1];
+		}
+		if(inside[0]=="c"){
+			result[5]= inside[1];
+		}
+	}
+	return result;
+	//console.log(param);
+}
 
 function sacarFiltro(filtro){
 
@@ -378,84 +446,42 @@ document.getElementById('filtrados').removeChild(elem);
 var categorias= ['Hombres','Mujeres','Niños','Niñas','Bebes'];
 var subcategorias = ['Calzado','Indumentaria','Accesorios'];
 
+var parametros = urlParser();
+for(var i=0;i<parametros.length ;i++){
+	if(filtro.localeCompare(parametros[i])==0){
+		parametros[i] = "";
+	}
+}
 
 //search.html?x=&cat=Hombres&s=Calzado
 
 
+var busqueda =parametros[0];
+var filt = parametros[1];
+var categoria = parametros[2];
+var ss = parametros[3];
+var filtro = parametros[4];
+var color = parametros[5];
 
-var url = window.location.href;
-console.log(url);
-var urlArray = url.split("/");
-var pos = urlArray.length;
 
-url = urlArray[pos-1];
-console.log(url);
+var url = "search.html?";
+url += "x=" + busqueda;
 
-var param = (url.split("?")[1]);
-param = decodeURIComponent(param);
-param = param.split("&");
-console.log(param);
-
-var busqueda = param[0].split("=")[1];
-var filt = param[1].split("=")[1];
-//file:///Users/dero/Sites/search.html?x=&cat=all&f=
-//file:///Users/dero/Sites/search.html?x=&cat=Hombres&f=
-//file:///Users/dero/Sites/search.html?x=&cat=Hombres&s=Calzado&f=
-var categoria;
-var filtro;
-var hayFiltro = false;
-if(param.length==3){
-	var ver = param[2].split("=")[0];
-	if(ver.localeCompare("s")==0){
-		categoria = param[2].split("=")[1];
+if(filt == ""){
+	url+= "&cat=all";
 }else{
-	filtro = decodeURIComponent(param[2].split("=")[1]);
-	hayFiltro = true;
+	url+="&cat="+filt;
 }
+if(categoria!=""){
+	url+= "&s="+categoria;
 }
-
-if(param.length==4){
-	categoria = param[2].split("=")[1];
-	filtro = decodeURIComponent(param[3].split("=")[1]);
-	hayFiltro = true;
+if(filtro!=""){
+	url+="&f="+filtro;
 }
-
-
-var i=0;
-var url = "search.html?x=&cat=";
-var flag = true;
-if(filt!=undefined){
-for(i ; i<categorias.length ; i++){
-	if(categorias[i].localeCompare(filtro)==0){
-		filt = "";
-	}
-}
-
-	url += filt;
-}
-
-if(categoria!=undefined){
-for(i=0 ; i<subcategorias.length ; i++){
-	if(subcategorias[i].localeCompare(filtro)==0){
-		categoria = "";
-			flag = false;
-	}
-}
-if(flag)
-	url += "&s="+categoria;
-}
-
-if(hayFiltro){
-
-}
-
-//if((filt==undefined) && (categoria == undefined)){
-//	url = search.html?x=&cat=all
-//}
-if(((filt == "") && (categoria == undefined)) || ((filt == "") && (categoria == ""))){
-	url = "search.html?x=&cat=all";
+if(color!=""){
+	url+= "&c=" + color;
 }
 
 window.location.href= url;
-//window.location.href = "www.mysite.com/page2.php";
+
 }
