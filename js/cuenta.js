@@ -449,9 +449,8 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate','footer']);
  	$scope.loadAllOrders();
 
  	$scope.loadOrder = function(idOrder){
- 		console.log('hola');
  		$scope.loadingO = true;
- 					$('#viewOrderModal2').modal('toggle');
+ 		$('#viewOrderModal2').modal('toggle');
  		$log.debug('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username='+ user + '&authentication_token=' + token + '&new_password=' + idOrder);
  		$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username='+ user +'&authentication_token=' + token + '&id=' + idOrder).then(function(res){
  			console.log($('#viewOrderModal2'));
