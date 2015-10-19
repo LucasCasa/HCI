@@ -126,6 +126,7 @@ app.controller('ProductController',function($scope,$http,$log){
       $log.debug('quantity: ' + $scope.selectedAmount);
       $log.debug('token: ' + token);
       $log.debug('orderID: ' + orderID);
+      $('#itemsOnCart').html(parseInt($('#itemsOnCart').text()) + 1);
       $log.debug(res);
       $scope.cartBtn = "disabled";
       $(document).find("#btn-cart").html("<span class=\"glyphicon glyphicon-ok\"></span> Agregado al carrito");

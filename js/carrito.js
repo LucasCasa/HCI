@@ -73,6 +73,7 @@ app.directive('fallbackSrc', function () {
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=RemoveItemFromOrder&username='+ user +'&authentication_token='+ token +'&id=' + id).then(function(res){
 			$scope.loading = false;
 			$log.debug(res);
+			$('#itemsOnCart').html(parseInt($('#itemsOnCart').text()) - 1);
 			if(!(index === undefined))
 				$scope.productos.splice(index,1);
 			esto.updateTotal();

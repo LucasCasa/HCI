@@ -98,6 +98,7 @@ app.controller('FinalizarController',function($scope,$http,$log){
 				$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=RemoveItemFromOrder&username='+ readCookie("user")+'&authentication_token='+readCookie("token") +'&id='+ id).then(function(res){
 					$log.debug(res);
 					$log.debug("Borrada?");
+					$('#itemsOnCart').html(parseInt($('#itemsOnCart').text()) + 1);
 				});
 				$scope.productos.splice(i,1);
 			}
