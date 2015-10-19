@@ -197,6 +197,7 @@ function callAPI(page , itemsPerPage){
 
 	}
 
+	var num = 1;
 	if((filt != "") && (filt != "all")){
 		putFilter(filt);
 	}else if(filt == "all"){
@@ -205,7 +206,7 @@ function callAPI(page , itemsPerPage){
 		div.className = 'linea';
 		div.innerHTML = '<dl> <dt id="categorias" class="titulo">Categorias</dt> </dl>';
 
-		document.getElementById('leftSide').insertBefore(div,document.getElementById('leftSide').children[1]);
+		document.getElementById('leftSide').insertBefore(div,document.getElementById('leftSide').children[num++]);
 
 		for(i=0;i<categorias.length;i++){
 			var dd= document.createElement('dd');
@@ -217,6 +218,19 @@ function callAPI(page , itemsPerPage){
 	if(categoria!= undefined){
 		putFilter(categoria);
 
+	}else{
+		var subcategorias = ['Calzado', 'Indumentaria' , 'Accesorios'];
+		var div = document.createElement('div');
+		div.className = 'linea';
+		div.innerHTML = '<dl> <dt id="subcategorias" class="titulo">Subcategorias</dt> </dl>';
+		document.getElementById('leftSide').insertBefore(div,document.getElementById('leftSide').children[num]);
+
+		for(i=0;i<subcategorias.length;i++){
+			var dd= document.createElement('dd');
+
+			dd.innerHTML = '<h5> <a href="'+"search.html?x=&cat="+filt +'&s='+subcategorias[i]+'">' + subcategorias[i] + '</a> </h5>';
+			document.getElementById('subcategorias').appendChild(dd);
+		}
 	}
 	if(hayFiltro){
 		putFilter(filtro);
