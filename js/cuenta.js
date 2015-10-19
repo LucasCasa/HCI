@@ -1,5 +1,5 @@
 (function() {
-var app = angular.module('Cuenta', ['navbar','ngAnimate']);
+var app = angular.module('Cuenta', ['navbar','ngAnimate','footer']);
 
 	if(document.cookie.indexOf('user=') == -1){
 		location.href='index.html';
@@ -11,9 +11,14 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate']);
  	return{
  		restrict: 'E',
  		templateUrl: "nav.html"
- 	};
-
- });
+ 	}
+ 	});
+ 	app.directive('customFooter',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "footer.html"
+ 	}
+ 	});
  app.filter('tarjeta',function(){
  	return function(input){
  		return (input===undefined)?"":input.slice(0,4) + ' **** **** ' + input.slice(12)
@@ -560,3 +565,15 @@ function isValidExpDate(date){
 	return false;
 }
 
+window.onload = function(){  
+
+    var url = document.location.toString();
+    if (url.match('#')) {
+        $('.nav-tabs a[href=#' + url.split('#')[1] + ']').tab('show');
+    }
+
+    //Change hash for page-reload
+    $('.nav-tabs a[href=#' + url.split('#')[1] + ']').on('shown', function (e) {
+        window.location.hash = e.target.hash;
+    }); 
+}

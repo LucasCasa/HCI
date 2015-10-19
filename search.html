@@ -20,7 +20,7 @@
 
   <body ng-controller="BusquedaController as DestacadosCtrl">
 
-    <div ng-include="'nav.html'"></div>
+    <nav-bar></nav-bar>
 
     <div class="container-fluid">
       <div class="loading-block" ng-show="loading">
@@ -267,7 +267,9 @@
         </div>
       </div>
     </div>
-
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="padding-right:0;padding-left:0">
+    <custom-footer></custom-footer>
+    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -280,6 +282,7 @@
 
         <script type="text/javascript" src="js/search.js"></script>
         <script type="text/javascript" src="js/nav.js"></script>
+        <script type="text/javascript" src="js/footer.js"></script>
 
   </body>
 

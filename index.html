@@ -21,8 +21,8 @@
       <![endif]-->
     </head>
     <body ng-app="home">
-       <div ng-include="'nav.html'"></div>
-      <div class="row">
+      <nav-bar></nav-bar>
+      <div class="row" style="margin:0px">
           <div class='carouselwrapper col-md-8 col-md-offset-2' align='center'><!-- Este codigo es mio y esta mal -->
             <div id="myCarousel" class="carousel slide" data-ride="carousel" witdth=>
               <!-- Indicators -->
@@ -84,7 +84,7 @@
                         </div>
                     </div>
 </div>
-  <div ng-include="'footer.html'"></div>
+  <custom-footer></custom-footer>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -93,5 +93,6 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script type="text/javascript" src="js/nav.js"></script>
   <script type="text/javascript" src="js/home.js"></script>
+  <script type="text/javascript" src="js/footer.js"></script>
 </body>
 </html>

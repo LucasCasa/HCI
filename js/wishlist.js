@@ -1,6 +1,18 @@
 (function(){ 
-var app = angular.module('wishlist',['navbar']);
+var app = angular.module('wishlist',['navbar','footer']);
 
+app.directive('navBar',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "nav.html"
+ 	}
+ 	});
+ 	app.directive('customFooter',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "footer.html"
+ 	}
+ 	});
  app.controller('WishlistController',function($scope,$http,$log){
 	var user = ReadCookie("user");
 	var token = ReadCookie("token");
@@ -48,9 +60,6 @@ var app = angular.module('wishlist',['navbar']);
 	    });
   	};
 });
- app.directive('navBar',function(){
- 	return{restrict: 'E',templateUrl: "nav.html"};
- });
 })();
 
 function ReadCookie(name)
