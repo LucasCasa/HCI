@@ -20,6 +20,9 @@ li {
 }
 
 /*FOOTER 1*/
+.footer1{
+    min-height: 100%;
+}
 .footer1 a {
     color: #DDD;
 }
