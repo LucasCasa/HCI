@@ -269,14 +269,15 @@
 										</form>
 									</div>
 									<div class="text-center">
-										<button id="expand-order-btn" type="button" data-toggle="modal" data-target="#viewOrderModal" class="btn btn-default apply" ng-click="loadOrder(compra.id)" hidden> Ver detalle de compra
+										<button id="expand-order-btn" type="button" class="btn btn-default apply" ng-click="loadOrder(compra.id)" hidden> Ver detalle de compra
 										</button>
 									</div>
-										<div class="modal fade"  id="viewOrderModal">
+									</div>
+									<div class="modal fade in"  data-backdrop="static" id="viewOrderModal2">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<button type="button" class="close" data-dismiss="modal" static aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
 													<h4 class="modal-title">Detalle de compra</h4>
 												</div>
@@ -292,9 +293,9 @@
 													</form>
 													</div>
 													<form ng-cloak>
-														<p>{{compra.receivedDate}}</p>
-														<p>{{compra.processedDate == null ? "El pedido todavía no fue procesado" : compra.processedDate}}</p>
-														<p>{{compra.shippedDate == null ? "El pedido todavía no fue entregado" : compra.shippedDate}}</p>
+														<p>{{order.receivedDate}}</p>
+														<p>{{order.processedDate == null ? "El pedido todavía no fue procesado" : order.processedDate}}</p>
+														<p>{{order.shippedDate == null ? "El pedido todavía no fue entregado" : order.shippedDate}}</p>
 														<hr>
 														<p>{{orderPrice() | currency}}</p>
 														<p>{{orderQty()}}</p>
@@ -316,7 +317,6 @@
 												</div>
 											</div>
 										</div>
-									</div>
 									</div>
 								</div>
 							</div> <!-- cierra tab content -->
