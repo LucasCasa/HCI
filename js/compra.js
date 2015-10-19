@@ -1,5 +1,5 @@
 (function(){
-    var compraApp = angular.module('Compra',['navbar','Carrito','Finalizar','Envio'])
+    var compraApp = angular.module('Compra',['navbar','Carrito','Finalizar','Envio','footer'])
 
     compraApp.directive('navBar',function(){
         return{
@@ -12,6 +12,12 @@
             restrict: 'E',
             templateUrl: "carrito.html"
         }
+    });
+    compraApp.directive('customFooter',function(){
+    return{
+        restrict: 'E',
+        templateUrl: "footer.html"
+    }
     });
     compraApp.directive('finalizar',function(){
         return{

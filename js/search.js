@@ -1,6 +1,20 @@
 (function() {
-var app = angular.module('search', ['navbar','ui.bootstrap']);
+var app = angular.module('search', ['navbar','ui.bootstrap','footer']);
 
+app.directive('navBar',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "nav.html"
+ 	};
+
+ });
+app.directive('customFooter',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "footer.html"
+ 	};
+
+ });
 app.directive('fallbackSrc', function () {
     var fallbackSrc = {
         link: function postLink(scope, iElement, iAttrs) {

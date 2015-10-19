@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('login',['navbar','ngAnimate']);
+var app = angular.module('login',['navbar','ngAnimate','footer']);
 
 	if(document.cookie.indexOf('user=') != -1){
 		location.href = 'index.html';
@@ -7,6 +7,27 @@ var app = angular.module('login',['navbar','ngAnimate']);
 	this.last = this.DOBDay;
 	this.lastM = this.DOBMonth;
 	this.lastY = this.DOBYear;
+app.directive('navBar',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "nav.html"
+ 	};
+
+ });
+app.directive('customFooter',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "footer.html"
+ 	};
+
+ });
+app.directive('register',function(){
+ 	return{
+ 		restrict: 'E',
+ 		templateUrl: "register.html"
+ 	};
+
+ });
 
 app.controller('RegisterController',function($scope,$http,$log){
 	$scope.isRegistering = false;
@@ -186,20 +207,7 @@ app.controller('RegisterController',function($scope,$http,$log){
 	}
 });
 
-app.directive('navBar',function(){
- 	return{
- 		restrict: 'E',
- 		templateUrl: "nav.html"
- 	};
 
- });
-app.directive('register',function(){
- 	return{
- 		restrict: 'E',
- 		templateUrl: "register.html"
- 	};
-
- });
 app.controller("LoginController",function($scope,$http,$log){
 	$log.debug($scope);
 	this.validLogin = true;

@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('productoApp',['navbar']);
+var app = angular.module('productoApp',['navbar','footer']);
 app.directive('fallbackSrc', function () {
     var fallbackSrc = {
         link: function postLink(scope, iElement, iAttrs) {
@@ -15,8 +15,13 @@ app.directive('navBar',function(){
  	return{
  		restrict: 'E',
  		templateUrl: "nav.html"
- 	};
-
+  }
+ 	});
+app.directive('customFooter',function(){
+  return{
+    restrict: 'E',
+    templateUrl: "footer.html"
+  };
  });
 app.controller('ProductController',function($scope,$http,$log){
   var cookie = document.cookie;

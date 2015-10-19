@@ -1,14 +1,82 @@
-<footer>
-  <div class="container">
-    <div class="row footer">
-      <p>
-        <a href="#">SOBRE NOSOTROS</a>
-         |
-        <a href="#">PREGUNTAS FRECUENTES</a>
-         |
-        <a href="#">CONTACTENOS</a>
-      </p>
-    </div>
-  </div>
+<!--FOOTER 2-->
+<link rel="stylesheet" type="text/css" href="css/footer.css">
+<footer class="footer2" ng-app="footer">
+    <div class="footer" ng-controller="FooterController">
+        <div class="container">
+            <div class="row">
+                <nav class="col-md-3 col-sm-6 col-xs-12">
+                    <h3>Cateogorias Populares</h3>
+                    <ul>
+                        <li>
+                            <a href="search.html?x=&cat=Hombres">Hombres</a>
+                        </li>
+                        <li>
+                            <a href="search.html?x=&cat=Mujeres">Mujeres</a>
+                        </li>
+                        <li>
+                            <a href="search.html?x=&cat=Niños">Niños</a>
+                        </li>
+                        <li>
+                            <a href="search.html?x=&cat=Niñas">Niñas</a>
+                        </li>
+                        <li>
+                            <a href="search.html?x=&cat=Bebes">Bebes</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav ng-show="isLoged()" class="col-md-3 col-sm-6 col-xs-12">
+                    <h3>Cuenta</h3>
+                    <ul>
+                        <li>
+                            <a href="cuenta.html">Datos personales</a>
+                        </li>
+                        <li>
+                            <a href="cuenta.html#direcciones">Direcciones</a>
+                        </li>
+                        <li>
+                            <a href="cuenta.html#tarjetas">Tarjetas</a>
+                        </li>
+                        <li>
+                            <a href="cuenta.html#compras">Historial de compra</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-md-3 col-sm-6 col-xs-12">
+                    <h3>Ayuda</h3>
+                    <ul>
+                        <li>
+                            <a href="contacto.html">Contactenos</a>
+                        </li>
+                        <li>
+                            <a href="faq.html">Preguntas Frecuentes</a>
+                        </li>
+                        <li>
+                            <a href="aboutus.html">Quienes Somos</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="col-md-3 col-sm-6 col-xs-12 pull-right">
+                    <h3>Suscribase</h3>
+                    <div class="input-group input-group-md">
+                      <input type="text" class="form-control" placeholder="Email">
+                      <span class="input-group-addon">Suscribir</span>
+                    </div>
+                    <ul class="social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    </ul>
+                </nav>
+
+            </div> <!--/.row--> 
+        </div> <!--/.container--> 
+    </div> <!--/.footer-->
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="pull-right"> Muffin<sup>©</sup> . Todos los derechos reservados.</div>
+    </div> <!--/.footer-bottom--> 
 </footer>
-<link href="css/footer.css" rel="stylesheet">
