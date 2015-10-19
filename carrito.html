@@ -42,7 +42,7 @@
 									<span> <a class="thumbnail pull-left" ng-attr-href="{{'producto.html?id=' + producto.product.id}}"> <img class="media-object" ng-attr-src="{{producto.product.imageUrl}}" style="width: 72px; height: 72px;"> </a> </span>
 								</td>
 								<td>
-									<h3 style="margin-top:0">{{producto.product.name}}</h3>
+									<h3 style="margin-top:0"><a ng-attr-href="{{'producto.html?id=' + producto.product.id}}">{{producto.product.name}}</a></h3>
 								</td>
 								<td class="col-sm-1 col-md-1 text-center"><strong>{{producto.price | currency}}</strong></td>
 								<td class="col-sm-1 col-md-1 text-center"><strong>{{producto.price*selected[producto.id] | currency}}</strong></td>

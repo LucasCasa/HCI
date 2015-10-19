@@ -1,6 +1,17 @@
 (function() {
 var app = angular.module('Carrito', ['navbar']);
-	
+
+app.directive('fallbackSrc', function () {
+    var fallbackSrc = {
+        link: function postLink(scope, iElement, iAttrs) {
+            iElement.bind('error', function() {
+                angular.element(this).attr("src", iAttrs.fallbackSrc);
+            });
+        }
+    }
+    return fallbackSrc;
+});
+
  app.controller('CarritoController',function($scope,$http,$log){
 	var user = ReadCookie("user");
 	var token = ReadCookie("token");
@@ -9,6 +20,7 @@ var app = angular.module('Carrito', ['navbar']);
  	$scope.loading = true;
  	var orderID = ReadCookie("carritoOrderId");
  	if(orderID !== null){
+ 		$log.debug("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + user + "&authentication_token=" + token + "&id=" + orderID);
 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + user + "&authentication_token=" + token + "&id=" + orderID).then(function(res){
 			$scope.productos = res.data.order.items;
 			if($scope.productos.length == 0){

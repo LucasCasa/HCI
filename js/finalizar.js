@@ -1,6 +1,18 @@
 (function() {
 var app = angular.module('Finalizar', []);
 
+app.directive('fallbackSrc', function () {
+    var fallbackSrc = {
+        link: function postLink(scope, iElement, iAttrs) {
+            iElement.bind('error', function() {
+                angular.element(this).attr("src", iAttrs.fallbackSrc);
+            });
+        }
+    }
+    return fallbackSrc;
+});
+
+
 app.filter('tarjeta',function(){
  	return function(input){
  		return (input===undefined)?"":input.slice(0,5) + ' **** **** ' + input.slice(input.length - 4);
