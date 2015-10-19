@@ -484,6 +484,13 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate','footer']);
  		$log.debug('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=ChangePassword&username='+ user + '&password=' + $scope.oldpass + '&new_password=' + $scope.newpass);
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=ChangePassword&username='+ user + '&password=' + $scope.oldpass + '&new_password=' + $scope.newpass).then(function(res){
 			$log.debug(res);
+			if(res.data.error !== undefined){
+				if(res.data.error.code == 105){
+					$scope.invalidOldPass = true;
+				}
+			}else{
+					$('#modifyPassModal').modal('toggle');
+			}
 			$scope.updatePW = false;
 		});
  	}
@@ -492,10 +499,10 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate','footer']);
  		if($scope.oldpass === undefined || $scope.oldpass === ""){
  			return false;
  		}
- 		if($scope.newpass === undefined || $scope.newpass === ""){
+ 		if($scope.newpass === undefined || $scope.newpass === "" || $scope.newpass.length < 8 || $scope.newpass.length > 15){
  			return false;
  		}
- 		if($scope.repnewpass === undefined || $scope.repnewpass === "" || $scope.repnewpass != $scope.newpass){
+ 		if($scope.repnewpass === undefined || $scope.repnewpass === "" || $scope.repnewpass.length < 8 || $scope.repnewpass.length > 15 || $scope.repnewpass != $scope.newpass){
  			return false;
  		}
  		return true;
