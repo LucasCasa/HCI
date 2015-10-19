@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-3 col-md-2 sidebar" id="leftSide">
           <div class="linea">
           <h4>Filtrado por:</h4>
           <ul class="nav nav-sidebar" id="filtrados">
@@ -48,7 +48,7 @@
           -->
           </ul>
         </div>
-
+<!--
         <div class="linea">
           <dl>
             <dt class="titulo">Talle</dt>
@@ -77,10 +77,11 @@
             </dd>
           </dl>
         </div>
-
+-->
         <div class="linea">
           <dl>
-            <dt class="titulo">Marca</dt>
+            <dt id="marca" class="titulo">Marca</dt>
+            <!--
             <dd>
               <h5>
                 <a href="">Kosiuko</a>
@@ -110,14 +111,14 @@
                 <a href="">Calvin Klein</a>
               </h5>
             </dd>
-
+          -->
           </dl>
         </div>
 
         <div class="linea">
-          <dl class="variation-filter" id="id_83000">
-            <dt class="dt-title">Color Primario</dt>
-
+          <dl>
+            <dt id="colores" class="dt-title">Color Primario</dt>
+<!--
             <dd>
               <a href="">
                 <span class="box-color box_92025">
@@ -206,7 +207,7 @@
                 </span>
               </a>
             </dd>
-
+-->
           </dl>
         </div>
 
@@ -218,23 +219,7 @@
             <li class="active">Busqueda</li>
           </ol>
 
-<!--
-          <div class="barra">
-          <div class="col-sm-1">
-            <h4 class="letra">Cantidad:</h4>
-          </div>
 
-          <div class="col-sm-1">
-            <select class="form-control cantidadDeOrdenamiento" >
-              <option>8</option>
-              <option>16</option>
-              <option>24</option>
-              <option>32</option>
-              <option>40</option>
-            </select>
-          </div>
-        </div>
--->
 
 <div class="barra" >
   <div class="bloque pagi"><pagination  total-items="totalItems" ng-model="currentPage" items-per-page=8 num-pages="noOfPages" current-page="currentPage" max-size="maxSize" ng-change="changePage(currentPage)"></pagination></div>
@@ -258,7 +243,7 @@
                               <h4><a ng-attr-href="{{'producto.html?id=' + prod.id}}">{{prod.name}}</a>
                               </h4>
                               <h4 class="pull-right">{{prod.price | currency}}</h4>
-                              <p><strong>Marca: </strong>{{prod.attributes[0].values[0]}}</p> 
+                              <p><strong>Marca: </strong>{{prod.attributes[0].values[0]}}</p>
                           </div>
                           <div class="ratings">
                               <p class="pull-right">
