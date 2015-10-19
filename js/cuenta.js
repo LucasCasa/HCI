@@ -21,7 +21,7 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate','footer']);
  	});
  app.filter('tarjeta',function(){
  	return function(input){
- 		return (input===undefined)?"":input.slice(0,4) + ' **** **** ' + input.slice(12)
+ 		return (input===undefined)?"":input.slice(0,4) + ' **** **** ' + input.slice(input.length-4)
  	}
  });
    app.directive('addCreditcard',function(){
