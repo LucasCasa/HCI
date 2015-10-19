@@ -61,26 +61,32 @@ function selectFilter(filt){
 
 function checkGender( cat, isFiltered , filter){
 	var filters = "&filters="
+	var flag = false;
  if(cat.localeCompare("Hombres")==0){
 	 console.log("Hombres");
+	 flag=true;
 	 filters += encodeURIComponent('[{"id":1,"value":"Masculino"},{"id":2 ,"value":"Adulto"}');
  }else if (cat.localeCompare("Mujeres")==0) {
 	 console.log(" Mujeres");
+	 flag=true;
 	 filters += encodeURIComponent('[{"id":1,"value":"Femenino"},{"id":2 ,"value":"Adulto"}');
  }else if (cat.localeCompare("Niños")==0) {
 	 console.log("Ninos");
+	 flag=true;
 	 filters += encodeURIComponent('[{"id":1,"value":"Masculino"},{"id":2,"value":"Infantil"}');
  }else if (cat.localeCompare("Niñas")==0) {
 	 console.log("Ninas");
+	 flag=true;
 	 filters += encodeURIComponent('[{"id":1,"value":"Femenino"},{"id":2,"value":"Infantil"}');
  }else if (cat.localeCompare("Bebes")==0) {
 	 console.log("Bebes");
+	 flag=true;
 	 filters += encodeURIComponent('[{"id":2,"value":"Bebe"}');
  }
 
  if(isFiltered){
 	 filters += ","+selectFilter(filter) + "]";
- }else{
+ }else if(flag){
 	 filters += "]";
  }
  return filters;
@@ -140,6 +146,31 @@ function callAPI(page , itemsPerPage){
 			console.log(url);
 
 			var param = (url.split("?")[1]);
+			var param = param.split("&");
+			var busqueda = param[0].split("=")[1];
+			var filt = param[1].split("=")[1];
+			//file:///Users/dero/Sites/search.html?x=&cat=all&f=
+			//file:///Users/dero/Sites/search.html?x=&cat=Hombres&f=
+			//file:///Users/dero/Sites/search.html?x=&cat=Hombres&s=Calzado&f=
+			var categoria;
+			var filtro;
+			var hayFiltro = false;
+			if(param.length==3){
+				var ver = param[2].split("=")[0];
+				if(ver.localeCompare("s")==0){
+					categoria = param[2].split("=")[1];
+			}else{
+				filtro = decodeURIComponent(param[2].split("=")[1]);
+				hayFiltro = true;
+			}
+			}
+
+			if(param.length==4){
+				categoria = param[2].split("=")[1];
+				filtro = decodeURIComponent(param[3].split("=")[1]);
+				hayFiltro = true;
+			}
+
 
 			url += "&f="+$scope.filtrosaPoner[i];
 
@@ -178,6 +209,9 @@ function callAPI(page , itemsPerPage){
 		putFilter(categoria);
 
 	}
+	if(hayFiltro){
+		putFilter(filtro);
+	}
 
 
 
@@ -211,7 +245,7 @@ function callAPI(page , itemsPerPage){
 	var filtro;
 	var hayFiltro = false;
 	if(param.length==3){
-		var ver = param[2].split("=")[1];
+		var ver = param[2].split("=")[0];
 		if(ver.localeCompare("s")==0){
 			categoria = param[2].split("=")[1];
 	}else{
@@ -253,7 +287,7 @@ function callAPI(page , itemsPerPage){
 		if(itemsPerPage!= 8){
 			newURL+= "&page_size="+itemsPerPage;
 		}
-		newURL +=checkGender(filt);
+		newURL +=checkGender(filt,hayFiltro,filtro);
 	}else {
 		//GetProductsByName
 		newURL += byName;
@@ -309,7 +343,11 @@ var subcategorias = ['Calzado','Indumentaria','Accesorios'];
 
 
 //search.html?x=&cat=Hombres&s=Calzado
+
+
+
 var url = window.location.href;
+console.log(url);
 var urlArray = url.split("/");
 var pos = urlArray.length;
 
@@ -323,9 +361,29 @@ console.log(param);
 
 var busqueda = param[0].split("=")[1];
 var filt = param[1].split("=")[1];
-if(param.length>2){
-	var categoria = param[2].split("=")[1];
+//file:///Users/dero/Sites/search.html?x=&cat=all&f=
+//file:///Users/dero/Sites/search.html?x=&cat=Hombres&f=
+//file:///Users/dero/Sites/search.html?x=&cat=Hombres&s=Calzado&f=
+var categoria;
+var filtro;
+var hayFiltro = false;
+if(param.length==3){
+	var ver = param[2].split("=")[0];
+	if(ver.localeCompare("s")==0){
+		categoria = param[2].split("=")[1];
+}else{
+	filtro = decodeURIComponent(param[2].split("=")[1]);
+	hayFiltro = true;
 }
+}
+
+if(param.length==4){
+	categoria = param[2].split("=")[1];
+	filtro = decodeURIComponent(param[3].split("=")[1]);
+	hayFiltro = true;
+}
+
+
 var i=0;
 var url = "search.html?x=&cat=";
 var flag = true;
@@ -350,6 +408,9 @@ if(flag)
 	url += "&s="+categoria;
 }
 
+if(hayFiltro){
+
+}
 
 //if((filt==undefined) && (categoria == undefined)){
 //	url = search.html?x=&cat=all
