@@ -4,6 +4,8 @@
         <div class="container-page">                
           <div class="col-md-6">
             <div>
+              <h3 ng-show="userAlreadyExists" class="cssFade required-warning"> Nombre de usuario ya existente </h3>
+              <h3 ng-show="dniAlreadyExists" class="cssFade required-warning"> Documento de identidad ya existente </h3>
               <h4>(Todos los datos son obligatorios)</h4> 
             </div>
             <div class="form-group col-lg-6">
@@ -37,7 +39,7 @@
 
             <div class="form-group col-lg-6">
                 <label>Documento de Identidad</label>
-                <input type="number" name="dni" class="form-control" ng-model="register.identityCard" id="dni" value="" min="0" max="100000000" integer required>
+                <input type="number" name="dni" class="form-control" ng-model="register.identityCard" id="dni" value="" integer required>
             </div>
             <div class="form-group col-lg-6">
                 <div class="row">
@@ -48,7 +50,7 @@
                     <div class="col-sm-1"><span style="font-size:1.4em;text-align:center">/</span></div>
                     <div class="col-sm-3" style="padding-left:0;padding-right:0"><input type="text" name"month" class="form-control" id="month"  placeholder="MM" ng-change="register.monthValidator()" ng-model="register.DOBMonth" required></div>
                     <div class="col-sm-1"><span style="font-size:1.4em;text-align:center">/</span></div>
-                    <div class="col-sm-3"  style="padding-left:0;padding-right:0"><input type="text" name"year" class="form-control" id="year" placeholder="AAAA" ng-change="register.yearValidator()" ng-model="register.DOBYear" data-toggle="popover" data-placement="top" data-content="La fecha de nacimiento debe ser mayor a 1900" required></div>
+                    <div class="col-sm-3"  style="padding-left:0;padding-right:0"><input type="text" name"year" class="form-control" id="year" placeholder="AAAA" ng-change="register.yearValidator()" ng-model="register.DOBYear" data-toggle="popover" data-placement="top" data-content="La fecha de nacimiento debe estar entre 1900 y 2000" required></div>
                 </div>
             </div>
                 <div class="form-group col-sm-12">

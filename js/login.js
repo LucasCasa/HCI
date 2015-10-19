@@ -10,13 +10,42 @@ var app = angular.module('login',['navbar','ngAnimate']);
 
 app.controller('RegisterController',function($scope,$http,$log){
 	$scope.isRegistering = false;
+	var focus = this;
 	this.registerUser = function(){
 		this.birthDate = this.DOBYear + "-"+ this.DOBMonth + "-" + this.DOBDay;
 		this.user = '{"username":"'+this.username+'","password":"'+this.pass1+'","firstName":"'+this.firstname+'","lastName":"'+this.lastname+'","gender":"'+this.gender+'","identityCard":"'+this.identityCard+'","email":"'+this.email+'","birthDate":"'+this.birthDate+'"}';
 		$log.debug(this.user);
+		$scope.loadingR = true;
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=CreateAccount&account='+this.user).then(function(res){
 			$log.debug(res);
-
+			$scope.loadingR = false;
+			if(res.data.error !== undefined){
+				if(res.data.error.code == 200){
+					$scope.userAlreadyExists = true;
+					$scope.dniAlreadyExists = false;
+				}else if(res.data.error.code == 201){
+					$scope.dniAlreadyExists = true;
+					$scope.userAlreadyExists = false;
+				}else{
+					alert('Ocurrio un error inesperado, vuelva a intentarlo mas tarde');
+					$scope.userAlreadyExists = false;
+					$scope.dniAlreadyExists = false;
+				}
+			}else{
+				$scope.userAlreadyExists = false;
+				$scope.dniAlreadyExists = false;
+				$scope.registered = true;
+				$("#RegisterSuccess").modal('toggle');
+				$scope.isRegistering = false;
+				focus.username = undefined;
+				focus.email = undefined;
+				focus.firstname = undefined;
+				focus.lastname = undefined;
+				focus.pass1 = undefined;
+				focus.pass2 = undefined;
+				focus.birthDate = undefined;
+				focus.identityCard = undefined;
+			}
 		});
 	}
 
@@ -147,6 +176,7 @@ app.controller('RegisterController',function($scope,$http,$log){
 		}
 		$('#year').parent().parent().parent().addClass('has-success');
 		$('#year').parent().parent().parent().removeClass('has-error');
+					$('#year').popover('hide');
 		if(this.gender !== 'M' && this.gender !== 'F'){
 			$('#MRB').parent().parent().addClass('has-error');
 			return false;
@@ -173,9 +203,12 @@ app.directive('register',function(){
 app.controller("LoginController",function($scope,$http,$log){
 	$log.debug($scope);
 	this.validLogin = true;
+
 	var store = this;
 	this.login = function(){
+		$scope.loadingL = true;
 		$http.get("http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=SignIn&username=" + $scope.loginUser + "&password=" + $scope.loginPass).then(function(res){
+			$scope.loadingL = false;
 			if(res.data.error !== undefined){
 				store.validLogin = false;
 			}else{
