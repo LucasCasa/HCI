@@ -35,11 +35,11 @@
     <div class="row col-sm-9">
       <table class="table table-hover">
         <thead>
-          <th>Foto</th>
-          <th>Descripción</th>
-          <th>Cantidad</th>
-          <th>Subtotal</th>
-          <th> </th>
+          <th class="col-sm-1">Foto</th>
+          <th class="col-sm-4">Descripción</th>
+          <th class="col-sm-1">Cantidad</th>
+          <th class="col-sm-2">Subtotal</th>
+          <th class="col-sm-3">Eliminar </th>
         </thead>
 
         <tbody>
@@ -57,7 +57,7 @@
               <h4>{{producto.price * producto.quantity | currency}}</h4>
             </td>
             <td>
-              <button type="button" class="btn btn-danger" ng-click="removeItem(producto.id)">
+              <button type="button" class="btn btn-danger pull-left" ng-click="removeItem(producto.id)">
                 <span class="glyphicon glyphicon-remove"></span>
               </button>
             </td>

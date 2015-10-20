@@ -20,9 +20,15 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
     </head>
-    <body ng-app="home">
+    <body ng-app="home" ng-controller="DestacadosController as DestacadosCtrl">
       <nav-bar></nav-bar>
-      <div class="row" style="margin:0px">
+      <div class="container" style="margin:0px">
+        
+            <div class="loading-block" ng-show="loading || $('#NavCtrlId').scope().loading">
+          <div class="loading-image" >
+              <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
+          </div>
+      </div>
           <div class='carouselwrapper col-md-8 col-md-offset-2' align='center'><!-- Este codigo es mio y esta mal -->
             <div id="myCarousel" class="carousel slide" data-ride="carousel" witdth=>
               <!-- Indicators -->
@@ -67,7 +73,7 @@
       </div>
       <div class="container-fluid" >
         <h2 class="col-sm-12 page-header" style="margin-top:20">Destacados</h2>
-          <div class"row" style="padding-right:100px;padding-left:100px" ng-controller="DestacadosController as DestacadosCtrl">
+          <div class"row" style="padding-right:100px;padding-left:100px" >
                        
                         <div class="thumbnail col-sm-3" ng-repeat="prod in destacados">
                             <a ng-attr-href="{{'producto.html?id=' + prod.id}}"><img ng-attr-src="{{prod.imageUrl[0]}}" alt=""></a>

@@ -31,7 +31,6 @@ app.controller('ProductController',function($scope,$http,$log){
   $scope.loading = true;
 	this.prodId = parent.document.URL.substring(parent.document.URL.indexOf('?') + 4, parent.document.URL.length);
 	$http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetProductById&id=" + this.prodId).then(function(res){
-    $scope.loading = false;
     $log.debug(res);
     if(res.data.error !== undefined){
       alert("Hubo un error procesando la solicitud");
@@ -39,7 +38,7 @@ app.controller('ProductController',function($scope,$http,$log){
 		  $scope.producto = res.data.product;
       $scope.cat = esto.getCat();  
     }
-    
+    $scope.loading = false;  
 	});
   $scope.loadingCart = false;
   $scope.loadingWl = false;

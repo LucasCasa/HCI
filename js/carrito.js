@@ -54,9 +54,8 @@ app.directive('fallbackSrc', function () {
 		}
 	};
 	this.write = function(id,idInOrder){
-		var Tout;
-		clearTimeout(Tout);
-		Tout = setTimeout(function(esto) {
+		clearTimeout($scope.Tout);
+		$scope.Tout = setTimeout(function(esto) {
 	    	esto.change(id,idInOrder);
 		}, 1800,this);
 	};
