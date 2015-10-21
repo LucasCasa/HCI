@@ -1,7 +1,9 @@
 <link rel="stylesheet" type="text/css" href="css/nav.css">
 <link href="css/submenu.css" rel="stylesheet">
 <nav ng-app="navbar" class="navbar navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
+
+        <div class="container-fluid" id="NavCtrlId" ng-controller="NavController as NavCtrl">
+          
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -14,11 +16,12 @@
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="NavController as NavCtrl">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+            
             <ul class="nav navbar-nav" >
               <li><img src="images/muffin.png" width='50px' heigth='50px'/></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorías <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li class="dropdown-submenu" ng-repeat="categoria in categorias">
                     <a tabindex="-1" ng-attr-href="search.html?x=&cat={{categoria.name}}">{{categoria.name}}</a>
@@ -54,7 +57,7 @@
             </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-              <li ng-show="isLoged()"><a href="compra.html" class="nav-icon"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge" style="vertical-align:top;margin-top:7px">{{itemsOnCart}}</span></a></li>
+              <li ng-show="isLoged()"><a href="compra.html" class="nav-icon"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge" id="itemsOnCart" style="vertical-align:top;margin-top:7px">{{itemsOnCart}}</span></a></li>
               <li><div class="headerDivider"></div></li>
               <li ng-show="isLoged()"><a href="cuenta.html" class="nav-icon"><span class="user-name">{{userName() | capitalize }}</span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
               <li><!--<div class="headerDivider"></div></li>-->

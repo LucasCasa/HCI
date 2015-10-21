@@ -54,9 +54,8 @@ app.directive('fallbackSrc', function () {
 		}
 	};
 	this.write = function(id,idInOrder){
-		var Tout;
-		clearTimeout(Tout);
-		Tout = setTimeout(function(esto) {
+		clearTimeout($scope.Tout);
+		$scope.Tout = setTimeout(function(esto) {
 	    	esto.change(id,idInOrder);
 		}, 1800,this);
 	};
@@ -73,6 +72,7 @@ app.directive('fallbackSrc', function () {
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=RemoveItemFromOrder&username='+ user +'&authentication_token='+ token +'&id=' + id).then(function(res){
 			$scope.loading = false;
 			$log.debug(res);
+			$('#itemsOnCart').html(parseInt($('#itemsOnCart').text()) - 1);
 			if(!(index === undefined))
 				$scope.productos.splice(index,1);
 			esto.updateTotal();

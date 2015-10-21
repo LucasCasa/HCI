@@ -9,7 +9,7 @@
 		id:2},{name:'Niñas',
 		id:3},{name:'Bebes',
 		id:4}];	
-		$scope.seleccionada = 'Todas las categorias';
+		$scope.seleccionada = 'Todas las categorías';
         $scope.itemsOnCart = 0;
 	    $http.get("http://eiffel.itba.edu.ar/hci/service3/Catalog.groovy?method=GetAllCategories").then(function(res){
 		$scope.subcategorias = [[],[],[],[],[]];
@@ -40,9 +40,11 @@
 		}
 	});
     $scope.numberOfItemsInCart = function(){
+        $scope.loading = true;
         if(ReadCookie("carritoOrderId") !== null){
             $log.debug("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + ReadCookie("user") + "&authentication_token=" + ReadCookie("token") + "&id=" + ReadCookie("carritoOrderId"));
             $http.get("http://eiffel.itba.edu.ar/hci/service3/Order.groovy?method=GetOrderById&username=" + ReadCookie("user") + "&authentication_token=" + ReadCookie("token") + "&id=" + ReadCookie("carritoOrderId")).then(function(res){
+                $scope.loading = false;
                 $log.debug(res);
                 if(res.data.error === undefined){
                     $scope.itemsOnCart = res.data.order.items.length;
