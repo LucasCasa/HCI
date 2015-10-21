@@ -1,5 +1,5 @@
 <div class="modal-body">
-	<h3 class="required-warning cssFade" ng-hide="!errorCard" > Esa tarjeta ya esta registrada </h3>
+	<h3 class="required-warning cssFade" ng-hide="!errorCard" > Esa tarjeta ya está registrada </h3>
 	<h4 class="required-warning"> Todos los campos son obligatorios</h4>
 	<div class="category">
 		<img ng-disabled="selectedCard !== 'Visa' "  src="images/visa.png">
@@ -8,17 +8,17 @@
 		<img ng-disabled="selectedCard !== 'Amex' " src="images/amex.png">
 	</div>												
 	<div class="category">
-		<label >Número*
+		<label >Número
 			<input name="number" class="form-control" placeholder="ej: 1234456778901234" id="cardNumber"  ng-model="cardNumber" enabled>
 		</label>
 	</div>									
 	<div class="category">
-		<label >Fecha de Vencimiento*
+		<label >Fecha de Vencimiento
 			<input name="expirationDate" class="form-control" placeholder="ej: 0101" id="expirationDate" ng-model="expirationDate" enabled>
 		</label>
 	</div>						
 	<div class="category">
-		<label >Código de Seguridad*
+		<label >Código de Seguridad
 			<input name="securityCode" class="form-control" placeholder="ej: 123" id="securityCode" ng-model="securityCode" enabled>
 		</label>
 	</div>
