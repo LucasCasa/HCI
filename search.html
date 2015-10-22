@@ -74,7 +74,11 @@
 </div>
 
         <div class"row" style="padding-right:100px;padding-left:100px" >
-
+          <div class="col-sm-9" ng-show="noSearch">
+            <h4>
+              No se encontraron productos relacionados a la busqueda
+            </h4>
+          </div>
                       <div class="thumbnail col-sm-3" ng-repeat="prod in destacados">
                           <a ng-attr-href="{{'producto.html?id=' + prod.id}}"><img ng-attr-src="{{prod.imageUrl[0]}}" fallback-src="{{this.src=prod.imageUrl[1]}}" alt=""></a>
                           <div class="caption">

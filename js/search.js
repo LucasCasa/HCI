@@ -34,7 +34,7 @@ app.controller('BusquedaController',function($scope,$http,$log,$location){
 	var subCalzados = ['Alpargatas','Balerinas','Borcegos','Botas','Mocasines','Ojotas','Pantuflas','Sandalias','Zapatillas','Zapatos','Zuecos'];
 	var subIndumentarias = ['Blazers','Buzos','Calzas','Campera','Camisas','Cardigans','Chalecos','Jeans','Pantalones','Pilotos','Polleras','Remeras','Sacos','Sweaters','Vestidos'];
 	var subAccesorios = ['Anteojos','Aros','Billeteras','Carteras','Cinturones','Collares','Gorras','Llaveros','Mochilas','Pulseras','Relojes'];
-
+  $scope.noSearch = false;
 	callAPI();
 
 	$scope.changePage = function(pageNumb){
@@ -422,6 +422,9 @@ function callAPI(){
 		$scope.maxSize = 5;
 		$scope.filters = res.data.filters;
 
+    if($scope.totalItems == 0){
+      $scope.noSearch = true;
+    }
 		//Separar las asignaciones una vez que vienen de la API
 		//Lo que esta abajo de alguna manera sacarlo afuera
 
