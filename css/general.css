@@ -54,7 +54,9 @@ nav .user-name{
 	padding-bottom: 0px;
 
 }*/
-
+.scarrousel{
+  width: 100%;
+}
 
 .headerDivider {
      border-left:1px solid #38546d; 
