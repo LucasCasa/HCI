@@ -481,11 +481,12 @@ var app = angular.module('Cuenta', ['navbar','ngAnimate','footer']);
  	//Cambio de contraseña
  	$scope.updatePass = function(){
  		$scope.updatePW = true;
+ 		$scope.invalidOldPass = false;
  		$log.debug('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=ChangePassword&username='+ user + '&password=' + $scope.oldpass + '&new_password=' + $scope.newpass);
 		$http.get('http://eiffel.itba.edu.ar/hci/service3/Account.groovy?method=ChangePassword&username='+ user + '&password=' + $scope.oldpass + '&new_password=' + $scope.newpass).then(function(res){
 			$log.debug(res);
 			if(res.data.error !== undefined){
-				if(res.data.error.code == 105){
+				if(res.data.error.code == 101 || res.data.error.code == 105){
 					$scope.invalidOldPass = true;
 				}
 			}else{
