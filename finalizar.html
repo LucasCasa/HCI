@@ -39,7 +39,6 @@
           <th class="col-sm-4">Descripción</th>
           <th class="col-sm-1">Cantidad</th>
           <th class="col-sm-2">Subtotal</th>
-          <th class="col-sm-3">Eliminar </th>
         </thead>
 
         <tbody>
@@ -55,11 +54,6 @@
             </td>
             <td>
               <h4>{{producto.price * producto.quantity | currency}}</h4>
-            </td>
-            <td>
-              <button type="button" class="btn btn-danger pull-left" ng-click="removeItem(producto.id)">
-                <span class="glyphicon glyphicon-remove"></span>
-              </button>
             </td>
           </tr>
         </tbody>
