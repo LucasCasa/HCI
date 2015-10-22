@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/general.css">
-    <link rel="icon" type="image/png" href="images/muffin.png">
-    <link href="css/login.css" rel="stylesheet">
-    <title>Iniciar Sesión</title>
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/general.css">
+  <link rel="icon" type="image/png" href="images/muffin.png">
+  <link href="css/login.css" rel="stylesheet">
+  <title>Iniciar Sesión</title>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="login">
   <nav-bar></nav-bar>
-  <div>
-  <div class="loading-block" ng-show="loadingR || loadingL">
-      <div class="loading-image" >
-        <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
+  <div class="fluid-container">
+    <div>
+      <div class="loading-block" ng-show="loadingR || loadingL">
+        <div class="loading-image" >
+          <img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif"  />
+        </div>
       </div>
-    </div>
-    <div class="container">
+      <div class="container">
         <form ng-controller="LoginController as LoginCtrl" name="loginForm" novalidate>
           <div class="page-header">
-              <h3>Ingresar</h3>
+            <h3>Ingresar</h3>
           </div>
           <div class="row grid-divider"/>
           <div class="col-sm-6">
@@ -31,41 +32,42 @@
               <h4 ng-hide="LoginCtrl.validLogin"  class="cssFade">Usuario y/o contraseña inválida</h4>
             </div>
             <div class="form-group login-field">
-                <input type="text" ng-model="loginUser" class="form-control" placeholder="Nombre de Usuario"required>
+              <input type="text" ng-model="loginUser" class="form-control" placeholder="Nombre de Usuario"required>
             </div>
             <div class="form-group login-field">
-                <input type="password" ng-model="loginPass" class="form-control" placeholder="Contraseña" required>
+              <input type="password" ng-model="loginPass" class="form-control" placeholder="Contraseña" required>
             </div>
-          <button type="submit" ng-click="LoginCtrl.login()" class="btn btn-primary ing-button">Ingresar</button>
-        </form>
-    </div>
-    <div class="col-sm-6">
-      <div class="col-padding" ng-controller="RegisterController as register">
-        <h3>Registrarse:</h3>
-        <button type="button" class="btn btn-primary" id="register-btn" ng-hide="isRegistering" ng-click="isRegistering = true">Registrarse Ahora</button>
-        <button type="button" class="btn btn-danger btn-sm" ng-show="isRegistering" id="closeReg" ng-click="isRegistering = false">
-          <span class="glyphicon glyphicon-remove"/>
-        </button>
-        <div ng-show="isRegistering" class="cssFade">
-          <div ng-include="'register.html'"></div>
+            <button type="submit" ng-click="LoginCtrl.login()" class="btn btn-primary ing-button">Ingresar</button>
+          </form>
+        </div>
+        <div class="col-sm-6">
+          <div class="col-padding" ng-controller="RegisterController as register">
+            <h3>Registrarse:</h3>
+            <button type="button" class="btn btn-primary" id="register-btn" ng-hide="isRegistering" ng-click="isRegistering = true">Registrarse Ahora</button>
+            <button type="button" class="btn btn-danger btn-sm" ng-show="isRegistering" id="closeReg" ng-click="isRegistering = false">
+              <span class="glyphicon glyphicon-remove"/>
+            </button>
+            <div ng-show="isRegistering" class="cssFade">
+              <div ng-include="'register.html'"></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="modal fade" id="RegisterSuccess" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">Se registró con éxito</h3>
-        </div>
-        <div class="modal-footer text-center">
-        <div class="text-center">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Continuar</button>
-        </div>
+      <div class="modal fade" id="RegisterSuccess" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 class="modal-title">Se registró con éxito</h3>
+            </div>
+            <div class="modal-footer text-center">
+              <div class="text-center">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Continuar</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
   </div>
   <custom-footer></custom-footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
