@@ -43,15 +43,25 @@
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <ol class="breadcrumb">
-            <li><a href="index.html">Página Principal</a></li>
-            <li class="active">Busqueda</li>
+          <ol id="breadcrumb" class="breadcrumb">
+            <li class="active"><a href="">Busqueda</a></li>
           </ol>
 
 
 
 <div class="barra" >
   <div class="bloque pagi"><pagination  total-items="totalItems" ng-model="currentPage" items-per-page=8 num-pages="noOfPages" current-page="currentPage" max-size="maxSize" ng-change="changePage(currentPage)"></pagination></div>
+  <div class="bloque orderBy">
+    <h5>Ordenar Por:</h5>
+    <select class="selector"ng-model="orderBy" ng-change="" >
+      <option value=8>Ascendente por Marca</option>
+      <option value=16>Descendente por Marca</option>
+      <option value=24>Mayor Precio</option>
+      <option value=32>Menor Precio</option>
+      <option value=32>A-Z</option>
+      <option value=32>Z-A</option>
+    </select>
+  </div>
   <div class="bloque cant">
     <h5>Cantidad:</h5>
     <select class="selector"ng-model="itemsPerPage" ng-change="changeItemsPerPage(itemsPerPage)" >
@@ -81,6 +91,17 @@
                   </div>
                   <div class="barra col-sm-12">
                     <div class="bloque pagi"><pagination  total-items="totalItems" ng-model="currentPage" items-per-page=8 num-pages="noOfPages" current-page="currentPage" max-size="maxSize" ng-change="changePage(currentPage)"></pagination></div>
+                    <div class="bloque orderBy">
+                      <h5>Ordenar Por:</h5>
+                      <select class="selector"ng-model="orderBy" ng-change="" >
+                        <option value=8>Ascendente por Marca</option>
+                        <option value=16>Descendente por Marca</option>
+                        <option value=24>Mayor Precio</option>
+                        <option value=32>Menor Precio</option>
+                        <option value=32>A-Z</option>
+                        <option value=32>Z-A</option>
+                      </select>
+                    </div>
                     <div class="bloque cant">
                       <h5>Cantidad:</h5>
                       <select class="selector " ng-model="itemsPerPage" ng-change="changeItemsPerPage(itemsPerPage)" >

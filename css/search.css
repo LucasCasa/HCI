@@ -1,3 +1,6 @@
+.orderBy{
+  margin-right:70px;
+}
 .linea{
   border-bottom: 1px solid #000;
 }
@@ -6,7 +9,7 @@ body {
 }
 
 .paginacion{
-  width: 80px;
+  width: 70px;
   height: 30px;
 }
 .bloque{
@@ -14,7 +17,7 @@ body {
 }
 
 .pagi{
-  width: 70%;
+  width: 60%;
 }
 .barra{
   padding-bottom: 20px;

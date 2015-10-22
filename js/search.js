@@ -377,6 +377,8 @@ function putMainFilter(){
 	}
 }
 
+
+
 function callAPI(){
 	var onSuccess = function(res){
 		$log.debug(res.data.products);
@@ -403,13 +405,13 @@ function callAPI(){
 				}
 			}
 			//Pone los filtros a la izquierda
-
 			putBrandFilters();
 			//pone Filtros de colores
 			putColorFilters();
 		}
 
 	putMainFilter();
+
 
 
 	if(filtro!=""){
