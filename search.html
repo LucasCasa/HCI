@@ -53,13 +53,13 @@
   <div class="bloque pagi"><pagination  total-items="totalItems" ng-model="currentPage" items-per-page=8 num-pages="noOfPages" current-page="currentPage" max-size="maxSize" ng-change="changePage(currentPage)"></pagination></div>
   <div class="bloque orderBy">
     <h5>Ordenar Por:</h5>
-    <select class="selector"ng-model="orderBy" ng-change="" >
-      <option value=8>Ascendente por Marca</option>
-      <option value=16>Descendente por Marca</option>
-      <option value=24>Mayor Precio</option>
-      <option value=32>Menor Precio</option>
-      <option value=32>A-Z</option>
-      <option value=32>Z-A</option>
+    <select class="selector" ng-model="order" ng-change="changeOrderBy(order)" >
+      <option value=1>Ascendente por Marca</option>
+      <option value=2>Descendente por Marca</option>
+      <option value=3>Mayor Precio</option>
+      <option value=4>Menor Precio</option>
+      <option value=5>A-Z</option>
+      <option value=6>Z-A</option>
     </select>
   </div>
   <div class="bloque cant">
@@ -93,13 +93,13 @@
                     <div class="bloque pagi"><pagination  total-items="totalItems" ng-model="currentPage" items-per-page=8 num-pages="noOfPages" current-page="currentPage" max-size="maxSize" ng-change="changePage(currentPage)"></pagination></div>
                     <div class="bloque orderBy">
                       <h5>Ordenar Por:</h5>
-                      <select class="selector"ng-model="orderBy" ng-change="" >
-                        <option value=8>Ascendente por Marca</option>
-                        <option value=16>Descendente por Marca</option>
-                        <option value=24>Mayor Precio</option>
-                        <option value=32>Menor Precio</option>
-                        <option value=32>A-Z</option>
-                        <option value=32>Z-A</option>
+                      <select class="selector" ng-model="order" ng-change="changeOrderBy(order)" >
+                        <option value=1>Ascendente por Marca</option>
+                        <option value=2>Descendente por Marca</option>
+                        <option value=3>Mayor Precio</option>
+                        <option value=4>Menor Precio</option>
+                        <option value=5>A-Z</option>
+                        <option value=6>Z-A</option>
                       </select>
                     </div>
                     <div class="bloque cant">

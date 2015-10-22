@@ -30,6 +30,7 @@ app.controller('BusquedaController',function($scope,$http,$log,$location){
 
 	var page=1;
 	var itemsPerPage = 8;
+  var orderVar = 0;
 	var subCalzados = ['Alpargatas','Balerinas','Borcegos','Botas','Mocasines','Ojotas','Pantuflas','Sandalias','Zapatillas','Zapatos','Zuecos'];
 	var subIndumentarias = ['Blazers','Buzos','Calzas','Campera','Camisas','Cardigans','Chalecos','Jeans','Pantalones','Pilotos','Polleras','Remeras','Sacos','Sweaters','Vestidos'];
 	var subAccesorios = ['Anteojos','Aros','Billeteras','Carteras','Cinturones','Collares','Gorras','Llaveros','Mochilas','Pulseras','Relojes'];
@@ -51,10 +52,16 @@ app.controller('BusquedaController',function($scope,$http,$log,$location){
 
 	$scope.changeItemsPerPage = function(num){
 			$scope.loading=true;
-
 			itemsPerPage = num;
 			callAPI();
 	}
+
+  $scope.changeOrderBy = function(order){
+    $scope.loading=true;
+    console.log(order);
+    orderVar = order;
+    callAPI();
+  }
 
 	function urlParser(){
 		var result = ["","","","","",""];
@@ -143,6 +150,10 @@ app.controller('BusquedaController',function($scope,$http,$log,$location){
 
 	}
 
+  function putOrderBy(orderVar){
+
+  }
+
 	function formURL(){
 		var byCategory = "GetProductsByCategoryId&id=";
   	var allCategories = "GetAllProducts";
@@ -194,6 +205,25 @@ app.controller('BusquedaController',function($scope,$http,$log,$location){
 	if(itemsPerPage!= 8){
 		newURL+= "&page_size="+itemsPerPage;
 	}
+  if(orderVar != 0){
+    newURL+= "&sort_key=";
+    if(orderVar == 1 || orderVar == 2){
+      newURL+= "marca";
+      if(orderVar==2){
+        newURL+="&sort_order=desc";
+      }
+    }else if(orderVar == 3 || orderVar ==4){
+      newURL+="precio";
+      if(orderVar==3){
+        newURL+="&sort_order=desc";
+      }
+    }else if(orderVar == 5 || orderVar == 6){
+      newURL += "nombre";
+      if(orderVar == 6){
+        newURL += "&sort_order=desc";
+      }
+    }
+  }
 
 
 	var filters = "&filters=["
@@ -233,10 +263,12 @@ if(color!= ""){
 	flag=true;
 }
 
+
 filters += ']';
 
  if(flag){
- return newURL + filters;}
+   return newURL + filters;
+ }
  else{
 	 return newURL;
  }
