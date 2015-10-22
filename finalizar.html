@@ -14,7 +14,7 @@
     </div>
     <div class="row col-sm-12" ng-show="card"> 
       <div class="well col-sm-6">
-        <label >Seleccionar tarjeta</label>
+        <label >Seleccionar Tarjeta</label>
           <select name="tarjetas" class="form-control" ng-model="selectedCard">
             <option ng-repeat="tarjeta in tarjetas track by $index" value="{{tarjeta.id}}"><strong>{{getCardType(tarjeta.number)}}</strong> - {{" " + tarjeta.number | tarjeta}}</option>
           </select>
@@ -23,7 +23,7 @@
     <hr>
     <div class="row col-sm-12">
       <div class="well col-sm-6">
-        <h3>Dirección de Envio</h3>
+        <h3>Dirección</h3>
           <p ng-cloak>{{direccion.name}}</p>
           <p>{{direccion.street +' ' + direccion.number}}{{(direccion.floor === null)?"":' Piso '+ direccion.floor}}{{(direccion.gate === null)?"":" Departamento " + direccion.gate}}</p>
           <p>{{ (direccion.city===null)?"":direccion.city+', '}} {{getProvince(direccion.province)}} {{', Argentina' }}</p>
@@ -80,7 +80,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Compra Realizada con éxito</h4>
+          <h4 class="modal-title">Compra realizada con éxito</h4>
         </div>
         <div class="modal-footer">
         <div class="text-center">
