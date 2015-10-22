@@ -51,7 +51,7 @@
 						<div class="product-price" ng-cloak>{{producto.price | currency}}</div>
 						<br><br>
 						<div class="row">
-							<h4 class="col-sm-3">Cantidad</h4>
+							<h4 class="col-sm-3">Cantidad:</h4>
 							<div class="input-group col-sm-2 ">
 								<span class="input-group-btn">
 									<button style="padding:2px" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]" ng-click="ProductCtrl.add(-1)">
@@ -69,14 +69,14 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-3">
-								<h4> Total: </h4>
+								<h4>Total: </h4>
 							</div>
 							<div class="col-sm-2">
 								<h4 ng-cloak>${{producto.price * selectedAmount}}</h4>
 							</div>
 						</div>
 						<br><br>
-						<h5 ng-hide="ProductCtrl.isLoged()"><a href="login.html">Ingresa</a> para poder agregar al carrito y a tu lista de deseos</h2>
+						<h5 ng-hide="ProductCtrl.isLoged()"><a href="login.html">Ingresá</a> para poder agregar al carrito y a tu lista de deseos</h2>
 						<div class="btn-group cart" ng-show="ProductCtrl.isLoged()">
 							<button type="button" class="btn btn-info" id="btn-cart" ng-click="ProductCtrl.addToCart()" ng-disabled="cartBtn">
                         		<img id="mySpinner" src="http://i.stack.imgur.com/MnyxU.gif" ng-show="loadingCart" />
@@ -101,7 +101,7 @@
 									<div class="tab-pane fade in active" id="service-one">
 
 										<section class="container product-info">
-											<li>Descripción del Producto</li>
+											<li>En construcción</li>
 										</section>
 
 									</div>

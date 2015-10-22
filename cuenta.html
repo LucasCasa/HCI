@@ -30,7 +30,7 @@
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Información Personal</a></li>
 							<li role="presentation"><a href="#direcciones" aria-controls="direcciones" role="tab" data-toggle="tab">Direcciones</a></li>
-							<li role="presentation"><a href="#tarjetas" aria-controls="tarjetas" role="tab" data-toggle="tab">Tarjetas de Crédito</a></li>
+							<li role="presentation"><a href="#tarjetas" aria-controls="tarjetas" role="tab" data-toggle="tab">Tarjetas</a></li>
 							<li role="presentation"><a href="#compras" aria-controls="compras" role="tab" data-toggle="tab">Historial de Compra</a></li>
 						</ul>
 
@@ -41,12 +41,12 @@
 									<div id="form-col1" class="col-sm-2">
 										<form id="form1">
 											<br><br>
-											<p class="field-name">Nombre: </p>
-											<p class="field-name">Apellido: </p>
-											<p class="field-name">Email: </p>
-											<p class="field-name">DNI:
+												<p class="field-name">Nombre: </p>
+												<p class="field-name">Apellido: </p>
+												<p class="field-name">Email: </p>
+												<p class="field-name">DNI: </p>
 												<p class="field-name">Fecha de Nacimiento: </p>
-												<p class="field-name">Genero: </p>
+												<p class="field-name">Género: </p>
 											</form>
 										</div>
 										<div id="form-col2">
@@ -63,14 +63,14 @@
 										</div>
 									</div>
 									<button id="modify-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyAccountModal" ng-click="CuentaCtrl.saveState(user)">
-										<span class="glyphicon glyphicon-edit"></span> Modificar información
+										<span class="glyphicon glyphicon-edit"></span> Modificar Cuenta
 									</button> 
 									<div class="modal fade" data-backdrop="static" id="modifyAccountModal">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
-													<h4 class="modal-title">Modificar cuenta</h4>
+													<h4 class="modal-title">Modificar Cuenta</h4>
 												</div>
 												<modify-account></modify-account>
 												<div class="modal-footer">
@@ -85,7 +85,7 @@
 										</div><!-- /.modal-dialog -->
 									</div><!-- /.modal -->
 									<button id="modify-pass" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifyPassModal">
-										<span class="glyphicon glyphicon-edit"></span> Modificar contraseña
+										<span class="glyphicon glyphicon-edit"></span> Modificar Contraseña
 									</button>
 									<div class="modal fade" data-backdrop="static" id="modifyPassModal">
 										<div class="modal-dialog">
@@ -93,9 +93,8 @@
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
 													</button>
-													<h4 class="modal-title">Modificar contraseña</h4>
+													<h4 class="modal-title">Modificar Contraseña</h4>
 												</div>
-												<h4 ng-show='invalidOldPass'> Contraseña vieja inválida</h4>
 												<modify-password></modify-password>
 												<div class="modal-footer">
 													<button id="save-pass-btn" type="button" class="btn btn-success apply" ng-click="updatePass()" ng-disabled="!CuentaCtrl.isValidPass()" hidden>
@@ -112,10 +111,10 @@
 								<div role="tabpanel" class="tab-pane" id="direcciones">
 									<div class="col-padding">
 										<div id="form-reg">
-											<h2 ng-show="isAddress()">No hay Direcciones</h2>
+											<h2 ng-show="isAddress()">No hay Direcciones guardadas</h2>
 											<div class="row" style="margin-top:20px;margin-bottom:20px;margin-left:40%;margin-right:50%">
 												<button id="add-direction" type="button" class="btn btn-info" data-toggle="modal" data-target="#addAddressModal">
-													<span class="glyphicon glyphicon-plus"></span> Agregar dirección de envío
+													<span class="glyphicon glyphicon-plus"></span> Agregar Dirección
 												</button> 
 											</div>
 											<div ng-repeat="direccion in direcciones" class="well col-sm-4" id="form-col1">
@@ -139,7 +138,7 @@
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-															<h4 class="modal-title">Agregar dirección de envio</h4>
+															<h4 class="modal-title">Agregar Dirección</h4>
 														</div>
 														<add-address></add-address>
 														<div class="modal-footer">
@@ -158,7 +157,7 @@
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-															<h4 class="modal-title">Modificar Direccion de Envio</h4>
+															<h4 class="modal-title">Modificar Dirección</h4>
 														</div>
 														<add-address></add-address>
 														<div class="modal-footer">
@@ -176,10 +175,10 @@
 									</div>
 								</div>
 								<div role="tabpanel" class="tab-pane" id="tarjetas">
-									<h2 ng-show="isCard()">No hay Tarjetas</h2>		
+									<h2 ng-show="isCard()">No hay tarjetas guardadas</h2>		
 									<div class="row" style="margin-top:20px;margin-bottom:20px;margin-left:40%;margin-right:50%">
 										<button id="add-card" type="button" class="btn btn-info" data-toggle="modal" data-target="#addCardModal">
-											<span class="glyphicon glyphicon-plus"></span> Agregar tarjeta
+											<span class="glyphicon glyphicon-plus"></span> Agregar Tarjeta
 										</button> 
 									</div>			
 									<div ng-repeat="tarjeta in tarjetas" class="well well-sm col-md-4 col-sm-12" id="form-col1">
@@ -213,7 +212,7 @@
 												<div class="modal-header">
 													<button type="button" class="close" ng-click="errorCard = false" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-													<h4 class="modal-title">Agregar tarjeta</h4>
+													<h4 class="modal-title">Agregar Tarjeta</h4>
 												</div>
 
 												<add-creditCard></add-creditCard>
@@ -286,11 +285,11 @@
 													<div id="form-col1" class="col-md-6">
 													<form id="form2" ng-cloak>
 														<p class="field-name">Recibida el: </p>
-														<p class="field-name" >Procesada el : </p>
-														<p class="field-name">Fecha de entrega: </p>
+														<p class="field-name" >Procesada el: </p>
+														<p class="field-name">Fecha de Entrega: </p>
 														<hr>
 														<p class="field-name">Total: </p>
-														<p class="field-name">Cantidad de artículos: </p>
+														<p class="field-name">Cantidad de Artículos: </p>
 													</form>
 													</div>
 													<form ng-cloak>
